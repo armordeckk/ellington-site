@@ -17,8 +17,8 @@ export default function HomePage() {
         <HeroSlideshow />
         <div className="absolute inset-0 bg-gradient-to-b from-[var(--background)]/70 via-[var(--background)]/40 to-[var(--background)] z-10" />
 
-        <div className="relative z-20 text-center px-6 max-w-5xl mx-auto fade-in">
-          <p className="text-[11px] tracking-[0.32em] uppercase text-accent mb-8">
+        <div className="relative z-20 text-center px-6 max-w-5xl mx-auto fade-in pt-20 sm:pt-0">
+          <p className="text-[9px] sm:text-[11px] tracking-[0.22em] sm:tracking-[0.32em] uppercase text-accent mb-6 sm:mb-8 whitespace-nowrap">
             Immobilier de prestige · Côte d&apos;Azur
           </p>
           <h1 className="font-serif text-5xl sm:text-6xl md:text-7xl lg:text-8xl leading-[1.05] mb-6">

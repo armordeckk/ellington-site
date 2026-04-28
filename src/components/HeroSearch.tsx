@@ -45,10 +45,10 @@ export function HeroSearch({ cities }: { cities: string[] }) {
   return (
     <form
       onSubmit={onSubmit}
-      className="max-w-4xl mx-auto bg-[var(--background)]/75 backdrop-blur-md border border-[var(--border-strong)]"
+      className="max-w-4xl mx-auto bg-black/20 backdrop-blur-[6px] border border-white/15 shadow-[0_20px_60px_-20px_rgba(0,0,0,0.4)]"
     >
       {/* Tab toggle */}
-      <div className="flex border-b border-[var(--border)]">
+      <div className="flex border-b border-white/10">
         {CATEGORIES.map((c) => (
           <button
             key={c.value}
@@ -56,8 +56,8 @@ export function HeroSearch({ cities }: { cities: string[] }) {
             onClick={() => setCategory(c.value)}
             className={`flex-1 sm:flex-none px-8 py-3.5 text-[11px] tracking-[0.22em] uppercase transition ${
               category === c.value
-                ? "bg-[var(--background-elev)] text-accent"
-                : "text-muted hover:text-foreground"
+                ? "bg-white/5 text-accent"
+                : "text-white/60 hover:text-white"
             }`}
           >
             {c.label}
@@ -92,7 +92,7 @@ export function HeroSearch({ cities }: { cities: string[] }) {
         />
         <button
           type="submit"
-          className="bg-accent hover:bg-accent-hover text-[var(--background)] text-[11px] tracking-[0.22em] uppercase transition py-5 sm:col-span-3 lg:col-span-1 flex items-center justify-center gap-2"
+          className="bg-accent/95 hover:bg-accent text-[var(--background)] text-[11px] tracking-[0.22em] uppercase transition py-5 sm:col-span-3 lg:col-span-1 flex items-center justify-center gap-2"
         >
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
             <circle cx="11" cy="11" r="7" />
@@ -117,18 +117,18 @@ function HeroField({
   options: { value: string; label: string }[];
 }) {
   return (
-    <label className="block px-5 py-4 border-r border-[var(--border)] last:border-r-0 text-left">
-      <span className="block text-[10px] tracking-[0.22em] uppercase text-muted mb-1">
+    <label className="block px-5 py-4 border-r border-white/10 last:border-r-0 text-left">
+      <span className="block text-[10px] tracking-[0.22em] uppercase text-white/55 mb-1">
         {label}
       </span>
       <div className="relative">
         <select
           value={value}
           onChange={(e) => onChange(e.target.value)}
-          className="appearance-none w-full bg-transparent text-sm text-foreground pr-6 cursor-pointer py-1"
+          className="appearance-none w-full bg-transparent text-sm text-white pr-6 cursor-pointer py-1"
         >
           {options.map((o) => (
-            <option key={o.value} value={o.value} className="bg-[var(--background)]">
+            <option key={o.value} value={o.value} className="bg-[var(--background)] text-white">
               {o.label}
             </option>
           ))}
