@@ -32,6 +32,12 @@ export function Header() {
       <div className="max-w-[1400px] mx-auto px-6 md:px-10 h-20 flex items-center justify-between">
         <Link
           href="/"
+          onClick={(e) => {
+            if (window.location.pathname === "/") {
+              e.preventDefault();
+              window.scrollTo({ top: 0, behavior: "smooth" });
+            }
+          }}
           className="flex items-center gap-3 text-foreground hover:opacity-80 transition"
         >
           <Logo className="w-7 h-9" />
