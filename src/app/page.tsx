@@ -127,11 +127,21 @@ export default function HomePage() {
             </Link>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {/* mobile: scroll-snap horizontal — desktop: grid */}
+          <div className="flex md:grid md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-8 overflow-x-auto md:overflow-visible snap-x snap-mandatory scroll-smooth -mx-6 md:mx-0 px-6 md:px-0 pb-3 md:pb-0 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
             {featured.map((p, i) => (
-              <PropertyCard key={p.id} property={p} priority={i < 3} />
+              <div
+                key={p.id}
+                className="flex-none w-[82%] sm:w-[55%] md:w-auto snap-center md:snap-align-none"
+              >
+                <PropertyCard property={p} priority={i < 3} />
+              </div>
             ))}
           </div>
+          {/* mobile scroll hint */}
+          <p className="md:hidden mt-4 text-center text-[10px] tracking-[0.22em] uppercase text-muted">
+            ← Faites glisser →
+          </p>
         </div>
       </section>
 
@@ -151,18 +161,18 @@ export default function HomePage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="flex md:grid md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 overflow-x-auto md:overflow-visible snap-x snap-mandatory scroll-smooth -mx-6 md:mx-0 px-6 md:px-0 pb-3 md:pb-0 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
             {locations.slice(0, 6).map((loc) => (
               <Link
                 key={loc.slug}
                 href={`/locations#${loc.slug}`}
-                className="group relative aspect-[4/5] overflow-hidden block"
+                className="group relative aspect-[4/5] overflow-hidden block flex-none w-[82%] sm:w-[55%] md:w-auto snap-center md:snap-align-none"
               >
                 <Image
                   src={loc.image}
                   alt={loc.name}
                   fill
-                  sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                  sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 82vw"
                   className="object-cover transition-transform duration-[1500ms] group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
