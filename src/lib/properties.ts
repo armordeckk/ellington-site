@@ -324,42 +324,42 @@ export const locations: Location[] = [
     name: "Monaco",
     description:
       "Principauté souveraine, Monaco offre un cadre de vie unique au monde. Stabilité, sécurité, fiscalité avantageuse et art de vivre méditerranéen attirent une clientèle internationale exigeante.",
-    image: "https://images.unsplash.com/photo-1505816014357-96b5ff457e9a?auto=format&fit=crop&w=1600&q=80",
+    image: "/locations/monaco/monaco.jpg",
   },
   {
     slug: "saint-tropez",
     name: "Saint-Tropez",
     description:
       "De la Place des Lices aux plages de Pampelonne, Saint-Tropez incarne la quintessence de la Riviera française. Domaines viticoles, bastides provençales et villas contemporaines composent un patrimoine d'exception.",
-    image: "https://images.unsplash.com/photo-1582510003544-4d00b7f74220?auto=format&fit=crop&w=1600&q=80",
+    image: "/locations/saint-tropez/sttropez.jpg",
   },
   {
     slug: "grimaud",
     name: "Grimaud",
     description:
       "Au cœur du Golfe de Saint-Tropez, Grimaud séduit par son village médiéval perché, son port de plaisance prisé (Port Grimaud) et ses villas en bord de mer. Une adresse confidentielle et préservée de la Côte d'Azur.",
-    image: "https://images.unsplash.com/photo-1576005687099-93c5da7b4dd0?auto=format&fit=crop&w=1600&q=80",
+    image: "/locations/grimaud/grimaud.jpg",
   },
   {
     slug: "cap-ferrat",
     name: "Saint-Jean-Cap-Ferrat",
     description:
       "Surnommée la presqu'île des milliardaires, Saint-Jean-Cap-Ferrat conjugue rareté foncière et adresses prestigieuses. Un écrin végétal entre Nice et Monaco.",
-    image: "https://images.unsplash.com/photo-1505761671935-60b3a7427bad?auto=format&fit=crop&w=1600&q=80",
+    image: "/locations/cap-ferrat/capferrat.jpg",
   },
   {
     slug: "cannes",
     name: "Cannes",
     description:
       "Capitale du cinéma et de l'art de vivre, Cannes séduit par sa Croisette mythique, ses palais Belle Époque et ses hauteurs résidentielles offrant vue sur la baie.",
-    image: "https://images.unsplash.com/photo-1597211833712-5e41faa202ea?auto=format&fit=crop&w=1600&q=80",
+    image: "/locations/cannes/cannes.jpg",
   },
   {
     slug: "sainte-maxime",
     name: "Sainte-Maxime",
     description:
       "Face à Saint-Tropez sur le Golfe, Sainte-Maxime allie élégance balnéaire et authenticité provençale. Plages de sable fin, villas contemporaines et propriétés historiques en font une destination privilégiée.",
-    image: "https://images.unsplash.com/photo-1591800998144-e5e0bdfd4a35?auto=format&fit=crop&w=1600&q=80",
+    image: "/locations/sainte-maxime/stemaxime.jpg",
   },
 ];
 
