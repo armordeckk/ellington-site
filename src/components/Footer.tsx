@@ -1,7 +1,12 @@
+"use client";
+
 import Link from "next/link";
 import { Logo } from "./Logo";
+import { useLanguage } from "./LanguageProvider";
 
 export function Footer() {
+  const { t } = useLanguage();
+  const year = new Date().getFullYear();
   return (
     <footer className="border-t border-[var(--border)] bg-[var(--background)]">
       <div className="max-w-[1400px] mx-auto px-6 md:px-10 py-16">
@@ -14,34 +19,33 @@ export function Footer() {
               </span>
             </Link>
             <p className="text-sm text-muted leading-relaxed max-w-xs">
-              Immobilier de prestige sur la Côte d&apos;Azur. Biens
-              d&apos;exception, accompagnement confidentiel.
+              {t.footer.tagline}
             </p>
           </div>
 
           <div>
             <h4 className="text-[11px] tracking-[0.22em] uppercase text-muted-strong mb-5">
-              Explorer
+              {t.footer.explore}
             </h4>
             <ul className="space-y-3 text-sm">
               <li>
                 <Link href="/properties" className="text-foreground/90 hover:text-accent transition">
-                  Propriétés
+                  {t.nav.properties}
                 </Link>
               </li>
               <li>
                 <Link href="/rentals" className="text-foreground/90 hover:text-accent transition">
-                  Locations
+                  {t.nav.rentals}
                 </Link>
               </li>
               <li>
                 <Link href="/locations" className="text-foreground/90 hover:text-accent transition">
-                  Nos régions
+                  {t.footer.regions}
                 </Link>
               </li>
               <li>
                 <Link href="/about" className="text-foreground/90 hover:text-accent transition">
-                  À propos
+                  {t.nav.about}
                 </Link>
               </li>
             </ul>
@@ -49,7 +53,7 @@ export function Footer() {
 
           <div>
             <h4 className="text-[11px] tracking-[0.22em] uppercase text-muted-strong mb-5">
-              Contact
+              {t.footer.contact}
             </h4>
             <ul className="space-y-3 text-sm">
               <li>
@@ -62,30 +66,30 @@ export function Footer() {
                   contact@ellington.fr
                 </a>
               </li>
-              <li className="text-muted">Côte d&apos;Azur, France</li>
+              <li className="text-muted">{t.footer.cityLabel}</li>
             </ul>
           </div>
 
           <div>
             <h4 className="text-[11px] tracking-[0.22em] uppercase text-muted-strong mb-5">
-              Horaires
+              {t.footer.hours}
             </h4>
             <ul className="space-y-3 text-sm text-foreground/90">
-              <li>Lundi – Vendredi · 9h – 18h</li>
-              <li>Samedi · 10h – 16h</li>
-              <li className="text-muted">Dimanche · sur rendez-vous</li>
+              <li>{t.footer.monFri}</li>
+              <li>{t.footer.sat}</li>
+              <li className="text-muted">{t.footer.sun}</li>
             </ul>
           </div>
         </div>
 
         <div className="mt-16 pt-8 border-t border-[var(--border)] flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-muted">
-          <p>© {new Date().getFullYear()} Ellington. Tous droits réservés.</p>
+          <p>{t.footer.rights(year)}</p>
           <div className="flex gap-6">
             <Link href="/legal" className="hover:text-foreground transition">
-              Mentions légales
+              {t.footer.legal}
             </Link>
             <Link href="/privacy" className="hover:text-foreground transition">
-              Confidentialité
+              {t.footer.privacy}
             </Link>
           </div>
         </div>

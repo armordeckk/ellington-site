@@ -4,27 +4,21 @@ import { useMemo, useState, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import { PropertyCard } from "./PropertyCard";
 import type { Property } from "@/lib/types";
-import { propertyTypeLabel } from "@/lib/properties";
+import { useLanguage } from "./LanguageProvider";
 
 const PRICE_RANGES = [
-  { label: "Tous les prix", min: 0, max: Infinity },
-  { label: "Jusqu'à 3 M€", min: 0, max: 3_000_000 },
-  { label: "3 – 6 M€", min: 3_000_000, max: 6_000_000 },
-  { label: "6 – 10 M€", min: 6_000_000, max: 10_000_000 },
-  { label: "10 – 15 M€", min: 10_000_000, max: 15_000_000 },
-  { label: "15 M€ et plus", min: 15_000_000, max: Infinity },
+  { key: "all" as const, min: 0, max: Infinity },
+  { key: "under3" as const, min: 0, max: 3_000_000 },
+  { key: "r3to6" as const, min: 3_000_000, max: 6_000_000 },
+  { key: "r6to10" as const, min: 6_000_000, max: 10_000_000 },
+  { key: "r10to15" as const, min: 10_000_000, max: 15_000_000 },
+  { key: "over15" as const, min: 15_000_000, max: Infinity },
 ];
 
 const TYPES = ["villa", "penthouse", "apartment", "estate"] as const;
 
-const SORTS = [
-  { value: "newest", label: "Plus récents" },
-  { value: "price_desc", label: "Prix décroissant" },
-  { value: "price_asc", label: "Prix croissant" },
-  { value: "area_desc", label: "Surface décroissante" },
-] as const;
-
-type SortValue = (typeof SORTS)[number]["value"];
+const SORT_KEYS = ["newest", "priceDesc", "priceAsc", "areaDesc"] as const;
+type SortValue = (typeof SORT_KEYS)[number];
 
 export function PropertiesBrowser(props: {
   properties: Property[];
@@ -44,6 +38,7 @@ function PropertiesBrowserInner({
   properties: Property[];
   cities: string[];
 }) {
+  const { t } = useLanguage();
   const params = useSearchParams();
   const initialPriceIdx = (() => {
     const min = Number(params.get("minPrice") || 0);
@@ -66,9 +61,9 @@ function PropertiesBrowserInner({
       return true;
     });
     list = [...list];
-    if (sort === "price_desc") list.sort((a, b) => b.price - a.price);
-    else if (sort === "price_asc") list.sort((a, b) => a.price - b.price);
-    else if (sort === "area_desc") list.sort((a, b) => b.area - a.area);
+    if (sort === "priceDesc") list.sort((a, b) => b.price - a.price);
+    else if (sort === "priceAsc") list.sort((a, b) => a.price - b.price);
+    else if (sort === "areaDesc") list.sort((a, b) => b.area - a.area);
     return list;
   }, [properties, city, type, priceIdx, sort]);
 
@@ -85,57 +80,62 @@ function PropertiesBrowserInner({
       <div className="bg-[var(--background-elev)] border-y border-[var(--border)] mb-12">
         <div className="max-w-[1400px] mx-auto px-6 md:px-10 py-6 grid grid-cols-2 md:grid-cols-5 gap-4">
           <FilterSelect
-            label="Localisation"
+            label={t.search.location}
             value={city}
             onChange={setCity}
-            options={[{ value: "", label: "Toutes" }, ...cities.map((c) => ({ value: c, label: c }))]}
-          />
-          <FilterSelect
-            label="Type de bien"
-            value={type}
-            onChange={setType}
             options={[
-              { value: "", label: "Tous types" },
-              ...TYPES.map((t) => ({ value: t, label: propertyTypeLabel(t) })),
+              { value: "", label: t.search.allLocations },
+              ...cities.map((c) => ({ value: c, label: c })),
             ]}
           />
           <FilterSelect
-            label="Budget"
-            value={String(priceIdx)}
-            onChange={(v) => setPriceIdx(Number(v))}
-            options={PRICE_RANGES.map((r, i) => ({ value: String(i), label: r.label }))}
+            label={t.search.type}
+            value={type}
+            onChange={setType}
+            options={[
+              { value: "", label: t.search.allTypes },
+              ...TYPES.map((tp) => ({ value: tp, label: t.types[tp] })),
+            ]}
           />
           <FilterSelect
-            label="Trier par"
+            label={t.search.budget}
+            value={String(priceIdx)}
+            onChange={(v) => setPriceIdx(Number(v))}
+            options={PRICE_RANGES.map((r, i) => ({
+              value: String(i),
+              label: t.priceRanges[r.key],
+            }))}
+          />
+          <FilterSelect
+            label={t.search.sort}
             value={sort}
             onChange={(v) => setSort(v as SortValue)}
-            options={SORTS.map((s) => ({ value: s.value, label: s.label }))}
+            options={SORT_KEYS.map((s) => ({ value: s, label: t.sort[s] }))}
           />
           <button
             onClick={reset}
             className="text-[11px] tracking-[0.22em] uppercase text-muted hover:text-accent transition self-end pb-3.5"
           >
-            Réinitialiser
+            {t.common.reset}
           </button>
         </div>
       </div>
 
       <div className="max-w-[1400px] mx-auto px-6 md:px-10">
         <p className="text-sm text-muted mb-8">
-          {filtered.length} bien{filtered.length > 1 ? "s" : ""} disponible
-          {filtered.length > 1 ? "s" : ""}
+          {t.search.results(filtered.length)}
         </p>
 
         {filtered.length === 0 ? (
           <div className="py-32 text-center">
             <p className="font-serif text-2xl italic mb-4">
-              Aucun bien ne correspond à votre recherche.
+              {t.search.noResults}
             </p>
             <button
               onClick={reset}
               className="text-[11px] tracking-[0.22em] uppercase text-accent border-b border-accent pb-1"
             >
-              Réinitialiser les filtres
+              {t.search.noResultsCta}
             </button>
           </div>
         ) : (

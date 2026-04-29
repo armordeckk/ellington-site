@@ -3,14 +3,11 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { Logo } from "./Logo";
-
-const navLinks = [
-  { href: "/properties", label: "Propriétés" },
-  { href: "/rentals", label: "Locations" },
-  { href: "/about", label: "À propos" },
-];
+import { LanguageToggle } from "./LanguageToggle";
+import { useLanguage } from "./LanguageProvider";
 
 export function Header() {
+  const { t } = useLanguage();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
 
@@ -20,6 +17,12 @@ export function Header() {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  const navLinks = [
+    { href: "/properties", label: t.nav.properties },
+    { href: "/rentals", label: t.nav.rentals },
+    { href: "/about", label: t.nav.about },
+  ];
 
   return (
     <header
@@ -56,35 +59,39 @@ export function Header() {
               {l.label}
             </Link>
           ))}
+          <LanguageToggle />
           <Link
             href="/contact"
             className="text-[13px] tracking-[0.18em] uppercase px-5 py-2.5 bg-accent text-[var(--background)] hover:bg-accent-hover transition"
           >
-            Contact
+            {t.nav.contact}
           </Link>
         </nav>
 
-        <button
-          aria-label="Menu"
-          className="md:hidden text-foreground p-2"
-          onClick={() => setOpen((v) => !v)}
-        >
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-            {open ? (
-              <path
-                d="M6 6 L18 18 M18 6 L6 18"
-                stroke="currentColor"
-                strokeWidth="1.5"
-              />
-            ) : (
-              <path
-                d="M4 7 H20 M4 12 H20 M4 17 H20"
-                stroke="currentColor"
-                strokeWidth="1.5"
-              />
-            )}
-          </svg>
-        </button>
+        <div className="md:hidden flex items-center gap-3">
+          <LanguageToggle />
+          <button
+            aria-label="Menu"
+            className="text-foreground p-2"
+            onClick={() => setOpen((v) => !v)}
+          >
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              {open ? (
+                <path
+                  d="M6 6 L18 18 M18 6 L6 18"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                />
+              ) : (
+                <path
+                  d="M4 7 H20 M4 12 H20 M4 17 H20"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                />
+              )}
+            </svg>
+          </button>
+        </div>
       </div>
 
       {open && (
@@ -105,7 +112,7 @@ export function Header() {
               onClick={() => setOpen(false)}
               className="text-sm tracking-[0.18em] uppercase px-5 py-3 bg-accent text-[var(--background)] text-center mt-2"
             >
-              Contact
+              {t.nav.contact}
             </Link>
           </div>
         </div>

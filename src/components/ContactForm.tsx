@@ -1,16 +1,10 @@
 "use client";
 
 import { useState } from "react";
-
-const SUBJECTS = [
-  "Acquisition d'un bien",
-  "Estimation d'un bien",
-  "Vente d'un bien",
-  "Location saisonnière",
-  "Autre demande",
-];
+import { useLanguage } from "./LanguageProvider";
 
 export function ContactForm() {
+  const { t } = useLanguage();
   const [state, setState] = useState<"idle" | "loading" | "ok" | "err">("idle");
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
@@ -25,11 +19,10 @@ export function ContactForm() {
   if (state === "ok") {
     return (
       <div className="bg-[var(--background-card)] border border-accent/40 p-12 text-center">
-        <p className="font-serif text-3xl italic text-accent mb-4">Merci.</p>
-        <p className="text-muted-strong">
-          Votre message a bien été reçu. Un conseiller vous recontactera sous
-          24 heures, en toute confidentialité.
+        <p className="font-serif text-3xl italic text-accent mb-4">
+          {t.contactPage.thanks}
         </p>
+        <p className="text-muted-strong">{t.contactPage.successBody}</p>
       </div>
     );
   }
@@ -40,17 +33,17 @@ export function ContactForm() {
       className="bg-[var(--background-card)] border border-[var(--border)] p-8 md:p-12 space-y-6"
     >
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <Field label="Prénom *" name="firstName" required />
-        <Field label="Nom *" name="lastName" required />
+        <Field label={t.contactPage.firstName} name="firstName" required />
+        <Field label={t.contactPage.lastName} name="lastName" required />
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <Field label="Email *" name="email" type="email" required />
-        <Field label="Téléphone" name="phone" type="tel" />
+        <Field label={t.contactPage.emailField} name="email" type="email" required />
+        <Field label={t.contactPage.phone} name="phone" type="tel" />
       </div>
 
       <label className="block">
         <span className="block text-[10px] tracking-[0.22em] uppercase text-muted mb-2">
-          Objet *
+          {t.contactPage.subject}
         </span>
         <select
           name="subject"
@@ -59,9 +52,9 @@ export function ContactForm() {
           defaultValue=""
         >
           <option value="" disabled>
-            Sélectionnez un objet
+            {t.contactPage.subjectPlaceholder}
           </option>
-          {SUBJECTS.map((s) => (
+          {t.contactPage.subjects.map((s) => (
             <option key={s} value={s}>
               {s}
             </option>
@@ -71,23 +64,20 @@ export function ContactForm() {
 
       <label className="block">
         <span className="block text-[10px] tracking-[0.22em] uppercase text-muted mb-2">
-          Votre message *
+          {t.contactPage.messageLabel}
         </span>
         <textarea
           name="message"
           required
           rows={6}
           className="w-full bg-[var(--background)] border border-[var(--border)] focus:border-accent transition px-4 py-3.5 text-sm resize-none"
-          placeholder="Décrivez votre projet ou votre demande…"
+          placeholder={t.contactPage.messagePlaceholder}
         />
       </label>
 
       <label className="flex items-start gap-3 text-xs text-muted">
         <input type="checkbox" required className="mt-1 accent-[var(--accent)]" />
-        <span>
-          J&apos;accepte que mes informations soient utilisées pour me
-          recontacter dans le cadre de ma demande.
-        </span>
+        <span>{t.contactPage.consent}</span>
       </label>
 
       <button
@@ -95,7 +85,7 @@ export function ContactForm() {
         disabled={state === "loading"}
         className="w-full md:w-auto px-10 py-4 bg-accent hover:bg-accent-hover text-[var(--background)] text-[11px] tracking-[0.22em] uppercase transition disabled:opacity-60"
       >
-        {state === "loading" ? "Envoi…" : "Envoyer le message"}
+        {state === "loading" ? t.common.sending : t.common.send}
       </button>
     </form>
   );

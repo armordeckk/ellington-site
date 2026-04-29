@@ -1,27 +1,24 @@
-import type { Metadata } from "next";
+"use client";
+
 import { PropertiesBrowser } from "@/components/PropertiesBrowser";
 import { properties, getCities } from "@/lib/properties";
-
-export const metadata: Metadata = {
-  title: "Propriétés à vendre — Ellington",
-  description:
-    "Découvrez notre sélection de biens d'exception à vendre sur la Côte d'Azur : villas, penthouses, domaines, appartements de prestige.",
-};
+import { useLanguage } from "@/components/LanguageProvider";
 
 export default function PropertiesPage() {
+  const { t } = useLanguage();
   const cities = getCities();
   return (
     <div className="pt-32 pb-20">
       <div className="max-w-[1400px] mx-auto px-6 md:px-10 mb-12 text-center">
         <p className="text-[11px] tracking-[0.32em] uppercase text-accent mb-5">
-          Portefeuille
+          {t.propertiesPage.eyebrow}
         </p>
         <h1 className="font-serif text-5xl md:text-7xl mb-5">
-          Propriétés <em className="italic">à vendre</em>
+          {t.propertiesPage.titleBefore}{" "}
+          <em className="italic">{t.propertiesPage.titleAccent}</em>
         </h1>
         <p className="text-muted-strong max-w-2xl mx-auto">
-          Découvrez les biens d&apos;exception sélectionnés par Ellington sur
-          l&apos;ensemble de la Côte d&apos;Azur.
+          {t.propertiesPage.subtitle}
         </p>
       </div>
 

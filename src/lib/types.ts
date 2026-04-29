@@ -50,7 +50,9 @@ export interface Property {
 export interface Location {
   slug: string;
   name: string;
+  nameEn?: string;
   description: string;
+  descriptionEn?: string;
   image: string;
   propertyCount?: number;
 }

@@ -324,6 +324,8 @@ export const locations: Location[] = [
     name: "Monaco",
     description:
       "Principauté souveraine, Monaco offre un cadre de vie unique au monde. Stabilité, sécurité, fiscalité avantageuse et art de vivre méditerranéen attirent une clientèle internationale exigeante.",
+    descriptionEn:
+      "A sovereign principality, Monaco offers a unique way of life. Stability, security, favourable taxation and Mediterranean elegance attract a discerning international clientele.",
     image: "/locations/monaco/monaco.jpg",
   },
   {
@@ -331,6 +333,8 @@ export const locations: Location[] = [
     name: "Saint-Tropez",
     description:
       "De la Place des Lices aux plages de Pampelonne, Saint-Tropez incarne la quintessence de la Riviera française. Domaines viticoles, bastides provençales et villas contemporaines composent un patrimoine d'exception.",
+    descriptionEn:
+      "From Place des Lices to the beaches of Pampelonne, Saint-Tropez embodies the very essence of the French Riviera. Wine estates, Provençal bastides and contemporary villas form an exceptional heritage.",
     image: "/locations/saint-tropez/sttropez.jpg",
   },
   {
@@ -338,6 +342,8 @@ export const locations: Location[] = [
     name: "Grimaud",
     description:
       "Au cœur du Golfe de Saint-Tropez, Grimaud séduit par son village médiéval perché, son port de plaisance prisé (Port Grimaud) et ses villas en bord de mer. Une adresse confidentielle et préservée de la Côte d'Azur.",
+    descriptionEn:
+      "At the heart of the Gulf of Saint-Tropez, Grimaud charms with its perched medieval village, its sought-after marina (Port Grimaud) and its waterfront villas — a confidential, preserved address on the French Riviera.",
     image: "/locations/grimaud/grimaud.jpg",
   },
   {
@@ -345,6 +351,8 @@ export const locations: Location[] = [
     name: "Saint-Jean-Cap-Ferrat",
     description:
       "Surnommée la presqu'île des milliardaires, Saint-Jean-Cap-Ferrat conjugue rareté foncière et adresses prestigieuses. Un écrin végétal entre Nice et Monaco.",
+    descriptionEn:
+      "Known as the billionaires' peninsula, Saint-Jean-Cap-Ferrat combines land scarcity and the most prestigious addresses — a verdant haven between Nice and Monaco.",
     image: "/locations/cap-ferrat/capferrat.jpg",
   },
   {
@@ -352,6 +360,8 @@ export const locations: Location[] = [
     name: "Cannes",
     description:
       "Capitale du cinéma et de l'art de vivre, Cannes séduit par sa Croisette mythique, ses palais Belle Époque et ses hauteurs résidentielles offrant vue sur la baie.",
+    descriptionEn:
+      "Capital of cinema and the art of living, Cannes captivates with its iconic Croisette, its Belle Époque palaces and its residential heights overlooking the bay.",
     image: "/locations/cannes/cannes.jpg",
   },
   {
@@ -359,6 +369,8 @@ export const locations: Location[] = [
     name: "Sainte-Maxime",
     description:
       "Face à Saint-Tropez sur le Golfe, Sainte-Maxime allie élégance balnéaire et authenticité provençale. Plages de sable fin, villas contemporaines et propriétés historiques en font une destination privilégiée.",
+    descriptionEn:
+      "Facing Saint-Tropez across the Gulf, Sainte-Maxime combines seaside elegance with Provençal authenticity. Fine sandy beaches, contemporary villas and historic properties make it a privileged destination.",
     image: "/locations/sainte-maxime/stemaxime.jpg",
   },
 ];

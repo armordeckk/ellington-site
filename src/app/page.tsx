@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import { PropertyCard } from "@/components/PropertyCard";
@@ -5,8 +7,10 @@ import { NewsletterForm } from "@/components/NewsletterForm";
 import { HeroSearch } from "@/components/HeroSearch";
 import { HeroSlideshow } from "@/components/HeroSlideshow";
 import { getFeaturedProperties, getCities, locations } from "@/lib/properties";
+import { useLanguage } from "@/components/LanguageProvider";
 
 export default function HomePage() {
+  const { t } = useLanguage();
   const featured = getFeaturedProperties().slice(0, 6);
   const cities = getCities();
 
@@ -19,17 +23,16 @@ export default function HomePage() {
 
         <div className="relative z-20 text-center px-6 max-w-5xl mx-auto fade-in pt-20 sm:pt-0">
           <p className="text-[9px] sm:text-[11px] tracking-[0.22em] sm:tracking-[0.32em] uppercase text-accent mb-6 sm:mb-8 whitespace-nowrap">
-            Immobilier de prestige · Côte d&apos;Azur
+            {t.home.eyebrow}
           </p>
           <h1 className="font-serif text-5xl sm:text-6xl md:text-7xl lg:text-8xl leading-[1.05] mb-6">
-            Trouvez votre <em className="italic text-accent">demeure</em>
+            {t.home.titleBefore}{" "}
+            <em className="italic text-accent">{t.home.titleAccent}</em>
             <br />
-            d&apos;exception
+            {t.home.titleAfter}
           </h1>
           <p className="text-base md:text-lg text-muted-strong max-w-2xl mx-auto mb-12">
-            Des villas en bord de mer aux penthouses du Carré d&apos;Or,
-            Ellington sélectionne pour vous les biens les plus rares de la
-            Riviera française.
+            {t.home.subtitle}
           </p>
 
           <HeroSearch cities={cities} />
@@ -53,47 +56,25 @@ export default function HomePage() {
         <div className="max-w-[1400px] mx-auto">
           <div className="text-center mb-20 max-w-3xl mx-auto">
             <p className="text-[11px] tracking-[0.32em] uppercase text-accent mb-5">
-              L&apos;excellence Ellington
+              {t.home.whyEyebrow}
             </p>
             <h2 className="font-serif text-4xl md:text-6xl mb-6">
-              Pourquoi <em className="italic">nous choisir</em>
+              {t.home.whyTitleBefore}{" "}
+              <em className="italic">{t.home.whyTitleAccent}</em>
             </h2>
             <p className="text-muted-strong text-lg leading-relaxed">
-              Une expertise inégalée dans l&apos;immobilier de luxe sur
-              l&apos;ensemble de la Côte d&apos;Azur, mise au service
-              d&apos;une clientèle exigeante.
+              {t.home.whySubtitle}
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-px bg-[var(--border)] border border-[var(--border)]">
-            {[
-              {
-                icon: "shield",
-                title: "Conseillers de confiance",
-                body: "Une approche confidentielle et discrète, dans le respect des plus hauts standards professionnels.",
-              },
-              {
-                icon: "network",
-                title: "Réseau exclusif",
-                body: "Accès privilégié à des biens off-market, indisponibles sur les canaux publics.",
-              },
-              {
-                icon: "trend",
-                title: "+ de 2,5 Md€ vendus",
-                body: "Un volume de transactions qui témoigne de la confiance accordée par nos clients sur la Riviera.",
-              },
-              {
-                icon: "key",
-                title: "Service sur-mesure",
-                body: "De la première visite à la signature, un accompagnement personnalisé à chaque étape.",
-              },
-            ].map((f) => (
+            {t.home.features.map((f, i) => (
               <div
-                key={f.title}
+                key={i}
                 className="bg-[var(--background)] p-10 hover:bg-[var(--background-card)] transition duration-500"
               >
                 <div className="w-11 h-11 mb-8 flex items-center justify-center border border-[var(--border-strong)] text-accent">
-                  <FeatureIcon name={f.icon} />
+                  <FeatureIcon idx={i} />
                 </div>
                 <h3 className="font-serif text-2xl mb-4">{f.title}</h3>
                 <p className="text-sm text-muted leading-relaxed">{f.body}</p>
@@ -109,21 +90,19 @@ export default function HomePage() {
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
             <div className="max-w-2xl">
               <p className="text-[11px] tracking-[0.32em] uppercase text-accent mb-5">
-                Sélection
+                {t.home.featuredEyebrow}
               </p>
               <h2 className="font-serif text-4xl md:text-6xl mb-4">
-                Propriétés <em className="italic">en vedette</em>
+                {t.home.featuredTitleBefore}{" "}
+                <em className="italic">{t.home.featuredTitleAccent}</em>
               </h2>
-              <p className="text-muted-strong">
-                Une sélection des biens les plus rares de notre portefeuille,
-                renouvelée chaque semaine.
-              </p>
+              <p className="text-muted-strong">{t.home.featuredSubtitle}</p>
             </div>
             <Link
               href="/properties"
               className="self-start md:self-end text-[11px] tracking-[0.22em] uppercase text-accent hover:text-accent-hover border-b border-accent pb-1"
             >
-              Voir tout le portefeuille →
+              {t.home.featuredCta}
             </Link>
           </div>
 
@@ -138,9 +117,8 @@ export default function HomePage() {
               </div>
             ))}
           </div>
-          {/* mobile scroll hint */}
           <p className="md:hidden mt-4 text-center text-[10px] tracking-[0.22em] uppercase text-muted">
-            ← Faites glisser →
+            {t.common.swipeHint}
           </p>
         </div>
       </section>
@@ -150,15 +128,13 @@ export default function HomePage() {
         <div className="max-w-[1400px] mx-auto">
           <div className="text-center mb-16 max-w-3xl mx-auto">
             <p className="text-[11px] tracking-[0.32em] uppercase text-accent mb-5">
-              Nos régions
+              {t.home.regionsEyebrow}
             </p>
             <h2 className="font-serif text-4xl md:text-6xl mb-6">
-              Adresses <em className="italic">d&apos;exception</em>
+              {t.home.regionsTitleBefore}{" "}
+              <em className="italic">{t.home.regionsTitleAccent}</em>
             </h2>
-            <p className="text-muted-strong text-lg">
-              De Monaco à Saint-Tropez, nous opérons sur les emplacements les
-              plus prestigieux de la Côte d&apos;Azur.
-            </p>
+            <p className="text-muted-strong text-lg">{t.home.regionsSubtitle}</p>
           </div>
 
           <div className="flex md:grid md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 overflow-x-auto md:overflow-visible snap-x snap-mandatory scroll-smooth -mx-6 md:mx-0 px-6 md:px-0 pb-3 md:pb-0 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
@@ -181,7 +157,7 @@ export default function HomePage() {
                     {loc.name}
                   </h3>
                   <span className="text-[11px] tracking-[0.22em] uppercase text-accent opacity-0 group-hover:opacity-100 transition">
-                    Découvrir →
+                    {t.common.readMore}
                   </span>
                 </div>
               </Link>
@@ -194,18 +170,16 @@ export default function HomePage() {
       <section className="py-28 md:py-36 px-6 md:px-10 bg-[var(--background-elev)] border-t border-[var(--border)]">
         <div className="max-w-2xl mx-auto text-center">
           <p className="text-[11px] tracking-[0.32em] uppercase text-accent mb-5">
-            Restez informé
+            {t.home.newsletterEyebrow}
           </p>
           <h2 className="font-serif text-4xl md:text-5xl mb-5">
-            Accès <em className="italic">privilégié</em>
+            {t.home.newsletterTitleBefore}{" "}
+            <em className="italic">{t.home.newsletterTitleAccent}</em>
           </h2>
-          <p className="text-muted-strong mb-10">
-            Recevez en avant-première nos nouvelles propriétés exclusives et
-            nos analyses du marché immobilier de la Côte d&apos;Azur.
-          </p>
+          <p className="text-muted-strong mb-10">{t.home.newsletterSubtitle}</p>
           <NewsletterForm />
           <p className="text-xs text-muted mt-6">
-            Pas de spam — désinscription possible à tout moment.
+            {t.home.newsletterDisclaimer}
           </p>
         </div>
       </section>
@@ -213,7 +187,9 @@ export default function HomePage() {
   );
 }
 
-function FeatureIcon({ name }: { name: string }) {
+function FeatureIcon({ idx }: { idx: number }) {
+  const icons = ["shield", "network", "trend", "key"];
+  const name = icons[idx] ?? "shield";
   switch (name) {
     case "shield":
       return (

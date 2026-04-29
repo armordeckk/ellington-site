@@ -1,28 +1,26 @@
-import type { Metadata } from "next";
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import { locations, properties } from "@/lib/properties";
-
-export const metadata: Metadata = {
-  title: "Nos régions — Ellington",
-  description:
-    "Explorez les emplacements les plus prestigieux de la Côte d'Azur où Ellington opère : Monaco, Saint-Tropez, Grimaud, Sainte-Maxime, Cannes, Cap-Ferrat.",
-};
+import { useLanguage } from "@/components/LanguageProvider";
 
 export default function LocationsPage() {
+  const { t, lang } = useLanguage();
+
   return (
     <div className="pt-32 pb-20">
       <div className="max-w-[1400px] mx-auto px-6 md:px-10">
         <header className="text-center mb-20 max-w-3xl mx-auto">
           <p className="text-[11px] tracking-[0.32em] uppercase text-accent mb-5">
-            La Riviera française
+            {t.locationsPage.eyebrow}
           </p>
           <h1 className="font-serif text-5xl md:text-7xl mb-6">
-            Nos <em className="italic">régions</em>
+            {t.locationsPage.titleBefore}{" "}
+            <em className="italic">{t.locationsPage.titleAccent}</em>
           </h1>
           <p className="text-muted-strong text-lg leading-relaxed">
-            Explorez les emplacements les plus prestigieux le long de la Côte
-            d&apos;Azur, où le luxe rencontre l&apos;art de vivre méditerranéen.
+            {t.locationsPage.subtitle}
           </p>
         </header>
 
@@ -82,6 +80,10 @@ export default function LocationsPage() {
               p.city.toLowerCase().includes(loc.name.split(" ")[0].toLowerCase()) ||
               loc.slug.includes(p.city.toLowerCase().replace(/\s+/g, "-")),
             );
+            const desc =
+              lang === "en" && loc.descriptionEn
+                ? loc.descriptionEn
+                : loc.description;
             return (
               <section
                 key={loc.slug}
@@ -101,24 +103,22 @@ export default function LocationsPage() {
                 </div>
                 <div>
                   <p className="text-[11px] tracking-[0.32em] uppercase text-accent mb-4">
-                    Région {i + 1} / {locations.length}
+                    {t.locationsPage.regionLabel(i + 1, locations.length)}
                   </p>
                   <h2 className="font-serif text-4xl md:text-5xl mb-6">{loc.name}</h2>
                   <p className="text-muted-strong text-lg leading-[1.85] mb-8">
-                    {loc.description}
+                    {desc}
                   </p>
                   {cityProperties.length > 0 && (
                     <p className="text-sm text-muted mb-6">
-                      {cityProperties.length} bien
-                      {cityProperties.length > 1 ? "s" : ""} actuellement en
-                      portefeuille
+                      {t.locationsPage.currentlyAvailable(cityProperties.length)}
                     </p>
                   )}
                   <Link
                     href={`/properties?city=${encodeURIComponent(loc.name)}`}
                     className="inline-block text-[11px] tracking-[0.22em] uppercase text-accent border-b border-accent pb-1 hover:text-accent-hover"
                   >
-                    Voir les propriétés →
+                    {t.locationsPage.viewProperties}
                   </Link>
                 </div>
               </section>

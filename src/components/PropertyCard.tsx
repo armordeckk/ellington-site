@@ -1,10 +1,15 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
 import type { Property } from "@/lib/types";
-import { formatPriceShort, propertyTypeLabel } from "@/lib/properties";
+import { formatPriceShort } from "@/lib/properties";
+import { useLanguage } from "./LanguageProvider";
 
 export function PropertyCard({ property, priority = false }: { property: Property; priority?: boolean }) {
+  const { t } = useLanguage();
   const cover = property.pictures[0];
+  const typeKey = property.type as keyof typeof t.types;
   return (
     <Link
       href={`/properties/${property.id}`}
@@ -22,7 +27,7 @@ export function PropertyCard({ property, priority = false }: { property: Propert
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/0 to-transparent" />
         {property.isExclusive && (
           <span className="absolute top-4 left-4 text-[10px] tracking-[0.22em] uppercase px-3 py-1.5 bg-accent text-[var(--background)]">
-            Exclusivité
+            {t.propertyDetail.exclusive}
           </span>
         )}
         <div className="absolute bottom-4 left-5 right-5 flex justify-between items-end text-white">
@@ -31,7 +36,7 @@ export function PropertyCard({ property, priority = false }: { property: Propert
               {property.city}
             </p>
             <p className="text-[10px] tracking-[0.22em] uppercase opacity-60">
-              {propertyTypeLabel(property.type)}
+              {t.types[typeKey] ?? property.type}
             </p>
           </div>
         </div>
@@ -48,8 +53,8 @@ export function PropertyCard({ property, priority = false }: { property: Propert
             {formatPriceShort(property.price)}
           </span>
           <div className="flex items-center gap-4 text-xs text-muted">
-            <span>{property.bedrooms} ch.</span>
-            <span>{property.bathrooms} sdb.</span>
+            <span>{property.bedrooms} {t.propertyDetail.shortBed}</span>
+            <span>{property.bathrooms} {t.propertyDetail.shortBath}</span>
             <span>{property.area} m²</span>
           </div>
         </div>

@@ -2,25 +2,32 @@
 
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { propertyTypeLabel } from "@/lib/properties";
+import { useLanguage } from "./LanguageProvider";
 
 const TYPES = ["villa", "penthouse", "apartment", "estate"] as const;
 
-const PRICE_OPTIONS = [
-  { value: "", label: "Tous budgets" },
-  { value: "0-3000000", label: "Jusqu'à 3 M€" },
-  { value: "3000000-6000000", label: "3 – 6 M€" },
-  { value: "6000000-10000000", label: "6 – 10 M€" },
-  { value: "10000000-15000000", label: "10 – 15 M€" },
-  { value: "15000000-", label: "15 M€ et plus" },
+const PRICE_VALUES: { value: string; key: keyof ReturnType<typeof priceMap> }[] = [
+  { value: "", key: "all" },
+  { value: "0-3000000", key: "under3" },
+  { value: "3000000-6000000", key: "r3to6" },
+  { value: "6000000-10000000", key: "r6to10" },
+  { value: "10000000-15000000", key: "r10to15" },
+  { value: "15000000-", key: "over15" },
 ];
 
-const CATEGORIES = [
-  { value: "sale", label: "Achat" },
-  { value: "rent", label: "Location" },
-];
+function priceMap() {
+  return {
+    all: "",
+    under3: "",
+    r3to6: "",
+    r6to10: "",
+    r10to15: "",
+    over15: "",
+  } as const;
+}
 
 export function HeroSearch({ cities }: { cities: string[] }) {
+  const { t } = useLanguage();
   const router = useRouter();
   const [category, setCategory] = useState("sale");
   const [city, setCity] = useState("");
@@ -41,6 +48,21 @@ export function HeroSearch({ cities }: { cities: string[] }) {
     const qs = params.toString();
     router.push(qs ? `${target}?${qs}` : target);
   }
+
+  // Use default substitution for "Toutes" → city name "All" key
+  const allLabel = t.search.allLocations;
+  // For "Tous budgets" placeholder when no value
+  const allBudgets = t.search.allBudgets;
+
+  const priceOptions = PRICE_VALUES.map((p) => ({
+    value: p.value,
+    label: p.key === "all" ? allBudgets : t.priceRanges[p.key],
+  }));
+
+  const CATEGORIES = [
+    { value: "sale", label: t.search.buy },
+    { value: "rent", label: t.search.rent },
+  ];
 
   return (
     <form
@@ -67,28 +89,28 @@ export function HeroSearch({ cities }: { cities: string[] }) {
 
       <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4">
         <HeroField
-          label="Localisation"
+          label={t.search.location}
           value={city}
           onChange={setCity}
           options={[
-            { value: "", label: "Toutes" },
+            { value: "", label: allLabel },
             ...cities.map((c) => ({ value: c, label: c })),
           ]}
         />
         <HeroField
-          label="Type de bien"
+          label={t.search.type}
           value={type}
           onChange={setType}
           options={[
-            { value: "", label: "Tous types" },
-            ...TYPES.map((t) => ({ value: t, label: propertyTypeLabel(t) })),
+            { value: "", label: t.search.allTypes },
+            ...TYPES.map((tp) => ({ value: tp, label: t.types[tp] })),
           ]}
         />
         <HeroField
-          label="Budget"
+          label={t.search.budget}
           value={price}
           onChange={setPrice}
-          options={PRICE_OPTIONS}
+          options={priceOptions}
         />
         <button
           type="submit"
@@ -98,7 +120,7 @@ export function HeroSearch({ cities }: { cities: string[] }) {
             <circle cx="11" cy="11" r="7" />
             <path d="M20 20l-4.5-4.5" />
           </svg>
-          Rechercher
+          {t.search.submit}
         </button>
       </div>
     </form>
