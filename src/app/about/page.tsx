@@ -56,7 +56,7 @@ export default function AboutPage() {
           </div>
           <div className="relative aspect-[4/5] overflow-hidden">
             <Image
-              src="https://images.unsplash.com/photo-1505761671935-60b3a7427bad?auto=format&fit=crop&w=1600&q=80"
+              src="/locations/riviera.jpg"
               alt="Côte d'Azur"
               fill
               sizes="(min-width: 1024px) 50vw, 100vw"

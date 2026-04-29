@@ -17,8 +17,8 @@ const slides = [
     alt: "Domaine de prestige Côte d'Azur",
   },
   {
-    src: "https://images.unsplash.com/photo-1505761671935-60b3a7427bad?auto=format&fit=crop&w=2400&q=85",
-    alt: "Coucher de soleil sur la Méditerranée",
+    src: "/locations/riviera.jpg",
+    alt: "Côte d'Azur — Riviera française",
   },
   {
     src: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=2400&q=85",
