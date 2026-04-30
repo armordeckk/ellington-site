@@ -326,56 +326,230 @@ export const locations: Location[] = [
   {
     slug: "saint-tropez",
     name: "Saint-Tropez",
+    tagline: "L'icône intemporelle de la Riviera",
+    taglineEn: "The timeless icon of the Riviera",
     description:
       "De la Place des Lices aux plages de Pampelonne, Saint-Tropez incarne la quintessence de la Riviera française. Domaines viticoles, bastides provençales et villas contemporaines composent un patrimoine d'exception.",
     descriptionEn:
       "From Place des Lices to the beaches of Pampelonne, Saint-Tropez embodies the very essence of the French Riviera. Wine estates, Provençal bastides and contemporary villas form an exceptional heritage.",
+    longDescription:
+      "Ancien village de pêcheurs devenu mythe international depuis Brigitte Bardot, Saint-Tropez conserve une âme village derrière son aura glamour. Le marché provençal de la Place des Lices, la Citadelle dominant la baie, les ruelles colorées du quartier de la Ponche, le port intime aux yachts à quai : chaque adresse raconte un fragment de l'art de vivre tropézien. La péninsule offre l'un des marchés immobiliers les plus exigeants d'Europe — rareté foncière, exigence architecturale et discrétion absolue caractérisent les biens disponibles.",
+    longDescriptionEn:
+      "Once a fishermen's village turned international myth thanks to Brigitte Bardot, Saint-Tropez retains a village soul beneath its glamour. The Provençal market on Place des Lices, the Citadel watching over the bay, the colourful streets of the Ponche quarter, the intimate yacht-lined port — every address tells a fragment of the Tropezian way of life. The peninsula commands one of Europe's most demanding real estate markets, defined by land scarcity, architectural rigour and absolute discretion.",
+    highlights: [
+      "Place des Lices et marché provençal",
+      "Plages de Pampelonne (à 10 min)",
+      "Yacht clubs et marina internationale",
+      "Bastides historiques et villas d'architecte",
+    ],
+    highlightsEn: [
+      "Place des Lices and Provençal market",
+      "Pampelonne beaches (10 min away)",
+      "Yacht clubs and international marina",
+      "Historic bastides and architect-designed villas",
+    ],
+    keyFacts: [
+      { label: "Population", labelEn: "Population", value: "≈ 4 000 hab." },
+      { label: "Aéroport", labelEn: "Airport", value: "Nice — 1h15" },
+      { label: "Hélistation", labelEn: "Heliport", value: "La Môle — 10 min" },
+      { label: "Saison", labelEn: "Season", value: "Toute l'année" },
+    ],
+    metaDescription:
+      "Immobilier de prestige à Saint-Tropez. Découvrez villas, bastides et penthouses d'exception au cœur du village et sur la péninsule, avec Ellington.",
+    metaDescriptionEn:
+      "Luxury real estate in Saint-Tropez. Discover exceptional villas, bastides and penthouses in the village and across the peninsula, with Ellington.",
     image: "/locations/saint-tropez/sttropez.jpg",
+    coordinates: { lat: 43.2727, lng: 6.6407 },
   },
   {
     slug: "grimaud",
     name: "Grimaud",
+    tagline: "Le village médiéval du Golfe",
+    taglineEn: "The medieval village of the Gulf",
     description:
       "Au cœur du Golfe de Saint-Tropez, Grimaud séduit par son village médiéval perché, ses ruelles pavées et ses villas en bord de mer. Une adresse confidentielle et préservée de la Côte d'Azur.",
     descriptionEn:
       "At the heart of the Gulf of Saint-Tropez, Grimaud charms with its perched medieval village, its cobbled lanes and its waterfront villas — a confidential, preserved address on the French Riviera.",
+    longDescription:
+      "Dominé par les ruines du Château des Grimaldi (XIᵉ siècle), Grimaud déroule ses ruelles pavées entre maisons en pierre, fontaines et passages voûtés. Le village offre depuis ses hauteurs une vue plongeante sur le Golfe de Saint-Tropez. En contrebas, les hameaux résidentiels et les domaines en pinède dessinent un cadre de vie alliant authenticité provençale et confort contemporain. Une alternative confidentielle aux adresses plus exposées du Golfe.",
+    longDescriptionEn:
+      "Crowned by the ruins of the Grimaldi Castle (11th century), Grimaud unfolds its cobbled lanes between stone houses, fountains and vaulted passages. The hilltop village offers a sweeping view over the Gulf of Saint-Tropez. Below, residential hamlets and pine-shaded estates create a setting that blends Provençal authenticity with contemporary comfort — a confidential alternative to the Gulf's more exposed addresses.",
+    highlights: [
+      "Château des Grimaldi (XIᵉ siècle)",
+      "Vue panoramique sur le Golfe",
+      "Hameaux résidentiels en pinède",
+      "À 10 min de Saint-Tropez et Port Grimaud",
+    ],
+    highlightsEn: [
+      "Grimaldi Castle (11th century)",
+      "Panoramic view over the Gulf",
+      "Residential hamlets in pinewoods",
+      "10 min from Saint-Tropez and Port Grimaud",
+    ],
+    keyFacts: [
+      { label: "Altitude", labelEn: "Altitude", value: "105 m" },
+      { label: "Population", labelEn: "Population", value: "≈ 4 200 hab." },
+      { label: "Saint-Tropez", labelEn: "Saint-Tropez", value: "10 min" },
+      { label: "Aéroport", labelEn: "Airport", value: "Nice — 1h20" },
+    ],
+    metaDescription:
+      "Immobilier de prestige à Grimaud. Bastides, villas en pinède et propriétés au cœur du village médiéval, sélectionnées par Ellington.",
+    metaDescriptionEn:
+      "Luxury real estate in Grimaud. Bastides, pinewood villas and properties at the heart of the medieval village, curated by Ellington.",
     image: "/locations/grimaud/grimaud1.jpg",
+    coordinates: { lat: 43.2752, lng: 6.5219 },
   },
   {
     slug: "port-grimaud",
     name: "Port Grimaud",
+    tagline: "La Venise provençale",
+    taglineEn: "The Provençal Venice",
     description:
       "Conçue dans les années 1960 par l'architecte François Spoerry, Port Grimaud est une cité lacustre unique en France. Maisons aux façades pastel, canaux navigables, anneaux d'amarrage privés : la Venise provençale conjugue charme méditerranéen et raffinement contemporain.",
     descriptionEn:
       "Designed in the 1960s by architect François Spoerry, Port Grimaud is a unique lakeside town. Pastel façades, navigable canals and private moorings — Provence's Venice blends Mediterranean charm with contemporary refinement.",
+    longDescription:
+      "Inscrite au Patrimoine du XXᵉ siècle, Port Grimaud déploie 7 km de canaux navigables sur lesquels chaque maison dispose de son propre anneau d'amarrage. L'architecture, signée François Spoerry et inspirée des villages de pêcheurs italiens, mêle façades aux tons pastel, tuiles romaines et placettes intimistes. Cette singularité urbaine — chaque acquéreur est aussi propriétaire d'un poste à quai — fait de Port Grimaud l'une des adresses les plus convoitées du Golfe pour les amateurs de plaisance.",
+    longDescriptionEn:
+      "Listed as 20th-century heritage, Port Grimaud unfolds 7 km of navigable canals where each home has its own private mooring. The architecture, designed by François Spoerry and inspired by Italian fishing villages, combines pastel façades, Roman tiles and intimate squares. This urban singularity — every buyer also owns a private berth — makes Port Grimaud one of the Gulf's most coveted addresses for sailing enthusiasts.",
+    highlights: [
+      "7 km de canaux navigables",
+      "Anneau d'amarrage privé inclus",
+      "Architecture François Spoerry",
+      "Patrimoine du XXᵉ siècle",
+    ],
+    highlightsEn: [
+      "7 km of navigable canals",
+      "Private mooring included",
+      "François Spoerry architecture",
+      "20th-century heritage listing",
+    ],
+    keyFacts: [
+      { label: "Création", labelEn: "Founded", value: "1966" },
+      { label: "Canaux", labelEn: "Canals", value: "7 km" },
+      { label: "Saint-Tropez", labelEn: "Saint-Tropez", value: "10 min" },
+      { label: "Plages", labelEn: "Beaches", value: "à pied" },
+    ],
+    metaDescription:
+      "Immobilier de prestige à Port Grimaud — la Venise provençale. Maisons sur les canaux avec anneau d'amarrage privé, sélectionnées par Ellington.",
+    metaDescriptionEn:
+      "Luxury real estate in Port Grimaud — the Provençal Venice. Canal-front houses with private mooring, curated by Ellington.",
     image: "/locations/portgrimaud.jpg",
+    coordinates: { lat: 43.279, lng: 6.579 },
   },
   {
     slug: "ramatuelle",
     name: "Ramatuelle",
+    tagline: "Pampelonne, vignes et mer",
+    taglineEn: "Pampelonne, vineyards and sea",
     description:
       "Village perché entre vignobles et mer, Ramatuelle abrite la mythique plage de Pampelonne. Bastides en pierre, ruelles ombragées et mas d'exception composent un patrimoine d'une rare authenticité, à quelques minutes de Saint-Tropez.",
     descriptionEn:
       "A hilltop village set between vineyards and sea, Ramatuelle is home to the legendary Pampelonne beach. Stone bastides, shaded lanes and exceptional country estates form a rare authentic heritage, just minutes from Saint-Tropez.",
+    longDescription:
+      "Étendue sur 2 700 hectares dont la moitié est classée Natura 2000, Ramatuelle conjugue le mythe de Pampelonne — 5 km de sable fin et de plages mythiques (Club 55, Nikki Beach, La Réserve) — et l'authenticité d'un village médiéval perché à 136 m. Les vignobles AOP Côtes-de-Provence, les pinèdes et les domaines confidentiels font de Ramatuelle l'un des marchés les plus prisés du Golfe pour les acquéreurs en quête de discrétion et d'espace.",
+    longDescriptionEn:
+      "Spanning 2,700 hectares — half of it Natura 2000 protected — Ramatuelle combines the Pampelonne myth (5 km of fine sand, Club 55, Nikki Beach, La Réserve) with the authenticity of a hilltop village perched at 136 m. AOP Côtes-de-Provence vineyards, pinewoods and confidential estates make Ramatuelle one of the Gulf's most sought-after markets for buyers seeking discretion and space.",
+    highlights: [
+      "5 km de plages de Pampelonne",
+      "Vignobles AOP Côtes-de-Provence",
+      "Festival de Théâtre depuis 1985",
+      "Bastides et mas d'exception",
+    ],
+    highlightsEn: [
+      "5 km of Pampelonne beaches",
+      "AOP Côtes-de-Provence vineyards",
+      "Theatre Festival since 1985",
+      "Exceptional bastides and farmhouses",
+    ],
+    keyFacts: [
+      { label: "Altitude village", labelEn: "Village altitude", value: "136 m" },
+      { label: "Plages", labelEn: "Beaches", value: "5 km" },
+      { label: "Saint-Tropez", labelEn: "Saint-Tropez", value: "12 min" },
+      { label: "Surface", labelEn: "Surface", value: "27 km²" },
+    ],
+    metaDescription:
+      "Immobilier de prestige à Ramatuelle. Bastides, mas viticoles et villas proches de Pampelonne, sélectionnés par Ellington.",
+    metaDescriptionEn:
+      "Luxury real estate in Ramatuelle. Bastides, wine estates and villas near Pampelonne, curated by Ellington.",
     image: "/locations/ramatuelle.jpg",
+    coordinates: { lat: 43.215, lng: 6.6126 },
   },
   {
     slug: "gassin",
     name: "Gassin",
+    tagline: "Le balcon du Golfe",
+    taglineEn: "The balcony over the Gulf",
     description:
       "Classé parmi les Plus Beaux Villages de France, Gassin couronne une colline avec vue à 360° sur le Golfe de Saint-Tropez, les Maures et la Méditerranée. Villas de prestige et propriétés viticoles s'épanouissent dans un cadre préservé.",
     descriptionEn:
       "Listed among the Most Beautiful Villages of France, Gassin crowns a hilltop with 360° views over the Gulf of Saint-Tropez, the Maures range and the Mediterranean. Prestigious villas and vineyard estates thrive in a preserved setting.",
+    longDescription:
+      "Perché à 200 mètres d'altitude, Gassin offre l'une des vues les plus spectaculaires du Var : Golfe de Saint-Tropez, île de Porquerolles, massif des Maures et, par temps clair, jusqu'aux Alpes. Le village médiéval, classé parmi les « Plus Beaux Villages de France », alterne ruelles fleuries, terrasses de pierre et placettes ombragées. Autour, les vignobles AOP et les domaines en hauteur attirent une clientèle en quête de panoramas exceptionnels et de tranquillité absolue, à 10 minutes seulement de Saint-Tropez.",
+    longDescriptionEn:
+      "Perched at 200 metres, Gassin offers one of Provence's most spectacular vistas — the Gulf of Saint-Tropez, the island of Porquerolles, the Maures range, and on clear days, the Alps beyond. The medieval village, listed among France's Most Beautiful Villages, alternates flowered lanes, stone terraces and shaded squares. Around it, AOP vineyards and hillside estates attract buyers seeking exceptional panoramas and absolute quiet, just 10 minutes from Saint-Tropez.",
+    highlights: [
+      "Plus Beaux Villages de France",
+      "Vue 360° sur le Golfe",
+      "Vignobles AOP en hauteur",
+      "À 10 min de Saint-Tropez",
+    ],
+    highlightsEn: [
+      "Most Beautiful Villages of France",
+      "360° view over the Gulf",
+      "AOP vineyards on the hillside",
+      "10 min from Saint-Tropez",
+    ],
+    keyFacts: [
+      { label: "Altitude", labelEn: "Altitude", value: "200 m" },
+      { label: "Population", labelEn: "Population", value: "≈ 2 800 hab." },
+      { label: "Saint-Tropez", labelEn: "Saint-Tropez", value: "10 min" },
+      { label: "Vue", labelEn: "View", value: "360°" },
+    ],
+    metaDescription:
+      "Immobilier de prestige à Gassin, Plus Beaux Villages de France. Villas vue 360° sur le Golfe, propriétés viticoles, par Ellington.",
+    metaDescriptionEn:
+      "Luxury real estate in Gassin, Most Beautiful Villages of France. Villas with 360° Gulf views and vineyard estates, by Ellington.",
     image: "/locations/gassin.jpg",
+    coordinates: { lat: 43.235, lng: 6.586 },
   },
   {
     slug: "sainte-maxime",
     name: "Sainte-Maxime",
+    tagline: "Face à Saint-Tropez, plein sud",
+    taglineEn: "Facing Saint-Tropez, due south",
     description:
       "Face à Saint-Tropez sur le Golfe, Sainte-Maxime allie élégance balnéaire et authenticité provençale. Plages de sable fin, villas contemporaines et propriétés historiques en font une destination privilégiée.",
     descriptionEn:
       "Facing Saint-Tropez across the Gulf, Sainte-Maxime combines seaside elegance with Provençal authenticity. Fine sandy beaches, contemporary villas and historic properties make it a privileged destination.",
+    longDescription:
+      "Sainte-Maxime conjugue 11 km de plages plein sud avec un arrière-pays vallonné où s'épanouissent les domaines de prestige. La ville offre tous les services d'une station moderne — port, golf, casino, marché provençal — tout en préservant un urbanisme à taille humaine. Sa position face à Saint-Tropez, accessible en 10 minutes par bateau-navette ou 20 minutes par la corniche, en fait une alternative privilégiée pour ceux qui cherchent l'art de vivre du Golfe avec un meilleur rapport surface/budget.",
+    longDescriptionEn:
+      "Sainte-Maxime combines 11 km of south-facing beaches with a hillside hinterland where prestigious estates flourish. The town offers every service of a modern resort — port, golf, casino, Provençal market — while preserving a human-scale urban fabric. Its position facing Saint-Tropez, reached in 10 minutes by shuttle boat or 20 minutes along the corniche, makes it a privileged alternative for those seeking Gulf living with a better space/budget ratio.",
+    highlights: [
+      "11 km de plages plein sud",
+      "Port, golf et casino",
+      "Domaines en arrière-pays",
+      "10 min de Saint-Tropez par bateau",
+    ],
+    highlightsEn: [
+      "11 km of south-facing beaches",
+      "Port, golf and casino",
+      "Hinterland estates",
+      "10 min to Saint-Tropez by boat",
+    ],
+    keyFacts: [
+      { label: "Plages", labelEn: "Beaches", value: "11 km" },
+      { label: "Population", labelEn: "Population", value: "≈ 14 000 hab." },
+      { label: "Saint-Tropez", labelEn: "Saint-Tropez", value: "10 min (bateau)" },
+      { label: "Aéroport", labelEn: "Airport", value: "Nice — 1h" },
+    ],
+    metaDescription:
+      "Immobilier de prestige à Sainte-Maxime. Villas vue mer, propriétés en arrière-pays et appartements front de mer, par Ellington.",
+    metaDescriptionEn:
+      "Luxury real estate in Sainte-Maxime. Sea-view villas, hinterland properties and beachfront apartments, by Ellington.",
     image: "/locations/sainte-maxime/stemaxime.jpg",
+    coordinates: { lat: 43.3094, lng: 6.6386 },
   },
 ];
 

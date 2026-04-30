@@ -144,7 +144,7 @@ export default function HomePage() {
             {locations.slice(0, 6).map((loc) => (
               <Link
                 key={loc.slug}
-                href={`/locations#${loc.slug}`}
+                href={`/locations/${loc.slug}`}
                 className="group relative aspect-[4/5] overflow-hidden block flex-none w-[82%] sm:w-[55%] md:w-auto snap-center md:snap-align-none"
               >
                 <Image

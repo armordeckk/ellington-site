@@ -7,11 +7,12 @@ import { useLanguage } from "@/components/LanguageProvider";
 
 export default function LocationsPage() {
   const { t, lang } = useLanguage();
+  const isEn = lang === "en";
 
   return (
     <div className="pt-32 pb-20">
       <div className="max-w-[1400px] mx-auto px-6 md:px-10">
-        <header className="text-center mb-20 max-w-3xl mx-auto">
+        <header className="text-center mb-16 max-w-3xl mx-auto">
           <p className="text-[11px] tracking-[0.32em] uppercase text-accent mb-5">
             {t.locationsPage.eyebrow}
           </p>
@@ -25,16 +26,16 @@ export default function LocationsPage() {
         </header>
 
         {/* Map illustration */}
-        <div className="relative max-w-3xl mx-auto mb-24 aspect-[16/7] flex items-center justify-center">
+        <div className="relative max-w-3xl mx-auto mb-20 aspect-[16/7] flex items-center justify-center">
           <svg
             viewBox="0 0 800 360"
-            className="w-full h-full text-foreground/90"
+            className="w-full h-full text-foreground/80"
             fill="currentColor"
             aria-hidden
           >
             <defs>
               <linearGradient id="coast" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0%" stopColor="#a17d4f" stopOpacity="0.3" />
+                <stop offset="0%" stopColor="#a17d4f" stopOpacity="0.25" />
                 <stop offset="100%" stopColor="#a17d4f" stopOpacity="0.05" />
               </linearGradient>
             </defs>
@@ -43,14 +44,12 @@ export default function LocationsPage() {
               fill="url(#coast)"
               stroke="currentColor"
               strokeWidth="0.5"
-              opacity="0.8"
+              opacity="0.7"
             />
             {[
-              // Reference markers (no dot) for geographic context
               { x: 720, y: 130, label: "Monaco", labelDy: 0, ghost: true },
               { x: 470, y: 165, label: "Cannes", labelDy: 0, ghost: true },
               { x: 620, y: 165, label: "Nice", labelDy: 0, ghost: true },
-              // Active locations — clustered around the Gulf of Saint-Tropez
               { x: 270, y: 188, label: "Sainte-Maxime", labelDy: -14 },
               { x: 250, y: 205, label: "Saint-Tropez", labelDy: -14 },
               { x: 235, y: 222, label: "Ramatuelle", labelDy: 22 },
@@ -94,55 +93,46 @@ export default function LocationsPage() {
           </svg>
         </div>
 
-        {/* Locations */}
-        <div className="space-y-24">
-          {locations.map((loc, i) => {
-            const cityProperties = properties.filter((p) =>
-              p.city.toLowerCase().includes(loc.name.split(" ")[0].toLowerCase()) ||
-              loc.slug.includes(p.city.toLowerCase().replace(/\s+/g, "-")),
-            );
-            const desc =
-              lang === "en" && loc.descriptionEn
-                ? loc.descriptionEn
-                : loc.description;
+        {/* Grid of locations — each linking to its own SEO page */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {locations.map((loc) => {
+            const cityCount = properties.filter(
+              (p) => p.city.toLowerCase() === loc.name.toLowerCase(),
+            ).length;
+            const tagline = isEn ? loc.taglineEn ?? loc.tagline : loc.tagline;
             return (
-              <section
+              <Link
                 key={loc.slug}
-                id={loc.slug}
-                className={`grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center scroll-mt-32 ${
-                  i % 2 === 1 ? "lg:[&>*:first-child]:order-2" : ""
-                }`}
+                href={`/locations/${loc.slug}`}
+                className="group relative aspect-[4/5] overflow-hidden block bg-[var(--background-card)]"
               >
-                <div className="relative aspect-[4/5] overflow-hidden">
-                  <Image
-                    src={loc.image}
-                    alt={loc.name}
-                    fill
-                    sizes="(min-width: 1024px) 50vw, 100vw"
-                    className="object-cover"
-                  />
-                </div>
-                <div>
-                  <p className="text-[11px] tracking-[0.32em] uppercase text-accent mb-4">
-                    {t.locationsPage.regionLabel(i + 1, locations.length)}
-                  </p>
-                  <h2 className="font-serif text-4xl md:text-5xl mb-6">{loc.name}</h2>
-                  <p className="text-muted-strong text-lg leading-[1.85] mb-8">
-                    {desc}
-                  </p>
-                  {cityProperties.length > 0 && (
-                    <p className="text-sm text-muted mb-6">
-                      {t.locationsPage.currentlyAvailable(cityProperties.length)}
+                <Image
+                  src={loc.image}
+                  alt={loc.name}
+                  fill
+                  sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                  className="object-cover transition-transform duration-[1500ms] group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-black/10" />
+                <div className="absolute bottom-0 left-0 right-0 p-7 text-white">
+                  <h2 className="font-serif text-3xl mb-1">{loc.name}</h2>
+                  {tagline && (
+                    <p className="font-serif italic text-base text-white/85 mb-4">
+                      {tagline}
                     </p>
                   )}
-                  <Link
-                    href={`/properties?city=${encodeURIComponent(loc.name)}`}
-                    className="inline-block text-[11px] tracking-[0.22em] uppercase text-accent border-b border-accent pb-1 hover:text-accent-hover"
-                  >
-                    {t.locationsPage.viewProperties}
-                  </Link>
+                  <div className="flex items-end justify-between">
+                    <span className="text-[11px] tracking-[0.22em] uppercase text-[var(--gold)] opacity-90 group-hover:opacity-100">
+                      {t.locationsPage.viewProperties.replace(/→/, "").trim()} →
+                    </span>
+                    {cityCount > 0 && (
+                      <span className="text-[10px] tracking-[0.22em] uppercase text-white/60">
+                        {cityCount} {isEn ? (cityCount > 1 ? "properties" : "property") : `bien${cityCount > 1 ? "s" : ""}`}
+                      </span>
+                    )}
+                  </div>
                 </div>
-              </section>
+              </Link>
             );
           })}
         </div>
