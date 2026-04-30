@@ -17,35 +17,36 @@ export default function HomePage() {
   return (
     <>
       {/* HERO */}
-      <section className="relative min-h-[100svh] flex items-center justify-center overflow-hidden">
+      <section className="relative min-h-[100svh] flex items-center justify-center overflow-hidden text-white">
         <HeroSlideshow />
-        <div className="absolute inset-0 bg-gradient-to-b from-[var(--background)]/70 via-[var(--background)]/40 to-[var(--background)] z-10" />
+        {/* Dark overlay on photos so hero text stays legible (white text on photos) */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/35 via-black/30 to-black/55 z-10" />
 
         <div className="relative z-20 text-center px-6 max-w-5xl mx-auto fade-in pt-20 sm:pt-0">
-          <p className="text-[9px] sm:text-[11px] tracking-[0.22em] sm:tracking-[0.32em] uppercase text-accent mb-6 sm:mb-8 whitespace-nowrap">
+          <p className="text-[9px] sm:text-[11px] tracking-[0.22em] sm:tracking-[0.32em] uppercase text-[var(--gold)] mb-6 sm:mb-8 whitespace-nowrap">
             {t.home.eyebrow}
           </p>
           <h1 className="font-serif text-5xl sm:text-6xl md:text-7xl lg:text-8xl leading-[1.05] mb-6">
             {t.home.titleBefore}{" "}
-            <em className="italic text-accent">{t.home.titleAccent}</em>
+            <em className="italic text-[var(--gold)]">{t.home.titleAccent}</em>
             <br />
             {t.home.titleAfter}
           </h1>
-          <p className="text-base md:text-lg text-muted-strong max-w-2xl mx-auto mb-12">
+          <p className="text-base md:text-lg text-white/85 max-w-2xl mx-auto mb-12">
             {t.home.subtitle}
           </p>
 
           <HeroSearch cities={cities} />
 
-          <div className="mt-10 sm:mt-12 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 sm:gap-x-12 sm:gap-y-4 text-[9.5px] sm:text-[11px] tracking-[0.18em] sm:tracking-[0.22em] uppercase text-muted whitespace-nowrap">
+          <div className="mt-10 sm:mt-12 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 sm:gap-x-12 sm:gap-y-4 text-[9.5px] sm:text-[11px] tracking-[0.18em] sm:tracking-[0.22em] uppercase text-white/70 whitespace-nowrap">
             <span>Monaco</span>
-            <span className="opacity-40 hidden sm:inline">·</span>
+            <span className="opacity-50 hidden sm:inline">·</span>
             <span>Saint-Tropez</span>
-            <span className="opacity-40 hidden sm:inline">·</span>
+            <span className="opacity-50 hidden sm:inline">·</span>
             <span>Grimaud</span>
-            <span className="opacity-40 hidden sm:inline">·</span>
+            <span className="opacity-50 hidden sm:inline">·</span>
             <span>Cannes</span>
-            <span className="opacity-40 hidden sm:inline">·</span>
+            <span className="opacity-50 hidden sm:inline">·</span>
             <span>Sainte-Maxime</span>
           </div>
         </div>

@@ -34,8 +34,8 @@ export default function LocationsPage() {
           >
             <defs>
               <linearGradient id="coast" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0%" stopColor="#d9d0c0" stopOpacity="0.3" />
-                <stop offset="100%" stopColor="#d9d0c0" stopOpacity="0.05" />
+                <stop offset="0%" stopColor="#a17d4f" stopOpacity="0.3" />
+                <stop offset="100%" stopColor="#a17d4f" stopOpacity="0.05" />
               </linearGradient>
             </defs>
             <path
@@ -55,8 +55,8 @@ export default function LocationsPage() {
               { x: 175, y: 213, label: "Grimaud", labelDy: -14 },
             ].map((m) => (
               <g key={m.label}>
-                <circle cx={m.x} cy={m.y} r="3.5" fill="#d9d0c0" />
-                <circle cx={m.x} cy={m.y} r="8" fill="#d9d0c0" opacity="0.2" />
+                <circle cx={m.x} cy={m.y} r="3.5" fill="#a17d4f" />
+                <circle cx={m.x} cy={m.y} r="8" fill="#a17d4f" opacity="0.2" />
                 <text
                   x={m.x}
                   y={m.y + m.labelDy}

@@ -150,7 +150,12 @@ function HeroField({
           className="appearance-none w-full bg-transparent text-sm text-white pr-6 cursor-pointer py-1"
         >
           {options.map((o) => (
-            <option key={o.value} value={o.value} className="bg-[var(--background)] text-white">
+            // Native dropdown — explicit colors so it stays readable across browsers
+            <option
+              key={o.value}
+              value={o.value}
+              style={{ backgroundColor: "#1a1d2e", color: "#ffffff" }}
+            >
               {o.label}
             </option>
           ))}

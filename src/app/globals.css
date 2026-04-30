@@ -1,17 +1,20 @@
 @import "tailwindcss";
 
 :root {
-  --background: #0a1628;
-  --background-elev: #111e33;
-  --background-card: #152238;
-  --foreground: #f5f5f0;
-  --muted: #9aa8bd;
-  --muted-strong: #c5d0e0;
-  --border: rgba(255, 255, 255, 0.08);
-  --border-strong: rgba(255, 255, 255, 0.15);
-  --accent: #d9d0c0;
-  --accent-hover: #e8dfcd;
+  /* Light luxury palette — warm cream backgrounds, deep navy ink, champagne accents */
+  --background: #faf9f5;        /* warm off-white */
+  --background-elev: #ffffff;   /* pure white sections */
+  --background-card: #ffffff;   /* white cards */
+  --foreground: #1a1d2e;        /* deep navy ink */
+  --muted: #8a8678;             /* warm taupe-gray */
+  --muted-strong: #4a4a45;      /* darker warm gray */
+  --border: rgba(26, 29, 46, 0.10);
+  --border-strong: rgba(26, 29, 46, 0.18);
+  --accent: #a17d4f;            /* champagne gold */
+  --accent-hover: #8b6a3f;      /* deeper champagne on hover */
   --gold: #c9a96e;
+  /* Shield dark navy — used by the logo to stay branded regardless of theme */
+  --brand-navy: #0a1628;
 }
 
 @theme inline {
@@ -26,6 +29,7 @@
   --color-accent: var(--accent);
   --color-accent-hover: var(--accent-hover);
   --color-gold: var(--gold);
+  --color-brand-navy: var(--brand-navy);
   --font-sans: var(--font-inter);
   --font-serif: var(--font-cormorant);
 }
@@ -62,7 +66,7 @@ html, body {
 
 ::selection {
   background: var(--accent);
-  color: var(--background);
+  color: #ffffff;
 }
 
 input:focus, button:focus, select:focus {
