@@ -44,6 +44,11 @@ export function Footer() {
                 </Link>
               </li>
               <li>
+                <Link href="/blog" className="text-foreground/90 hover:text-accent transition">
+                  {t.nav.journal}
+                </Link>
+              </li>
+              <li>
                 <Link href="/about" className="text-foreground/90 hover:text-accent transition">
                   {t.nav.about}
                 </Link>
