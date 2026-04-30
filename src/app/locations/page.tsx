@@ -46,28 +46,49 @@ export default function LocationsPage() {
               opacity="0.8"
             />
             {[
-              { x: 720, y: 145, label: "Monaco", labelDy: -14 },
-              { x: 660, y: 152, label: "Cap-Ferrat", labelDy: -14 },
-              { x: 620, y: 180, label: "Nice", labelDy: 22 },
-              { x: 470, y: 175, label: "Cannes", labelDy: -14 },
-              { x: 250, y: 196, label: "Sainte-Maxime", labelDy: -14 },
-              { x: 210, y: 202, label: "Saint-Tropez", labelDy: 22 },
-              { x: 175, y: 213, label: "Grimaud", labelDy: -14 },
+              // Reference markers (no dot) for geographic context
+              { x: 720, y: 130, label: "Monaco", labelDy: 0, ghost: true },
+              { x: 470, y: 165, label: "Cannes", labelDy: 0, ghost: true },
+              { x: 620, y: 165, label: "Nice", labelDy: 0, ghost: true },
+              // Active locations — clustered around the Gulf of Saint-Tropez
+              { x: 270, y: 188, label: "Sainte-Maxime", labelDy: -14 },
+              { x: 250, y: 205, label: "Saint-Tropez", labelDy: -14 },
+              { x: 235, y: 222, label: "Ramatuelle", labelDy: 22 },
+              { x: 210, y: 218, label: "Gassin", labelDy: 22 },
+              { x: 195, y: 210, label: "Port Grimaud", labelDy: 22 },
+              { x: 175, y: 198, label: "Grimaud", labelDy: -14 },
             ].map((m) => (
               <g key={m.label}>
-                <circle cx={m.x} cy={m.y} r="3.5" fill="#a17d4f" />
-                <circle cx={m.x} cy={m.y} r="8" fill="#a17d4f" opacity="0.2" />
-                <text
-                  x={m.x}
-                  y={m.y + m.labelDy}
-                  textAnchor="middle"
-                  fontSize="10"
-                  fill="currentColor"
-                  fontFamily="serif"
-                  fontStyle="italic"
-                >
-                  {m.label}
-                </text>
+                {m.ghost ? (
+                  <text
+                    x={m.x}
+                    y={m.y}
+                    textAnchor="middle"
+                    fontSize="9"
+                    fill="currentColor"
+                    fontFamily="serif"
+                    fontStyle="italic"
+                    opacity="0.3"
+                  >
+                    {m.label}
+                  </text>
+                ) : (
+                  <>
+                    <circle cx={m.x} cy={m.y} r="3.5" fill="#a17d4f" />
+                    <circle cx={m.x} cy={m.y} r="8" fill="#a17d4f" opacity="0.2" />
+                    <text
+                      x={m.x}
+                      y={m.y + m.labelDy}
+                      textAnchor="middle"
+                      fontSize="10"
+                      fill="currentColor"
+                      fontFamily="serif"
+                      fontStyle="italic"
+                    >
+                      {m.label}
+                    </text>
+                  </>
+                )}
               </g>
             ))}
           </svg>

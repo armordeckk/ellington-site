@@ -320,15 +320,6 @@ export const properties: Property[] = [
 
 export const locations: Location[] = [
   {
-    slug: "monaco",
-    name: "Monaco",
-    description:
-      "Principauté souveraine, Monaco offre un cadre de vie unique au monde. Stabilité, sécurité, fiscalité avantageuse et art de vivre méditerranéen attirent une clientèle internationale exigeante.",
-    descriptionEn:
-      "A sovereign principality, Monaco offers a unique way of life. Stability, security, favourable taxation and Mediterranean elegance attract a discerning international clientele.",
-    image: "/locations/monaco/monaco.jpg",
-  },
-  {
     slug: "saint-tropez",
     name: "Saint-Tropez",
     description:
@@ -341,28 +332,37 @@ export const locations: Location[] = [
     slug: "grimaud",
     name: "Grimaud",
     description:
-      "Au cœur du Golfe de Saint-Tropez, Grimaud séduit par son village médiéval perché, son port de plaisance prisé (Port Grimaud) et ses villas en bord de mer. Une adresse confidentielle et préservée de la Côte d'Azur.",
+      "Au cœur du Golfe de Saint-Tropez, Grimaud séduit par son village médiéval perché, ses ruelles pavées et ses villas en bord de mer. Une adresse confidentielle et préservée de la Côte d'Azur.",
     descriptionEn:
-      "At the heart of the Gulf of Saint-Tropez, Grimaud charms with its perched medieval village, its sought-after marina (Port Grimaud) and its waterfront villas — a confidential, preserved address on the French Riviera.",
-    image: "/locations/grimaud/grimaud.jpg",
+      "At the heart of the Gulf of Saint-Tropez, Grimaud charms with its perched medieval village, its cobbled lanes and its waterfront villas — a confidential, preserved address on the French Riviera.",
+    image: "/locations/grimaud/grimaud1.jpg",
   },
   {
-    slug: "cap-ferrat",
-    name: "Saint-Jean-Cap-Ferrat",
+    slug: "port-grimaud",
+    name: "Port Grimaud",
     description:
-      "Surnommée la presqu'île des milliardaires, Saint-Jean-Cap-Ferrat conjugue rareté foncière et adresses prestigieuses. Un écrin végétal entre Nice et Monaco.",
+      "Conçue dans les années 1960 par l'architecte François Spoerry, Port Grimaud est une cité lacustre unique en France. Maisons aux façades pastel, canaux navigables, anneaux d'amarrage privés : la Venise provençale conjugue charme méditerranéen et raffinement contemporain.",
     descriptionEn:
-      "Known as the billionaires' peninsula, Saint-Jean-Cap-Ferrat combines land scarcity and the most prestigious addresses — a verdant haven between Nice and Monaco.",
-    image: "/locations/cap-ferrat/capferrat.jpg",
+      "Designed in the 1960s by architect François Spoerry, Port Grimaud is a unique lakeside town. Pastel façades, navigable canals and private moorings — Provence's Venice blends Mediterranean charm with contemporary refinement.",
+    image: "/locations/portgrimaud.jpg",
   },
   {
-    slug: "cannes",
-    name: "Cannes",
+    slug: "ramatuelle",
+    name: "Ramatuelle",
     description:
-      "Capitale du cinéma et de l'art de vivre, Cannes séduit par sa Croisette mythique, ses palais Belle Époque et ses hauteurs résidentielles offrant vue sur la baie.",
+      "Village perché entre vignobles et mer, Ramatuelle abrite la mythique plage de Pampelonne. Bastides en pierre, ruelles ombragées et mas d'exception composent un patrimoine d'une rare authenticité, à quelques minutes de Saint-Tropez.",
     descriptionEn:
-      "Capital of cinema and the art of living, Cannes captivates with its iconic Croisette, its Belle Époque palaces and its residential heights overlooking the bay.",
-    image: "/locations/cannes/cannes.jpg",
+      "A hilltop village set between vineyards and sea, Ramatuelle is home to the legendary Pampelonne beach. Stone bastides, shaded lanes and exceptional country estates form a rare authentic heritage, just minutes from Saint-Tropez.",
+    image: "/locations/ramatuelle.jpg",
+  },
+  {
+    slug: "gassin",
+    name: "Gassin",
+    description:
+      "Classé parmi les Plus Beaux Villages de France, Gassin couronne une colline avec vue à 360° sur le Golfe de Saint-Tropez, les Maures et la Méditerranée. Villas de prestige et propriétés viticoles s'épanouissent dans un cadre préservé.",
+    descriptionEn:
+      "Listed among the Most Beautiful Villages of France, Gassin crowns a hilltop with 360° views over the Gulf of Saint-Tropez, the Maures range and the Mediterranean. Prestigious villas and vineyard estates thrive in a preserved setting.",
+    image: "/locations/gassin.jpg",
   },
   {
     slug: "sainte-maxime",

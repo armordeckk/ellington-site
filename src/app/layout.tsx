@@ -22,7 +22,7 @@ const cormorant = Cormorant_Garamond({
 export const metadata: Metadata = {
   title: "Ellington — Immobilier de prestige sur la Côte d'Azur",
   description:
-    "Ellington, agence immobilière de prestige spécialisée dans les biens d'exception sur la Côte d'Azur. Monaco, Saint-Tropez, Grimaud, Cannes, Sainte-Maxime.",
+    "Ellington, agence immobilière de prestige spécialisée dans les biens d'exception sur le Golfe de Saint-Tropez. Saint-Tropez, Grimaud, Port Grimaud, Ramatuelle, Gassin, Sainte-Maxime.",
   openGraph: {
     title: "Ellington — Immobilier de prestige sur la Côte d'Azur",
     description: "Biens d'exception sur la Côte d'Azur",

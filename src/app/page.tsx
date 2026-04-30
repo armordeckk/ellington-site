@@ -38,14 +38,16 @@ export default function HomePage() {
 
           <HeroSearch cities={cities} />
 
-          <div className="mt-10 sm:mt-12 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 sm:gap-x-12 sm:gap-y-4 text-[9.5px] sm:text-[11px] tracking-[0.18em] sm:tracking-[0.22em] uppercase text-white/70 whitespace-nowrap">
-            <span>Monaco</span>
-            <span className="opacity-50 hidden sm:inline">·</span>
+          <div className="mt-10 sm:mt-12 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 sm:gap-x-10 sm:gap-y-4 text-[9.5px] sm:text-[11px] tracking-[0.18em] sm:tracking-[0.22em] uppercase text-white/70 whitespace-nowrap">
             <span>Saint-Tropez</span>
             <span className="opacity-50 hidden sm:inline">·</span>
             <span>Grimaud</span>
             <span className="opacity-50 hidden sm:inline">·</span>
-            <span>Cannes</span>
+            <span>Port Grimaud</span>
+            <span className="opacity-50 hidden sm:inline">·</span>
+            <span>Ramatuelle</span>
+            <span className="opacity-50 hidden sm:inline">·</span>
+            <span>Gassin</span>
             <span className="opacity-50 hidden sm:inline">·</span>
             <span>Sainte-Maxime</span>
           </div>
