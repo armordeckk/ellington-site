@@ -1,6 +1,7 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { Suspense, useMemo, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import { BlogCard } from "./BlogCard";
 import { useLanguage } from "./LanguageProvider";
 import { CATEGORY_LABELS, type BlogCategory, type Post } from "@/lib/blog-shared";
@@ -14,9 +15,33 @@ const CATEGORIES_ORDER: (BlogCategory | "all")[] = [
   "fiscalite",
 ];
 
-export function BlogIndexContent({ posts }: { posts: Post[] }) {
+const VALID_CATEGORIES: BlogCategory[] = [
+  "guides-achat",
+  "marche",
+  "architecture",
+  "art-de-vivre",
+  "fiscalite",
+];
+
+export function BlogIndexContent(props: { posts: Post[] }) {
+  return (
+    <Suspense fallback={null}>
+      <BlogIndexInner {...props} />
+    </Suspense>
+  );
+}
+
+function BlogIndexInner({ posts }: { posts: Post[] }) {
   const { t, lang } = useLanguage();
-  const [filter, setFilter] = useState<BlogCategory | "all">("all");
+  const params = useSearchParams();
+  const initial = (() => {
+    const cat = params.get("category");
+    if (cat && VALID_CATEGORIES.includes(cat as BlogCategory)) {
+      return cat as BlogCategory;
+    }
+    return "all" as const;
+  })();
+  const [filter, setFilter] = useState<BlogCategory | "all">(initial);
 
   const filtered = useMemo(() => {
     if (filter === "all") return posts;
