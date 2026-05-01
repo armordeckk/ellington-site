@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { locations, properties } from "@/lib/properties";
+import { getProperties, locations } from "@/lib/properties";
 import { LocationDetail } from "@/components/LocationDetail";
 
 interface Props {
@@ -47,7 +47,8 @@ export default async function LocationPage({ params }: Props) {
   const loc = locations.find((l) => l.slug === slug);
   if (!loc) notFound();
 
-  const cityProperties = properties.filter(
+  const allProps = await getProperties();
+  const cityProperties = allProps.filter(
     (p) => p.city.toLowerCase() === loc.name.toLowerCase(),
   );
   const otherLocations = locations.filter((l) => l.slug !== loc.slug);

@@ -7,7 +7,8 @@ import { NewsletterForm } from "@/components/NewsletterForm";
 import { HeroSearch } from "@/components/HeroSearch";
 import { HeroSlideshow } from "@/components/HeroSlideshow";
 import { BlogCard } from "@/components/BlogCard";
-import { getFeaturedProperties, getCities, locations } from "@/lib/properties";
+import { locations } from "@/lib/properties";
+import type { Property } from "@/lib/types";
 import { useLanguage } from "@/components/LanguageProvider";
 import { CATEGORY_LABELS, type BlogCategory, type Post } from "@/lib/blog-shared";
 
@@ -19,10 +20,16 @@ const CATEGORIES_ORDER: BlogCategory[] = [
   "fiscalite",
 ];
 
-export function HomeContent({ posts }: { posts: Post[] }) {
+export function HomeContent({
+  posts,
+  featured,
+  cities,
+}: {
+  posts: Post[];
+  featured: Property[];
+  cities: string[];
+}) {
   const { t, lang } = useLanguage();
-  const featured = getFeaturedProperties().slice(0, 6);
-  const cities = getCities();
   const recentPosts = posts.slice(0, 3);
 
   return (

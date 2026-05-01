@@ -1,4 +1,5 @@
 import type { Property, Location } from "./types";
+import { fetchApimoProperties, fetchApimoProperty, isApimoConfigured } from "./apimo";
 
 // High-quality Unsplash images — placeholder until Apimo media is wired in.
 const img = (id: string, alt: string) => ({
@@ -6,7 +7,12 @@ const img = (id: string, alt: string) => ({
   alt,
 });
 
-export const properties: Property[] = [
+/**
+ * Mock dataset used as fallback when Apimo env vars are absent (local dev,
+ * preview deployments without secrets). Once APIMO_PROVIDER / APIMO_TOKEN /
+ * APIMO_AGENCY are present in env, the live Apimo data takes over.
+ */
+export const mockProperties: Property[] = [
   {
     id: "ell-001",
     reference: "ELL-ST-001",
@@ -553,15 +559,21 @@ export const locations: Location[] = [
   },
 ];
 
-// Helpers — these will be replaced by Apimo API calls in src/lib/apimo.ts later.
-export function getProperties(filters?: {
+// --- Data layer ---------------------------------------------------------
+// All getters are async. They first try Apimo (when env vars are set) and
+// transparently fall back to the mock dataset so the app keeps working in
+// local dev without credentials.
+
+interface PropertyFilters {
   category?: "sale" | "rent";
   city?: string;
   type?: string;
   minPrice?: number;
   maxPrice?: number;
-}): Property[] {
-  return properties.filter((p) => {
+}
+
+function applyFilters(list: Property[], filters?: PropertyFilters): Property[] {
+  return list.filter((p) => {
     if (filters?.category && p.category !== filters.category) return false;
     if (filters?.city && p.city !== filters.city) return false;
     if (filters?.type && p.type !== filters.type) return false;
@@ -571,16 +583,41 @@ export function getProperties(filters?: {
   });
 }
 
-export function getProperty(id: string): Property | undefined {
-  return properties.find((p) => p.id === id);
+/**
+ * Returns the full property catalogue. Apimo (live) when configured,
+ * mock dataset otherwise. Filters apply in-memory in both cases.
+ */
+export async function getProperties(filters?: PropertyFilters): Promise<Property[]> {
+  if (isApimoConfigured()) {
+    const live = await fetchApimoProperties(filters?.category ?? "sale");
+    if (live && live.length > 0) return applyFilters(live, filters);
+  }
+  return applyFilters(mockProperties, filters);
 }
 
-export function getFeaturedProperties(): Property[] {
-  return properties.filter((p) => p.isFeatured);
+export async function getProperty(id: string): Promise<Property | undefined> {
+  if (isApimoConfigured()) {
+    const live = await fetchApimoProperty(id);
+    if (live) return live;
+  }
+  return mockProperties.find((p) => p.id === id);
 }
 
-export function getCities(): string[] {
-  return [...new Set(properties.map((p) => p.city))].sort();
+export async function getFeaturedProperties(): Promise<Property[]> {
+  if (isApimoConfigured()) {
+    const live = await fetchApimoProperties("sale");
+    if (live && live.length > 0) {
+      // Apimo has no native "featured" flag — pick the priciest 6 as a sane default.
+      // Override later via a custom Apimo tag once the client confirms the convention.
+      return [...live].sort((a, b) => b.price - a.price).slice(0, 6);
+    }
+  }
+  return mockProperties.filter((p) => p.isFeatured);
+}
+
+export async function getCities(): Promise<string[]> {
+  const list = await getProperties();
+  return [...new Set(list.map((p) => p.city))].filter(Boolean).sort();
 }
 
 export function formatPrice(price: number, currency = "EUR"): string {

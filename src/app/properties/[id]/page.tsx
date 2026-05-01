@@ -9,7 +9,7 @@ interface Props {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { id } = await params;
-  const p = getProperty(id);
+  const p = await getProperty(id);
   if (!p) return { title: "Propriété introuvable" };
   return {
     title: `${p.title} — ${p.city} | Ellington`,
@@ -19,10 +19,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function PropertyDetail({ params }: Props) {
   const { id } = await params;
-  const property = getProperty(id);
+  const property = await getProperty(id);
   if (!property) notFound();
 
-  const similar = getProperties()
+  const all = await getProperties();
+  const similar = all
     .filter((p) => p.id !== property.id && p.region === property.region)
     .slice(0, 3);
 
