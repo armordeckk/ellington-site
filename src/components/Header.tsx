@@ -21,6 +21,11 @@ export function Header() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  // Close mobile menu on route change
+  useEffect(() => {
+    setOpen(false);
+  }, [pathname]);
+
   // On home, the hero is a full-screen image — keep header text white over it
   // until the user scrolls past. On every other page, white background starts
   // immediately so we use the dark text from the start.
@@ -126,6 +131,7 @@ export function Header() {
                 {l.label}
               </Link>
             ))}
+            <AuthMenu variant="mobile" onNavigate={() => setOpen(false)} />
             <Link
               href="/contact"
               onClick={() => setOpen(false)}
