@@ -22,7 +22,7 @@ export function PropertyCard({
   return (
     <Link
       href={`/properties/${property.id}`}
-      className="group block bg-[var(--background-card)] border border-[var(--border)] hover:border-[var(--border-strong)] transition-all duration-500 overflow-hidden"
+      className="group flex flex-col h-full bg-[var(--background-card)] border border-[var(--border)] hover:border-[var(--border-strong)] transition-all duration-500 overflow-hidden"
     >
       <div className="relative aspect-[4/3] overflow-hidden">
         <Image
@@ -53,14 +53,14 @@ export function PropertyCard({
           </div>
         </div>
       </div>
-      <div className="p-6">
-        <h3 className="font-serif text-2xl text-foreground group-hover:text-accent transition mb-1">
+      <div className="p-6 flex-1 flex flex-col">
+        <h3 className="font-serif text-2xl text-foreground group-hover:text-accent transition mb-1 line-clamp-2">
           {property.title}
         </h3>
         {property.subtitle && (
           <p className="text-sm text-muted mb-4 line-clamp-1">{property.subtitle}</p>
         )}
-        <div className="flex items-center justify-between pt-4 border-t border-[var(--border)]">
+        <div className="mt-auto flex items-center justify-between pt-4 border-t border-[var(--border)]">
           <span className="font-serif text-xl text-accent">
             {formatPriceShort(property.price)}
           </span>
