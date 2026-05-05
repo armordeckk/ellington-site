@@ -18,8 +18,15 @@ export function Footer() {
                 Ellington
               </span>
             </Link>
-            <p className="text-sm text-muted leading-relaxed max-w-xs">
+            <p className="text-sm text-muted leading-relaxed max-w-xs mb-3">
               {t.footer.tagline}
+            </p>
+            <p className="text-xs text-muted/80 leading-relaxed">
+              Espace Lemarquis
+              <br />
+              Quartier Bertaud
+              <br />
+              83580 Gassin · France
             </p>
           </div>
 
@@ -62,13 +69,13 @@ export function Footer() {
             </h4>
             <ul className="space-y-3 text-sm">
               <li>
-                <a href="tel:+33493123456" className="text-foreground/90 hover:text-accent transition">
-                  +33 4 93 12 34 56
+                <a href="tel:+33674750703" className="text-foreground/90 hover:text-accent transition">
+                  +33 6 74 75 07 03
                 </a>
               </li>
               <li>
-                <a href="mailto:contact@ellington.fr" className="text-foreground/90 hover:text-accent transition">
-                  contact@ellington.fr
+                <a href="mailto:hello@ellington-international.fr" className="text-foreground/90 hover:text-accent transition">
+                  hello@ellington-international.fr
                 </a>
               </li>
               <li className="text-muted">{t.footer.cityLabel}</li>

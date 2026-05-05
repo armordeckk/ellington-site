@@ -20,14 +20,24 @@ const cormorant = Cormorant_Garamond({
 });
 
 export const metadata: Metadata = {
-  title: "Ellington — Immobilier de prestige sur la Côte d'Azur",
+  title: {
+    default: "Ellington Properties — Immobilier de prestige · Golfe de Saint-Tropez",
+    template: "%s | Ellington Properties",
+  },
   description:
-    "Ellington, agence immobilière de prestige spécialisée dans les biens d'exception sur le Golfe de Saint-Tropez. Saint-Tropez, Grimaud, Port Grimaud, Ramatuelle, Gassin, Sainte-Maxime.",
+    "Ellington Properties, agence immobilière de prestige spécialisée dans les biens d'exception sur le Golfe de Saint-Tropez. Saint-Tropez, Grimaud, Port Grimaud, Ramatuelle, Gassin, Sainte-Maxime.",
+  applicationName: "Ellington Properties",
+  authors: [{ name: "Ellington Properties" }],
   openGraph: {
-    title: "Ellington — Immobilier de prestige sur la Côte d'Azur",
-    description: "Biens d'exception sur la Côte d'Azur",
+    title: "Ellington Properties — Immobilier de prestige · Golfe de Saint-Tropez",
+    description: "Biens d'exception dans le Golfe de Saint-Tropez.",
     type: "website",
     locale: "fr_FR",
+    siteName: "Ellington Properties",
+  },
+  icons: {
+    icon: "/brand/logo.png",
+    apple: "/brand/logo.png",
   },
 };
 

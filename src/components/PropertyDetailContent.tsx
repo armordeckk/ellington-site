@@ -182,10 +182,10 @@ export function PropertyDetailContent({
                 {t.common.contactUs}
               </Link>
               <a
-                href="tel:+33493123456"
+                href="tel:+33674750703"
                 className="block text-center px-5 py-3.5 border border-[var(--border-strong)] hover:border-accent text-[11px] tracking-[0.22em] uppercase transition"
               >
-                +33 4 93 12 34 56
+                +33 6 74 75 07 03
               </a>
             </div>
 
@@ -209,13 +209,13 @@ export function PropertyDetailContent({
                   <dt className="text-[10px] tracking-[0.22em] uppercase text-muted mb-1">
                     {t.propertyDetail.phone}
                   </dt>
-                  <dd>+33 4 93 12 34 56</dd>
+                  <dd>+33 6 74 75 07 03</dd>
                 </div>
                 <div>
                   <dt className="text-[10px] tracking-[0.22em] uppercase text-muted mb-1">
                     {t.propertyDetail.email}
                   </dt>
-                  <dd>contact@ellington.fr</dd>
+                  <dd>hello@ellington-international.fr</dd>
                 </div>
               </dl>
             </div>

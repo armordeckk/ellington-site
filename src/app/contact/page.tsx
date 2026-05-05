@@ -35,8 +35,8 @@ export default function ContactPage() {
                     {t.contactPage.phone}
                   </dt>
                   <dd>
-                    <a href="tel:+33493123456" className="hover:text-accent transition">
-                      +33 4 93 12 34 56
+                    <a href="tel:+33674750703" className="hover:text-accent transition">
+                      +33 6 74 75 07 03
                     </a>
                   </dd>
                 </div>
@@ -45,8 +45,8 @@ export default function ContactPage() {
                     {t.propertyDetail.email}
                   </dt>
                   <dd>
-                    <a href="mailto:contact@ellington.fr" className="hover:text-accent transition">
-                      contact@ellington.fr
+                    <a href="mailto:hello@ellington-international.fr" className="hover:text-accent transition">
+                      hello@ellington-international.fr
                     </a>
                   </dd>
                 </div>

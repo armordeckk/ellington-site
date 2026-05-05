@@ -56,7 +56,7 @@ export function Header() {
           }}
           className="flex items-center gap-3 hover:opacity-80 transition"
         >
-          <Logo className="w-7 h-9" />
+          <Logo className="w-7 h-9" invert={overImage} />
           <span className="font-serif text-2xl tracking-[0.25em] uppercase">
             Ellington
           </span>
