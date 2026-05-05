@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { ContactForm } from "@/components/ContactForm";
 import { useLanguage } from "@/components/LanguageProvider";
 
@@ -25,6 +26,34 @@ export default function ContactPage() {
           </div>
 
           <aside className="space-y-6">
+            {/* Personal advisor block — humanises the form */}
+            <div className="bg-[var(--background-card)] border border-[var(--border)] overflow-hidden">
+              <div className="relative aspect-[4/5] w-full">
+                <Image
+                  src="/team/marc-mehagnoul.jpg"
+                  alt="Marc Mehagnoul"
+                  fill
+                  sizes="(min-width: 1024px) 33vw, 100vw"
+                  className="object-cover"
+                />
+              </div>
+              <div className="p-7">
+                <p className="text-[10px] tracking-[0.32em] uppercase text-accent mb-3">
+                  {t.contactPage.advisorBlock.eyebrow}
+                </p>
+                <h3 className="font-serif text-2xl mb-1">Marc Mehagnoul</h3>
+                <p className="text-xs text-muted mb-5">
+                  {t.contactPage.advisorBlock.role}
+                </p>
+                <p className="text-sm text-muted-strong italic font-serif leading-[1.7] mb-5">
+                  « {t.contactPage.advisorBlock.intro} »
+                </p>
+                <p className="font-serif text-accent">
+                  {t.contactPage.advisorBlock.signature}
+                </p>
+              </div>
+            </div>
+
             <div className="bg-[var(--background-card)] border border-[var(--border)] p-8">
               <h3 className="font-serif text-2xl mb-6">
                 {t.contactPage.detailsTitle}

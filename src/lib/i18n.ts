@@ -214,6 +214,13 @@ const dictRaw = {
         "Que ce soit pour acquérir, vendre ou estimer un bien d'exception, notre équipe vous accompagne avec discrétion.",
       detailsTitle: "Nos coordonnées",
       hoursTitle: "Horaires",
+      advisorBlock: {
+        eyebrow: "Votre interlocuteur",
+        role: "Directeur du portefeuille",
+        intro:
+          "Chaque échange est traité personnellement, dans la plus stricte discrétion. N'hésitez pas à m'écrire, je vous recontacte sous 24 heures.",
+        signature: "— Marc",
+      },
       address: "Espace Lemarquis\nQuartier Bertaud\n83580 Gassin — France",
       monFri: "Lundi – Vendredi",
       sat: "Samedi",
@@ -469,6 +476,13 @@ const dictRaw = {
         "Whether to acquire, sell or value an exceptional property, our team accompanies you with discretion.",
       detailsTitle: "Our details",
       hoursTitle: "Hours",
+      advisorBlock: {
+        eyebrow: "Your contact",
+        role: "Portfolio director",
+        intro:
+          "Every enquiry is handled personally, in the strictest discretion. Reach out — I will get back to you within 24 hours.",
+        signature: "— Marc",
+      },
       address: "Espace Lemarquis\nQuartier Bertaud\n83580 Gassin — France",
       monFri: "Monday – Friday",
       sat: "Saturday",
