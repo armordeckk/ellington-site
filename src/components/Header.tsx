@@ -77,7 +77,6 @@ export function Header() {
               {l.label}
             </Link>
           ))}
-          <AuthMenu overImage={overImage} />
           <LanguageToggle overImage={overImage} />
           <Link
             href="/contact"
@@ -85,6 +84,7 @@ export function Header() {
           >
             {t.nav.contact}
           </Link>
+          <AuthMenu overImage={overImage} />
         </nav>
 
         <div className="md:hidden flex items-center gap-3">
