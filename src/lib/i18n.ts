@@ -271,7 +271,28 @@ const dictRaw = {
       cityLabel: "Gassin · Var · France",
       legal: "Mentions légales",
       privacy: "Confidentialité",
+      cookies: "Gérer les cookies",
       rights: (year: number) => `© ${year} Ellington. Tous droits réservés.`,
+    },
+    cookies: {
+      title: "Cookies & confidentialité",
+      description:
+        "Nous utilisons des cookies essentiels au fonctionnement du site (connexion, préférences) et, avec votre accord, des cookies pour mesurer son audience et améliorer votre expérience. Vous pouvez modifier votre choix à tout moment.",
+      acceptAll: "Tout accepter",
+      refuse: "Tout refuser",
+      customize: "Personnaliser",
+      save: "Enregistrer mes choix",
+      learnMore: "En savoir plus",
+      manage: "Gérer mes préférences",
+      essentialLabel: "Cookies essentiels",
+      essentialDesc:
+        "Nécessaires au fonctionnement du site (authentification, préférences de langue). Toujours actifs.",
+      analyticsLabel: "Mesure d'audience",
+      analyticsDesc:
+        "Nous aident à comprendre comment le site est utilisé afin de l'améliorer. Aucune donnée n'est utilisée à des fins publicitaires.",
+      marketingLabel: "Marketing",
+      marketingDesc:
+        "Permettent de mesurer l'efficacité de nos communications et de personnaliser certains contenus.",
     },
   },
   en: {
@@ -533,8 +554,29 @@ const dictRaw = {
       cityLabel: "French Riviera, France",
       legal: "Legal",
       privacy: "Privacy",
+      cookies: "Manage cookies",
       rights: (year: number) =>
         `© ${year} Ellington. All rights reserved.`,
+    },
+    cookies: {
+      title: "Cookies & privacy",
+      description:
+        "We use essential cookies to make the site work (login, preferences) and, with your consent, cookies to measure audience and improve your experience. You can change your choice at any time.",
+      acceptAll: "Accept all",
+      refuse: "Refuse all",
+      customize: "Customize",
+      save: "Save my choices",
+      learnMore: "Learn more",
+      manage: "Manage my preferences",
+      essentialLabel: "Essential cookies",
+      essentialDesc:
+        "Required for the site to work (authentication, language preferences). Always active.",
+      analyticsLabel: "Audience measurement",
+      analyticsDesc:
+        "Help us understand how the site is used so we can improve it. No advertising use.",
+      marketingLabel: "Marketing",
+      marketingDesc:
+        "Allow us to measure the effectiveness of our communications and personalise some content.",
     },
   },
 } as const;

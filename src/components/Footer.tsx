@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { Logo } from "./Logo";
 import { useLanguage } from "./LanguageProvider";
+import { ManageCookiesButton } from "./ManageCookiesButton";
 
 export function Footer() {
   const { t } = useLanguage();
@@ -96,13 +97,16 @@ export function Footer() {
 
         <div className="mt-16 pt-8 border-t border-[var(--border)] flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-muted">
           <p>{t.footer.rights(year)}</p>
-          <div className="flex gap-6">
+          <div className="flex flex-wrap gap-x-6 gap-y-2">
             <Link href="/legal" className="hover:text-foreground transition">
               {t.footer.legal}
             </Link>
             <Link href="/privacy" className="hover:text-foreground transition">
               {t.footer.privacy}
             </Link>
+            <ManageCookiesButton className="hover:text-foreground transition text-left">
+              {t.footer.cookies}
+            </ManageCookiesButton>
           </div>
         </div>
       </div>
