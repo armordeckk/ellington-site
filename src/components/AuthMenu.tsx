@@ -1,11 +1,13 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { createClient } from "@/lib/supabase/client";
 
 export function AuthMenu({ overImage }: { overImage: boolean }) {
   const [authed, setAuthed] = useState<boolean | null>(null);
+  const pathname = usePathname();
 
   useEffect(() => {
     const supabase = createClient();
@@ -14,7 +16,7 @@ export function AuthMenu({ overImage }: { overImage: boolean }) {
       setAuthed(Boolean(session?.user));
     });
     return () => sub.subscription.unsubscribe();
-  }, []);
+  }, [pathname]);
 
   // Avoid layout shift on first paint
   if (authed === null) return <span className="w-[80px]" aria-hidden />;
