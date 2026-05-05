@@ -53,9 +53,13 @@ export function PropertyCard({ property, priority = false }: { property: Propert
             {formatPriceShort(property.price)}
           </span>
           <div className="flex items-center gap-4 text-xs text-muted">
-            <span>{property.bedrooms} {t.propertyDetail.shortBed}</span>
-            <span>{property.bathrooms} {t.propertyDetail.shortBath}</span>
-            <span>{property.area} m²</span>
+            {property.bedrooms > 0 && (
+              <span>{property.bedrooms} {t.propertyDetail.shortBed}</span>
+            )}
+            {property.bathrooms > 0 && (
+              <span>{property.bathrooms} {t.propertyDetail.shortBath}</span>
+            )}
+            {property.area > 0 && <span>{property.area} m²</span>}
           </div>
         </div>
       </div>

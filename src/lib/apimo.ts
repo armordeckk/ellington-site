@@ -118,6 +118,11 @@ interface ApimoNamed {
   name?: string;
 }
 
+interface ApimoArea2 {
+  type?: number;
+  number?: number;
+}
+
 interface ApimoProperty {
   id?: number;
   reference?: string;
@@ -127,13 +132,13 @@ interface ApimoProperty {
   step?: ApimoNamed | number;
   city?: ApimoCity;
   area?: ApimoArea;
+  // Apimo's `areas` array — list of room/zone counts by numeric type code.
+  // No top-level bathrooms/shower_rooms field exists for this agency, so we
+  // derive bathroom counts from this array.
+  areas?: ApimoArea2[];
   surface?: number;
   rooms?: number;
   bedrooms?: number;
-  // Apimo splits bathrooms in two fields :
-  //   bathrooms   = rooms with a bathtub
-  //   shower_rooms = rooms with a shower only
-  // Most luxury properties have shower_rooms only — sum both for the public count.
   bathrooms?: number;
   shower_rooms?: number;
   water_rooms?: number;
@@ -219,6 +224,27 @@ function pickComment(
   };
 }
 
+// Apimo area type codes that correspond to bath / shower / water rooms.
+// Codes 5/6/7/8 are the classic mapping (salle de bain / salle d'eau / WC /
+// salle d'eau ensuite). Code 42 also recurs for shower rooms in some agencies.
+// We sum them; if a property uses a different agency-specific code we'll
+// observe a 0 and the UI will hide the bathroom row.
+const BATHROOM_AREA_TYPES = new Set([5, 6, 7, 8, 42]);
+
+function countBathrooms(p: ApimoProperty): number {
+  // 1. Top-level fields (some Apimo agencies expose them)
+  const direct = (p.bathrooms ?? 0) + (p.shower_rooms ?? 0) + (p.water_rooms ?? 0);
+  if (direct > 0) return direct;
+  // 2. Aggregate counts from the areas[] table
+  let viaAreas = 0;
+  for (const a of p.areas ?? []) {
+    if (a.type != null && BATHROOM_AREA_TYPES.has(a.type)) {
+      viaAreas += a.number ?? 0;
+    }
+  }
+  return viaAreas;
+}
+
 function pickPictures(pictures: ApimoPicture[] | undefined): Property["pictures"] {
   if (!pictures || pictures.length === 0) return [];
   return pictures
@@ -262,9 +288,12 @@ export function mapApimoToProperty(p: ApimoProperty): Property {
     landArea: land,
     rooms: p.rooms ?? 0,
     bedrooms: p.bedrooms ?? 0,
-    // Total = bathrooms (with tub) + shower_rooms (shower only) ; covers all
-    // physical bathrooms in the property regardless of Apimo's internal split.
-    bathrooms: (p.bathrooms ?? 0) + (p.shower_rooms ?? 0),
+    // Apimo doesn't expose a top-level bathrooms count for this agency.
+    // We try, in order :
+    //   1. Top-level bathrooms + shower_rooms (other Apimo configurations)
+    //   2. Sum of `areas` entries with type codes for bath/shower/water rooms
+    // If still 0, the UI hides the "sdb." line entirely (cleaner than "0 sdb.").
+    bathrooms: countBathrooms(p),
     yearBuilt: p.year_built ?? p.year,
     features: (p.services ?? []).map((s) => s.name ?? "").filter(Boolean),
     pictures: pickPictures(p.pictures),

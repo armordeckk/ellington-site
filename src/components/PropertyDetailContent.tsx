@@ -76,32 +76,43 @@ export function PropertyDetailContent({
         {/* CONTENT */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 mt-16">
           <div className="lg:col-span-2 space-y-12">
-            {/* KEY FACTS */}
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-px bg-[var(--border)] border border-[var(--border)]">
-              {[
-                { icon: "bed", label: t.propertyDetail.bedrooms, value: property.bedrooms },
-                { icon: "bath", label: t.propertyDetail.bathrooms, value: property.bathrooms },
-                { icon: "area", label: t.propertyDetail.area, value: `${property.area} m²` },
-                {
+            {/* KEY FACTS — only render stats we actually have */}
+            {(() => {
+              const stats: { icon: string; label: string; value: React.ReactNode }[] = [];
+              if (property.bedrooms > 0)
+                stats.push({ icon: "bed", label: t.propertyDetail.bedrooms, value: property.bedrooms });
+              if (property.bathrooms > 0)
+                stats.push({ icon: "bath", label: t.propertyDetail.bathrooms, value: property.bathrooms });
+              if (property.area > 0)
+                stats.push({ icon: "area", label: t.propertyDetail.area, value: `${property.area} m²` });
+              if (property.yearBuilt) {
+                stats.push({
                   icon: "calendar",
                   label:
-                    property.yearBuilt && property.yearBuilt < 1900
+                    property.yearBuilt < 1900
                       ? t.propertyDetail.origin
                       : t.propertyDetail.year,
-                  value: property.yearBuilt ?? "—",
-                },
-              ].map((s) => (
-                <div key={s.label} className="bg-[var(--background-card)] p-6 text-center">
-                  <div className="flex justify-center mb-3 text-accent">
-                    <KeyIcon name={s.icon} />
-                  </div>
-                  <p className="font-serif text-2xl mb-1">{s.value}</p>
-                  <p className="text-[10px] tracking-[0.22em] uppercase text-muted">
-                    {s.label}
-                  </p>
+                  value: property.yearBuilt,
+                });
+              }
+              if (stats.length === 0) return null;
+              const cols = stats.length === 1 ? "grid-cols-1" : stats.length === 2 ? "grid-cols-2" : stats.length === 3 ? "grid-cols-3" : "grid-cols-2 sm:grid-cols-4";
+              return (
+                <div className={`grid ${cols} gap-px bg-[var(--border)] border border-[var(--border)]`}>
+                  {stats.map((s) => (
+                    <div key={s.label} className="bg-[var(--background-card)] p-6 text-center">
+                      <div className="flex justify-center mb-3 text-accent">
+                        <KeyIcon name={s.icon} />
+                      </div>
+                      <p className="font-serif text-2xl mb-1">{s.value}</p>
+                      <p className="text-[10px] tracking-[0.22em] uppercase text-muted">
+                        {s.label}
+                      </p>
+                    </div>
+                  ))}
                 </div>
-              ))}
-            </div>
+              );
+            })()}
 
             {/* DESCRIPTION */}
             <div>
