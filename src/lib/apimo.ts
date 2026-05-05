@@ -130,7 +130,14 @@ interface ApimoProperty {
   surface?: number;
   rooms?: number;
   bedrooms?: number;
+  // Apimo splits bathrooms in two fields :
+  //   bathrooms   = rooms with a bathtub
+  //   shower_rooms = rooms with a shower only
+  // Most luxury properties have shower_rooms only — sum both for the public count.
   bathrooms?: number;
+  shower_rooms?: number;
+  water_rooms?: number;
+  toilets?: number;
   price?: ApimoPrice;
   comments?: ApimoMultilingual[];
   pictures?: ApimoPicture[];
@@ -255,7 +262,9 @@ export function mapApimoToProperty(p: ApimoProperty): Property {
     landArea: land,
     rooms: p.rooms ?? 0,
     bedrooms: p.bedrooms ?? 0,
-    bathrooms: p.bathrooms ?? 0,
+    // Total = bathrooms (with tub) + shower_rooms (shower only) ; covers all
+    // physical bathrooms in the property regardless of Apimo's internal split.
+    bathrooms: (p.bathrooms ?? 0) + (p.shower_rooms ?? 0),
     yearBuilt: p.year_built ?? p.year,
     features: (p.services ?? []).map((s) => s.name ?? "").filter(Boolean),
     pictures: pickPictures(p.pictures),
