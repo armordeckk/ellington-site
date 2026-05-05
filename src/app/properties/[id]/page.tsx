@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import { getProperty, getProperties } from "@/lib/properties";
+import { getUserFavoriteIds } from "@/app/actions/favorites";
 import type { Metadata } from "next";
 import { PropertyDetailContent } from "@/components/PropertyDetailContent";
 
@@ -27,5 +28,16 @@ export default async function PropertyDetail({ params }: Props) {
     .filter((p) => p.id !== property.id && p.region === property.region)
     .slice(0, 3);
 
-  return <PropertyDetailContent property={property} similar={similar} />;
+  const favoredIds = await getUserFavoriteIds();
+  const initialFavored = favoredIds.includes(property.id);
+  const similarFavoredIds = favoredIds.filter((id) => similar.some((s) => s.id === id));
+
+  return (
+    <PropertyDetailContent
+      property={property}
+      similar={similar}
+      initialFavored={initialFavored}
+      similarFavoredIds={similarFavoredIds}
+    />
+  );
 }

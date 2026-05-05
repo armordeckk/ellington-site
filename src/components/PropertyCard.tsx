@@ -5,8 +5,17 @@ import Image from "next/image";
 import type { Property } from "@/lib/types";
 import { formatPriceShort } from "@/lib/properties";
 import { useLanguage } from "./LanguageProvider";
+import { FavoriteButton } from "./FavoriteButton";
 
-export function PropertyCard({ property, priority = false }: { property: Property; priority?: boolean }) {
+export function PropertyCard({
+  property,
+  priority = false,
+  initialFavored = false,
+}: {
+  property: Property;
+  priority?: boolean;
+  initialFavored?: boolean;
+}) {
   const { t } = useLanguage();
   const cover = property.pictures[0];
   const typeKey = property.type as keyof typeof t.types;
@@ -30,6 +39,9 @@ export function PropertyCard({ property, priority = false }: { property: Propert
             {t.propertyDetail.exclusive}
           </span>
         )}
+        <div className="absolute top-4 right-4">
+          <FavoriteButton propertyId={property.id} initialFavored={initialFavored} />
+        </div>
         <div className="absolute bottom-4 left-5 right-5 flex justify-between items-end text-white">
           <div>
             <p className="text-[10px] tracking-[0.22em] uppercase opacity-80 mb-1">

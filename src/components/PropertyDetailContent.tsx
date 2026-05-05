@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { PropertyGallery } from "./PropertyGallery";
 import { PropertyCard } from "./PropertyCard";
+import { FavoriteButton } from "./FavoriteButton";
 import { formatPrice } from "@/lib/properties";
 import { useLanguage } from "./LanguageProvider";
 import type { Property } from "@/lib/types";
@@ -11,9 +12,13 @@ import type { Property } from "@/lib/types";
 export function PropertyDetailContent({
   property,
   similar,
+  initialFavored = false,
+  similarFavoredIds = [],
 }: {
   property: Property;
   similar: Property[];
+  initialFavored?: boolean;
+  similarFavoredIds?: string[];
 }) {
   const { t } = useLanguage();
   const typeKey = property.type as keyof typeof t.types;
@@ -59,12 +64,17 @@ export function PropertyDetailContent({
             )}
           </div>
           <div className="text-left lg:text-right">
-            <p className="text-[11px] tracking-[0.22em] uppercase text-muted mb-1">
-              {t.propertyDetail.price}
-            </p>
-            <p className="font-serif text-4xl text-accent">
-              {formatPrice(property.price)}
-            </p>
+            <div className="flex items-start lg:justify-end gap-4 mb-1">
+              <div>
+                <p className="text-[11px] tracking-[0.22em] uppercase text-muted mb-1">
+                  {t.propertyDetail.price}
+                </p>
+                <p className="font-serif text-4xl text-accent">
+                  {formatPrice(property.price)}
+                </p>
+              </div>
+              <FavoriteButton propertyId={property.id} initialFavored={initialFavored} variant="detail" />
+            </div>
             <p className="text-xs text-muted mt-1">
               {t.propertyDetail.reference} {property.reference}
             </p>
@@ -258,7 +268,11 @@ export function PropertyDetailContent({
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {similar.map((p) => (
-                <PropertyCard key={p.id} property={p} />
+                <PropertyCard
+                  key={p.id}
+                  property={p}
+                  initialFavored={similarFavoredIds.includes(p.id)}
+                />
               ))}
             </div>
           </div>

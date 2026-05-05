@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { Logo } from "./Logo";
 import { LanguageToggle } from "./LanguageToggle";
 import { useLanguage } from "./LanguageProvider";
+import { AuthMenu } from "./AuthMenu";
 
 export function Header() {
   const { t } = useLanguage();
@@ -76,6 +77,7 @@ export function Header() {
               {l.label}
             </Link>
           ))}
+          <AuthMenu overImage={overImage} />
           <LanguageToggle overImage={overImage} />
           <Link
             href="/contact"
