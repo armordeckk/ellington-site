@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { PropertyGallery } from "./PropertyGallery";
 import { PropertyCard } from "./PropertyCard";
@@ -205,8 +206,14 @@ export function PropertyDetailContent({
                 {t.propertyDetail.yourAdvisor}
               </h3>
               <div className="flex items-center gap-4 mb-5">
-                <div className="w-14 h-14 rounded-full bg-[var(--background-elev)] border border-[var(--border-strong)] flex items-center justify-center font-serif text-xl text-accent">
-                  MM
+                <div className="relative w-14 h-14 rounded-full overflow-hidden border border-[var(--border-strong)] flex-none">
+                  <Image
+                    src="/team/marc-mehagnoul.jpg"
+                    alt="Marc Mehagnoul"
+                    fill
+                    sizes="56px"
+                    className="object-cover"
+                  />
                 </div>
                 <div>
                   <p className="font-serif text-lg">Marc Mehagnoul</p>
