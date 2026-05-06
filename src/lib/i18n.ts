@@ -153,6 +153,10 @@ const dictRaw = {
       shortBed: "ch.",
       shortBath: "sdb.",
     },
+    priceUnit: {
+      week: "sem.",
+      month: "mois",
+    },
     propertiesPage: {
       eyebrow: "Portefeuille",
       titleBefore: "Propriétés",
@@ -254,9 +258,10 @@ const dictRaw = {
     },
     rentalsPage: {
       eyebrow: "Locations saisonnières",
-      titleAccent: "Bientôt",
-      titleAfter: "disponible",
-      body: "Notre département location saisonnière est en cours de constitution. Pour toute demande spécifique de location de villa ou de penthouse sur la Côte d'Azur, contactez directement notre équipe.",
+      titleBefore: "Locations",
+      titleAccent: "saisonnières",
+      subtitle:
+        "Une sélection de villas, mas et appartements à louer sur le Golfe de Saint-Tropez et la Côte d'Azur.",
     },
     footer: {
       tagline:
@@ -436,6 +441,10 @@ const dictRaw = {
       shortBed: "bd.",
       shortBath: "ba.",
     },
+    priceUnit: {
+      week: "wk",
+      month: "mo",
+    },
     propertiesPage: {
       eyebrow: "Portfolio",
       titleBefore: "Properties",
@@ -537,9 +546,10 @@ const dictRaw = {
     },
     rentalsPage: {
       eyebrow: "Seasonal rentals",
-      titleAccent: "Coming",
-      titleAfter: "soon",
-      body: "Our seasonal rental department is currently being set up. For any specific villa or penthouse rental request on the French Riviera, please contact our team directly.",
+      titleBefore: "Seasonal",
+      titleAccent: "rentals",
+      subtitle:
+        "A curated selection of villas, country houses and apartments for rent on the Gulf of Saint-Tropez and the French Riviera.",
     },
     footer: {
       tagline:

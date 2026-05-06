@@ -187,11 +187,27 @@ function mapType(t: ApimoNamed | number | undefined): PropertyType {
   return "villa";
 }
 
-function mapCategory(c: ApimoNamed | undefined): PropertyCategory {
+function mapCategory(
+  c: ApimoNamed | undefined,
+  price?: ApimoPrice,
+): PropertyCategory {
+  // Strongest signal first: a positive `price.period` means a recurring price,
+  // which is exclusive to rentals (Apimo never sets it on sale listings).
+  // Some agencies — including this one — let rentals leak into the
+  // ?category=1 (sale) feed, so we cannot trust the `category` field alone.
+  if (price?.period && price.period > 0) return "rent";
   if (!c) return "sale";
   if (typeof c.id === "number") return c.id === 2 ? "rent" : "sale";
   const name = (c.name ?? "").toLowerCase();
   return name.includes("rent") || name.includes("location") ? "rent" : "sale";
+}
+
+// Apimo `price.period` codes — number of days the price covers.
+// 7 = week, 30 = month. Anything else → undefined (we omit the suffix).
+function mapPricePeriod(period?: number): "week" | "month" | undefined {
+  if (!period) return undefined;
+  if (period <= 7) return "week";
+  return "month";
 }
 
 function mapStatus(s: ApimoNamed | number | undefined): PropertyStatus {
@@ -271,7 +287,7 @@ export function mapApimoToProperty(p: ApimoProperty): Property {
   return {
     id,
     reference,
-    category: mapCategory(p.category),
+    category: mapCategory(p.category, p.price),
     type: mapType(p.type),
     status: mapStatus(p.status),
     title: pickComment(p.comments, "fr").title || cityName || reference,
@@ -284,6 +300,7 @@ export function mapApimoToProperty(p: ApimoProperty): Property {
     coordinates: lat && lng ? { lat, lng } : undefined,
     price: p.price?.value ?? 0,
     currency: "EUR",
+    pricePeriod: mapPricePeriod(p.price?.period),
     area: surface,
     landArea: land,
     rooms: p.rooms ?? 0,
@@ -315,7 +332,12 @@ export async function fetchApimoProperties(
     }&limit=100`,
   );
   if (!data?.properties) return null;
-  return data.properties.map(mapApimoToProperty);
+  // Apimo's server-side category filter is unreliable for this agency
+  // (rentals show up in the sale feed). Re-filter on our mapped category,
+  // which uses `price.period` as the source of truth.
+  return data.properties
+    .map(mapApimoToProperty)
+    .filter((p) => p.category === category);
 }
 
 export async function fetchApimoProperty(id: string): Promise<Property | null> {

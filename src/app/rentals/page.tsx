@@ -1,30 +1,18 @@
-"use client";
+import type { Metadata } from "next";
+import { getProperties } from "@/lib/properties";
+import { RentalsPageContent } from "@/components/RentalsPageContent";
 
-import Link from "next/link";
-import { useLanguage } from "@/components/LanguageProvider";
+export const metadata: Metadata = {
+  title: "Locations saisonnières — Ellington",
+  description:
+    "Sélection de villas, mas et appartements à louer sur le Golfe de Saint-Tropez et la Côte d'Azur.",
+  alternates: { canonical: "/rentals" },
+};
 
-export default function RentalsPage() {
-  const { t } = useLanguage();
-  return (
-    <div className="pt-32 pb-20 min-h-[80vh]">
-      <div className="max-w-3xl mx-auto px-6 md:px-10 text-center">
-        <p className="text-[11px] tracking-[0.32em] uppercase text-accent mb-5">
-          {t.rentalsPage.eyebrow}
-        </p>
-        <h1 className="font-serif text-5xl md:text-7xl mb-8">
-          <em className="italic">{t.rentalsPage.titleAccent}</em>{" "}
-          {t.rentalsPage.titleAfter}
-        </h1>
-        <p className="text-muted-strong text-lg mb-10 leading-relaxed">
-          {t.rentalsPage.body}
-        </p>
-        <Link
-          href="/contact"
-          className="inline-block px-8 py-4 bg-accent hover:bg-accent-hover text-[var(--background)] text-[11px] tracking-[0.22em] uppercase transition"
-        >
-          {t.common.contactUs}
-        </Link>
-      </div>
-    </div>
-  );
+export default async function RentalsPage() {
+  const properties = await getProperties({ category: "rent" });
+  const cities = [...new Set(properties.map((p) => p.city))]
+    .filter(Boolean)
+    .sort();
+  return <RentalsPageContent properties={properties} cities={cities} />;
 }

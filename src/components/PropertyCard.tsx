@@ -63,6 +63,11 @@ export function PropertyCard({
         <div className="mt-auto flex items-center justify-between pt-4 border-t border-[var(--border)]">
           <span className="font-serif text-xl text-accent">
             {formatPriceShort(property.price)}
+            {property.pricePeriod && (
+              <span className="text-xs text-muted ml-1 font-sans">
+                /{property.pricePeriod === "week" ? t.priceUnit.week : t.priceUnit.month}
+              </span>
+            )}
           </span>
           <div className="flex items-center gap-4 text-xs text-muted">
             {property.bedrooms > 0 && (
