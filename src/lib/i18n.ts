@@ -204,6 +204,16 @@ const dictRaw = {
           body: "De la première rencontre à la signature, votre conseiller dédié vous accompagne personnellement. Pas de service standardisé : du sur-mesure.",
         },
       ],
+      teamEyebrow: "L'équipe",
+      teamTitleBefore: "Les visages",
+      teamTitleAccent: "d'Ellington",
+      team: [
+        {
+          name: "Marc Mehagnoul",
+          role: "Fondateur & CEO",
+          photo: "/team/marc-mehagnoul.jpg",
+        },
+      ],
       ctaEyebrow: "Une question ?",
       ctaTitleBefore: "Discutons de votre",
       ctaTitleAccent: "projet",
@@ -490,6 +500,16 @@ const dictRaw = {
         {
           title: "Commitment",
           body: "From first meeting to signing, your dedicated advisor accompanies you personally. No standardised service: only bespoke.",
+        },
+      ],
+      teamEyebrow: "The team",
+      teamTitleBefore: "The faces of",
+      teamTitleAccent: "Ellington",
+      team: [
+        {
+          name: "Marc Mehagnoul",
+          role: "Founder & CEO",
+          photo: "/team/marc-mehagnoul.jpg",
         },
       ],
       ctaEyebrow: "A question?",

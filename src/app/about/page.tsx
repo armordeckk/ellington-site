@@ -70,6 +70,39 @@ export default function AboutPage() {
           </div>
         </section>
 
+        <section className="mb-32">
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <p className="text-[11px] tracking-[0.32em] uppercase text-accent mb-5">
+              {t.aboutPage.teamEyebrow}
+            </p>
+            <h2 className="font-serif text-4xl md:text-6xl">
+              {t.aboutPage.teamTitleBefore}{" "}
+              <em className="italic">{t.aboutPage.teamTitleAccent}</em>
+            </h2>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 max-w-5xl mx-auto">
+            {t.aboutPage.team.map((member) => (
+              <figure key={member.name} className="text-center">
+                <div className="relative aspect-[4/5] overflow-hidden mb-6 bg-[var(--background-elev)]">
+                  <Image
+                    src={member.photo}
+                    alt={member.name}
+                    fill
+                    sizes="(min-width: 1024px) 30vw, (min-width: 640px) 50vw, 100vw"
+                    className="object-cover"
+                  />
+                </div>
+                <figcaption>
+                  <p className="font-serif text-2xl mb-1">{member.name}</p>
+                  <p className="text-[11px] tracking-[0.22em] uppercase text-muted">
+                    {member.role}
+                  </p>
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+        </section>
+
         <section className="bg-[var(--background-elev)] border border-[var(--border)] p-12 md:p-20 text-center">
           <p className="text-[11px] tracking-[0.32em] uppercase text-accent mb-5">
             {t.aboutPage.ctaEyebrow}
