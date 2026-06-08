@@ -26,6 +26,9 @@ export function LocationDetail({
   const highlights = isEn
     ? loc.highlightsEn ?? loc.highlights
     : loc.highlights;
+  const activities = isEn
+    ? loc.activitiesEn ?? loc.activities
+    : loc.activities;
 
   return (
     <div className="pb-20">
@@ -125,6 +128,101 @@ export function LocationDetail({
                     0{i + 1}
                   </p>
                   <p className="font-serif text-lg leading-snug">{h}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* ACTIVITIES & EXPERIENCES — refined editorial layout with themed icons */}
+      {activities && activities.length > 0 && (
+        <section className="py-24 md:py-32 px-6 md:px-10 bg-[var(--background-elev)]">
+          <div className="max-w-[1400px] mx-auto">
+            <div className="text-center max-w-2xl mx-auto mb-20">
+              <p className="text-[11px] tracking-[0.32em] uppercase text-accent mb-5">
+                {isEn ? "Activities & Experiences" : "Activités & Expériences"}
+              </p>
+              <h2 className="font-serif text-3xl md:text-5xl mb-6">
+                {isEn ? "The art of living in " : "L'art de vivre à "}
+                <em className="italic">{loc.name}</em>
+              </h2>
+              <span className="block w-16 h-px bg-accent/40 mx-auto" />
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 md:gap-4">
+              {activities.map((a, i) => (
+                <div
+                  key={a}
+                  className="group relative text-center px-4 transition-transform duration-500 hover:-translate-y-1"
+                >
+                  {/* Icon medallion */}
+                  <div className="relative w-20 h-20 mx-auto mb-6">
+                    {/* outer ring */}
+                    <div className="absolute inset-0 rounded-full border border-accent/30 group-hover:border-accent/70 transition-colors duration-500" />
+                    {/* inner filled circle that shows on hover */}
+                    <div className="absolute inset-2 rounded-full bg-accent scale-0 group-hover:scale-100 transition-transform duration-500" />
+                    {/* icon */}
+                    <div className="relative w-full h-full flex items-center justify-center text-accent group-hover:text-white transition-colors duration-500">
+                      <ActivityIcon label={a} />
+                    </div>
+                  </div>
+
+                  {/* Small index */}
+                  <p className="font-serif italic text-[10px] tracking-[0.3em] text-accent/60 mb-2">
+                    {String(i + 1).padStart(2, "0")}
+                  </p>
+
+                  {/* Activity text */}
+                  <p className="font-serif text-base md:text-lg leading-snug text-foreground/85 max-w-[16ch] mx-auto">
+                    {a}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* OUR FAVOURITE PLACES */}
+      {loc.favouritePlaces && loc.favouritePlaces.length > 0 && (
+        <section className="py-20 md:py-28 px-6 md:px-10">
+          <div className="max-w-[1400px] mx-auto">
+            <p className="text-[11px] tracking-[0.32em] uppercase text-accent mb-5 text-center">
+              {isEn ? "Local favourites" : "Nos adresses préférées"}
+            </p>
+            <h2 className="font-serif text-3xl md:text-5xl text-center mb-14 max-w-2xl mx-auto">
+              {isEn ? (
+                <>Our favourite <em className="italic">places</em></>
+              ) : (
+                <>Nos <em className="italic">favoris</em></>
+              )}
+            </h2>
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6">
+              {loc.favouritePlaces.map((p) => (
+                <div
+                  key={p.name}
+                  className="group border border-[var(--border)] hover:border-accent transition overflow-hidden"
+                >
+                  {p.image && (
+                    <div className="relative aspect-square overflow-hidden bg-[var(--background-card)]">
+                      <Image
+                        src={p.image}
+                        alt={p.name}
+                        fill
+                        sizes="(min-width: 1024px) 16vw, (min-width: 640px) 33vw, 50vw"
+                        className="object-cover transition-transform duration-[1500ms] group-hover:scale-105"
+                      />
+                    </div>
+                  )}
+                  <div className="p-4 text-center">
+                    <p className="font-serif text-lg leading-tight mb-1">{p.name}</p>
+                    {p.category && (
+                      <p className="text-[10px] tracking-[0.18em] uppercase text-muted">
+                        {p.category}
+                      </p>
+                    )}
+                  </div>
                 </div>
               ))}
             </div>
@@ -265,5 +363,82 @@ export function LocationDetail({
         </div>
       </section>
     </div>
+  );
+}
+
+// Picks a thematic icon for an activity from its label (FR + EN keywords).
+// Keep keywords lowercased; first match wins. Falls back to a star.
+function ActivityIcon({ label }: { label: string }) {
+  const s = label.toLowerCase();
+  const props = {
+    width: 28,
+    height: 28,
+    viewBox: "0 0 24 24",
+    fill: "none",
+    stroke: "currentColor",
+    strokeWidth: 1.4,
+    strokeLinecap: "round" as const,
+    strokeLinejoin: "round" as const,
+  };
+  // Sailing / yachting / boats
+  if (/voile|yacht|sail|bateau|boat|nautique|nautical|régate|regatta/.test(s)) {
+    return (
+      <svg {...props}>
+        <path d="M12 3v15M12 3l-7 14h7M12 6l6 11h-6M3 20h18M5 20l1 2h12l1-2" />
+      </svg>
+    );
+  }
+  // Walks, viewpoints, hiking, coastal scenery
+  if (
+    /promen|côtière|côtier|walk|hike|scenic|view|point de vue|coastal|sentier|trail/.test(s)
+  ) {
+    return (
+      <svg {...props}>
+        <path d="M3 19l5-8 4 5 3-4 6 7M3 19h18" />
+        <circle cx="17" cy="6" r="2" />
+      </svg>
+    );
+  }
+  // Cultural visits, museums, galleries, monuments
+  if (/culture|visite|musée|museum|galler|galerie|monument|citadel|patrimoine|heritage/.test(s)) {
+    return (
+      <svg {...props}>
+        <path d="M4 21h16M4 21V10M20 21V10M4 10l8-6 8 6M9 21v-7h6v7M11 17h2" />
+      </svg>
+    );
+  }
+  // Beach clubs, beach, swimming, seaside, sun
+  if (/beach|plage|farniente|swim|sea|mer|baigne|sun|soleil|club/.test(s)) {
+    return (
+      <svg {...props}>
+        <path d="M12 4v2M5 7l1.5 1.5M19 7l-1.5 1.5M3 12h2M19 12h2" />
+        <circle cx="12" cy="12" r="3" />
+        <path d="M4 18c2-2 5-2 8 0s6 2 8 0M4 21c2-2 5-2 8 0s6 2 8 0" />
+      </svg>
+    );
+  }
+  // Seasonal events, regattas, festivals
+  if (/événement|event|festival|saison|season|régate|regatta|gala|fête/.test(s)) {
+    return (
+      <svg {...props}>
+        <rect x="4" y="5" width="16" height="16" rx="1" />
+        <path d="M4 10h16M9 3v4M15 3v4" />
+        <path d="M12 14l1 2 2 .3-1.5 1.4.4 2.2L12 18.7l-1.9 1.2.4-2.2L9 16.3l2-.3z" />
+      </svg>
+    );
+  }
+  // Wine / vineyards / gastronomy
+  if (/vin|wine|gastr|cuisine|vigne|vineyard|food|dégustation|tasting/.test(s)) {
+    return (
+      <svg {...props}>
+        <path d="M9 4h6v4a3 3 0 11-6 0V4zM12 11v7M9 21h6" />
+      </svg>
+    );
+  }
+  // Default — small star
+  return (
+    <svg {...props}>
+      <path d="M12 3l2.5 6 6.5.5-5 4.5L17 21l-5-3.5L7 21l1-7-5-4.5 6.5-.5z" />
+    </svg>
   );
 }

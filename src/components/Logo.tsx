@@ -5,13 +5,19 @@ import Image from "next/image";
 //
 // Le logo source étant navy sur fond transparent, on utilise un filtre CSS
 // `invert` quand il faut l'afficher en blanc sur fond sombre (hero du home).
+//
+// `sizes` permet d'indiquer à next/image la taille rendue pour qu'il serve
+// la bonne résolution. Par défaut 40px (taille du header). Passer "200px"
+// (ou plus) pour les usages en grand (ex: divider About) afin d'éviter le flou.
 
 export function Logo({
   className = "",
   invert = false,
+  sizes = "40px",
 }: {
   className?: string;
   invert?: boolean;
+  sizes?: string;
 }) {
   return (
     <span
@@ -23,7 +29,7 @@ export function Logo({
         src="/brand/logo.png"
         alt="Ellington Properties"
         fill
-        sizes="40px"
+        sizes={sizes}
         priority
         className="object-contain"
         style={

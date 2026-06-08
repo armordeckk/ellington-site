@@ -47,6 +47,11 @@ export function Footer() {
                 </Link>
               </li>
               <li>
+                <Link href="/sell" className="text-foreground/90 hover:text-accent transition">
+                  {t.nav.sell}
+                </Link>
+              </li>
+              <li>
                 <Link href="/locations" className="text-foreground/90 hover:text-accent transition">
                   {t.footer.regions}
                 </Link>

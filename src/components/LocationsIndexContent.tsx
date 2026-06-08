@@ -97,8 +97,9 @@ export function LocationsIndexContent({
           </svg>
         </div>
 
-        {/* Grid of locations — each linking to its own SEO page */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* Grid of locations — landscape cards, city name centered on image,
+            tagline strip below (matches the PDF design brief) */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {locations.map((loc) => {
             const cityCount = cityCounts[loc.slug] ?? 0;
             const tagline = isEn ? loc.taglineEn ?? loc.tagline : loc.tagline;
@@ -106,34 +107,33 @@ export function LocationsIndexContent({
               <Link
                 key={loc.slug}
                 href={`/locations/${loc.slug}`}
-                className="group relative aspect-[4/5] overflow-hidden block bg-[var(--background-card)]"
+                className="group block border border-[var(--border)] hover:border-[var(--border-strong)] transition"
               >
-                <Image
-                  src={loc.image}
-                  alt={loc.name}
-                  fill
-                  sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-                  className="object-cover transition-transform duration-[1500ms] group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-black/10" />
-                <div className="absolute bottom-0 left-0 right-0 p-7 text-white">
-                  <h2 className="font-serif text-3xl mb-1">{loc.name}</h2>
-                  {tagline && (
-                    <p className="font-serif italic text-base text-white/85 mb-4">
+                <div className="relative aspect-[2/1] overflow-hidden bg-[var(--background-card)]">
+                  <Image
+                    src={loc.image}
+                    alt={loc.name}
+                    fill
+                    sizes="(min-width: 768px) 50vw, 100vw"
+                    className="object-cover transition-transform duration-[1500ms] group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-black/25 group-hover:bg-black/35 transition" />
+                  <h2 className="absolute inset-0 flex items-center justify-center font-serif text-4xl md:text-5xl lg:text-6xl text-white tracking-[0.18em] uppercase text-center px-4 drop-shadow-[0_2px_12px_rgba(0,0,0,0.5)]">
+                    {loc.name}
+                  </h2>
+                  {cityCount > 0 && (
+                    <span className="absolute top-5 right-5 text-[10px] tracking-[0.22em] uppercase text-white/90 bg-black/40 backdrop-blur-sm px-3 py-1.5">
+                      {cityCount} {isEn ? (cityCount > 1 ? "properties" : "property") : `bien${cityCount > 1 ? "s" : ""}`}
+                    </span>
+                  )}
+                </div>
+                {tagline && (
+                  <div className="px-6 py-6 text-center">
+                    <p className="text-[11px] md:text-xs tracking-[0.32em] uppercase text-muted-strong">
                       {tagline}
                     </p>
-                  )}
-                  <div className="flex items-end justify-between">
-                    <span className="text-[11px] tracking-[0.22em] uppercase text-[var(--gold)] opacity-90 group-hover:opacity-100">
-                      {t.locationsPage.viewProperties.replace(/→/, "").trim()} →
-                    </span>
-                    {cityCount > 0 && (
-                      <span className="text-[10px] tracking-[0.22em] uppercase text-white/60">
-                        {cityCount} {isEn ? (cityCount > 1 ? "properties" : "property") : `bien${cityCount > 1 ? "s" : ""}`}
-                      </span>
-                    )}
                   </div>
-                </div>
+                )}
               </Link>
             );
           })}

@@ -5,6 +5,7 @@ import Link from "next/link";
 import { PropertyGallery } from "./PropertyGallery";
 import { PropertyCard } from "./PropertyCard";
 import { FavoriteButton } from "./FavoriteButton";
+import { EnergyDiagnostics } from "./EnergyDiagnostics";
 import { formatPrice } from "@/lib/properties";
 import { useLanguage } from "./LanguageProvider";
 import type { Property } from "@/lib/types";
@@ -158,6 +159,9 @@ export function PropertyDetailContent({
                 </div>
               </div>
             )}
+
+            {/* ENERGY DIAGNOSTICS (DPE) */}
+            <EnergyDiagnostics property={property} />
 
             {/* LOCATION */}
             <div>

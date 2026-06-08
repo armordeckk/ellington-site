@@ -16,6 +16,7 @@ const dictRaw = {
     nav: {
       properties: "Propriétés",
       rentals: "Locations",
+      sell: "Vendre",
       journal: "Journal",
       about: "À propos",
       contact: "Contact",
@@ -43,6 +44,7 @@ const dictRaw = {
       whyTitleAccent: "nous choisir",
       whySubtitle:
         "Une expertise inégalée dans l'immobilier de luxe sur l'ensemble de la Côte d'Azur, mise au service d'une clientèle exigeante.",
+      whyCta: "Vendre avec nous",
       features: [
         {
           title: "Conseillers de confiance",
@@ -72,6 +74,7 @@ const dictRaw = {
       regionsTitleAccent: "d'exception",
       regionsSubtitle:
         "De Monaco à Saint-Tropez, nous opérons sur les emplacements les plus prestigieux de la Côte d'Azur.",
+      regionsCta: "Voir toutes nos régions",
       newsletterEyebrow: "Restez informé",
       newsletterTitleBefore: "Accès",
       newsletterTitleAccent: "privilégié",
@@ -152,6 +155,14 @@ const dictRaw = {
       similarAccent: "similaires",
       shortBed: "ch.",
       shortBath: "sdb.",
+      energyTitle: "Performance énergétique",
+      energyClass: "Diagnostic de performance énergétique",
+      ghgClass: "Indice d'émission de gaz à effet de serre",
+      energyDate: (date: string) =>
+        `Diagnostic réalisé après le 1er juillet 2021${date ? ` — ${date}` : ""}`,
+      energyCost: (min: number, max: number) =>
+        `Coût annuel d'énergie estimé pour un usage standard : entre ${min.toLocaleString("fr-FR")} € et ${max.toLocaleString("fr-FR")} € par an`,
+      energyUnavailable: "Diagnostic en cours de réalisation.",
     },
     priceUnit: {
       week: "sem.",
@@ -179,8 +190,10 @@ const dictRaw = {
       eyebrow: "À propos d'Ellington",
       titleBefore: "L'art de vivre",
       titleAccent: "la Riviera",
-      lead: "Depuis plus de trois décennies, Ellington accompagne une clientèle internationale exigeante dans l'acquisition de biens d'exception sur la Côte d'Azur.",
-      body: "De Monaco à Saint-Tropez, nos conseillers cultivent une connaissance intime du marché et un réseau confidentiel qui nous permet d'accéder aux propriétés les plus rares — souvent avant même qu'elles ne soient officiellement à vendre.",
+      dividerLabel: "Notre signature",
+      lead: "Née au cœur du Golfe de Saint-Tropez, Ellington est plus qu'une agence immobilière — c'est une signature. Son fondateur, ayant grandi dans la région, possède une connaissance intime et instinctive de chaque secteur, chaque adresse, chaque détail subtil qui définit la valeur d'un bien sur la Côte d'Azur. Cette expertise locale, bâtie au fil des années, est aujourd'hui mise au service d'une clientèle exigeante en quête d'excellence.",
+      body: "Animée par un esprit profondément international, Ellington s'adresse à une clientèle sans frontières. Trilingue en français, anglais et néerlandais, notre équipe dirigeante a tissé de solides relations avec un réseau de partenaires internationaux, attirant des acquéreurs qualifiés et garantissant à chaque bien une exposition ciblée et stratégique. Qu'il s'agisse de villas d'exception, d'appartements de prestige ou de biens uniques, chaque propriété est présentée selon une approche sur-mesure, alliant discrétion, précision et souci du détail.",
+      body2: "L'équipe Ellington, engagée et attentive, accompagne chaque projet avec dévouement et raffinement. De l'estimation à la finalisation, chaque étape est traitée avec rigueur, garantissant la valorisation pleine de votre bien et la sécurisation de votre transaction dans les meilleures conditions possibles. Choisir Ellington, c'est s'associer à un conseiller de confiance combinant des racines locales profondes, un rayonnement international et l'excellence du service.",
       stats: [
         { value: "2,5 Md€", label: "Volume de transactions" },
         { value: "+ 30 ans", label: "D'expertise sur la Riviera" },
@@ -192,16 +205,28 @@ const dictRaw = {
       valuesTitleAccent: "absolu",
       values: [
         {
-          title: "Discrétion",
-          body: "Nos clients exigent la confidentialité la plus absolue. Notre approche off-market et notre éthique professionnelle garantissent l'anonymat de chaque transaction.",
+          title: "Intégrité",
+          body: "Nous opérons en toute transparence et honnêteté, garantissant à chaque client un accompagnement de confiance tout au long de son parcours immobilier.",
         },
         {
           title: "Excellence",
-          body: "Nous ne représentons que les biens qui répondent à nos exigences les plus strictes — qualité architecturale, emplacement, prestations, juste prix.",
+          body: "Nous visons la perfection dans chaque détail, de la première consultation à la transaction finale, pour un service qui dépasse les attentes.",
         },
         {
-          title: "Engagement",
-          body: "De la première rencontre à la signature, votre conseiller dédié vous accompagne personnellement. Pas de service standardisé : du sur-mesure.",
+          title: "Discrétion",
+          body: "Votre confidentialité est primordiale. Toutes les demandes et transactions sont traitées avec la plus grande discrétion et le plus haut professionnalisme.",
+        },
+        {
+          title: "Rayonnement international",
+          body: "Notre vaste réseau international vous connecte à des opportunités et à des clients du monde entier.",
+        },
+        {
+          title: "Expertise du marché",
+          body: "Trois décennies d'expérience offrent une connaissance inégalée des tendances du marché, des valeurs immobilières et des opportunités d'investissement.",
+        },
+        {
+          title: "Service personnalisé",
+          body: "Chaque client bénéficie d'une attention sur-mesure et de solutions adaptées à ses besoins et aspirations uniques.",
         },
       ],
       teamEyebrow: "L'équipe",
@@ -273,6 +298,60 @@ const dictRaw = {
       subtitle:
         "Une sélection de villas, mas et appartements à louer sur le Golfe de Saint-Tropez et la Côte d'Azur.",
     },
+    sellPage: {
+      eyebrow: "Vendre avec Ellington",
+      titleBefore: "Vendre",
+      titleAccent: "avec nous",
+      lead: "Expertise locale. Rayonnement international. Excellence sur-mesure.",
+      cta: "Demander une estimation",
+      whyTitle: "Pourquoi Ellington ?",
+      whyBody1:
+        "Née au cœur du Golfe de Saint-Tropez, Ellington est plus qu'une agence immobilière — c'est une signature.",
+      whyBody2:
+        "Son fondateur, ayant grandi dans la région, possède une compréhension instinctive de chaque adresse et de chaque nuance qui définit la valeur d'un bien sur la Côte d'Azur. Cette connaissance locale approfondie, combinée à un solide réseau international, nous permet de connecter les biens d'exception aux bons acquéreurs.",
+      whyBody3:
+        "Trilingues en français, anglais et néerlandais, et soutenus par des partenaires internationaux de confiance, Ellington garantit à chaque bien une exposition ciblée et globale.",
+      whyBody4:
+        "Chaque vente est abordée avec discrétion, précision et une stratégie sur-mesure — parce qu'aucun bien ne ressemble à un autre.",
+      processTitle: "Notre processus de vente",
+      steps: [
+        {
+          title: "Estimation sur-mesure",
+          body: "Nous établissons une estimation précise et stratégique, fondée sur notre expertise du marché, pour positionner votre bien et obtenir les meilleurs résultats.",
+        },
+        {
+          title: "Exposition ciblée",
+          body: "Nous activons notre réseau international et notre base de clients privés pour atteindre des acquéreurs sérieux et pertinents.",
+        },
+        {
+          title: "Marketing sur-mesure",
+          body: "Votre bien est présenté à travers des visuels soigneusement réalisés et promu auprès d'une audience internationale qualifiée.",
+        },
+        {
+          title: "Négociation & finalisation",
+          body: "Nous vous accompagnons à chaque étape, de l'offre à la signature, en sécurisant la transaction dans les meilleures conditions possibles.",
+        },
+      ],
+      trustTitle: "Pourquoi nos clients nous font confiance",
+      trustCards: [
+        {
+          title: "Discrétion",
+          body: "Nous comprenons l'importance de la confidentialité et traitons chaque transaction avec une discrétion absolue.",
+        },
+        {
+          title: "Réseau international",
+          body: "Nos connexions mondiales attirent des acquéreurs qualifiés au-delà des frontières.",
+        },
+        {
+          title: "Accompagnement dédié",
+          body: "Une équipe réactive et attentive vous guide à chaque étape du processus.",
+        },
+        {
+          title: "Approche sur-mesure",
+          body: "Chaque bien bénéficie d'une stratégie personnalisée conçue pour maximiser sa valeur.",
+        },
+      ],
+    },
     footer: {
       tagline:
         "Immobilier de prestige sur la Côte d'Azur. Biens d'exception, accompagnement confidentiel.",
@@ -314,6 +393,7 @@ const dictRaw = {
     nav: {
       properties: "Properties",
       rentals: "Rentals",
+      sell: "Sell",
       journal: "Journal",
       about: "About",
       contact: "Contact",
@@ -341,6 +421,7 @@ const dictRaw = {
       whyTitleAccent: "choose us",
       whySubtitle:
         "Unrivalled expertise in luxury real estate across the entire French Riviera, at the service of a discerning clientele.",
+      whyCta: "Sell with us",
       features: [
         {
           title: "Trusted advisors",
@@ -370,6 +451,7 @@ const dictRaw = {
       regionsTitleAccent: "addresses",
       regionsSubtitle:
         "From Monaco to Saint-Tropez, we operate in the most prestigious locations on the French Riviera.",
+      regionsCta: "View all our regions",
       newsletterEyebrow: "Stay informed",
       newsletterTitleBefore: "Privileged",
       newsletterTitleAccent: "access",
@@ -450,6 +532,14 @@ const dictRaw = {
       similarAccent: "properties",
       shortBed: "bd.",
       shortBath: "ba.",
+      energyTitle: "Energy performance",
+      energyClass: "Energy performance diagnostic",
+      ghgClass: "Greenhouse gas emission index",
+      energyDate: (date: string) =>
+        `Diagnostic completed after July 1, 2021${date ? ` — ${date}` : ""}`,
+      energyCost: (min: number, max: number) =>
+        `Estimated annual energy expenses for standard use: between €${min.toLocaleString("en-US")} and €${max.toLocaleString("en-US")} per year`,
+      energyUnavailable: "Diagnostic in progress.",
     },
     priceUnit: {
       week: "wk",
@@ -477,8 +567,10 @@ const dictRaw = {
       eyebrow: "About Ellington",
       titleBefore: "The art of",
       titleAccent: "Riviera living",
-      lead: "For over three decades, Ellington has guided a discerning international clientele in acquiring exceptional properties on the French Riviera.",
-      body: "From Monaco to Saint-Tropez, our advisors cultivate intimate market knowledge and a confidential network that grants us access to the rarest properties — often before they are officially put on the market.",
+      dividerLabel: "Our signature",
+      lead: "Born in the heart of the Gulf of Saint-Tropez, Ellington is more than a real estate agency — it is a signature. Its founder, having grown up in the region, possesses an intimate and instinctive knowledge of every area, every address, and every subtle detail that defines the value of a property on the French Riviera. This local expertise, built over the years, is now dedicated to serving a discerning clientele in search of excellence.",
+      body: "Driven by a deeply international mindset, Ellington speaks to a clientele without borders. Fluent in French, English, and Dutch, the leadership has developed strong relationships with a network of international partners, attracting qualified buyers and ensuring each property benefits from targeted and strategic exposure. Whether it is exceptional villas, prestigious apartments, or unique properties, every home is presented through a tailored approach, combining discretion, precision, and attention to detail.",
+      body2: "The Ellington team, committed and attentive, supports each project with dedication and refinement. From valuation to completion, every step is handled with rigor, ensuring your property is fully enhanced and your transaction secured under the best possible conditions. Choosing Ellington means partnering with a trusted advisor who combines deep local roots, international reach, and excellence in service.",
       stats: [
         { value: "€2.5B", label: "Transaction volume" },
         { value: "30+ years", label: "Of Riviera expertise" },
@@ -490,16 +582,28 @@ const dictRaw = {
       valuesTitleAccent: "commitment",
       values: [
         {
-          title: "Discretion",
-          body: "Our clients demand absolute confidentiality. Our off-market approach and professional ethics guarantee anonymity for every transaction.",
+          title: "Integrity",
+          body: "We operate with complete transparency and honesty, ensuring every client receives trustworthy guidance throughout their real estate journey.",
         },
         {
           title: "Excellence",
-          body: "We only represent properties meeting our strictest criteria — architectural quality, location, amenities, fair pricing.",
+          body: "We strive for perfection in every detail, from initial consultation to final transaction, delivering service that exceeds expectations.",
         },
         {
-          title: "Commitment",
-          body: "From first meeting to signing, your dedicated advisor accompanies you personally. No standardised service: only bespoke.",
+          title: "Discretion",
+          body: "Your privacy is paramount. We handle all inquiries and transactions with the utmost confidentiality and professionalism.",
+        },
+        {
+          title: "Global Reach",
+          body: "Our extensive international network connects you with opportunities and clients from around the world.",
+        },
+        {
+          title: "Market Expertise",
+          body: "Three decades of experience provide unmatched insight into market trends, property values, and investment opportunities.",
+        },
+        {
+          title: "Personalized Service",
+          body: "Every client receives tailored attention and customized solutions designed to meet their unique needs and aspirations.",
         },
       ],
       teamEyebrow: "The team",
@@ -570,6 +674,60 @@ const dictRaw = {
       titleAccent: "rentals",
       subtitle:
         "A curated selection of villas, country houses and apartments for rent on the Gulf of Saint-Tropez and the French Riviera.",
+    },
+    sellPage: {
+      eyebrow: "Sell with Ellington",
+      titleBefore: "Sell",
+      titleAccent: "with us",
+      lead: "Local expertise. International reach. Tailored excellence.",
+      cta: "Request a valuation",
+      whyTitle: "Why Ellington?",
+      whyBody1:
+        "Born in the heart of the Gulf of Saint-Tropez, Ellington is more than a real estate agency — it is a signature.",
+      whyBody2:
+        "Its founder, having grown up in the region, offers an instinctive understanding of every address and nuance that defines the value of a property on the French Riviera. This deep local knowledge, combined with a strong international network, allows us to connect exceptional properties with the right buyers.",
+      whyBody3:
+        "Fluent in French, English, and Dutch, and supported by trusted international partners, Ellington ensures each property benefits from targeted global exposure.",
+      whyBody4:
+        "We approach every sale with discretion, precision, and a bespoke strategy — because no property is ever the same.",
+      processTitle: "Our selling process",
+      steps: [
+        {
+          title: "Tailored valuation",
+          body: "We provide a precise and strategic valuation based on market expertise, positioning your property for optimal results.",
+        },
+        {
+          title: "Targeted exposure",
+          body: "We activate our global network and private client base to reach serious and relevant buyers.",
+        },
+        {
+          title: "Bespoke marketing",
+          body: "Your property is presented through carefully crafted visuals and promoted to a qualified international audience.",
+        },
+        {
+          title: "Negotiation & completion",
+          body: "We guide you at every step from offer to signature, securing the transaction under the best possible conditions.",
+        },
+      ],
+      trustTitle: "Why clients trust us",
+      trustCards: [
+        {
+          title: "Discretion",
+          body: "We understand the importance of privacy and handle every transaction with complete confidentiality.",
+        },
+        {
+          title: "International network",
+          body: "Our global connections bring qualified buyers beyond borders.",
+        },
+        {
+          title: "Dedicated support",
+          body: "A responsive, attentive team guiding you at every step.",
+        },
+        {
+          title: "Tailored approach",
+          body: "Every property benefits from a personalized strategy designed to maximize its value.",
+        },
+      ],
     },
     footer: {
       tagline:

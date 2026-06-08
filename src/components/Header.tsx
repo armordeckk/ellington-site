@@ -26,15 +26,19 @@ export function Header() {
     setOpen(false);
   }, [pathname]);
 
-  // On home, the hero is a full-screen image — keep header text white over it
-  // until the user scrolls past. On every other page, white background starts
-  // immediately so we use the dark text from the start.
-  const isHome = pathname === "/";
-  const overImage = isHome && !scrolled;
+  // Pages whose top section is a full-bleed image hero — the header should
+  // start transparent so the image flows behind it, then darken on scroll.
+  const hasImageHero =
+    pathname === "/" ||
+    pathname === "/about" ||
+    pathname === "/sell" ||
+    pathname.startsWith("/locations/");
+  const overImage = hasImageHero && !scrolled;
 
   const navLinks = [
     { href: "/properties", label: t.nav.properties },
     { href: "/rentals", label: t.nav.rentals },
+    { href: "/sell", label: t.nav.sell },
     { href: "/blog", label: t.nav.journal },
     { href: "/about", label: t.nav.about },
   ];
@@ -42,7 +46,7 @@ export function Header() {
   return (
     <header
       className={`fixed top-0 inset-x-0 z-50 transition-all duration-500 ${
-        scrolled || !isHome
+        scrolled || !hasImageHero
           ? "bg-[var(--background)]/90 backdrop-blur-md border-b border-[var(--border)]"
           : "bg-transparent"
       }`}

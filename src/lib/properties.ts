@@ -52,6 +52,10 @@ export const mockProperties: Property[] = [
       img("photo-1600607687939-ce8a6c25118c", "Salle de bain"),
       img("photo-1600566753190-17f0baa2a6c3", "Terrasse"),
     ],
+    energyClass: "B",
+    ghgClass: "A",
+    energyCostMin: 2970,
+    energyCostMax: 4020,
     isFeatured: true,
     isExclusive: true,
   },
@@ -94,6 +98,10 @@ export const mockProperties: Property[] = [
       img("photo-1564013799919-ab600027ffc6", "Vue aérienne"),
       img("photo-1600566753086-00f18fb6b3ea", "Suite"),
     ],
+    energyClass: "C",
+    ghgClass: "B",
+    energyCostMin: 4200,
+    energyCostMax: 5800,
     isFeatured: true,
     isExclusive: true,
   },
@@ -135,6 +143,10 @@ export const mockProperties: Property[] = [
       img("photo-1600596542815-ffad4c1539a9", "Salon"),
       img("photo-1600210491892-03d54c0aaf87", "Jardins"),
     ],
+    energyClass: "E",
+    ghgClass: "D",
+    energyCostMin: 5400,
+    energyCostMax: 7300,
     isFeatured: true,
     isExclusive: true,
   },
@@ -175,6 +187,10 @@ export const mockProperties: Property[] = [
       img("photo-1600607687920-4e2a09cf159d", "Chambre"),
       img("photo-1600566752355-35792bedcfea", "Piscine"),
     ],
+    energyClass: "B",
+    ghgClass: "B",
+    energyCostMin: 3100,
+    energyCostMax: 4200,
     isFeatured: true,
   },
   {
@@ -211,6 +227,10 @@ export const mockProperties: Property[] = [
       img("photo-1600585154526-990dced4db0d", "Cuisine"),
       img("photo-1600210492486-724fe5c67fb0", "Chambre"),
     ],
+    energyClass: "B",
+    ghgClass: "A",
+    energyCostMin: 1900,
+    energyCostMax: 2600,
   },
   {
     id: "ell-006",
@@ -248,6 +268,10 @@ export const mockProperties: Property[] = [
       img("photo-1600566753086-00f18fb6b3ea", "Chambre"),
       img("photo-1600607687939-ce8a6c25118c", "Salle de bain"),
     ],
+    energyClass: "A",
+    ghgClass: "A",
+    energyCostMin: 2200,
+    energyCostMax: 3100,
     isFeatured: true,
   },
   {
@@ -285,6 +309,10 @@ export const mockProperties: Property[] = [
       img("photo-1600210492486-724fe5c67fb0", "Suite"),
       img("photo-1600566753190-17f0baa2a6c3", "Cuisine"),
     ],
+    energyClass: "D",
+    ghgClass: "C",
+    energyCostMin: 3200,
+    energyCostMax: 4400,
   },
   {
     id: "ell-008",
@@ -323,6 +351,10 @@ export const mockProperties: Property[] = [
       img("photo-1582268611958-ebfd161ef9cf", "Piscine"),
       img("photo-1600596542815-ffad4c1539a9", "Salon"),
     ],
+    energyClass: "F",
+    ghgClass: "E",
+    energyCostMin: 6800,
+    energyCostMax: 9200,
     isFeatured: true,
     isExclusive: true,
   },
@@ -366,6 +398,28 @@ export const locations: Location[] = [
       "Luxury real estate in Saint-Tropez. Discover exceptional villas, bastides and penthouses in the village and across the peninsula, with Ellington.",
     image: "/locations/saint-tropez/sttropez.jpg",
     coordinates: { lat: 43.2727, lng: 6.6407 },
+    activities: [
+      "Voile et yachting dans le Golfe",
+      "Promenades côtières et points de vue",
+      "Visites culturelles (Citadelle, musées, galeries)",
+      "Beach clubs et farniente en bord de mer",
+      "Événements saisonniers et régates",
+    ],
+    activitiesEn: [
+      "Sailing and yachting in the Gulf of Saint-Tropez",
+      "Coastal walks and scenic viewpoints",
+      "Cultural visits (Citadel, museums, galleries)",
+      "Beach clubs and seaside relaxation",
+      "Seasonal events and regattas",
+    ],
+    favouritePlaces: [
+      { name: "L'Opéra", category: "Restaurant", image: "/locations/saint-tropez/favourites/opera.jpg" },
+      { name: "Byblos", category: "Hôtel", image: "/locations/saint-tropez/favourites/byblos.jpg" },
+      { name: "La Petite Plage", category: "Beach club", image: "/locations/saint-tropez/favourites/la-petite-plage.jpg" },
+      { name: "Café de Paris", category: "Restaurant", image: "/locations/saint-tropez/favourites/cafe-de-paris.jpg" },
+      { name: "Cherry", category: "Bar", image: "/locations/saint-tropez/favourites/cherry.jpg" },
+      { name: "Villa Azur", category: "Restaurant", image: "/locations/saint-tropez/favourites/villa-azur.jpg" },
+    ],
   },
   {
     slug: "grimaud",
@@ -556,6 +610,120 @@ export const locations: Location[] = [
       "Luxury real estate in Sainte-Maxime. Sea-view villas, hinterland properties and beachfront apartments, by Ellington.",
     image: "/locations/sainte-maxime/stemaxime.jpg",
     coordinates: { lat: 43.3094, lng: 6.6386 },
+  },
+  {
+    slug: "la-croix-valmer",
+    name: "La Croix-Valmer",
+    tagline: "Retraite côtière entre vignes et plages préservées",
+    taglineEn: "Coastal retreat between vineyards and pristine beaches",
+    description:
+      "Entre Saint-Tropez et le Lavandou, La Croix-Valmer déroule des plages de sable fin protégées, des vignobles AOP Côtes-de-Provence et un arrière-pays sauvage. Une adresse confidentielle pour qui cherche la quiétude méditerranéenne loin de l'effervescence du Golfe.",
+    descriptionEn:
+      "Between Saint-Tropez and Le Lavandou, La Croix-Valmer unfolds protected sandy beaches, AOP Côtes-de-Provence vineyards and a wild hinterland — a confidential address for those seeking Mediterranean quiet, away from the Gulf's bustle.",
+    longDescription:
+      "Aux portes du Cap Lardier et du Cap Taillat — sites classés du Conservatoire du Littoral — La Croix-Valmer est une enclave préservée du Var. Ses plages de Gigaro, du Débarquement et du Sylvabelle offrent un littoral encore sauvage, prisé par une clientèle internationale en quête d'authenticité. Le marché immobilier mêle villas contemporaines vue mer, mas viticoles et propriétés en bord de mer, avec un excellent rapport qualité/prix par rapport aux adresses voisines du Golfe.",
+    longDescriptionEn:
+      "At the gates of Cap Lardier and Cap Taillat — protected coastal sites — La Croix-Valmer is a preserved enclave of the Var. Its beaches at Gigaro, Le Débarquement and Sylvabelle offer a wild shoreline coveted by an international clientele seeking authenticity. The property market combines contemporary sea-view villas, wine estates and waterfront homes, with excellent value compared with neighbouring Gulf addresses.",
+    highlights: [
+      "Plages préservées (Gigaro, Sylvabelle)",
+      "Cap Lardier et Cap Taillat protégés",
+      "Vignobles AOP Côtes-de-Provence",
+      "À 25 min de Saint-Tropez",
+    ],
+    highlightsEn: [
+      "Preserved beaches (Gigaro, Sylvabelle)",
+      "Protected Cap Lardier and Cap Taillat",
+      "AOP Côtes-de-Provence vineyards",
+      "25 min from Saint-Tropez",
+    ],
+    keyFacts: [
+      { label: "Population", labelEn: "Population", value: "≈ 3 500 hab." },
+      { label: "Plages", labelEn: "Beaches", value: "5 km" },
+      { label: "Saint-Tropez", labelEn: "Saint-Tropez", value: "25 min" },
+      { label: "Aéroport", labelEn: "Airport", value: "Nice — 1h30" },
+    ],
+    metaDescription:
+      "Immobilier de prestige à La Croix-Valmer. Villas vue mer, mas viticoles et propriétés entre plages préservées et vignobles, par Ellington.",
+    metaDescriptionEn:
+      "Luxury real estate in La Croix-Valmer. Sea-view villas, wine estates and properties between preserved beaches and vineyards, by Ellington.",
+    image: "/locations/croix-valmer.jpg",
+    coordinates: { lat: 43.2069, lng: 6.5697 },
+  },
+  {
+    slug: "cavalaire-sur-mer",
+    name: "Cavalaire-sur-Mer",
+    tagline: "Une baie douce, l'art de vivre méditerranéen",
+    taglineEn: "A gentle bay, authentic Mediterranean living",
+    description:
+      "Adossée à l'une des plus belles baies de la Côte d'Azur, Cavalaire-sur-Mer conjugue 3 km de plage de sable fin, marina active et villas perchées sur les hauteurs. Une destination familiale et raffinée, à mi-chemin entre Saint-Tropez et Le Lavandou.",
+    descriptionEn:
+      "Nestled in one of the French Riviera's most beautiful bays, Cavalaire-sur-Mer combines 3 km of fine sandy beach, a busy marina and hillside villas. A refined family destination halfway between Saint-Tropez and Le Lavandou.",
+    longDescription:
+      "Avec sa baie orientée plein sud et ses 3 km de plage, Cavalaire offre un cadre balnéaire authentique à l'écart des projecteurs. Sa marina de 1 200 anneaux et ses spots de plongée renommés (épaves du Rubis, du Togo) attirent une clientèle de plaisanciers. Les villas vue mer sur les hauteurs et les propriétés en bord de plage se négocient à des prix sensiblement inférieurs à Saint-Tropez, pour un cadre de vie tout aussi privilégié.",
+    longDescriptionEn:
+      "With its south-facing bay and 3 km of beach, Cavalaire offers an authentic seaside setting away from the spotlight. Its 1,200-berth marina and renowned dive sites (Rubis and Togo wrecks) attract a sailing clientele. Hillside sea-view villas and waterfront properties sell at noticeably lower prices than Saint-Tropez, for a setting just as privileged.",
+    highlights: [
+      "Baie plein sud, plage de 3 km",
+      "Marina de 1 200 anneaux",
+      "Spots de plongée renommés",
+      "À 35 min de Saint-Tropez",
+    ],
+    highlightsEn: [
+      "South-facing bay, 3 km beach",
+      "1,200-berth marina",
+      "Renowned dive sites",
+      "35 min from Saint-Tropez",
+    ],
+    keyFacts: [
+      { label: "Population", labelEn: "Population", value: "≈ 7 500 hab." },
+      { label: "Plage", labelEn: "Beach", value: "3 km" },
+      { label: "Marina", labelEn: "Marina", value: "1 200 anneaux" },
+      { label: "Aéroport", labelEn: "Airport", value: "Nice — 1h45" },
+    ],
+    metaDescription:
+      "Immobilier de prestige à Cavalaire-sur-Mer. Villas vue mer, propriétés sur la baie et appartements front de mer, par Ellington.",
+    metaDescriptionEn:
+      "Luxury real estate in Cavalaire-sur-Mer. Sea-view villas, bayfront properties and beachside apartments, by Ellington.",
+    image: "/locations/cavalaire.jpg",
+    coordinates: { lat: 43.1714, lng: 6.5294 },
+  },
+  {
+    slug: "rayol-canadel",
+    name: "Rayol-Canadel-sur-Mer",
+    tagline: "L'enclave exclusive de la corniche des Maures",
+    taglineEn: "The exclusive enclave on the Maures corniche",
+    description:
+      "Sur la mythique corniche des Maures, Rayol-Canadel-sur-Mer est l'une des adresses les plus confidentielles du littoral varois. Pinèdes plongeant dans la mer, propriétés d'architecte et calanques discrètes : une parenthèse rare entre Saint-Tropez et Hyères.",
+    descriptionEn:
+      "On the legendary Maures corniche, Rayol-Canadel-sur-Mer is one of the most confidential addresses on the Var coastline. Pinewoods plunging into the sea, architect-designed properties and hidden coves — a rare parenthesis between Saint-Tropez and Hyères.",
+    longDescription:
+      "Niché entre mer et collines boisées, Rayol-Canadel doit sa renommée à son célèbre Domaine du Rayol, jardin méditerranéen unique en Europe, et à son urbanisme discret de villas individuelles cachées dans la pinède. Avec moins de 1 000 habitants, c'est l'une des communes les plus paisibles de la côte. Les propriétés y sont rares et le marché — exclusivement haut de gamme — reste tenu par le bouche-à-oreille d'une clientèle fidèle, souvent de génération en génération.",
+    longDescriptionEn:
+      "Tucked between the sea and wooded hills, Rayol-Canadel owes its renown to the famous Domaine du Rayol — a unique Mediterranean garden — and to its discreet urbanism of individual villas hidden in the pinewood. With fewer than 1,000 residents, it is one of the quietest towns on the coast. Properties are rare and the market — exclusively top-tier — is largely driven by word of mouth among a faithful clientele, often handed down through generations.",
+    highlights: [
+      "Domaine du Rayol, jardin méditerranéen",
+      "Pinèdes en bord de mer",
+      "Calanques préservées",
+      "Adresse confidentielle (≈ 1 000 hab.)",
+    ],
+    highlightsEn: [
+      "Domaine du Rayol Mediterranean garden",
+      "Seafront pinewoods",
+      "Preserved coves",
+      "Confidential address (≈ 1,000 residents)",
+    ],
+    keyFacts: [
+      { label: "Population", labelEn: "Population", value: "≈ 950 hab." },
+      { label: "Saint-Tropez", labelEn: "Saint-Tropez", value: "40 min" },
+      { label: "Toulon-Hyères", labelEn: "Toulon-Hyères", value: "45 min" },
+      { label: "Saison", labelEn: "Season", value: "Toute l'année" },
+    ],
+    metaDescription:
+      "Immobilier de prestige à Rayol-Canadel-sur-Mer. Villas en pinède, propriétés bord de mer sur la corniche des Maures, par Ellington.",
+    metaDescriptionEn:
+      "Luxury real estate in Rayol-Canadel-sur-Mer. Pinewood villas and seafront properties on the Maures corniche, by Ellington.",
+    image: "/locations/rayol.jpg",
+    coordinates: { lat: 43.1622, lng: 6.4825 },
   },
 ];
 

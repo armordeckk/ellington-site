@@ -155,6 +155,38 @@ interface ApimoProperty {
   // Apimo sometimes nests location info differently
   district?: ApimoNamed;
   region?: ApimoNamed;
+  // DPE — energy performance diagnostic. Apimo's `dpe` block carries
+  // numeric class codes (1 = A, 2 = B, ..., 7 = G) plus consumption / GHG
+  // figures used for the cost estimate.
+  dpe?: {
+    consumption?: number;
+    emission?: number;
+    reference?: string;
+    date?: string;
+    type?: number;
+    /** Letter class (some agencies return the letter directly). */
+    letter?: string;
+    /** Numeric DPE class code (1–7 maps to A–G). */
+    consumption_class?: number;
+    emission_class?: number;
+    minimum_energy_cost?: number;
+    maximum_energy_cost?: number;
+  };
+}
+
+function mapDpeClass(
+  numeric?: number,
+  letter?: string,
+): "A" | "B" | "C" | "D" | "E" | "F" | "G" | undefined {
+  const valid = ["A", "B", "C", "D", "E", "F", "G"] as const;
+  if (letter) {
+    const upper = letter.toUpperCase() as (typeof valid)[number];
+    if (valid.includes(upper)) return upper;
+  }
+  if (numeric && numeric >= 1 && numeric <= 7) {
+    return valid[numeric - 1];
+  }
+  return undefined;
 }
 
 // --- Mapping helpers ---
@@ -301,6 +333,11 @@ export function mapApimoToProperty(p: ApimoProperty): Property {
     price: p.price?.value ?? 0,
     currency: "EUR",
     pricePeriod: mapPricePeriod(p.price?.period),
+    energyClass: mapDpeClass(p.dpe?.consumption_class, p.dpe?.letter),
+    ghgClass: mapDpeClass(p.dpe?.emission_class),
+    energyDiagnosticDate: p.dpe?.date,
+    energyCostMin: p.dpe?.minimum_energy_cost,
+    energyCostMax: p.dpe?.maximum_energy_cost,
     area: surface,
     landArea: land,
     rooms: p.rooms ?? 0,

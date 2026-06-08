@@ -1,18 +1,18 @@
 @import "tailwindcss";
 
 :root {
-  /* Light luxury palette — warm cream backgrounds, deep navy ink, champagne accents */
-  --background: #faf9f5;        /* warm off-white */
+  /* Light luxury palette — soft pastel blue backgrounds, deep navy ink, navy accents */
+  --background: #e3e9f1;        /* pastel Riviera blue */
   --background-elev: #ffffff;   /* pure white sections */
   --background-card: #ffffff;   /* white cards */
   --foreground: #1a1d2e;        /* deep navy ink */
-  --muted: #8a8678;             /* warm taupe-gray */
-  --muted-strong: #4a4a45;      /* darker warm gray */
+  --muted: #6e7a8c;             /* cool blue-gray */
+  --muted-strong: #3d4660;      /* deeper blue-gray */
   --border: rgba(26, 29, 46, 0.10);
   --border-strong: rgba(26, 29, 46, 0.18);
-  --accent: #a17d4f;            /* champagne gold */
-  --accent-hover: #8b6a3f;      /* deeper champagne on hover */
-  --gold: #c9a96e;
+  --accent: #1e3a5f;            /* Riviera deep navy blue */
+  --accent-hover: #142847;      /* deeper navy on hover */
+  --gold: #4a6f99;              /* lighter blue for dark-background highlights */
   /* Shield dark navy — used by the logo to stay branded regardless of theme */
   --brand-navy: #0a1628;
 }

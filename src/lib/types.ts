@@ -43,6 +43,16 @@ export interface Property {
   features: string[];
   pictures: { url: string; alt?: string }[];
 
+  /** DPE — Diagnostic de Performance Énergétique (A–G classes). */
+  energyClass?: "A" | "B" | "C" | "D" | "E" | "F" | "G";
+  /** GES — Gaz à Effet de Serre (A–G classes). */
+  ghgClass?: "A" | "B" | "C" | "D" | "E" | "F" | "G";
+  /** Date du diagnostic (post 1er juillet 2021 = nouveau DPE opposable). */
+  energyDiagnosticDate?: string;
+  /** Coût annuel d'énergie estimé — range (€) pour un usage standard. */
+  energyCostMin?: number;
+  energyCostMax?: number;
+
   isFeatured?: boolean;
   isExclusive?: boolean;
 }
@@ -71,4 +81,9 @@ export interface Location {
   image: string;
   coordinates?: { lat: number; lng: number };
   propertyCount?: number;
+  /** "Activities & Experiences" — short list of things to do locally. */
+  activities?: string[];
+  activitiesEn?: string[];
+  /** "Our Favourite Places" — named restaurants, beach clubs, addresses. */
+  favouritePlaces?: { name: string; category?: string; image?: string }[];
 }

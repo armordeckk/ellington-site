@@ -102,6 +102,16 @@ export function HomeContent({
               </div>
             ))}
           </div>
+
+          {/* CTA — link to the dedicated /sell page */}
+          <div className="text-center mt-14">
+            <Link
+              href="/sell"
+              className="inline-block px-10 py-4 bg-accent hover:bg-accent-hover text-white text-[11px] tracking-[0.22em] uppercase transition"
+            >
+              {t.home.whyCta}
+            </Link>
+          </div>
         </div>
       </section>
 
@@ -158,31 +168,52 @@ export function HomeContent({
             <p className="text-muted-strong text-lg">{t.home.regionsSubtitle}</p>
           </div>
 
-          <div className="flex md:grid md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 overflow-x-auto md:overflow-visible snap-x snap-mandatory scroll-smooth -mx-6 md:mx-0 px-6 md:px-0 pb-3 md:pb-0 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-            {locations.slice(0, 6).map((loc) => (
-              <Link
-                key={loc.slug}
-                href={`/locations/${loc.slug}`}
-                className="group relative aspect-[4/5] overflow-hidden block flex-none w-[82%] sm:w-[55%] md:w-auto snap-center md:snap-align-none"
-              >
-                <Image
-                  src={loc.image}
-                  alt={loc.name}
-                  fill
-                  sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 82vw"
-                  className="object-cover transition-transform duration-[1500ms] group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-                <div className="absolute bottom-0 left-0 right-0 p-8">
-                  <h3 className="font-serif text-3xl text-white mb-2">
-                    {loc.name}
-                  </h3>
-                  <span className="text-[11px] tracking-[0.22em] uppercase text-accent opacity-0 group-hover:opacity-100 transition">
-                    {t.common.readMore}
-                  </span>
-                </div>
-              </Link>
-            ))}
+          {/* Landscape cards — title centered on image, tagline strip below.
+              Matches the design brief; same layout as /locations index. */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {locations.slice(0, 4).map((loc) => {
+              const tagline = lang === "en"
+                ? loc.taglineEn ?? loc.tagline
+                : loc.tagline;
+              return (
+                <Link
+                  key={loc.slug}
+                  href={`/locations/${loc.slug}`}
+                  className="group block border border-[var(--border)] hover:border-[var(--border-strong)] transition"
+                >
+                  <div className="relative aspect-[2/1] overflow-hidden bg-[var(--background-card)]">
+                    <Image
+                      src={loc.image}
+                      alt={loc.name}
+                      fill
+                      sizes="(min-width: 768px) 50vw, 100vw"
+                      className="object-cover transition-transform duration-[1500ms] group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-black/25 group-hover:bg-black/35 transition" />
+                    <h3 className="absolute inset-0 flex items-center justify-center font-serif text-4xl md:text-5xl lg:text-6xl text-white tracking-[0.18em] uppercase text-center px-4 drop-shadow-[0_2px_12px_rgba(0,0,0,0.5)]">
+                      {loc.name}
+                    </h3>
+                  </div>
+                  {tagline && (
+                    <div className="px-6 py-6 text-center">
+                      <p className="text-[11px] md:text-xs tracking-[0.32em] uppercase text-muted-strong">
+                        {tagline}
+                      </p>
+                    </div>
+                  )}
+                </Link>
+              );
+            })}
+          </div>
+
+          {/* View all regions CTA — links to the full /locations page */}
+          <div className="text-center mt-14">
+            <Link
+              href="/locations"
+              className="inline-block px-10 py-4 bg-accent hover:bg-accent-hover text-[var(--background)] text-[11px] tracking-[0.22em] uppercase transition"
+            >
+              {t.home.regionsCta}
+            </Link>
           </div>
         </div>
       </section>
