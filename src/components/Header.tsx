@@ -37,7 +37,7 @@ export function Header() {
 
   const navLinks = [
     { href: "/properties", label: t.nav.properties },
-    { href: "/rentals", label: t.nav.rentals },
+    { href: "/locations", label: t.nav.regions },
     { href: "/sell", label: t.nav.sell },
     { href: "/blog", label: t.nav.journal },
     { href: "/about", label: t.nav.about },

@@ -16,6 +16,7 @@ const dictRaw = {
     nav: {
       properties: "Propriétés",
       rentals: "Locations",
+      regions: "Nos régions",
       sell: "Vendre",
       journal: "Journal",
       about: "À propos",
@@ -393,6 +394,7 @@ const dictRaw = {
     nav: {
       properties: "Properties",
       rentals: "Rentals",
+      regions: "Our regions",
       sell: "Sell",
       journal: "Journal",
       about: "About",
