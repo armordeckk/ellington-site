@@ -121,6 +121,8 @@ interface ApimoNamed {
 interface ApimoArea2 {
   type?: number;
   number?: number;
+  /** Surface in m² for this zone — e.g. type 51 (plot/land) carries the land area. */
+  area?: number | null;
 }
 
 interface ApimoProperty {
@@ -146,7 +148,8 @@ interface ApimoProperty {
   price?: ApimoPrice;
   comments?: ApimoMultilingual[];
   pictures?: ApimoPicture[];
-  services?: ApimoNamed[];
+  /** Apimo returns service amenities as numeric catalog IDs (see property_service catalog). */
+  services?: number[];
   year_built?: number;
   year?: number;
   latitude?: number;
@@ -305,14 +308,48 @@ function pickPictures(pictures: ApimoPicture[] | undefined): Property["pictures"
     }));
 }
 
-export function mapApimoToProperty(p: ApimoProperty): Property {
+// Apimo `areas[]` zone type for the plot / land surface.
+const AREA_TYPE_PLOT = 51;
+
+// Service amenities (Property "features") are returned by Apimo as numeric
+// catalog IDs. We resolve them to names via the `property_service` catalog,
+// fetched once and cached for the ISR window.
+interface ApimoServiceEntry {
+  id?: number;
+  name?: string;
+}
+let serviceCatalogCache: Map<number, string> | null = null;
+
+export async function getServiceCatalog(): Promise<Map<number, string>> {
+  if (serviceCatalogCache) return serviceCatalogCache;
+  const list = await apimoFetch<ApimoServiceEntry[]>(
+    "/catalogs/property_service",
+  );
+  const map = new Map<number, string>();
+  for (const c of list ?? []) {
+    if (c.id != null && c.name && !map.has(c.id)) map.set(c.id, c.name);
+  }
+  // Only cache a non-empty result so a transient failure can retry next time.
+  if (map.size > 0) serviceCatalogCache = map;
+  return map;
+}
+
+export function mapApimoToProperty(
+  p: ApimoProperty,
+  serviceCatalog?: Map<number, string>,
+): Property {
   const id = p.id?.toString() ?? p.reference ?? Math.random().toString(36);
   const reference = p.reference ?? `APIMO-${p.id ?? "?"}`;
   const { description } = pickComment(p.comments, "fr");
   const cityName = p.city?.name ?? "";
   const region = p.region?.name ?? p.city?.district?.name ?? "Côte d'Azur";
   const surface = p.area?.value ?? p.surface ?? 0;
-  const land = p.area?.total && p.area.total > surface ? p.area.total : undefined;
+  // Land area: Apimo stores the plot surface in areas[] (type 51 = plot),
+  // not in area.total (which is null for this agency).
+  const land =
+    p.areas?.find((a) => a.type === AREA_TYPE_PLOT)?.area ??
+    (p.area?.total && p.area.total > surface ? p.area.total : undefined) ??
+    undefined;
   const lat = p.latitude ?? p.city?.latitude;
   const lng = p.longitude ?? p.city?.longitude;
 
@@ -349,7 +386,9 @@ export function mapApimoToProperty(p: ApimoProperty): Property {
     // If still 0, the UI hides the "sdb." line entirely (cleaner than "0 sdb.").
     bathrooms: countBathrooms(p),
     yearBuilt: p.year_built ?? p.year,
-    features: (p.services ?? []).map((s) => s.name ?? "").filter(Boolean),
+    features: (p.services ?? [])
+      .map((sid) => serviceCatalog?.get(sid))
+      .filter((n): n is string => Boolean(n)),
     pictures: pickPictures(p.pictures),
     isFeatured: false, // Apimo has no "featured" concept — we'll flag client-side or via convention
     isExclusive: false,
@@ -369,11 +408,12 @@ export async function fetchApimoProperties(
     }&limit=100`,
   );
   if (!data?.properties) return null;
+  const catalog = await getServiceCatalog();
   // Apimo's server-side category filter is unreliable for this agency
   // (rentals show up in the sale feed). Re-filter on our mapped category,
   // which uses `price.period` as the source of truth.
   return data.properties
-    .map(mapApimoToProperty)
+    .map((p) => mapApimoToProperty(p, catalog))
     .filter((p) => p.category === category);
 }
 
@@ -390,5 +430,6 @@ export async function fetchApimoProperty(id: string): Promise<Property | null> {
       ? data.property
       : (data as ApimoProperty);
   if (!p?.id && !p?.reference) return null;
-  return mapApimoToProperty(p);
+  const catalog = await getServiceCatalog();
+  return mapApimoToProperty(p, catalog);
 }
