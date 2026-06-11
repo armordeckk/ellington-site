@@ -121,7 +121,7 @@ function BlogIndexInner({ posts }: { posts: Post[] }) {
           {t.common.contactUs} ·{" "}
           <a
             href="mailto:contact@ellington.fr"
-            className="hover:text-accent transition"
+            className="hover:text-link transition"
           >
             contact@ellington.fr
           </a>

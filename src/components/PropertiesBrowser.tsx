@@ -17,8 +17,7 @@ const PRICE_RANGES = [
 
 const TYPES = ["villa", "penthouse", "apartment", "estate"] as const;
 
-const SORT_KEYS = ["newest", "priceDesc", "priceAsc", "areaDesc"] as const;
-type SortValue = (typeof SORT_KEYS)[number];
+const BEDROOM_OPTIONS = [0, 1, 2, 3, 4, 5];
 
 export function PropertiesBrowser(props: {
   properties: Property[];
@@ -38,7 +37,8 @@ function PropertiesBrowserInner({
   properties: Property[];
   cities: string[];
 }) {
-  const { t } = useLanguage();
+  const { t, lang } = useLanguage();
+  const isEn = lang === "en";
   const params = useSearchParams();
   const initialPriceIdx = (() => {
     const min = Number(params.get("minPrice") || 0);
@@ -50,34 +50,30 @@ function PropertiesBrowserInner({
   const [city, setCity] = useState<string>(params.get("city") ?? "");
   const [type, setType] = useState<string>(params.get("type") ?? "");
   const [priceIdx, setPriceIdx] = useState<number>(initialPriceIdx);
-  const [sort, setSort] = useState<SortValue>("newest");
+  const [beds, setBeds] = useState<number>(Number(params.get("beds") || 0));
 
   const filtered = useMemo(() => {
     const range = PRICE_RANGES[priceIdx];
-    let list = properties.filter((p) => {
+    return properties.filter((p) => {
       if (city && p.city !== city) return false;
       if (type && p.type !== type) return false;
+      if (beds > 0 && p.bedrooms < beds) return false;
       if (p.price < range.min || p.price > range.max) return false;
       return true;
     });
-    list = [...list];
-    if (sort === "priceDesc") list.sort((a, b) => b.price - a.price);
-    else if (sort === "priceAsc") list.sort((a, b) => a.price - b.price);
-    else if (sort === "areaDesc") list.sort((a, b) => b.area - a.area);
-    return list;
-  }, [properties, city, type, priceIdx, sort]);
+  }, [properties, city, type, priceIdx, beds]);
 
   const reset = () => {
     setCity("");
     setType("");
     setPriceIdx(0);
-    setSort("newest");
+    setBeds(0);
   };
 
   return (
     <div>
       {/* FILTERS */}
-      <div className="bg-[var(--background-elev)] border-y border-[var(--border)] mb-12">
+      <div className="bg-[var(--panel)] mb-12">
         <div className="max-w-[1400px] mx-auto px-6 md:px-10 py-6 grid grid-cols-2 md:grid-cols-5 gap-4">
           <FilterSelect
             label={t.search.location}
@@ -107,21 +103,27 @@ function PropertiesBrowserInner({
             }))}
           />
           <FilterSelect
-            label={t.search.sort}
-            value={sort}
-            onChange={(v) => setSort(v as SortValue)}
-            options={SORT_KEYS.map((s) => ({ value: s, label: t.sort[s] }))}
+            label={isEn ? "Bedrooms" : "Chambres"}
+            value={String(beds)}
+            onChange={(v) => setBeds(Number(v))}
+            options={BEDROOM_OPTIONS.map((n) => ({
+              value: String(n),
+              label: n === 0 ? (isEn ? "All" : "Toutes") : `${n}+`,
+            }))}
           />
           <button
-            onClick={reset}
-            className="text-[11px] tracking-[0.22em] uppercase text-muted hover:text-accent transition self-end pb-3.5"
+            type="button"
+            onClick={() =>
+              document.getElementById("results")?.scrollIntoView({ behavior: "smooth" })
+            }
+            className="self-end bg-accent hover:bg-accent-hover text-white text-[11px] tracking-[0.22em] uppercase transition px-6 py-3.5"
           >
-            {t.common.reset}
+            {t.search.submit}
           </button>
         </div>
       </div>
 
-      <div className="max-w-[1400px] mx-auto px-6 md:px-10">
+      <div id="results" className="max-w-[1400px] mx-auto px-6 md:px-10 scroll-mt-28">
         <p className="text-sm text-muted mb-8">
           {t.search.results(filtered.length)}
         </p>
@@ -139,7 +141,7 @@ function PropertiesBrowserInner({
             </button>
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {filtered.map((p, i) => (
               <PropertyCard key={p.id} property={p} priority={i < 3} />
             ))}
@@ -170,7 +172,7 @@ function FilterSelect({
         <select
           value={value}
           onChange={(e) => onChange(e.target.value)}
-          className="appearance-none w-full bg-[var(--background)] border border-[var(--border)] focus:border-accent transition px-4 py-3 text-sm pr-10 cursor-pointer"
+          className="appearance-none w-full bg-[var(--background-elev)] border border-[var(--border)] focus:border-accent transition px-4 py-3 text-sm pr-10 cursor-pointer"
         >
           {options.map((o) => (
             <option key={o.value} value={o.value}>

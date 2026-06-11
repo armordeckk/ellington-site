@@ -1,13 +1,11 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { PropertyCard } from "@/components/PropertyCard";
 import { NewsletterForm } from "@/components/NewsletterForm";
 import { HeroSearch } from "@/components/HeroSearch";
 import { HeroSlideshow } from "@/components/HeroSlideshow";
 import { BlogCard } from "@/components/BlogCard";
-import { locations } from "@/lib/properties";
 import type { Property } from "@/lib/types";
 import { useLanguage } from "@/components/LanguageProvider";
 import { CATEGORY_LABELS, type BlogCategory, type Post } from "@/lib/blog-shared";
@@ -23,11 +21,9 @@ const CATEGORIES_ORDER: BlogCategory[] = [
 export function HomeContent({
   posts,
   featured,
-  cities,
 }: {
   posts: Post[];
   featured: Property[];
-  cities: string[];
 }) {
   const { t, lang } = useLanguage();
   const recentPosts = posts.slice(0, 3);
@@ -41,34 +37,14 @@ export function HomeContent({
         <div className="absolute inset-0 bg-gradient-to-b from-black/35 via-black/30 to-black/55 z-10" />
 
         <div className="relative z-20 text-center px-6 max-w-5xl mx-auto fade-in pt-20 sm:pt-0">
-          <p className="text-[9px] sm:text-[11px] tracking-[0.22em] sm:tracking-[0.32em] uppercase text-[var(--gold)] mb-6 sm:mb-8 whitespace-nowrap">
-            {t.home.eyebrow}
-          </p>
-          <h1 className="font-serif text-5xl sm:text-6xl md:text-7xl lg:text-8xl leading-[1.05] mb-6">
-            {t.home.titleBefore}{" "}
-            <em className="italic text-[var(--gold)]">{t.home.titleAccent}</em>
-            <br />
-            {t.home.titleAfter}
+          <h1 className="type-h1 mb-6">
+            {t.home.titleBefore}
           </h1>
-          <p className="text-base md:text-lg text-white/85 max-w-2xl mx-auto mb-12">
+          <p className="font-serif italic text-xl md:text-3xl text-white/90 mb-12">
             {t.home.subtitle}
           </p>
 
-          <HeroSearch cities={cities} />
-
-          <div className="mt-10 sm:mt-12 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 sm:gap-x-10 sm:gap-y-4 text-[9.5px] sm:text-[11px] tracking-[0.18em] sm:tracking-[0.22em] uppercase text-white/70 whitespace-nowrap">
-            <span>Saint-Tropez</span>
-            <span className="opacity-50 hidden sm:inline">·</span>
-            <span>Grimaud</span>
-            <span className="opacity-50 hidden sm:inline">·</span>
-            <span>Port Grimaud</span>
-            <span className="opacity-50 hidden sm:inline">·</span>
-            <span>Ramatuelle</span>
-            <span className="opacity-50 hidden sm:inline">·</span>
-            <span>Gassin</span>
-            <span className="opacity-50 hidden sm:inline">·</span>
-            <span>Sainte-Maxime</span>
-          </div>
+          <HeroSearch />
         </div>
       </section>
 
@@ -76,28 +52,24 @@ export function HomeContent({
       <section className="py-28 md:py-36 px-6 md:px-10">
         <div className="max-w-[1400px] mx-auto">
           <div className="text-center mb-20 max-w-3xl mx-auto">
-            <p className="text-[11px] tracking-[0.32em] uppercase text-accent mb-5">
-              {t.home.whyEyebrow}
-            </p>
-            <h2 className="font-serif text-4xl md:text-6xl mb-6">
-              {t.home.whyTitleBefore}{" "}
-              <em className="italic">{t.home.whyTitleAccent}</em>
+            <h2 className="type-h2 mb-6">
+              {t.home.whyTitleBefore} {t.home.whyTitleAccent}
             </h2>
-            <p className="text-muted-strong text-lg leading-relaxed">
+            <p className="font-serif italic text-lg md:text-xl text-muted-strong leading-relaxed">
               {t.home.whySubtitle}
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-px bg-[var(--border)] border border-[var(--border)]">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
             {t.home.features.map((f, i) => (
               <div
                 key={i}
-                className="bg-[var(--background)] p-10 hover:bg-[var(--background-card)] transition duration-500"
+                className="bg-[var(--panel)] p-10 hover:bg-[var(--background-card)] transition duration-500"
               >
                 <div className="w-11 h-11 mb-8 flex items-center justify-center border border-[var(--border-strong)] text-accent">
                   <FeatureIcon idx={i} />
                 </div>
-                <h3 className="font-serif text-2xl mb-4">{f.title}</h3>
+                <h3 className="type-h3 mb-4">{f.title}</h3>
                 <p className="text-sm text-muted leading-relaxed">{f.body}</p>
               </div>
             ))}
@@ -123,15 +95,15 @@ export function HomeContent({
               <p className="text-[11px] tracking-[0.32em] uppercase text-accent mb-5">
                 {t.home.featuredEyebrow}
               </p>
-              <h2 className="font-serif text-4xl md:text-6xl mb-4">
+              <h2 className="type-h2 mb-4">
                 {t.home.featuredTitleBefore}{" "}
-                <em className="italic">{t.home.featuredTitleAccent}</em>
+                <em className="not-italic">{t.home.featuredTitleAccent}</em>
               </h2>
               <p className="text-muted-strong">{t.home.featuredSubtitle}</p>
             </div>
             <Link
               href="/properties"
-              className="self-start md:self-end text-[11px] tracking-[0.22em] uppercase text-accent hover:text-accent-hover border-b border-accent pb-1"
+              className="self-start md:self-end text-[11px] tracking-[0.22em] uppercase text-accent hover:text-link border-b border-accent pb-1"
             >
               {t.home.featuredCta}
             </Link>
@@ -154,71 +126,34 @@ export function HomeContent({
         </div>
       </section>
 
-      {/* LOCATIONS PREVIEW */}
-      <section className="py-28 md:py-36 px-6 md:px-10">
-        <div className="max-w-[1400px] mx-auto">
-          <div className="text-center mb-16 max-w-3xl mx-auto">
-            <p className="text-[11px] tracking-[0.32em] uppercase text-accent mb-5">
-              {t.home.regionsEyebrow}
-            </p>
-            <h2 className="font-serif text-4xl md:text-6xl mb-6">
-              {t.home.regionsTitleBefore}{" "}
-              <em className="italic">{t.home.regionsTitleAccent}</em>
-            </h2>
-            <p className="text-muted-strong text-lg">{t.home.regionsSubtitle}</p>
-          </div>
-
-          {/* Landscape cards — title centered on image, tagline strip below.
-              Matches the design brief; same layout as /locations index. */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {locations.slice(0, 4).map((loc) => {
-              const tagline = lang === "en"
-                ? loc.taglineEn ?? loc.tagline
-                : loc.tagline;
-              return (
-                <Link
-                  key={loc.slug}
-                  href={`/locations/${loc.slug}`}
-                  className="group block border border-[var(--border)] hover:border-[var(--border-strong)] transition"
-                >
-                  <div className="relative aspect-[2/1] overflow-hidden bg-[var(--background-card)]">
-                    <Image
-                      src={loc.image}
-                      alt={loc.name}
-                      fill
-                      sizes="(min-width: 768px) 50vw, 100vw"
-                      className="object-cover transition-transform duration-[1500ms] group-hover:scale-105"
-                    />
-                    <div className="absolute inset-0 bg-black/25 group-hover:bg-black/35 transition" />
-                    <h3 className="absolute inset-0 flex items-center justify-center font-serif text-4xl md:text-5xl lg:text-6xl text-white tracking-[0.18em] uppercase text-center px-4 drop-shadow-[0_2px_12px_rgba(0,0,0,0.5)]">
-                      {loc.name}
-                    </h3>
-                  </div>
-                  {tagline && (
-                    <div className="px-6 py-6 text-center">
-                      <p className="text-[11px] md:text-xs tracking-[0.32em] uppercase text-muted-strong">
-                        {tagline}
-                      </p>
-                    </div>
-                  )}
-                </Link>
-              );
-            })}
-          </div>
-
-          {/* View all regions CTA — links to the full /locations page */}
-          <div className="text-center mt-14">
-            <Link
-              href="/locations"
-              className="inline-block px-10 py-4 bg-accent hover:bg-accent-hover text-[var(--background)] text-[11px] tracking-[0.22em] uppercase transition"
-            >
-              {t.home.regionsCta}
-            </Link>
+      {/* NOT YOUR ORDINARY LOCAL EXPERT — bordered editorial box */}
+      <section className="py-20 md:py-28 px-6 md:px-10">
+        <div className="max-w-[1400px] mx-auto border border-[var(--border)] px-8 md:px-20 py-16 md:py-24">
+          <h2 className="type-h3 text-center mb-12">
+            {t.home.expertTitle}
+          </h2>
+          <div className="space-y-6 text-muted leading-[1.85]">
+            <p>{t.home.expertP1}</p>
+            <p>{t.home.expertP2}</p>
+            <p>{t.home.expertP3}</p>
           </div>
         </div>
       </section>
 
-      {/* JOURNAL PREVIEW */}
+      {/* STAY INFORMED */}
+      <section className="py-28 md:py-36 px-6 md:px-10 bg-[var(--background)] border-t border-[var(--border)]">
+        <div className="max-w-2xl mx-auto text-center">
+          <h2 className="type-h2 mb-5">
+            {t.home.newsletterTitleBefore} {t.home.newsletterTitleAccent}
+          </h2>
+          <p className="font-serif italic text-lg md:text-xl text-muted-strong mb-10">
+            {t.home.newsletterSubtitle}
+          </p>
+          <NewsletterForm />
+        </div>
+      </section>
+
+      {/* JOURNAL PREVIEW — conservé pour le SEO, déplacé sous la newsletter (retiré du nav) */}
       {recentPosts.length > 0 && (
         <section className="py-28 md:py-36 px-6 md:px-10 bg-[var(--background-elev)] border-t border-[var(--border)]">
           <div className="max-w-[1400px] mx-auto">
@@ -227,16 +162,16 @@ export function HomeContent({
                 <p className="text-[11px] tracking-[0.32em] uppercase text-accent mb-5">
                   {lang === "en" ? "The Journal" : "Le journal"}
                 </p>
-                <h2 className="font-serif text-4xl md:text-6xl mb-4">
+                <h2 className="type-h2 mb-4">
                   {lang === "en" ? (
                     <>
                       Stories from the{" "}
-                      <em className="italic">Gulf</em>
+                      <em className="not-italic">Gulf</em>
                     </>
                   ) : (
                     <>
                       Chroniques du{" "}
-                      <em className="italic">Golfe</em>
+                      <em className="not-italic">Golfe</em>
                     </>
                   )}
                 </h2>
@@ -248,7 +183,7 @@ export function HomeContent({
               </div>
               <Link
                 href="/blog"
-                className="self-start md:self-end text-[11px] tracking-[0.22em] uppercase text-accent hover:text-accent-hover border-b border-accent pb-1"
+                className="self-start md:self-end text-[11px] tracking-[0.22em] uppercase text-accent hover:text-link border-b border-accent pb-1"
               >
                 {lang === "en" ? "View all articles →" : "Voir tous les articles →"}
               </Link>
@@ -276,7 +211,7 @@ export function HomeContent({
                   <Link
                     key={cat}
                     href={`/blog?category=${cat}`}
-                    className="text-[11px] tracking-[0.18em] uppercase px-5 py-2.5 border border-[var(--border)] hover:border-accent hover:text-accent transition"
+                    className="text-[11px] tracking-[0.18em] uppercase px-5 py-2.5 border border-[var(--border)] hover:border-accent hover:text-link transition"
                   >
                     {CATEGORY_LABELS[cat][lang]}
                   </Link>
@@ -286,24 +221,6 @@ export function HomeContent({
           </div>
         </section>
       )}
-
-      {/* NEWSLETTER */}
-      <section className="py-28 md:py-36 px-6 md:px-10 bg-[var(--background)] border-t border-[var(--border)]">
-        <div className="max-w-2xl mx-auto text-center">
-          <p className="text-[11px] tracking-[0.32em] uppercase text-accent mb-5">
-            {t.home.newsletterEyebrow}
-          </p>
-          <h2 className="font-serif text-4xl md:text-5xl mb-5">
-            {t.home.newsletterTitleBefore}{" "}
-            <em className="italic">{t.home.newsletterTitleAccent}</em>
-          </h2>
-          <p className="text-muted-strong mb-10">{t.home.newsletterSubtitle}</p>
-          <NewsletterForm />
-          <p className="text-xs text-muted mt-6">
-            {t.home.newsletterDisclaimer}
-          </p>
-        </div>
-      </section>
     </>
   );
 }

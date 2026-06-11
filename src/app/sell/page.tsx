@@ -11,7 +11,7 @@ export default function SellPage() {
       {/* HERO — full-bleed image, transparent nav overlays at top */}
       <section className="relative h-[60svh] min-h-[400px] flex items-center justify-center overflow-hidden text-white">
         <Image
-          src="https://images.unsplash.com/photo-1763226950354-b04f6101acd1?auto=format&fit=crop&w=2400&q=85"
+          src="/sell/hero.jpg"
           alt="Villa de prestige sur la Côte d'Azur"
           fill
           priority
@@ -20,11 +20,8 @@ export default function SellPage() {
         />
         <div className="absolute inset-0 bg-black/55 z-10" />
         <div className="relative z-20 text-center max-w-3xl mx-auto px-6">
-          <h1 className="font-serif text-5xl md:text-7xl uppercase tracking-[0.18em] mb-6">
-            {t.sellPage.titleBefore}{" "}
-            <em className="italic normal-case tracking-normal">
-              {t.sellPage.titleAccent}
-            </em>
+          <h1 className="type-h1 mb-6">
+            {t.sellPage.titleBefore} {t.sellPage.titleAccent}
           </h1>
           <p className="font-serif italic text-lg md:text-xl text-white/90 leading-relaxed mb-10">
             {t.sellPage.lead}
@@ -42,7 +39,7 @@ export default function SellPage() {
 
         {/* WHY ELLINGTON — bordered card */}
         <section className="mb-32 border border-[var(--border)] bg-[var(--background)] px-8 md:px-14 py-12 md:py-16">
-          <h2 className="font-serif text-3xl md:text-4xl uppercase tracking-[0.12em] mb-8">
+          <h2 className="type-h2 mb-8">
             {t.sellPage.whyTitle}
           </h2>
           <div className="space-y-5 text-muted leading-[1.85]">
@@ -55,14 +52,14 @@ export default function SellPage() {
 
         {/* OUR SELLING PROCESS — 4 horizontal cards stacked */}
         <section className="mb-32">
-          <h2 className="font-serif text-3xl md:text-4xl uppercase tracking-[0.12em] mb-12">
+          <h2 className="type-h2 mb-12">
             {t.sellPage.processTitle}
           </h2>
           <div className="space-y-5">
             {t.sellPage.steps.map((step, i) => (
               <div
                 key={step.title}
-                className="bg-[var(--background)] px-8 md:px-12 py-8 md:py-10 flex items-start gap-6 md:gap-10"
+                className="bg-[var(--panel)] px-8 md:px-12 py-8 md:py-10 flex items-start gap-6 md:gap-10"
               >
                 <p className="font-serif text-3xl md:text-4xl text-accent flex-none w-8 md:w-10">
                   {i + 1}
@@ -82,7 +79,7 @@ export default function SellPage() {
 
         {/* WHY CLIENTS TRUST US — 4 icon cards */}
         <section className="mb-12">
-          <h2 className="font-serif text-3xl md:text-4xl uppercase tracking-[0.12em] mb-12 text-center md:text-left">
+          <h2 className="type-h2 mb-12 text-center md:text-left">
             {t.sellPage.trustTitle}
           </h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-10">
@@ -100,6 +97,22 @@ export default function SellPage() {
               </div>
             ))}
           </div>
+        </section>
+
+        {/* CTA — discover the value */}
+        <section className="border border-[var(--border)] p-12 md:p-20 text-center mt-8">
+          <h2 className="type-h2 mb-6">
+            {t.sellPage.ctaTitle}
+          </h2>
+          <p className="text-muted-strong max-w-2xl mx-auto mb-10">
+            {t.sellPage.ctaSubtitle}
+          </p>
+          <Link
+            href="/contact?subject=valuation"
+            className="inline-block px-8 py-4 border border-[var(--border-strong)] hover:border-accent hover:bg-accent hover:text-white text-[11px] tracking-[0.22em] uppercase transition"
+          >
+            {t.sellPage.ctaButton}
+          </Link>
         </section>
       </div>
     </div>

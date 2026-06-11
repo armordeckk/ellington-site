@@ -9,11 +9,11 @@ export default function AboutPage() {
   const { t } = useLanguage();
   return (
     <div>
-      {/* HERO — luxury interior with coastal view at sunset, matches PDF mood */}
+      {/* HERO — client-provided image */}
       <section className="relative h-[60svh] min-h-[400px] flex items-center justify-center overflow-hidden text-white">
         <Image
-          src="https://images.unsplash.com/photo-1774423864869-702b21c2490a?auto=format&fit=crop&w=2400&q=85"
-          alt="Salon de prestige avec vue mer"
+          src="/about/hero.jpg"
+          alt="Ellington · Côte d'Azur"
           fill
           priority
           sizes="100vw"
@@ -21,11 +21,11 @@ export default function AboutPage() {
         />
         <div className="absolute inset-0 bg-black/55 z-10" />
         <div className="relative z-20 text-center max-w-3xl mx-auto px-6">
-          <h1 className="font-serif text-5xl md:text-7xl uppercase tracking-[0.18em] mb-6">
-            {t.aboutPage.titleBefore} <em className="italic normal-case tracking-normal">{t.aboutPage.titleAccent}</em>
+          <h1 className="type-h1 mb-6">
+            {t.aboutPage.titleBefore} {t.aboutPage.titleAccent}
           </h1>
           <p className="font-serif italic text-lg md:text-xl text-white/90 leading-relaxed">
-            Unparalleled expertise in luxury real estate across the French Riviera
+            {t.aboutPage.heroSubtitle}
           </p>
         </div>
       </section>
@@ -35,13 +35,10 @@ export default function AboutPage() {
         <div className="max-w-[1400px] mx-auto px-6 md:px-10">
         {/* LOGO DIVIDER */}
         <div className="flex flex-col items-center pt-20 pb-12">
-          <Logo className="w-32 h-44 md:w-40 md:h-56" sizes="200px" />
-          <p className="mt-8 font-serif italic text-xl text-muted-strong">
-            <em className="italic">Ellington</em>
-          </p>
+          <Logo className="w-32 h-44 md:w-40 md:h-56" sizes="200px" black />
         </div>
 
-        {/* BODY COPY — bordered card with divider title (PDF style) */}
+        {/* SECTION DIVIDER — bordered card, right-aligned italic label (Figma) */}
         <section className="mb-32 border border-[var(--border)] px-8 md:px-16 py-14 md:py-20">
           <p className="text-right font-serif italic text-2xl md:text-3xl text-accent mb-10">
             {t.aboutPage.dividerLabel}
@@ -53,14 +50,11 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* OUR VALUES — 6 cards with icon at top */}
+        {/* OUR VALUES — 6 cards with icon in a light-blue square */}
         <section className="mb-32">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="font-serif text-4xl md:text-5xl uppercase tracking-[0.18em]">
-              {t.aboutPage.valuesTitleBefore}{" "}
-              <em className="italic normal-case tracking-normal">
-                {t.aboutPage.valuesTitleAccent}
-              </em>
+          <div className="mb-16">
+            <h2 className="type-h2">
+              {t.aboutPage.valuesTitleBefore} {t.aboutPage.valuesTitleAccent}
             </h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -69,10 +63,10 @@ export default function AboutPage() {
                 key={v.title}
                 className="bg-[var(--background)] border border-[var(--border)] p-8"
               >
-                <div className="text-accent mb-5">
+                <div className="inline-flex items-center justify-center w-11 h-11 bg-[var(--panel)] text-accent mb-5">
                   <ValueIcon index={i} />
                 </div>
-                <h3 className="font-serif text-2xl mb-4">{v.title}</h3>
+                <h3 className="type-h3 text-accent mb-4">{v.title}</h3>
                 <p className="text-sm text-muted-strong leading-relaxed">
                   {v.body}
                 </p>
@@ -83,12 +77,9 @@ export default function AboutPage() {
 
         {/* AGENCY TEAM */}
         <section className="mb-24">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="font-serif text-4xl md:text-5xl uppercase tracking-[0.18em]">
-              {t.aboutPage.teamTitleBefore}{" "}
-              <em className="italic normal-case tracking-normal">
-                {t.aboutPage.teamTitleAccent}
-              </em>
+          <div className="mb-16">
+            <h2 className="type-h2">
+              {t.aboutPage.teamTitleBefore} {t.aboutPage.teamTitleAccent}
             </h2>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
@@ -108,9 +99,22 @@ export default function AboutPage() {
                 </div>
                 <figcaption className="p-6">
                   <p className="font-serif text-xl mb-1">{member.name}</p>
-                  <p className="text-[11px] tracking-[0.22em] uppercase text-accent">
+                  <p className="text-[10px] tracking-[0.22em] uppercase text-accent mb-4">
                     {member.role}
                   </p>
+                  <p className="text-sm text-muted leading-relaxed mb-4">
+                    {member.bio}
+                  </p>
+                  <a
+                    href={`mailto:${member.email}`}
+                    className="inline-flex items-center gap-2 text-xs text-muted hover:text-link transition"
+                  >
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                      <rect x="3" y="5" width="18" height="14" rx="1" />
+                      <path d="M3 7l9 6 9-6" />
+                    </svg>
+                    {member.email}
+                  </a>
                 </figcaption>
               </figure>
             ))}
@@ -122,9 +126,8 @@ export default function AboutPage() {
           <p className="text-[11px] tracking-[0.32em] uppercase text-accent mb-5">
             {t.aboutPage.ctaEyebrow}
           </p>
-          <h2 className="font-serif text-4xl md:text-5xl mb-6">
-            {t.aboutPage.ctaTitleBefore}{" "}
-            <em className="italic">{t.aboutPage.ctaTitleAccent}</em>
+          <h2 className="type-h2 mb-6">
+            {t.aboutPage.ctaTitleBefore} {t.aboutPage.ctaTitleAccent}
           </h2>
           <p className="text-muted-strong max-w-xl mx-auto mb-10">
             {t.aboutPage.ctaBody}

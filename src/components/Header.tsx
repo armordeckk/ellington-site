@@ -32,14 +32,13 @@ export function Header() {
     pathname === "/" ||
     pathname === "/about" ||
     pathname === "/sell" ||
-    pathname.startsWith("/locations/");
+    pathname === "/locations";
   const overImage = hasImageHero && !scrolled;
 
   const navLinks = [
-    { href: "/properties", label: t.nav.properties },
-    { href: "/locations", label: t.nav.regions },
+    { href: "/properties", label: t.nav.buy },
     { href: "/sell", label: t.nav.sell },
-    { href: "/blog", label: t.nav.journal },
+    { href: "/locations", label: t.nav.regionsNav },
     { href: "/about", label: t.nav.about },
   ];
 
@@ -52,8 +51,8 @@ export function Header() {
       }`}
     >
       <div
-        className={`max-w-[1400px] mx-auto px-6 md:px-10 h-20 flex items-center justify-between transition-colors ${
-          overImage ? "text-white" : "text-foreground"
+        className={`w-full px-6 md:px-12 h-20 flex items-center justify-between transition-colors ${
+          overImage ? "text-white" : "text-black"
         }`}
       >
         <Link
@@ -66,8 +65,8 @@ export function Header() {
           }}
           className="flex items-center gap-3 hover:opacity-80 transition"
         >
-          <Logo className="w-7 h-9" invert={overImage} />
-          <span className="font-serif text-2xl tracking-[0.25em] uppercase">
+          <Logo className="w-7 h-9" invert={overImage} black={!overImage} />
+          <span className="font-serif text-2xl tracking-[0.3em] uppercase">
             Ellington
           </span>
         </Link>
@@ -77,10 +76,10 @@ export function Header() {
             <Link
               key={l.href}
               href={l.href}
-              className={`text-[13px] tracking-[0.18em] uppercase transition ${
+              className={`type-nav uppercase transition ${
                 overImage
                   ? "text-white/80 hover:text-white"
-                  : "text-muted-strong hover:text-foreground"
+                  : "text-neutral-700 hover:text-black"
               }`}
             >
               {l.label}
@@ -89,7 +88,11 @@ export function Header() {
           <LanguageToggle overImage={overImage} />
           <Link
             href="/contact"
-            className="text-[13px] tracking-[0.18em] uppercase px-5 py-2.5 bg-accent text-white hover:bg-accent-hover transition"
+            className={`type-button px-6 py-2.5 border transition ${
+              overImage
+                ? "border-white/60 text-white hover:bg-white hover:text-accent"
+                : "border-neutral-300 text-neutral-500 hover:border-black hover:text-black"
+            }`}
           >
             {t.nav.contact}
           </Link>

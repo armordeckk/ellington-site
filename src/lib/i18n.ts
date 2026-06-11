@@ -15,8 +15,10 @@ const dictRaw = {
   fr: {
     nav: {
       properties: "Propriétés",
+      buy: "Acheter",
       rentals: "Locations",
       regions: "Nos régions",
+      regionsNav: "Régions",
       sell: "Vendre",
       journal: "Journal",
       about: "À propos",
@@ -35,16 +37,15 @@ const dictRaw = {
     },
     home: {
       eyebrow: "Immobilier de prestige · Côte d'Azur",
-      titleBefore: "Trouvez votre",
-      titleAccent: "demeure",
-      titleAfter: "d'exception",
-      subtitle:
-        "Des villas en bord de mer aux penthouses du Carré d'Or, Ellington sélectionne pour vous les biens les plus rares de la Riviera française.",
+      titleBefore: "Découvrez l'élégance",
+      titleAccent: "",
+      titleAfter: "",
+      subtitle: "Propriétés d'exception sur la Côte d'Azur",
       whyEyebrow: "L'excellence Ellington",
-      whyTitleBefore: "Pourquoi",
-      whyTitleAccent: "nous choisir",
+      whyTitleBefore: "Pourquoi choisir",
+      whyTitleAccent: "Ellington",
       whySubtitle:
-        "Une expertise inégalée dans l'immobilier de luxe sur l'ensemble de la Côte d'Azur, mise au service d'une clientèle exigeante.",
+        "Une expertise inégalée dans l'immobilier de luxe sur l'ensemble de la Côte d'Azur.",
       whyCta: "Vendre avec nous",
       features: [
         {
@@ -77,10 +78,17 @@ const dictRaw = {
         "De Monaco à Saint-Tropez, nous opérons sur les emplacements les plus prestigieux de la Côte d'Azur.",
       regionsCta: "Voir toutes nos régions",
       newsletterEyebrow: "Restez informé",
-      newsletterTitleBefore: "Accès",
-      newsletterTitleAccent: "privilégié",
+      newsletterTitleBefore: "Restez",
+      newsletterTitleAccent: "informé",
       newsletterSubtitle:
-        "Recevez en avant-première nos nouvelles propriétés exclusives et nos analyses du marché immobilier de la Côte d'Azur.",
+        "Recevez en exclusivité nos nouveaux biens et nos analyses du marché immobilier.",
+      expertTitle: "Un expert local pas comme les autres.",
+      expertP1:
+        "Né au cœur du Golfe de Saint-Tropez, Ellington est plus qu'une agence immobilière — c'est une signature.",
+      expertP2:
+        "Son fondateur, ayant grandi dans la région, possède une connaissance intime et instinctive de chaque secteur, chaque adresse et chaque détail subtil qui définit la valeur d'un bien sur la Côte d'Azur. Cette expertise locale, bâtie au fil des années, est aujourd'hui mise au service d'une clientèle exigeante en quête d'excellence.",
+      expertP3:
+        "Choisir Ellington, c'est s'associer à un conseiller de confiance combinant des racines locales profondes, un rayonnement international et l'excellence du service.",
       newsletterDisclaimer:
         "Pas de spam — désinscription possible à tout moment.",
       newsletterPlaceholder: "Votre adresse email",
@@ -136,6 +144,10 @@ const dictRaw = {
       area: "Surface",
       year: "Année",
       origin: "Origine",
+      type: "Type",
+      landArea: "Surface terrain",
+      propertyDetailsTitle: "Détails du bien",
+      officeHours: "Horaires",
       description: "Description",
       features: "Prestations",
       location: "Localisation",
@@ -182,6 +194,8 @@ const dictRaw = {
       titleAccent: "régions",
       subtitle:
         "Explorez les emplacements les plus prestigieux le long de la Côte d'Azur, où le luxe rencontre l'art de vivre méditerranéen.",
+      intro:
+        "Découvrez l'agence Ellington, votre partenaire immobilier de renom depuis 1987. Nichée au cœur du Golfe de Saint-Tropez, notre expertise et passion pour les biens d'exception nous permettent de dénicher les joyaux cachés de la Côte d'Azur. Avec une présence digitale avant-gardiste et un accompagnement sur-mesure, nous sommes votre allié pour trouver la perle rare qui saura combler vos attentes. Réputés pour notre sérieux, nous sommes fiers de compter une clientèle internationale fidèle à notre agence !",
       regionLabel: (i: number, total: number) => `Région ${i} / ${total}`,
       currentlyAvailable: (n: number) =>
         `${n} bien${n > 1 ? "s" : ""} actuellement en portefeuille`,
@@ -189,8 +203,10 @@ const dictRaw = {
     },
     aboutPage: {
       eyebrow: "À propos d'Ellington",
-      titleBefore: "L'art de vivre",
-      titleAccent: "la Riviera",
+      titleBefore: "À propos",
+      titleAccent: "d'Ellington",
+      heroSubtitle:
+        "Une expertise inégalée de l'immobilier de luxe sur l'ensemble de la Côte d'Azur",
       dividerLabel: "Notre signature",
       lead: "Née au cœur du Golfe de Saint-Tropez, Ellington est plus qu'une agence immobilière — c'est une signature. Son fondateur, ayant grandi dans la région, possède une connaissance intime et instinctive de chaque secteur, chaque adresse, chaque détail subtil qui définit la valeur d'un bien sur la Côte d'Azur. Cette expertise locale, bâtie au fil des années, est aujourd'hui mise au service d'une clientèle exigeante en quête d'excellence.",
       body: "Animée par un esprit profondément international, Ellington s'adresse à une clientèle sans frontières. Trilingue en français, anglais et néerlandais, notre équipe dirigeante a tissé de solides relations avec un réseau de partenaires internationaux, attirant des acquéreurs qualifiés et garantissant à chaque bien une exposition ciblée et stratégique. Qu'il s'agisse de villas d'exception, d'appartements de prestige ou de biens uniques, chaque propriété est présentée selon une approche sur-mesure, alliant discrétion, précision et souci du détail.",
@@ -202,8 +218,8 @@ const dictRaw = {
         { value: "6", label: "Bureaux sur la Côte d'Azur" },
       ],
       valuesEyebrow: "Nos valeurs",
-      valuesTitleBefore: "Un engagement",
-      valuesTitleAccent: "absolu",
+      valuesTitleBefore: "Nos",
+      valuesTitleAccent: "valeurs",
       values: [
         {
           title: "Intégrité",
@@ -231,13 +247,15 @@ const dictRaw = {
         },
       ],
       teamEyebrow: "L'équipe",
-      teamTitleBefore: "Les visages",
-      teamTitleAccent: "d'Ellington",
+      teamTitleBefore: "Notre",
+      teamTitleAccent: "équipe",
       team: [
         {
           name: "Marc Mehagnoul",
           role: "Fondateur & CEO",
           photo: "/team/marc-mehagnoul.jpg",
+          bio: "Fort de plus de 30 ans d'expérience dans l'immobilier de luxe, Marc a fondé Ellington avec la vision de redéfinir l'excellence sur le marché de la Côte d'Azur.",
+          email: "hello@ellington-international.fr",
         },
       ],
       ctaEyebrow: "Une question ?",
@@ -248,11 +266,14 @@ const dictRaw = {
     },
     contactPage: {
       eyebrow: "Contact",
-      titleBefore: "Échangeons en",
-      titleAccent: "confidence",
+      titleBefore: "Prenons",
+      titleAccent: "contact",
       subtitle:
-        "Que ce soit pour acquérir, vendre ou estimer un bien d'exception, notre équipe vous accompagne avec discrétion.",
-      detailsTitle: "Nos coordonnées",
+        "Nous sommes là pour répondre à vos questions et vous guider tout au long de votre parcours immobilier de prestige.",
+      formTitle: "Envoyez-nous un message",
+      formSubtitle:
+        "Remplissez le formulaire ci-dessous et un membre de notre équipe vous répondra sous 24 heures.",
+      detailsTitle: "Coordonnées",
       hoursTitle: "Horaires",
       advisorBlock: {
         eyebrow: "Votre interlocuteur",
@@ -268,16 +289,20 @@ const dictRaw = {
       sunHours: "Sur RDV",
       monFriHours: "9h – 18h",
       satHours: "10h – 16h",
-      confidentialTitle: "Confidentialité",
+      confidentialTitle: "Service confidentiel",
       confidentialBody:
         "Toutes vos demandes sont traitées avec la plus stricte discrétion, conformément à notre engagement de confidentialité.",
       thanks: "Merci.",
       successBody:
         "Votre message a bien été reçu. Un conseiller vous recontactera sous 24 heures, en toute confidentialité.",
-      firstName: "Prénom *",
-      lastName: "Nom *",
-      emailField: "Email *",
+      firstName: "Prénom",
+      lastName: "Nom",
+      emailField: "Email",
       phone: "Téléphone",
+      firstNamePh: "Jean",
+      lastNamePh: "Dupont",
+      emailPh: "jean.dupont@exemple.com",
+      phonePh: "+33 6 12 34 56 78",
       subject: "Objet *",
       subjectPlaceholder: "Sélectionnez un objet",
       subjects: [
@@ -287,8 +312,11 @@ const dictRaw = {
         "Location saisonnière",
         "Autre demande",
       ],
-      messageLabel: "Votre message *",
-      messagePlaceholder: "Décrivez votre projet ou votre demande…",
+      messageLabel: "Message",
+      messagePlaceholder: "Décrivez votre demande en détail…",
+      disclaimer:
+        "En soumettant ce formulaire, vous acceptez notre politique de confidentialité. Nous ne partagerons jamais vos informations personnelles avec des tiers et ne les utiliserons que pour répondre à votre demande.",
+      sendMessage: "Envoyer le message",
       consent:
         "J'accepte que mes informations soient utilisées pour me recontacter dans le cadre de ma demande.",
     },
@@ -352,6 +380,10 @@ const dictRaw = {
           body: "Chaque bien bénéficie d'une stratégie personnalisée conçue pour maximiser sa valeur.",
         },
       ],
+      ctaTitle: "Découvrez la vraie valeur de votre bien",
+      ctaSubtitle:
+        "Que vous envisagiez de vendre ou que vous exploriez simplement vos options, notre équipe est à votre disposition.",
+      ctaButton: "Demander votre estimation confidentielle",
     },
     footer: {
       tagline:
@@ -393,8 +425,10 @@ const dictRaw = {
   en: {
     nav: {
       properties: "Properties",
+      buy: "Buy",
       rentals: "Rentals",
       regions: "Our regions",
+      regionsNav: "Locations",
       sell: "Sell",
       journal: "Journal",
       about: "About",
@@ -413,16 +447,15 @@ const dictRaw = {
     },
     home: {
       eyebrow: "Luxury Real Estate · French Riviera",
-      titleBefore: "Find your",
-      titleAccent: "exceptional",
-      titleAfter: "residence",
-      subtitle:
-        "From beachfront villas to Carré d'Or penthouses, Ellington curates the rarest properties on the French Riviera for you.",
+      titleBefore: "Discover Elegance",
+      titleAccent: "",
+      titleAfter: "",
+      subtitle: "Exclusive Properties in the French Riviera",
       whyEyebrow: "The Ellington Standard",
-      whyTitleBefore: "Why",
-      whyTitleAccent: "choose us",
+      whyTitleBefore: "Why choose",
+      whyTitleAccent: "Ellington",
       whySubtitle:
-        "Unrivalled expertise in luxury real estate across the entire French Riviera, at the service of a discerning clientele.",
+        "Unparalleled expertise in luxury real estate across the French Riviera.",
       whyCta: "Sell with us",
       features: [
         {
@@ -455,10 +488,17 @@ const dictRaw = {
         "From Monaco to Saint-Tropez, we operate in the most prestigious locations on the French Riviera.",
       regionsCta: "View all our regions",
       newsletterEyebrow: "Stay informed",
-      newsletterTitleBefore: "Privileged",
-      newsletterTitleAccent: "access",
+      newsletterTitleBefore: "Stay",
+      newsletterTitleAccent: "informed",
       newsletterSubtitle:
-        "Be the first to receive our new exclusive properties and our French Riviera real estate market insights.",
+        "Receive exclusive updates on new properties and market insights.",
+      expertTitle: "Not Your Ordinary Local Expert.",
+      expertP1:
+        "Born in the heart of the Gulf of Saint-Tropez, Ellington is more than a real estate agency — it is a signature.",
+      expertP2:
+        "Its founder, having grown up in the region, possesses an intimate and instinctive knowledge of every area, every address, and every subtle detail that defines the value of a property on the French Riviera. This local expertise, built over the years, is now dedicated to serving a discerning clientele in search of excellence.",
+      expertP3:
+        "Choosing Ellington means partnering with a trusted advisor who combines deep local roots, international reach, and excellence in service.",
       newsletterDisclaimer:
         "No spam — unsubscribe at any time.",
       newsletterPlaceholder: "Your email address",
@@ -514,6 +554,10 @@ const dictRaw = {
       area: "Living area",
       year: "Year",
       origin: "Origin",
+      type: "Type",
+      landArea: "Land area",
+      propertyDetailsTitle: "Property Details",
+      officeHours: "Office hours",
       description: "Description",
       features: "Features",
       location: "Location",
@@ -557,9 +601,11 @@ const dictRaw = {
     locationsPage: {
       eyebrow: "The French Riviera",
       titleBefore: "Our",
-      titleAccent: "regions",
+      titleAccent: "Locations",
       subtitle:
-        "Explore the most prestigious locations along the French Riviera, where luxury meets Mediterranean lifestyle.",
+        "Explore the most prestigious locations along the Côte d'Azur, where luxury meets the Mediterranean lifestyle.",
+      intro:
+        "Discover Ellington, your renowned real estate partner since 1987. Nestled in the heart of the Gulf of Saint-Tropez, our expertise and passion for exceptional properties allow us to uncover the hidden gems of the Côte d'Azur. With a forward-thinking digital presence and bespoke support, we are your ally in finding the rare gem that will fulfil your every expectation. Renowned for our integrity, we are proud to count a loyal international clientele!",
       regionLabel: (i: number, total: number) => `Region ${i} / ${total}`,
       currentlyAvailable: (n: number) =>
         `${n} propert${n > 1 ? "ies" : "y"} currently in portfolio`,
@@ -567,8 +613,10 @@ const dictRaw = {
     },
     aboutPage: {
       eyebrow: "About Ellington",
-      titleBefore: "The art of",
-      titleAccent: "Riviera living",
+      titleBefore: "About",
+      titleAccent: "Ellington",
+      heroSubtitle:
+        "Unparalleled expertise in luxury real estate across the French Riviera",
       dividerLabel: "Our signature",
       lead: "Born in the heart of the Gulf of Saint-Tropez, Ellington is more than a real estate agency — it is a signature. Its founder, having grown up in the region, possesses an intimate and instinctive knowledge of every area, every address, and every subtle detail that defines the value of a property on the French Riviera. This local expertise, built over the years, is now dedicated to serving a discerning clientele in search of excellence.",
       body: "Driven by a deeply international mindset, Ellington speaks to a clientele without borders. Fluent in French, English, and Dutch, the leadership has developed strong relationships with a network of international partners, attracting qualified buyers and ensuring each property benefits from targeted and strategic exposure. Whether it is exceptional villas, prestigious apartments, or unique properties, every home is presented through a tailored approach, combining discretion, precision, and attention to detail.",
@@ -580,8 +628,8 @@ const dictRaw = {
         { value: "6", label: "Offices on the French Riviera" },
       ],
       valuesEyebrow: "Our values",
-      valuesTitleBefore: "An absolute",
-      valuesTitleAccent: "commitment",
+      valuesTitleBefore: "Our",
+      valuesTitleAccent: "Values",
       values: [
         {
           title: "Integrity",
@@ -609,13 +657,15 @@ const dictRaw = {
         },
       ],
       teamEyebrow: "The team",
-      teamTitleBefore: "The faces of",
-      teamTitleAccent: "Ellington",
+      teamTitleBefore: "Agency",
+      teamTitleAccent: "Team",
       team: [
         {
           name: "Marc Mehagnoul",
           role: "Founder & CEO",
           photo: "/team/marc-mehagnoul.jpg",
+          bio: "With over 30 years of experience in luxury real estate, Marc founded Ellington with a vision to redefine excellence in the French Riviera market.",
+          email: "hello@ellington-international.fr",
         },
       ],
       ctaEyebrow: "A question?",
@@ -626,12 +676,15 @@ const dictRaw = {
     },
     contactPage: {
       eyebrow: "Contact",
-      titleBefore: "Let's speak in",
-      titleAccent: "confidence",
+      titleBefore: "Get in",
+      titleAccent: "touch",
       subtitle:
-        "Whether to acquire, sell or value an exceptional property, our team accompanies you with discretion.",
-      detailsTitle: "Our details",
-      hoursTitle: "Hours",
+        "We're here to answer your questions and guide you through your luxury real estate journey.",
+      formTitle: "Send Us a Message",
+      formSubtitle:
+        "Fill out the form below and a member of our team will respond within 24 hours.",
+      detailsTitle: "Contact Information",
+      hoursTitle: "Office Hours",
       advisorBlock: {
         eyebrow: "Your contact",
         role: "Portfolio director",
@@ -646,16 +699,20 @@ const dictRaw = {
       sunHours: "By appointment",
       monFriHours: "9am – 6pm",
       satHours: "10am – 4pm",
-      confidentialTitle: "Confidentiality",
+      confidentialTitle: "Confidential service",
       confidentialBody:
         "All your enquiries are handled with the strictest discretion, in line with our commitment to confidentiality.",
       thanks: "Thank you.",
       successBody:
         "Your message has been received. An advisor will contact you within 24 hours, in full confidentiality.",
-      firstName: "First name *",
-      lastName: "Last name *",
-      emailField: "Email *",
-      phone: "Phone",
+      firstName: "First name",
+      lastName: "Last name",
+      emailField: "Email address",
+      phone: "Phone number",
+      firstNamePh: "John",
+      lastNamePh: "Smith",
+      emailPh: "john.smith@example.com",
+      phonePh: "+33 6 12 34 56 78",
       subject: "Subject *",
       subjectPlaceholder: "Select a subject",
       subjects: [
@@ -665,8 +722,11 @@ const dictRaw = {
         "Seasonal rental",
         "Other enquiry",
       ],
-      messageLabel: "Your message *",
-      messagePlaceholder: "Describe your project or enquiry…",
+      messageLabel: "Message",
+      messagePlaceholder: "Please provide details about your inquiry...",
+      disclaimer:
+        "By submitting this form, you agree to our privacy policy. We will never share your personal information with third parties and will only use it to respond to your inquiry.",
+      sendMessage: "Send message",
       consent:
         "I agree that my information may be used to contact me in connection with my enquiry.",
     },
@@ -730,6 +790,10 @@ const dictRaw = {
           body: "Every property benefits from a personalized strategy designed to maximize its value.",
         },
       ],
+      ctaTitle: "Discover the true value of your property",
+      ctaSubtitle:
+        "Whether you are considering selling or simply exploring your options, our team is at your disposal.",
+      ctaButton: "Request your confidential valuation",
     },
     footer: {
       tagline:

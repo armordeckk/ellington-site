@@ -9,13 +9,13 @@ export function Footer() {
   const { t } = useLanguage();
   const year = new Date().getFullYear();
   return (
-    <footer className="border-t border-[var(--border)] bg-[var(--background)]">
+    <footer className="bg-[var(--panel)]">
       <div className="max-w-[1400px] mx-auto px-6 md:px-10 py-16">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
           <div>
             <Link href="/" className="flex items-center gap-3 mb-4">
               <Logo className="w-6 h-8" />
-              <span className="font-serif text-xl tracking-[0.25em] uppercase">
+              <span className="font-serif text-xl tracking-[0.3em] uppercase">
                 Ellington
               </span>
             </Link>
@@ -37,28 +37,28 @@ export function Footer() {
             </h4>
             <ul className="space-y-3 text-sm">
               <li>
-                <Link href="/properties" className="text-foreground/90 hover:text-accent transition">
-                  {t.nav.properties}
+                <Link href="/properties" className="text-foreground/90 hover:text-link transition">
+                  {t.nav.buy}
                 </Link>
               </li>
               <li>
-                <Link href="/locations" className="text-foreground/90 hover:text-accent transition">
-                  {t.nav.regions}
-                </Link>
-              </li>
-              <li>
-                <Link href="/sell" className="text-foreground/90 hover:text-accent transition">
+                <Link href="/sell" className="text-foreground/90 hover:text-link transition">
                   {t.nav.sell}
                 </Link>
               </li>
               <li>
-                <Link href="/blog" className="text-foreground/90 hover:text-accent transition">
-                  {t.nav.journal}
+                <Link href="/locations" className="text-foreground/90 hover:text-link transition">
+                  {t.nav.regionsNav}
                 </Link>
               </li>
               <li>
-                <Link href="/about" className="text-foreground/90 hover:text-accent transition">
+                <Link href="/about" className="text-foreground/90 hover:text-link transition">
                   {t.nav.about}
+                </Link>
+              </li>
+              <li>
+                <Link href="/blog" className="text-foreground/90 hover:text-link transition">
+                  {t.nav.journal}
                 </Link>
               </li>
             </ul>
@@ -70,12 +70,12 @@ export function Footer() {
             </h4>
             <ul className="space-y-3 text-sm">
               <li>
-                <a href="tel:+33674750703" className="text-foreground/90 hover:text-accent transition">
+                <a href="tel:+33674750703" className="text-foreground/90 hover:text-link transition">
                   +33 6 74 75 07 03
                 </a>
               </li>
               <li>
-                <a href="mailto:hello@ellington-international.fr" className="text-foreground/90 hover:text-accent transition">
+                <a href="mailto:hello@ellington-international.fr" className="text-foreground/90 hover:text-link transition">
                   hello@ellington-international.fr
                 </a>
               </li>

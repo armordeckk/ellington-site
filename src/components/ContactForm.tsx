@@ -18,7 +18,7 @@ export function ContactForm() {
 
   if (state === "ok") {
     return (
-      <div className="bg-[var(--background-card)] border border-accent/40 p-12 text-center">
+      <div className="bg-[var(--panel)] p-12 text-center">
         <p className="font-serif text-3xl italic text-accent mb-4">
           {t.contactPage.thanks}
         </p>
@@ -28,66 +28,72 @@ export function ContactForm() {
   }
 
   return (
-    <form
-      onSubmit={onSubmit}
-      className="bg-[var(--background-card)] border border-[var(--border)] p-8 md:p-12 space-y-6"
-    >
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <Field label={t.contactPage.firstName} name="firstName" required />
-        <Field label={t.contactPage.lastName} name="lastName" required />
-      </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <Field label={t.contactPage.emailField} name="email" type="email" required />
-        <Field label={t.contactPage.phone} name="phone" type="tel" />
-      </div>
+    <div>
+      <h2 className="type-h3 mb-3">
+        {t.contactPage.formTitle}
+      </h2>
+      <p className="text-muted mb-8">{t.contactPage.formSubtitle}</p>
 
-      <label className="block">
-        <span className="block text-[10px] tracking-[0.22em] uppercase text-muted mb-2">
-          {t.contactPage.subject}
-        </span>
-        <select
-          name="subject"
-          required
-          className="appearance-none w-full bg-[var(--background)] border border-[var(--border)] focus:border-accent transition px-4 py-3.5 text-sm cursor-pointer"
-          defaultValue=""
+      <form onSubmit={onSubmit} className="space-y-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <Field
+            label={t.contactPage.firstName}
+            name="firstName"
+            required
+            placeholder={t.contactPage.firstNamePh}
+          />
+          <Field
+            label={t.contactPage.lastName}
+            name="lastName"
+            required
+            placeholder={t.contactPage.lastNamePh}
+          />
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <Field
+            label={t.contactPage.emailField}
+            name="email"
+            type="email"
+            required
+            placeholder={t.contactPage.emailPh}
+          />
+          <Field
+            label={t.contactPage.phone}
+            name="phone"
+            type="tel"
+            placeholder={t.contactPage.phonePh}
+          />
+        </div>
+
+        <label className="block">
+          <span className="block text-[10px] tracking-[0.22em] uppercase text-muted mb-2">
+            {t.contactPage.messageLabel} <span className="text-red-500">*</span>
+          </span>
+          <textarea
+            name="message"
+            required
+            rows={5}
+            className="w-full bg-[var(--panel)] border border-transparent focus:border-accent transition px-4 py-3.5 text-sm resize-none placeholder:text-muted/70"
+            placeholder={t.contactPage.messagePlaceholder}
+          />
+        </label>
+
+        <p className="text-xs text-muted leading-relaxed">
+          {t.contactPage.disclaimer}
+        </p>
+
+        <button
+          type="submit"
+          disabled={state === "loading"}
+          className="w-full flex items-center justify-center gap-2 px-10 py-4 bg-accent hover:bg-accent-hover text-white text-[11px] tracking-[0.22em] uppercase transition disabled:opacity-60"
         >
-          <option value="" disabled>
-            {t.contactPage.subjectPlaceholder}
-          </option>
-          {t.contactPage.subjects.map((s) => (
-            <option key={s} value={s}>
-              {s}
-            </option>
-          ))}
-        </select>
-      </label>
-
-      <label className="block">
-        <span className="block text-[10px] tracking-[0.22em] uppercase text-muted mb-2">
-          {t.contactPage.messageLabel}
-        </span>
-        <textarea
-          name="message"
-          required
-          rows={6}
-          className="w-full bg-[var(--background)] border border-[var(--border)] focus:border-accent transition px-4 py-3.5 text-sm resize-none"
-          placeholder={t.contactPage.messagePlaceholder}
-        />
-      </label>
-
-      <label className="flex items-start gap-3 text-xs text-muted">
-        <input type="checkbox" required className="mt-1 accent-[var(--accent)]" />
-        <span>{t.contactPage.consent}</span>
-      </label>
-
-      <button
-        type="submit"
-        disabled={state === "loading"}
-        className="w-full md:w-auto px-10 py-4 bg-accent hover:bg-accent-hover text-[var(--background)] text-[11px] tracking-[0.22em] uppercase transition disabled:opacity-60"
-      >
-        {state === "loading" ? t.common.sending : t.common.send}
-      </button>
-    </form>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+            <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" />
+          </svg>
+          {state === "loading" ? t.common.sending : t.contactPage.sendMessage}
+        </button>
+      </form>
+    </div>
   );
 }
 
@@ -96,22 +102,25 @@ function Field({
   name,
   type = "text",
   required,
+  placeholder,
 }: {
   label: string;
   name: string;
   type?: string;
   required?: boolean;
+  placeholder?: string;
 }) {
   return (
     <label className="block">
       <span className="block text-[10px] tracking-[0.22em] uppercase text-muted mb-2">
-        {label}
+        {label} {required && <span className="text-red-500">*</span>}
       </span>
       <input
         name={name}
         type={type}
         required={required}
-        className="w-full bg-[var(--background)] border border-[var(--border)] focus:border-accent transition px-4 py-3.5 text-sm"
+        placeholder={placeholder}
+        className="w-full bg-[var(--panel)] border border-transparent focus:border-accent transition px-4 py-3.5 text-sm placeholder:text-muted/70"
       />
     </label>
   );

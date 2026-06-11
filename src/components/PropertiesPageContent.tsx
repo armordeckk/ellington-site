@@ -15,14 +15,10 @@ export function PropertiesPageContent({
   return (
     <div className="pt-32 pb-20">
       <div className="max-w-[1400px] mx-auto px-6 md:px-10 mb-12 text-center">
-        <p className="text-[11px] tracking-[0.32em] uppercase text-accent mb-5">
-          {t.propertiesPage.eyebrow}
-        </p>
-        <h1 className="font-serif text-5xl md:text-7xl mb-5">
-          {t.propertiesPage.titleBefore}{" "}
-          <em className="italic">{t.propertiesPage.titleAccent}</em>
+        <h1 className="type-h1 mb-5">
+          {t.propertiesPage.titleBefore} {t.propertiesPage.titleAccent}
         </h1>
-        <p className="text-muted-strong max-w-2xl mx-auto">
+        <p className="font-serif italic text-lg md:text-xl text-muted-strong max-w-2xl mx-auto">
           {t.propertiesPage.subtitle}
         </p>
       </div>

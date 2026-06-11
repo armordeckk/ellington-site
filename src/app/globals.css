@@ -1,18 +1,24 @@
 @import "tailwindcss";
 
 :root {
-  /* Light luxury palette — soft pastel blue backgrounds, deep navy ink, navy accents */
-  --background: #e3e9f1;        /* pastel Riviera blue */
-  --background-elev: #ffffff;   /* pure white sections */
+  /* ── Client design-system palette (Figma) ──────────────────────────────
+     CORE     : Primary #FFFFFF · Secondary #000000 · Dark Accent #0D316C
+     NEUTRAL  : Primary #E4EEFF · Secondary #9A9A9A · Accent #004BC1 · Accent-light #D9D9D9
+  */
+  --background: #ffffff;        /* Core Primary — white page background */
+  --background-elev: #ffffff;   /* white sections */
   --background-card: #ffffff;   /* white cards */
-  --foreground: #1a1d2e;        /* deep navy ink */
-  --muted: #6e7a8c;             /* cool blue-gray */
-  --muted-strong: #3d4660;      /* deeper blue-gray */
-  --border: rgba(26, 29, 46, 0.10);
-  --border-strong: rgba(26, 29, 46, 0.18);
-  --accent: #1e3a5f;            /* Riviera deep navy blue */
-  --accent-hover: #142847;      /* deeper navy on hover */
-  --gold: #4a6f99;              /* lighter blue for dark-background highlights */
+  --panel: #e4eeff;             /* Neutral Primary — light-blue accent panels (footer, info boxes, filter bar) */
+  --foreground: #000000;        /* Core Secondary — black typography (Figma) */
+  --muted: #9a9a9a;             /* Neutral Secondary — gray */
+  --muted-strong: #5a6b86;      /* deeper blue-gray for secondary text */
+  --border: #d9d9d9;            /* Neutral Accent-light — hairline gray */
+  --border-strong: #c2c2c2;     /* stronger hairline */
+  --accent: #0d316c;            /* Dark Accent navy — buttons & key accents */
+  --accent-hover: #09244e;      /* deeper navy on hover (navy buttons) */
+  --link: #004bc1;              /* Neutral Accent — links & text hovers */
+  --link-hover: #003a99;        /* darker blue on press */
+  --gold: #004bc1;              /* highlight accent on dark backgrounds */
   /* Shield dark navy — used by the logo to stay branded regardless of theme */
   --brand-navy: #0a1628;
 }
@@ -21,6 +27,7 @@
   --color-background: var(--background);
   --color-background-elev: var(--background-elev);
   --color-background-card: var(--background-card);
+  --color-panel: var(--panel);
   --color-foreground: var(--foreground);
   --color-muted: var(--muted);
   --color-muted-strong: var(--muted-strong);
@@ -28,10 +35,38 @@
   --color-border-strong: var(--border-strong);
   --color-accent: var(--accent);
   --color-accent-hover: var(--accent-hover);
+  --color-link: var(--link);
+  --color-link-hover: var(--link-hover);
   --color-gold: var(--gold);
   --color-brand-navy: var(--brand-navy);
   --font-sans: var(--font-inter);
   --font-serif: var(--font-cormorant);
+
+  /* ── Type scale (Figma) — desktop sizes; mobile sizes noted for restyling.
+     Cormorant for h1–h4 / titles, Inter for body & UI.
+     Available as utilities: text-h1, text-h2, text-h3, text-h4,
+     text-card-title, text-sub, text-highlight, text-body-lg, text-body,
+     text-body-sm, text-button. */
+  --text-h1: 4rem;              /* 64 · mobile 36 */
+  --text-h1--line-height: 1.05;
+  --text-h2: 3rem;              /* 48 · mobile 30 */
+  --text-h2--line-height: 1.1;
+  --text-h3: 2rem;              /* 32 · mobile 22 */
+  --text-h3--line-height: 1.2;
+  --text-h4: 1.5rem;            /* 24 · mobile 18 */
+  --text-h4--line-height: 1.3;
+  --text-card-title: 2.25rem;   /* 36 */
+  --text-card-title--line-height: 1.2;
+  --text-sub: 1.875rem;         /* 30 · logo / sub-header */
+  --text-highlight: 2rem;       /* 32 */
+  --text-body-lg: 1.125rem;     /* 18 · mobile 16 */
+  --text-body-lg--line-height: 1.6;
+  --text-body: 1rem;            /* 16 · line-height 32 */
+  --text-body--line-height: 2;
+  --text-body-sm: 0.875rem;     /* 14 · mobile 12 */
+  --text-button: 0.75rem;       /* 12 · mobile 10 · uppercase + tracking */
+  --text-button--line-height: 1;
+  --text-button--letter-spacing: 0.18em;
 }
 
 * {
@@ -43,12 +78,58 @@ html, body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-sans), system-ui, sans-serif;
+  font-weight: 300; /* Inter Light — Figma body default */
   font-feature-settings: "ss01", "cv11";
 }
 
-.font-serif {
-  font-family: var(--font-serif), Georgia, serif;
-  letter-spacing: -0.01em;
+/* In @layer base so explicit `tracking-*` utilities (e.g. logo, hero h1)
+   override the default serif tightening instead of being clobbered by it. */
+@layer base {
+  .font-serif {
+    font-family: var(--font-serif), Georgia, serif;
+    font-weight: 500; /* Cormorant Medium — Figma heading default */
+    letter-spacing: -0.01em;
+  }
+}
+
+/* ── Figma typography system — exact named styles (colour: var(--foreground) = #000).
+   Apply these classes to harmonise type across the whole site.
+   Desktop sizes below; headings scale down on mobile. */
+@layer components {
+  .type-h1,
+  .type-h2,
+  .type-h3,
+  .type-h4 {
+    font-family: var(--font-serif), Georgia, serif;
+    letter-spacing: 0;
+  }
+  .type-h1 { font-weight: 500; font-size: 64px; line-height: 1; text-transform: uppercase; }
+  .type-h2 { font-weight: 600; font-size: 48px; line-height: 1; text-transform: uppercase; }
+  .type-h3 { font-weight: 500; font-style: italic; font-size: 32px; line-height: 1; }
+  .type-h4 { font-weight: 500; font-size: 24px; line-height: 1; }
+
+  .type-body-lg,
+  .type-body,
+  .type-body-sm,
+  .type-button,
+  .type-nav,
+  .type-caption {
+    font-family: var(--font-sans), system-ui, sans-serif;
+  }
+  .type-body-lg { font-weight: 300; font-size: 18px; line-height: 1; }
+  .type-body { font-weight: 200; font-size: 16px; line-height: 32px; }
+  .type-body-sm { font-weight: 300; font-size: 14px; line-height: 1; }
+  .type-button { font-weight: 300; font-size: 12px; line-height: 1; letter-spacing: 2px; text-transform: uppercase; }
+  .type-nav { font-weight: 300; font-size: 14px; line-height: 1; letter-spacing: 2px; }
+  .type-caption { font-weight: 300; font-size: 12px; line-height: 1; letter-spacing: 2px; }
+
+  @media (max-width: 768px) {
+    .type-h1 { font-size: 36px; }
+    .type-h2 { font-size: 30px; }
+    .type-h3 { font-size: 22px; }
+    .type-h4 { font-size: 18px; }
+    .type-body-lg { font-size: 16px; }
+  }
 }
 
 .tracking-luxury {

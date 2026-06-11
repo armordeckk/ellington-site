@@ -38,7 +38,7 @@ export function BlogCard({
             {post.readingTime ? ` · ${post.readingTime} min` : ""}
           </span>
         </div>
-        <h3 className="font-serif text-2xl md:text-[1.7rem] leading-[1.15] mb-3 group-hover:text-accent transition">
+        <h3 className="font-serif text-2xl md:text-[1.7rem] leading-[1.15] mb-3 group-hover:text-link transition">
           {post.title}
         </h3>
         <p className="text-sm text-muted leading-relaxed line-clamp-3">

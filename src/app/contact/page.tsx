@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { ContactForm } from "@/components/ContactForm";
 import { useLanguage } from "@/components/LanguageProvider";
 
@@ -9,15 +8,13 @@ export default function ContactPage() {
   return (
     <div className="pt-32 pb-20">
       <div className="max-w-[1400px] mx-auto px-6 md:px-10">
-        <header className="text-center mb-16 max-w-2xl mx-auto">
-          <p className="text-[11px] tracking-[0.32em] uppercase text-accent mb-5">
-            {t.contactPage.eyebrow}
-          </p>
-          <h1 className="font-serif text-5xl md:text-7xl mb-6">
-            {t.contactPage.titleBefore}{" "}
-            <em className="italic">{t.contactPage.titleAccent}</em>
+        <header className="text-center mb-20 max-w-2xl mx-auto">
+          <h1 className="type-h1 mb-6">
+            {t.contactPage.titleBefore} {t.contactPage.titleAccent}
           </h1>
-          <p className="text-muted-strong text-lg">{t.contactPage.subtitle}</p>
+          <p className="font-serif italic text-lg md:text-xl text-muted-strong">
+            {t.contactPage.subtitle}
+          </p>
         </header>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
@@ -26,95 +23,50 @@ export default function ContactPage() {
           </div>
 
           <aside className="space-y-6">
-            {/* Personal advisor block — humanises the form */}
-            <div className="bg-[var(--background-card)] border border-[var(--border)] overflow-hidden">
-              <div className="relative aspect-[4/5] w-full">
-                <Image
-                  src="/team/marc-mehagnoul.jpg"
-                  alt="Marc Mehagnoul"
-                  fill
-                  sizes="(min-width: 1024px) 33vw, 100vw"
-                  className="object-cover"
-                />
-              </div>
-              <div className="p-7">
-                <p className="text-[10px] tracking-[0.32em] uppercase text-accent mb-3">
-                  {t.contactPage.advisorBlock.eyebrow}
-                </p>
-                <h3 className="font-serif text-2xl mb-1">Marc Mehagnoul</h3>
-                <p className="text-xs text-muted mb-5">
-                  {t.contactPage.advisorBlock.role}
-                </p>
-                <p className="text-sm text-muted-strong italic font-serif leading-[1.7] mb-5">
-                  « {t.contactPage.advisorBlock.intro} »
-                </p>
-                <p className="font-serif text-accent">
-                  {t.contactPage.advisorBlock.signature}
-                </p>
-              </div>
-            </div>
-
+            {/* Contact information — white card */}
             <div className="bg-[var(--background-card)] border border-[var(--border)] p-8">
-              <h3 className="font-serif text-2xl mb-6">
-                {t.contactPage.detailsTitle}
-              </h3>
-              <dl className="space-y-5 text-sm">
-                <div>
-                  <dt className="text-[10px] tracking-[0.22em] uppercase text-muted mb-2">
-                    {t.contactPage.phone}
-                  </dt>
-                  <dd>
-                    <a href="tel:+33674750703" className="hover:text-accent transition">
-                      +33 6 74 75 07 03
-                    </a>
-                  </dd>
-                </div>
-                <div>
-                  <dt className="text-[10px] tracking-[0.22em] uppercase text-muted mb-2">
-                    {t.propertyDetail.email}
-                  </dt>
-                  <dd>
-                    <a href="mailto:hello@ellington-international.fr" className="hover:text-accent transition">
-                      hello@ellington-international.fr
-                    </a>
-                  </dd>
-                </div>
-                <div>
-                  <dt className="text-[10px] tracking-[0.22em] uppercase text-muted mb-2">
-                    {t.propertyDetail.location}
-                  </dt>
-                  <dd className="leading-relaxed whitespace-pre-line">
+              <h3 className="type-h4 mb-7">{t.contactPage.detailsTitle}</h3>
+              <div className="space-y-6 text-sm">
+                <InfoRow label={t.contactPage.phone} icon="phone">
+                  <a href="tel:+33674750703" className="hover:text-link transition">
+                    +33 6 74 75 07 03
+                  </a>
+                </InfoRow>
+                <InfoRow label={t.propertyDetail.email} icon="mail">
+                  <a
+                    href="mailto:hello@ellington-international.fr"
+                    className="hover:text-link transition break-all"
+                  >
+                    hello@ellington-international.fr
+                  </a>
+                </InfoRow>
+                <InfoRow label={t.propertyDetail.location} icon="pin">
+                  <span className="whitespace-pre-line leading-relaxed">
                     {t.contactPage.address}
-                  </dd>
-                </div>
-              </dl>
+                  </span>
+                </InfoRow>
+              </div>
             </div>
 
+            {/* Office hours — white card */}
             <div className="bg-[var(--background-card)] border border-[var(--border)] p-8">
-              <h3 className="font-serif text-2xl mb-6">
-                {t.contactPage.hoursTitle}
-              </h3>
-              <dl className="space-y-3 text-sm">
-                <div className="flex justify-between">
-                  <dt>{t.contactPage.monFri}</dt>
-                  <dd>{t.contactPage.monFriHours}</dd>
-                </div>
-                <div className="flex justify-between">
-                  <dt>{t.contactPage.sat}</dt>
-                  <dd>{t.contactPage.satHours}</dd>
-                </div>
-                <div className="flex justify-between text-muted">
-                  <dt>{t.contactPage.sun}</dt>
-                  <dd>{t.contactPage.sunHours}</dd>
-                </div>
-              </dl>
+              <h3 className="type-h4 mb-6">{t.contactPage.hoursTitle}</h3>
+              <ul className="space-y-2 text-sm">
+                <li>
+                  {t.contactPage.monFri} : {t.contactPage.monFriHours}
+                </li>
+                <li>
+                  {t.contactPage.sat} : {t.contactPage.satHours}
+                </li>
+              </ul>
             </div>
 
-            <div className="border border-accent/40 p-6">
-              <h4 className="font-serif text-lg mb-2">
+            {/* Confidential service — blue card (no border) */}
+            <div className="bg-[var(--panel)] p-8">
+              <h3 className="type-h4 mb-3">
                 {t.contactPage.confidentialTitle}
-              </h4>
-              <p className="text-xs text-muted leading-relaxed">
+              </h3>
+              <p className="text-sm text-muted leading-relaxed">
                 {t.contactPage.confidentialBody}
               </p>
             </div>
@@ -122,5 +74,59 @@ export default function ContactPage() {
         </div>
       </div>
     </div>
+  );
+}
+
+function InfoRow({
+  label,
+  icon,
+  children,
+}: {
+  label: string;
+  icon: "phone" | "mail" | "pin";
+  children: React.ReactNode;
+}) {
+  return (
+    <div className="flex gap-4">
+      <div className="flex-none w-10 h-10 bg-[var(--panel)] text-accent flex items-center justify-center">
+        <InfoIcon name={icon} />
+      </div>
+      <div>
+        <p className="text-[10px] tracking-[0.22em] uppercase text-accent mb-1">
+          {label}
+        </p>
+        <div className="text-foreground/90">{children}</div>
+      </div>
+    </div>
+  );
+}
+
+function InfoIcon({ name }: { name: "phone" | "mail" | "pin" }) {
+  const p = {
+    width: 16,
+    height: 16,
+    viewBox: "0 0 24 24",
+    fill: "none",
+    stroke: "currentColor",
+    strokeWidth: 1.5,
+  };
+  if (name === "phone")
+    return (
+      <svg {...p}>
+        <path d="M5 4h4l2 5-3 2a12 12 0 006 6l2-3 5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2z" />
+      </svg>
+    );
+  if (name === "mail")
+    return (
+      <svg {...p}>
+        <rect x="3" y="5" width="18" height="14" rx="1" />
+        <path d="M3 7l9 6 9-6" />
+      </svg>
+    );
+  return (
+    <svg {...p}>
+      <path d="M12 2c-3.5 0-6 2.5-6 6 0 4 6 12 6 12s6-8 6-12c0-3.5-2.5-6-6-6z" />
+      <circle cx="12" cy="8" r="2" />
+    </svg>
   );
 }

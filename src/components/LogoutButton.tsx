@@ -11,7 +11,7 @@ export function LogoutButton() {
       type="button"
       onClick={() => startTransition(() => logout())}
       disabled={pending}
-      className="self-start text-[11px] tracking-[0.22em] uppercase text-muted-strong hover:text-accent transition disabled:opacity-50"
+      className="self-start text-[11px] tracking-[0.22em] uppercase text-muted-strong hover:text-link transition disabled:opacity-50"
     >
       {pending ? "..." : "Se déconnecter"}
     </button>

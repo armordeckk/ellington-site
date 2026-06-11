@@ -13,10 +13,13 @@ import Image from "next/image";
 export function Logo({
   className = "",
   invert = false,
+  black = false,
   sizes = "40px",
 }: {
   className?: string;
   invert?: boolean;
+  /** Render the navy logo as pure black (header on white background). */
+  black?: boolean;
   sizes?: string;
 }) {
   return (
@@ -35,7 +38,9 @@ export function Logo({
         style={
           invert
             ? { filter: "brightness(0) invert(1)" }
-            : undefined
+            : black
+              ? { filter: "brightness(0)" }
+              : undefined
         }
       />
     </span>

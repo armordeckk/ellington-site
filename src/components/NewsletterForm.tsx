@@ -37,12 +37,12 @@ export function NewsletterForm() {
         value={email}
         onChange={(e) => setEmail(e.target.value)}
         placeholder={t.home.newsletterPlaceholder}
-        className="flex-1 px-5 py-4 bg-[var(--background)] border border-[var(--border)] focus:border-accent transition text-sm"
+        className="flex-1 px-5 py-4 bg-transparent border border-[var(--border-strong)] focus:border-accent transition text-sm placeholder:text-muted"
       />
       <button
         type="submit"
         disabled={state === "loading"}
-        className="px-7 py-4 bg-accent hover:bg-accent-hover text-[var(--background)] text-[11px] tracking-[0.22em] uppercase transition disabled:opacity-60"
+        className="px-7 py-4 border border-[var(--border-strong)] text-muted-strong hover:bg-accent hover:text-white hover:border-accent text-[11px] tracking-[0.22em] uppercase transition disabled:opacity-60"
       >
         {state === "loading" ? t.common.loading : t.home.newsletterSubmit}
       </button>

@@ -364,8 +364,8 @@ export const locations: Location[] = [
   {
     slug: "saint-tropez",
     name: "Saint-Tropez",
-    tagline: "L'icône intemporelle de la Riviera",
-    taglineEn: "The timeless icon of the Riviera",
+    tagline: "Le glamour iconique et l'élégance intemporelle de la Riviera",
+    taglineEn: "Iconic glamour meets timeless Riviera elegance",
     description:
       "De la Place des Lices aux plages de Pampelonne, Saint-Tropez incarne la quintessence de la Riviera française. Domaines viticoles, bastides provençales et villas contemporaines composent un patrimoine d'exception.",
     descriptionEn:
@@ -424,8 +424,8 @@ export const locations: Location[] = [
   {
     slug: "grimaud",
     name: "Grimaud",
-    tagline: "Le village médiéval du Golfe",
-    taglineEn: "The medieval village of the Gulf",
+    tagline: "Le caractère médiéval au cœur du Golfe",
+    taglineEn: "Medieval character in the heart of the Gulf",
     description:
       "Au cœur du Golfe de Saint-Tropez, Grimaud séduit par son village médiéval perché, ses ruelles pavées et ses villas en bord de mer. Une adresse confidentielle et préservée de la Côte d'Azur.",
     descriptionEn:
@@ -462,8 +462,8 @@ export const locations: Location[] = [
   {
     slug: "port-grimaud",
     name: "Port Grimaud",
-    tagline: "La Venise provençale",
-    taglineEn: "The Provençal Venice",
+    tagline: "La Venise provençale, l'art de vivre au bord de l'eau",
+    taglineEn: "The Provençal Venice with waterfront living",
     description:
       "Conçue dans les années 1960 par l'architecte François Spoerry, Port Grimaud est une cité lacustre unique en France. Maisons aux façades pastel, canaux navigables, anneaux d'amarrage privés : la Venise provençale conjugue charme méditerranéen et raffinement contemporain.",
     descriptionEn:
@@ -500,8 +500,8 @@ export const locations: Location[] = [
   {
     slug: "ramatuelle",
     name: "Ramatuelle",
-    tagline: "Pampelonne, vignes et mer",
-    taglineEn: "Pampelonne, vineyards and sea",
+    tagline: "Le charme perché dominant la Méditerranée",
+    taglineEn: "Hilltop charm overlooking the Mediterranean",
     description:
       "Village perché entre vignobles et mer, Ramatuelle abrite la mythique plage de Pampelonne. Bastides en pierre, ruelles ombragées et mas d'exception composent un patrimoine d'une rare authenticité, à quelques minutes de Saint-Tropez.",
     descriptionEn:
@@ -538,8 +538,8 @@ export const locations: Location[] = [
   {
     slug: "gassin",
     name: "Gassin",
-    tagline: "Le balcon du Golfe",
-    taglineEn: "The balcony over the Gulf",
+    tagline: "Village provençal authentique aux vues panoramiques",
+    taglineEn: "Authentic Provençal village with panoramic views",
     description:
       "Classé parmi les Plus Beaux Villages de France, Gassin couronne une colline avec vue à 360° sur le Golfe de Saint-Tropez, les Maures et la Méditerranée. Villas de prestige et propriétés viticoles s'épanouissent dans un cadre préservé.",
     descriptionEn:
@@ -576,8 +576,8 @@ export const locations: Location[] = [
   {
     slug: "sainte-maxime",
     name: "Sainte-Maxime",
-    tagline: "Face à Saint-Tropez, plein sud",
-    taglineEn: "Facing Saint-Tropez, due south",
+    tagline: "L'élégance familiale sur la rive nord",
+    taglineEn: "Family-friendly elegance on the northern shore",
     description:
       "Face à Saint-Tropez sur le Golfe, Sainte-Maxime allie élégance balnéaire et authenticité provençale. Plages de sable fin, villas contemporaines et propriétés historiques en font une destination privilégiée.",
     descriptionEn:
@@ -614,8 +614,8 @@ export const locations: Location[] = [
   {
     slug: "la-croix-valmer",
     name: "La Croix-Valmer",
-    tagline: "Retraite côtière entre vignes et plages préservées",
-    taglineEn: "Coastal retreat between vineyards and pristine beaches",
+    tagline: "Retraite côtière sereine aux plages préservées",
+    taglineEn: "Serene coastal retreat with pristine beaches",
     description:
       "Entre Saint-Tropez et le Lavandou, La Croix-Valmer déroule des plages de sable fin protégées, des vignobles AOP Côtes-de-Provence et un arrière-pays sauvage. Une adresse confidentielle pour qui cherche la quiétude méditerranéenne loin de l'effervescence du Golfe.",
     descriptionEn:
@@ -652,8 +652,8 @@ export const locations: Location[] = [
   {
     slug: "cavalaire-sur-mer",
     name: "Cavalaire-sur-Mer",
-    tagline: "Une baie douce, l'art de vivre méditerranéen",
-    taglineEn: "A gentle bay, authentic Mediterranean living",
+    tagline: "La douceur d'une baie au charme français authentique",
+    taglineEn: "Gentle bay living with authentic French charm",
     description:
       "Adossée à l'une des plus belles baies de la Côte d'Azur, Cavalaire-sur-Mer conjugue 3 km de plage de sable fin, marina active et villas perchées sur les hauteurs. Une destination familiale et raffinée, à mi-chemin entre Saint-Tropez et Le Lavandou.",
     descriptionEn:
@@ -691,7 +691,7 @@ export const locations: Location[] = [
     slug: "rayol-canadel",
     name: "Rayol-Canadel-sur-Mer",
     tagline: "L'enclave exclusive de la corniche des Maures",
-    taglineEn: "The exclusive enclave on the Maures corniche",
+    taglineEn: "Exclusive enclave on the Corniche des Maures",
     description:
       "Sur la mythique corniche des Maures, Rayol-Canadel-sur-Mer est l'une des adresses les plus confidentielles du littoral varois. Pinèdes plongeant dans la mer, propriétés d'architecte et calanques discrètes : une parenthèse rare entre Saint-Tropez et Hyères.",
     descriptionEn:

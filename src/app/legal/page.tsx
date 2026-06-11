@@ -58,7 +58,7 @@ export default function LegalPage() {
                 Téléphone
               </dt>
               <dd>
-                <a href="tel:+33674750703" className="hover:text-accent transition">
+                <a href="tel:+33674750703" className="hover:text-link transition">
                   +33 6 74 75 07 03
                 </a>
               </dd>
@@ -69,7 +69,7 @@ export default function LegalPage() {
               <dd>
                 <a
                   href="mailto:hello@ellington-international.fr"
-                  className="hover:text-accent transition"
+                  className="hover:text-link transition"
                 >
                   hello@ellington-international.fr
                 </a>

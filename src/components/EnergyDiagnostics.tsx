@@ -7,7 +7,7 @@ const CLASSES = ["A", "B", "C", "D", "E", "F", "G"] as const;
 type EnergyClass = (typeof CLASSES)[number];
 
 // French DPE colour scale: green → red.
-const CLASS_COLOR: Record<EnergyClass, string> = {
+const ENERGY_COLOR: Record<EnergyClass, string> = {
   A: "#319834",
   B: "#5fad33",
   C: "#c6cc28",
@@ -17,47 +17,53 @@ const CLASS_COLOR: Record<EnergyClass, string> = {
   G: "#d62517",
 };
 
+// GHG (greenhouse gas) scale: light blue → deep navy, per Figma.
+const GHG_COLOR: Record<EnergyClass, string> = {
+  A: "#b4cdec",
+  B: "#8db0dd",
+  C: "#6892cd",
+  D: "#4673b4",
+  E: "#315689",
+  F: "#223e64",
+  G: "#172b48",
+};
+
+// Horizontal flat scale (Figma) — thin bars with the active class shown as a
+// taller labelled block.
 function ClassScale({
   label,
   active,
+  colors,
 }: {
   label: string;
   active?: EnergyClass;
+  colors: Record<EnergyClass, string>;
 }) {
   return (
     <div>
-      <p className="text-[10px] tracking-[0.22em] uppercase text-muted mb-3 text-center">
+      <p className="text-[10px] tracking-[0.22em] uppercase text-muted mb-3">
         {label}
       </p>
-      <div className="flex flex-col gap-1">
+      <div className="flex items-center gap-1.5">
         {CLASSES.map((c) => {
           const isActive = c === active;
-          // Width grows as we go down the scale, like the official French DPE label.
-          const w = 45 + CLASSES.indexOf(c) * 7;
-          return (
+          return isActive ? (
             <div
               key={c}
-              className={`flex items-center transition-opacity ${
-                active && !isActive ? "opacity-30" : "opacity-100"
-              }`}
+              className="flex-1 h-9 flex items-center justify-center text-white text-sm font-bold"
+              style={{ backgroundColor: colors[c] }}
             >
-              <div
-                className="relative flex items-center justify-between px-3 py-1.5 text-xs font-semibold text-white"
-                style={{
-                  width: `${w}%`,
-                  backgroundColor: CLASS_COLOR[c],
-                  clipPath:
-                    "polygon(0 0, calc(100% - 10px) 0, 100% 50%, calc(100% - 10px) 100%, 0 100%)",
-                }}
-              >
-                <span>{c}</span>
-                {isActive && (
-                  <span className="ml-2 inline-flex items-center justify-center w-6 h-6 bg-[var(--background)] text-foreground text-xs font-bold border border-[var(--border-strong)]">
-                    {c}
-                  </span>
-                )}
-              </div>
+              {c}
             </div>
+          ) : (
+            <div
+              key={c}
+              className="flex-1 h-2.5"
+              style={{
+                backgroundColor: colors[c],
+                opacity: active ? 0.55 : 1,
+              }}
+            />
           );
         })}
       </div>
@@ -71,22 +77,24 @@ export function EnergyDiagnostics({ property }: { property: Property }) {
 
   return (
     <div>
-      <h2 className="font-serif text-3xl mb-6">
-        <em className="italic">{t.propertyDetail.energyTitle}</em>
+      <h2 className="font-serif italic text-3xl mb-6">
+        {t.propertyDetail.energyTitle}
       </h2>
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-10 bg-[var(--background-card)] border border-[var(--border)] p-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-12">
         <ClassScale
           label={t.propertyDetail.energyClass}
           active={property.energyClass}
+          colors={ENERGY_COLOR}
         />
         <ClassScale
           label={t.propertyDetail.ghgClass}
           active={property.ghgClass}
+          colors={GHG_COLOR}
         />
       </div>
       {hasDiag ? (
         <>
-          <p className="text-xs text-muted mt-4">
+          <p className="text-xs text-muted mt-6">
             {t.propertyDetail.energyDate(property.energyDiagnosticDate ?? "")}
           </p>
           {property.energyCostMin && property.energyCostMax && (
@@ -99,7 +107,7 @@ export function EnergyDiagnostics({ property }: { property: Property }) {
           )}
         </>
       ) : (
-        <p className="text-xs text-muted mt-4 italic">
+        <p className="text-xs text-muted mt-6 italic">
           {t.propertyDetail.energyUnavailable}
         </p>
       )}
