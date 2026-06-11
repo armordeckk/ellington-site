@@ -6,6 +6,7 @@ import { PropertyCard } from "./PropertyCard";
 import { FavoriteButton } from "./FavoriteButton";
 import { EnergyDiagnostics } from "./EnergyDiagnostics";
 import { formatPriceShort } from "@/lib/properties";
+import { localizeFeature } from "@/lib/amenities";
 import { useLanguage } from "./LanguageProvider";
 import type { Property } from "@/lib/types";
 
@@ -20,7 +21,7 @@ export function PropertyDetailContent({
   initialFavored?: boolean;
   similarFavoredIds?: string[];
 }) {
-  const { t } = useLanguage();
+  const { t, lang } = useLanguage();
   const typeKey = property.type as keyof typeof t.types;
   const typeLabel = t.types[typeKey] ?? property.type;
 
@@ -167,7 +168,7 @@ export function PropertyDetailContent({
                       key={f}
                       className="bg-accent text-white text-[11px] tracking-[0.18em] uppercase px-5 py-3"
                     >
-                      {f}
+                      {localizeFeature(f, lang)}
                     </span>
                   ))}
                 </div>

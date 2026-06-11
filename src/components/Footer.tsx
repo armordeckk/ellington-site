@@ -15,7 +15,7 @@ export function Footer() {
           <div>
             <Link href="/" className="flex items-center gap-3 mb-4">
               <Logo className="w-6 h-8" />
-              <span className="font-serif text-xl tracking-[0.3em] uppercase">
+              <span className="font-serif text-xl tracking-[0.22em] uppercase">
                 Ellington
               </span>
             </Link>
