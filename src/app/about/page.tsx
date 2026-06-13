@@ -105,16 +105,31 @@ export default function AboutPage() {
                   <p className="text-sm text-muted leading-relaxed mb-4">
                     {member.bio}
                   </p>
-                  <a
-                    href={`mailto:${member.email}`}
-                    className="inline-flex items-center gap-2 text-xs text-muted hover:text-link transition"
-                  >
-                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                      <rect x="3" y="5" width="18" height="14" rx="1" />
-                      <path d="M3 7l9 6 9-6" />
-                    </svg>
-                    {member.email}
-                  </a>
+                  <div className="space-y-2">
+                    {member.email && (
+                      <a
+                        href={`mailto:${member.email}`}
+                        className="flex items-center gap-2 text-xs text-muted hover:text-link transition"
+                      >
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                          <rect x="3" y="5" width="18" height="14" rx="1" />
+                          <path d="M3 7l9 6 9-6" />
+                        </svg>
+                        {member.email}
+                      </a>
+                    )}
+                    {member.phone && (
+                      <a
+                        href={`tel:${member.phone.replace(/\s/g, "")}`}
+                        className="flex items-center gap-2 text-xs text-muted hover:text-link transition"
+                      >
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                          <path d="M5 4h4l2 5-3 2a12 12 0 006 6l2-3 5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2z" />
+                        </svg>
+                        {member.phone}
+                      </a>
+                    )}
+                  </div>
                 </figcaption>
               </figure>
             ))}
