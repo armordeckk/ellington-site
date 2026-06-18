@@ -16,10 +16,11 @@ const STORAGE_KEY = "ellington:lang";
 function detectInitialLang(): Lang {
   if (typeof window === "undefined") return "fr";
   const stored = window.localStorage.getItem(STORAGE_KEY);
-  if (stored === "fr" || stored === "en") return stored;
+  if (stored === "fr" || stored === "en" || stored === "nl") return stored;
   // Auto-detect from browser
   const nav = window.navigator.language.toLowerCase();
   if (nav.startsWith("fr")) return "fr";
+  if (nav.startsWith("nl")) return "nl";
   return "en";
 }
 

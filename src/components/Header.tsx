@@ -51,7 +51,7 @@ export function Header() {
       }`}
     >
       <div
-        className={`w-full px-6 md:px-12 h-20 flex items-center justify-between transition-colors ${
+        className={`w-full px-6 md:px-12 h-[72px] flex items-center justify-between transition-colors ${
           overImage ? "text-white" : "text-black"
         }`}
       >

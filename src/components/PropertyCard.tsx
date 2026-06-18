@@ -6,6 +6,7 @@ import type { Property } from "@/lib/types";
 import { formatPriceShort } from "@/lib/properties";
 import { useLanguage } from "./LanguageProvider";
 import { FavoriteButton } from "./FavoriteButton";
+import { Logo } from "./Logo";
 
 export function PropertyCard({
   property,
@@ -35,6 +36,15 @@ export function PropertyCard({
             className="object-cover transition-transform duration-[1500ms] group-hover:scale-105"
           />
         )}
+        {/* Brand watermark — fades in over the image on hover (client maquette) */}
+        <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-[var(--accent)]/0 group-hover:bg-[var(--accent)]/25 transition-colors duration-700">
+          <Logo
+            invert
+            priority={false}
+            sizes="120px"
+            className="w-16 md:w-20 opacity-0 scale-90 group-hover:opacity-90 group-hover:scale-100 transition-all duration-700"
+          />
+        </div>
         {property.isExclusive && (
           <span className="absolute top-4 left-4 text-[10px] tracking-[0.22em] uppercase px-3 py-1.5 bg-accent text-white">
             {t.propertyDetail.exclusive}
@@ -47,11 +57,13 @@ export function PropertyCard({
 
       {/* INFO — bordered box (Figma) */}
       <div className="border border-[var(--border)] group-hover:border-[var(--border-strong)] transition p-6 flex flex-col flex-1">
-        <div className="flex items-center gap-1.5 text-accent text-[10px] tracking-[0.22em] uppercase mb-3">
+        <div className="flex items-center gap-1.5 text-[var(--gold)] text-[10px] tracking-[0.22em] uppercase mb-3">
           <PinIcon />
           {property.city}
         </div>
-        <h3 className="type-h3 group-hover:text-link transition mb-2 line-clamp-1">
+        {/* Title — Inter, uppercase, bold (client: same style as location cards).
+            Smaller on mobile + 2-line clamp so it is never cut with "…". */}
+        <h3 className="font-sans font-bold uppercase tracking-[0.06em] text-[13px] md:text-[15px] leading-[1.35] text-foreground group-hover:text-[var(--gold)] transition mb-2 line-clamp-2">
           {property.title}
         </h3>
         <p className="text-sm text-muted mb-5">

@@ -51,7 +51,7 @@ export function HomeContent({
       {/* WHY ELLINGTON */}
       <section className="py-28 md:py-36 px-6 md:px-10">
         <div className="max-w-[1400px] mx-auto">
-          <div className="text-center mb-20 max-w-3xl mx-auto">
+          <div className="text-center mb-20 max-w-3xl mx-auto" data-reveal>
             <h2 className="type-h2 mb-6">
               {t.home.whyTitleBefore} {t.home.whyTitleAccent}
             </h2>
@@ -60,26 +60,29 @@ export function HomeContent({
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+          {/* Numbered containers — gold left border, consistent full border (maquette) */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {t.home.features.map((f, i) => (
               <div
                 key={i}
-                className="bg-[var(--panel)] p-10 hover:bg-[var(--background-card)] transition duration-500"
+                data-reveal
+                style={{ "--reveal-delay": `${i * 90}ms` } as React.CSSProperties}
+                className="group bg-[var(--background-card)] border border-[var(--border)] border-l-2 border-l-[var(--gold)] p-8 hover:border-[var(--border-strong)] hover:border-l-[var(--gold)] transition duration-500"
               >
-                <div className="w-11 h-11 mb-8 flex items-center justify-center border border-[var(--border-strong)] text-accent">
-                  <FeatureIcon idx={i} />
-                </div>
-                <h3 className="type-h3 mb-4">{f.title}</h3>
+                <span className="block font-serif text-2xl text-[var(--gold)] mb-6 tabular-nums">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <h3 className="type-h4 mb-3">{f.title}</h3>
                 <p className="text-sm text-muted leading-relaxed">{f.body}</p>
               </div>
             ))}
           </div>
 
           {/* CTA — link to the dedicated /sell page */}
-          <div className="text-center mt-14">
+          <div className="text-center mt-14" data-reveal>
             <Link
               href="/sell"
-              className="inline-block px-10 py-4 bg-accent hover:bg-accent-hover text-white text-[11px] tracking-[0.22em] uppercase transition"
+              className="inline-block px-[60px] py-4 bg-accent hover:bg-accent-hover text-white text-[11px] tracking-[0.22em] uppercase transition"
             >
               {t.home.whyCta}
             </Link>
@@ -90,9 +93,9 @@ export function HomeContent({
       {/* FEATURED PROPERTIES */}
       <section className="py-28 md:py-36 px-6 md:px-10 bg-[var(--background-elev)]">
         <div className="max-w-[1400px] mx-auto">
-          <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6" data-reveal>
             <div className="max-w-2xl">
-              <p className="text-[11px] tracking-[0.32em] uppercase text-accent mb-5">
+              <p className="text-[11px] tracking-[0.32em] uppercase text-[var(--gold)] mb-5">
                 {t.home.featuredEyebrow}
               </p>
               <h2 className="type-h2 mb-4">
@@ -128,7 +131,7 @@ export function HomeContent({
 
       {/* NOT YOUR ORDINARY LOCAL EXPERT — bordered editorial box */}
       <section className="py-20 md:py-28 px-6 md:px-10">
-        <div className="max-w-[1400px] mx-auto border border-[var(--border)] px-8 md:px-20 py-16 md:py-24">
+        <div className="max-w-[1400px] mx-auto border border-[var(--border)] px-8 md:px-20 py-16 md:py-24" data-reveal>
           <h2 className="type-h3 text-center mb-12">
             {t.home.expertTitle}
           </h2>
@@ -225,39 +228,3 @@ export function HomeContent({
   );
 }
 
-function FeatureIcon({ idx }: { idx: number }) {
-  const icons = ["shield", "network", "trend", "key"];
-  const name = icons[idx] ?? "shield";
-  switch (name) {
-    case "shield":
-      return (
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4">
-          <path d="M12 3l8 3v6c0 5-3.5 8.5-8 9-4.5-.5-8-4-8-9V6l8-3z" />
-        </svg>
-      );
-    case "network":
-      return (
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4">
-          <circle cx="12" cy="6" r="2.5" />
-          <circle cx="5" cy="18" r="2.5" />
-          <circle cx="19" cy="18" r="2.5" />
-          <path d="M12 8.5v3M10 17l2-5M14 17l-2-5" />
-        </svg>
-      );
-    case "trend":
-      return (
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4">
-          <path d="M3 17l6-6 4 4 8-8M15 7h6v6" />
-        </svg>
-      );
-    case "key":
-      return (
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4">
-          <circle cx="8" cy="14" r="4" />
-          <path d="M11 11l9-9M16 6l3 3" />
-        </svg>
-      );
-    default:
-      return null;
-  }
-}

@@ -19,6 +19,15 @@ const TYPES = ["villa", "penthouse", "apartment", "estate"] as const;
 
 const BEDROOM_OPTIONS = [0, 1, 2, 3, 4, 5];
 
+// Case- and accent-insensitive normalisation so "ramatuelle", "Ramatuelle"
+// and "RAMATUELLE" all match (client feedback).
+const normalize = (s: string) =>
+  s
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[̀-ͯ]/g, "")
+    .trim();
+
 export function PropertiesBrowser(props: {
   properties: Property[];
   cities: string[];
@@ -47,7 +56,20 @@ function PropertiesBrowserInner({
     return idx >= 0 ? idx : 0;
   })();
 
-  const [city, setCity] = useState<string>(params.get("city") ?? "");
+  // Resolve the incoming ?city= term (often free-typed in the hero search) to a
+  // real city option, case/accent-insensitively, so the dropdown selects it.
+  const initialCity = (() => {
+    const raw = params.get("city") ?? "";
+    if (!raw) return "";
+    const n = normalize(raw);
+    return (
+      cities.find((c) => normalize(c) === n) ??
+      cities.find((c) => normalize(c).includes(n)) ??
+      raw
+    );
+  })();
+
+  const [city, setCity] = useState<string>(initialCity);
   const [type, setType] = useState<string>(params.get("type") ?? "");
   const [priceIdx, setPriceIdx] = useState<number>(initialPriceIdx);
   const [beds, setBeds] = useState<number>(Number(params.get("beds") || 0));
@@ -55,7 +77,7 @@ function PropertiesBrowserInner({
   const filtered = useMemo(() => {
     const range = PRICE_RANGES[priceIdx];
     return properties.filter((p) => {
-      if (city && p.city !== city) return false;
+      if (city && !normalize(p.city).includes(normalize(city))) return false;
       if (type && p.type !== type) return false;
       if (beds > 0 && p.bedrooms < beds) return false;
       if (p.price < range.min || p.price > range.max) return false;

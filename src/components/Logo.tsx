@@ -15,12 +15,15 @@ export function Logo({
   invert = false,
   black = false,
   sizes = "40px",
+  priority = true,
 }: {
   className?: string;
   invert?: boolean;
   /** Render the navy logo as pure black (header on white background). */
   black?: boolean;
   sizes?: string;
+  /** Disable for decorative/off-screen usages (e.g. card hover watermark). */
+  priority?: boolean;
 }) {
   return (
     <span
@@ -33,7 +36,7 @@ export function Logo({
         alt="Ellington Properties"
         fill
         sizes={sizes}
-        priority
+        priority={priority}
         className="object-contain"
         style={
           invert

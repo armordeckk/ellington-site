@@ -5,6 +5,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { LanguageProvider } from "@/components/LanguageProvider";
 import { CookieBanner } from "@/components/CookieBanner";
+import { ScrollReveal } from "@/components/ScrollReveal";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -58,6 +59,7 @@ export default function RootLayout({
           <main className="flex-1">{children}</main>
           <Footer />
           <CookieBanner />
+          <ScrollReveal />
         </LanguageProvider>
       </body>
     </html>

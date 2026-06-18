@@ -66,7 +66,7 @@ export function LocationsIndexContent() {
           />
         </div>
 
-        {/* CARDS GRID — name centered on image, tagline below */}
+        {/* CARDS GRID — name + italic tagline overlaid bottom-left on image (maquette) */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {ordered.map((loc) => {
             const tagline = isEn ? loc.taglineEn ?? loc.tagline : loc.tagline;
@@ -74,28 +74,28 @@ export function LocationsIndexContent() {
               <Link
                 key={loc.slug}
                 href={`/locations/${loc.slug}`}
-                className="group block border border-[var(--border)] hover:border-[var(--border-strong)] transition"
+                data-reveal
+                className="group relative block aspect-[2/1] overflow-hidden border border-[var(--border)] hover:border-[var(--border-strong)] transition"
               >
-                <div className="relative aspect-[2/1] overflow-hidden bg-[var(--background-card)]">
-                  <Image
-                    src={loc.image}
-                    alt={loc.name}
-                    fill
-                    sizes="(min-width: 768px) 50vw, 100vw"
-                    className="object-cover transition-transform duration-[1500ms] group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-black/25 group-hover:bg-black/35 transition" />
-                  <h2 className="absolute inset-0 flex items-center justify-center font-serif text-4xl md:text-5xl lg:text-6xl text-white tracking-[0.18em] uppercase text-center px-4 drop-shadow-[0_2px_12px_rgba(0,0,0,0.5)]">
+                <Image
+                  src={loc.image}
+                  alt={loc.name}
+                  fill
+                  sizes="(min-width: 768px) 50vw, 100vw"
+                  className="object-cover transition-transform duration-[1500ms] group-hover:scale-105"
+                />
+                {/* Bottom gradient so the white text stays legible over any photo */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/15 to-transparent transition group-hover:from-black/80" />
+                <div className="absolute inset-x-0 bottom-0 p-6 md:p-7">
+                  <h2 className="font-sans font-bold uppercase tracking-[0.14em] text-base md:text-lg text-white drop-shadow-[0_2px_10px_rgba(0,0,0,0.6)]">
                     {loc.name}
                   </h2>
-                </div>
-                {tagline && (
-                  <div className="px-6 py-6 text-center">
-                    <p className="text-[11px] md:text-xs tracking-[0.32em] uppercase text-muted-strong">
+                  {tagline && (
+                    <p className="mt-1.5 font-serif italic text-sm md:text-[15px] text-white/85 drop-shadow-[0_1px_8px_rgba(0,0,0,0.6)]">
                       {tagline}
                     </p>
-                  </div>
-                )}
+                  )}
+                </div>
               </Link>
             );
           })}

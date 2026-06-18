@@ -1,8 +1,9 @@
-export type Lang = "fr" | "en";
+export type Lang = "fr" | "en" | "nl";
 
 export const LANGS: { code: Lang; label: string }[] = [
   { code: "fr", label: "FR" },
   { code: "en", label: "EN" },
+  { code: "nl", label: "NL" },
 ];
 
 // Dictionary structure — keep deeply nested objects, never use stringly-typed
@@ -23,6 +24,8 @@ const dictRaw = {
       journal: "Journal",
       about: "À propos",
       contact: "Contact",
+      login: "Connexion",
+      favorites: "Favoris",
     },
     common: {
       backToPortfolio: "Retour au portefeuille",
@@ -450,6 +453,8 @@ const dictRaw = {
       journal: "Journal",
       about: "About",
       contact: "Contact",
+      login: "Login",
+      favorites: "Favorites",
     },
     common: {
       backToPortfolio: "Back to portfolio",
@@ -865,6 +870,436 @@ const dictRaw = {
       marketingLabel: "Marketing",
       marketingDesc:
         "Allow us to measure the effectiveness of our communications and personalise some content.",
+    },
+  },
+  nl: {
+    nav: {
+      properties: "Woningen",
+      buy: "Kopen",
+      rentals: "Verhuur",
+      regions: "Onze regio's",
+      regionsNav: "Locaties",
+      sell: "Verkopen",
+      journal: "Journaal",
+      about: "Over ons",
+      contact: "Contact",
+      login: "Inloggen",
+      favorites: "Favorieten",
+    },
+    common: {
+      backToPortfolio: "Terug naar portfolio",
+      contactUs: "Neem contact op",
+      callUs: "+33 4 93 12 34 56",
+      readMore: "Ontdekken →",
+      swipeHint: "← Veeg →",
+      loading: "...",
+      send: "Bericht versturen",
+      sending: "Versturen…",
+      reset: "Opnieuw instellen",
+    },
+    home: {
+      eyebrow: "Luxe vastgoed · Côte d'Azur",
+      titleBefore: "Ontdek elegantie",
+      titleAccent: "",
+      titleAfter: "",
+      subtitle: "Exclusieve woningen aan de Franse Rivièra",
+      whyEyebrow: "De Ellington-standaard",
+      whyTitleBefore: "Waarom kiezen voor",
+      whyTitleAccent: "Ellington",
+      whySubtitle:
+        "Ongeëvenaarde expertise in luxe vastgoed langs de hele Franse Rivièra.",
+      whyCta: "Verkoop met ons",
+      features: [
+        {
+          title: "Vertrouwde adviseurs",
+          body: "Een vertrouwelijke, discrete aanpak met respect voor de hoogste professionele normen.",
+        },
+        {
+          title: "Exclusief netwerk",
+          body: "Bevoorrechte toegang tot off-market woningen, niet beschikbaar via openbare kanalen.",
+        },
+        {
+          title: "€2.5B+ verkocht",
+          body: "Een transactievolume dat het vertrouwen weerspiegelt dat onze cliënten aan de Rivièra in ons stellen.",
+        },
+        {
+          title: "Service op maat",
+          body: "Van eerste bezichtiging tot ondertekening, persoonlijke begeleiding bij elke stap.",
+        },
+      ] as { title: string; body: string }[],
+      featuredEyebrow: "Selectie",
+      featuredTitleBefore: "Uitgelichte",
+      featuredTitleAccent: "woningen",
+      featuredSubtitle:
+        "Een zorgvuldig samengestelde selectie van de zeldzaamste woningen in ons portfolio, wekelijks ververst.",
+      featuredCta: "Bekijk het volledige portfolio →",
+      regionsEyebrow: "Onze regio's",
+      regionsTitleBefore: "Uitzonderlijke",
+      regionsTitleAccent: "adressen",
+      regionsSubtitle:
+        "Van Monaco tot Saint-Tropez zijn wij actief op de meest prestigieuze locaties aan de Franse Rivièra.",
+      regionsCta: "Bekijk al onze regio's",
+      newsletterEyebrow: "Blijf op de hoogte",
+      newsletterTitleBefore: "Blijf",
+      newsletterTitleAccent: "op de hoogte",
+      newsletterSubtitle:
+        "Ontvang exclusieve updates over nieuwe woningen en marktinzichten.",
+      expertTitle: "Geen gewone lokale expert.",
+      expertP1:
+        "Geboren in het hart van de Golf van Saint-Tropez is Ellington meer dan een vastgoedkantoor — het is een handtekening.",
+      expertP2:
+        "De oprichter, opgegroeid in de regio, beschikt over een intieme en instinctieve kennis van elk gebied, elk adres en elk subtiel detail dat de waarde van een woning aan de Franse Rivièra bepaalt. Deze lokale expertise, door de jaren heen opgebouwd, staat nu ten dienste van een veeleisende clientèle op zoek naar uitmuntendheid.",
+      expertP3:
+        "Kiezen voor Ellington betekent samenwerken met een vertrouwde adviseur die diepe lokale wortels, internationaal bereik en uitmuntende service combineert.",
+      newsletterDisclaimer:
+        "Geen spam — u kunt zich op elk moment uitschrijven.",
+      newsletterPlaceholder: "Uw e-mailadres",
+      newsletterSubmit: "Inschrijven",
+      newsletterSuccess: "Dank u, uw inschrijving is bevestigd.",
+    },
+    search: {
+      buy: "Kopen",
+      rent: "Huren",
+      location: "Locatie",
+      type: "Type woning",
+      budget: "Budget",
+      sort: "Sorteren op",
+      allLocations: "Alle",
+      allTypes: "Alle types",
+      allBudgets: "Alle budgetten",
+      allPrices: "Alle prijzen",
+      submit: "Zoeken",
+      results: (n: number) =>
+        `${n} ${n > 1 ? "woningen" : "woning"} beschikbaar`,
+      noResults: "Geen woning komt overeen met uw zoekopdracht.",
+      noResultsCta: "Filters opnieuw instellen",
+    },
+    types: {
+      villa: "Villa",
+      penthouse: "Penthouse",
+      apartment: "Appartement",
+      estate: "Landgoed",
+      chalet: "Chalet",
+      townhouse: "Herenhuis",
+      land: "Grond",
+    },
+    sort: {
+      newest: "Nieuwste",
+      priceDesc: "Prijs: hoog naar laag",
+      priceAsc: "Prijs: laag naar hoog",
+      areaDesc: "Grootste oppervlakte",
+    },
+    priceRanges: {
+      all: "Alle prijzen",
+      under3: "Tot €3M",
+      r3to6: "€3 – €6M",
+      r6to10: "€6 – €10M",
+      r10to15: "€10 – €15M",
+      over15: "€15M en meer",
+    },
+    propertyDetail: {
+      reference: "Ref.",
+      exclusive: "Exclusief",
+      price: "Prijs",
+      bedrooms: "Slaapkamers",
+      bathrooms: "Badkamers",
+      area: "Woonoppervlakte",
+      year: "Bouwjaar",
+      origin: "Herkomst",
+      type: "Type",
+      landArea: "Perceeloppervlakte",
+      propertyDetailsTitle: "Kenmerken van de woning",
+      officeHours: "Openingstijden",
+      description: "Omschrijving",
+      features: "Voorzieningen",
+      location: "Locatie",
+      mapUnavailable: "Kaart niet beschikbaar",
+      addressNote:
+        "Exact adres wordt op verzoek gedeeld, uit respect voor de vertrouwelijkheid van onze cliënt.",
+      interestedTitle: "Geïnteresseerd?",
+      interestedBody:
+        "Neem contact met ons op voor meer informatie of om een privébezichtiging te plannen.",
+      yourAdvisor: "Uw adviseur",
+      advisorRole: "Portfoliodirecteur",
+      phone: "Telefoon",
+      email: "E-mail",
+      confidentialTitle: "Vertrouwelijke service",
+      confidentialBody:
+        "Alle aanvragen worden met de grootste discretie behandeld. Onze internationale clientèle waardeert onze toewijding aan vertrouwelijkheid.",
+      similar: "Vergelijkbare",
+      similarAccent: "woningen",
+      shortBed: "slpk.",
+      shortBath: "badk.",
+      energyTitle: "Energieprestatie",
+      energyClass: "Energieprestatiediagnose",
+      ghgClass: "Index voor broeikasgasemissies",
+      energyDate: (date: string) =>
+        `Diagnose uitgevoerd na 1 juli 2021${date ? ` — ${date}` : ""}`,
+      energyCost: (min: number, max: number) =>
+        `Geschatte jaarlijkse energiekosten bij standaardgebruik: tussen €${min.toLocaleString("nl-NL")} en €${max.toLocaleString("nl-NL")} per jaar`,
+      energyUnavailable: "Diagnose in uitvoering.",
+    },
+    priceUnit: {
+      week: "wk",
+      month: "mnd",
+    },
+    propertiesPage: {
+      eyebrow: "Portfolio",
+      titleBefore: "Woningen",
+      titleAccent: "te koop",
+      subtitle:
+        "Ontdek de uitzonderlijke woningen die Ellington over de hele Franse Rivièra heeft samengesteld.",
+    },
+    locationsPage: {
+      eyebrow: "De Franse Rivièra",
+      titleBefore: "Onze",
+      titleAccent: "Locaties",
+      subtitle:
+        "Verken de meest prestigieuze locaties langs de Côte d'Azur, waar luxe en de mediterrane levensstijl samenkomen.",
+      intro:
+        "Maak kennis met Ellington, uw gerenommeerde vastgoedpartner sinds 1987. Genesteld in het hart van de Golf van Saint-Tropez stellen onze expertise en passie voor uitzonderlijke woningen ons in staat de verborgen parels van de Côte d'Azur te ontdekken. Met een vooruitstrevende digitale aanwezigheid en begeleiding op maat zijn wij uw bondgenoot bij het vinden van die zeldzame parel die aan al uw verwachtingen voldoet. Bekend om onze integriteit, zijn wij er trots op een trouwe internationale clientèle te mogen tellen!",
+      regionLabel: (i: number, total: number) => `Regio ${i} / ${total}`,
+      currentlyAvailable: (n: number) =>
+        `${n} ${n > 1 ? "woningen" : "woning"} momenteel in portfolio`,
+      viewProperties: "Bekijk woningen →",
+    },
+    aboutPage: {
+      eyebrow: "Over Ellington",
+      titleBefore: "Over",
+      titleAccent: "Ellington",
+      heroSubtitle:
+        "Ongeëvenaarde expertise in luxe vastgoed langs de hele Franse Rivièra",
+      dividerLabel: "Onze signatuur",
+      lead: "Geboren in het hart van de Golf van Saint-Tropez is Ellington meer dan een vastgoedkantoor — het is een handtekening. De oprichter, opgegroeid in de regio, beschikt over een intieme en instinctieve kennis van elk gebied, elk adres en elk subtiel detail dat de waarde van een woning aan de Franse Rivièra bepaalt. Deze lokale expertise, door de jaren heen opgebouwd, staat nu ten dienste van een veeleisende clientèle op zoek naar uitmuntendheid.",
+      body: "Gedreven door een diep internationale instelling spreekt Ellington een clientèle zonder grenzen aan. De directie, vloeiend in het Frans, Engels en Nederlands, heeft sterke relaties opgebouwd met een netwerk van internationale partners, waarmee gekwalificeerde kopers worden aangetrokken en elke woning gerichte en strategische zichtbaarheid geniet. Of het nu gaat om uitzonderlijke villa's, prestigieuze appartementen of unieke woningen, elk pand wordt gepresenteerd via een aanpak op maat, die discretie, precisie en oog voor detail combineert.",
+      body2: "Het toegewijde en attente team van Ellington begeleidt elk project met betrokkenheid en verfijning. Van waardebepaling tot afronding wordt elke stap zorgvuldig behandeld, zodat uw woning volledig tot haar recht komt en uw transactie onder de best mogelijke voorwaarden wordt veiliggesteld. Kiezen voor Ellington betekent samenwerken met een vertrouwde adviseur die diepe lokale wortels, internationaal bereik en uitmuntende service combineert.",
+      stats: [
+        { value: "€2.5B", label: "Transactievolume" },
+        { value: "30+ jaar", label: "Aan Rivièra-expertise" },
+        { value: "120+", label: "Internationale cliënten" },
+        { value: "6", label: "Kantoren aan de Franse Rivièra" },
+      ],
+      valuesEyebrow: "Onze waarden",
+      valuesTitleBefore: "Onze",
+      valuesTitleAccent: "Waarden",
+      values: [
+        {
+          title: "Integriteit",
+          body: "Wij werken met volledige transparantie en eerlijkheid, zodat elke cliënt betrouwbare begeleiding krijgt gedurende zijn vastgoedtraject.",
+        },
+        {
+          title: "Uitmuntendheid",
+          body: "Wij streven naar perfectie in elk detail, van eerste gesprek tot definitieve transactie, en leveren service die de verwachtingen overtreft.",
+        },
+        {
+          title: "Discretie",
+          body: "Uw privacy staat voorop. Wij behandelen alle aanvragen en transacties met de grootste vertrouwelijkheid en professionaliteit.",
+        },
+        {
+          title: "Wereldwijd bereik",
+          body: "Ons uitgebreide internationale netwerk verbindt u met kansen en cliënten van over de hele wereld.",
+        },
+        {
+          title: "Marktexpertise",
+          body: "Drie decennia ervaring bieden ongeëvenaard inzicht in markttrends, vastgoedwaarden en investeringsmogelijkheden.",
+        },
+        {
+          title: "Persoonlijke service",
+          body: "Elke cliënt krijgt persoonlijke aandacht en oplossingen op maat, afgestemd op zijn unieke wensen en ambities.",
+        },
+      ],
+      teamEyebrow: "Het team",
+      teamTitleBefore: "Het",
+      teamTitleAccent: "Team",
+      team: [
+        {
+          name: "Marc Mehagnoul",
+          role: "Oprichter & CEO",
+          photo: "/team/marc-mehagnoul.jpg",
+          bio: "Met meer dan 30 jaar ervaring in luxe vastgoed richtte Marc Ellington op met de visie om uitmuntendheid op de markt van de Franse Rivièra opnieuw te definiëren.",
+          email: "hello@ellington-international.fr",
+          phone: "+33 6 74 75 07 03",
+        },
+        {
+          name: "Sasha Bazzaro",
+          role: "Medeoprichter & CEO",
+          photo: "/team/sasha-bazzaro.jpg",
+          bio: "Medeoprichter van Ellington, deelt Sasha dezelfde toewijding aan uitmuntendheid en begeleidt een internationale clientèle door hun meest prestigieuze projecten aan de Franse Rivièra.",
+          email: "",
+          phone: "+33 7 69 95 69 27",
+        },
+        {
+          name: "Sophia Potentier",
+          role: "Manager Commerciële Operaties",
+          photo: "/team/sophia-potentier.jpg",
+          bio: "In het hart van de cliëntrelatie beheert Sophia de commerciële operaties van Ellington met nauwgezetheid en oog voor detail, en zorgt zo voor een naadloze ervaring bij elke stap.",
+          email: "",
+          phone: "+33 6 14 54 71 30",
+        },
+      ],
+      ctaEyebrow: "Een vraag?",
+      ctaTitleBefore: "Laten we uw",
+      ctaTitleAccent: "project bespreken",
+      ctaBody:
+        "Of u nu een uitzonderlijke woning wenst te verwerven, te verkopen of te laten taxeren, onze adviseurs staan tot uw beschikking.",
+    },
+    contactPage: {
+      eyebrow: "Contact",
+      titleBefore: "Neem",
+      titleAccent: "contact op",
+      subtitle:
+        "Wij staan klaar om uw vragen te beantwoorden en u te begeleiden in uw luxe vastgoedtraject.",
+      formTitle: "Stuur ons een bericht",
+      formSubtitle:
+        "Vul onderstaand formulier in en een lid van ons team reageert binnen 24 uur.",
+      detailsTitle: "Contactgegevens",
+      hoursTitle: "Openingstijden",
+      advisorBlock: {
+        eyebrow: "Uw contactpersoon",
+        role: "Portfoliodirecteur",
+        intro:
+          "Elke aanvraag wordt persoonlijk behandeld, in de grootste discretie. Neem contact op — ik kom binnen 24 uur bij u terug.",
+        signature: "— Marc",
+      },
+      address: "Espace Lemarquis\nQuartier Bertaud\n83580 Gassin — France",
+      monFri: "Maandag – Vrijdag",
+      sat: "Zaterdag",
+      sun: "Zondag",
+      sunHours: "Op afspraak",
+      monFriHours: "9.00 – 18.00",
+      satHours: "10.00 – 16.00",
+      confidentialTitle: "Vertrouwelijke service",
+      confidentialBody:
+        "Al uw aanvragen worden met de grootste discretie behandeld, in lijn met onze toewijding aan vertrouwelijkheid.",
+      thanks: "Dank u.",
+      successBody:
+        "Uw bericht is ontvangen. Een adviseur neemt binnen 24 uur contact met u op, in volledige vertrouwelijkheid.",
+      firstName: "Voornaam",
+      lastName: "Achternaam",
+      emailField: "E-mailadres",
+      phone: "Telefoonnummer",
+      firstNamePh: "Jan",
+      lastNamePh: "Jansen",
+      emailPh: "jan.jansen@voorbeeld.nl",
+      phonePh: "+33 6 12 34 56 78",
+      subject: "Onderwerp *",
+      subjectPlaceholder: "Selecteer een onderwerp",
+      subjects: [
+        "Aankoop van een woning",
+        "Taxatie van een woning",
+        "Verkoop van een woning",
+        "Seizoensverhuur",
+        "Andere aanvraag",
+      ],
+      messageLabel: "Bericht",
+      messagePlaceholder: "Geef alstublieft details over uw aanvraag...",
+      disclaimer:
+        "Door dit formulier te verzenden, gaat u akkoord met ons privacybeleid. Wij delen uw persoonlijke gegevens nooit met derden en gebruiken deze uitsluitend om op uw aanvraag te reageren.",
+      sendMessage: "Bericht versturen",
+      consent:
+        "Ik ga ermee akkoord dat mijn gegevens worden gebruikt om contact met mij op te nemen in verband met mijn aanvraag.",
+    },
+    rentalsPage: {
+      eyebrow: "Seizoensverhuur",
+      titleBefore: "Seizoens-",
+      titleAccent: "verhuur",
+      subtitle:
+        "Een zorgvuldig samengestelde selectie van villa's, landhuizen en appartementen te huur aan de Golf van Saint-Tropez en de Franse Rivièra.",
+    },
+    sellPage: {
+      eyebrow: "Verkopen met Ellington",
+      titleBefore: "Verkoop",
+      titleAccent: "met ons",
+      lead: "Lokale expertise. Internationaal bereik. Uitmuntendheid op maat.",
+      cta: "Vraag een taxatie aan",
+      whyTitle: "Waarom Ellington?",
+      whyBody1:
+        "Geboren in het hart van de Golf van Saint-Tropez is Ellington meer dan een vastgoedkantoor — het is een handtekening.",
+      whyBody2:
+        "De oprichter, opgegroeid in de regio, biedt een instinctief begrip van elk adres en elke nuance die de waarde van een woning aan de Franse Rivièra bepaalt. Deze diepgaande lokale kennis, gecombineerd met een sterk internationaal netwerk, stelt ons in staat uitzonderlijke woningen te verbinden met de juiste kopers.",
+      whyBody3:
+        "Vloeiend in het Frans, Engels en Nederlands, en ondersteund door vertrouwde internationale partners, zorgt Ellington ervoor dat elke woning gerichte wereldwijde zichtbaarheid geniet.",
+      whyBody4:
+        "Wij benaderen elke verkoop met discretie, precisie en een strategie op maat — omdat geen enkele woning hetzelfde is.",
+      processTitle: "Ons verkoopproces",
+      steps: [
+        {
+          title: "Taxatie op maat",
+          body: "Wij bieden een nauwkeurige en strategische taxatie op basis van marktexpertise, waarmee uw woning optimaal wordt gepositioneerd voor het beste resultaat.",
+        },
+        {
+          title: "Gerichte zichtbaarheid",
+          body: "Wij activeren ons wereldwijde netwerk en privécliëntenbestand om serieuze en relevante kopers te bereiken.",
+        },
+        {
+          title: "Marketing op maat",
+          body: "Uw woning wordt gepresenteerd met zorgvuldig vervaardigd beeldmateriaal en gepromoot bij een gekwalificeerd internationaal publiek.",
+        },
+        {
+          title: "Onderhandeling & afronding",
+          body: "Wij begeleiden u bij elke stap van bod tot ondertekening en stellen de transactie veilig onder de best mogelijke voorwaarden.",
+        },
+      ],
+      trustTitle: "Waarom cliënten ons vertrouwen",
+      trustCards: [
+        {
+          title: "Discretie",
+          body: "Wij begrijpen het belang van privacy en behandelen elke transactie met volledige vertrouwelijkheid.",
+        },
+        {
+          title: "Internationaal netwerk",
+          body: "Onze wereldwijde connecties brengen gekwalificeerde kopers van over de grenzen.",
+        },
+        {
+          title: "Toegewijde ondersteuning",
+          body: "Een responsief, attent team dat u bij elke stap begeleidt.",
+        },
+        {
+          title: "Aanpak op maat",
+          body: "Elke woning profiteert van een persoonlijke strategie die is ontworpen om haar waarde te maximaliseren.",
+        },
+      ],
+      ctaTitle: "Ontdek de werkelijke waarde van uw woning",
+      ctaSubtitle:
+        "Of u nu overweegt te verkopen of gewoon uw opties verkent, ons team staat tot uw beschikking.",
+      ctaButton: "Vraag uw vertrouwelijke taxatie aan",
+    },
+    footer: {
+      tagline:
+        "Luxe vastgoed aan de Franse Rivièra. Uitzonderlijke woningen, vertrouwelijke service.",
+      explore: "Verkennen",
+      contact: "Contact",
+      hours: "Openingstijden",
+      regions: "Onze regio's",
+      monFri: "Maandag – Vrijdag · 9.00 – 18.00",
+      sat: "Zaterdag · 10.00 – 16.00",
+      sun: "Zondag · op afspraak",
+      cityLabel: "Franse Rivièra, Frankrijk",
+      legal: "Juridisch",
+      privacy: "Privacy",
+      cookies: "Cookies beheren",
+      rights: (year: number) =>
+        `© ${year} Ellington. Alle rechten voorbehouden.`,
+    },
+    cookies: {
+      title: "Cookies & privacy",
+      description:
+        "Wij gebruiken essentiële cookies om de site te laten werken (inloggen, voorkeuren) en, met uw toestemming, cookies om het publiek te meten en uw ervaring te verbeteren. U kunt uw keuze op elk moment wijzigen.",
+      acceptAll: "Alles accepteren",
+      refuse: "Alles weigeren",
+      customize: "Aanpassen",
+      save: "Mijn keuzes opslaan",
+      learnMore: "Meer informatie",
+      manage: "Mijn voorkeuren beheren",
+      essentialLabel: "Essentiële cookies",
+      essentialDesc:
+        "Vereist om de site te laten werken (authenticatie, taalvoorkeuren). Altijd actief.",
+      analyticsLabel: "Publieksmeting",
+      analyticsDesc:
+        "Helpen ons te begrijpen hoe de site wordt gebruikt zodat wij die kunnen verbeteren. Geen gebruik voor advertentiedoeleinden.",
+      marketingLabel: "Marketing",
+      marketingDesc:
+        "Stellen ons in staat de effectiviteit van onze communicatie te meten en bepaalde inhoud te personaliseren.",
     },
   },
 } as const;

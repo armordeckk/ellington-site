@@ -9,12 +9,27 @@ export type BlogCategory =
   | "art-de-vivre"
   | "fiscalite";
 
-export const CATEGORY_LABELS: Record<BlogCategory, { fr: string; en: string }> = {
-  "guides-achat": { fr: "Guides d'achat", en: "Buyer's Guides" },
-  marche: { fr: "Marché immobilier", en: "Market Analysis" },
-  architecture: { fr: "Architecture & patrimoine", en: "Architecture & Heritage" },
-  "art-de-vivre": { fr: "Art de vivre", en: "Lifestyle" },
-  fiscalite: { fr: "Fiscalité & juridique", en: "Tax & Legal" },
+export const CATEGORY_LABELS: Record<
+  BlogCategory,
+  { fr: string; en: string; nl: string }
+> = {
+  "guides-achat": {
+    fr: "Guides d'achat",
+    en: "Buyer's Guides",
+    nl: "Aankoopgidsen",
+  },
+  marche: { fr: "Marché immobilier", en: "Market Analysis", nl: "Marktanalyse" },
+  architecture: {
+    fr: "Architecture & patrimoine",
+    en: "Architecture & Heritage",
+    nl: "Architectuur & erfgoed",
+  },
+  "art-de-vivre": { fr: "Art de vivre", en: "Lifestyle", nl: "Levensstijl" },
+  fiscalite: {
+    fr: "Fiscalité & juridique",
+    en: "Tax & Legal",
+    nl: "Fiscaliteit & juridisch",
+  },
 };
 
 export interface PostFrontmatter {
@@ -36,9 +51,13 @@ export interface Post extends PostFrontmatter {
   content: string;
 }
 
-export function formatDate(iso: string, lang: "fr" | "en" = "fr"): string {
+export function formatDate(
+  iso: string,
+  lang: "fr" | "en" | "nl" = "fr",
+): string {
   const d = new Date(iso);
-  return d.toLocaleDateString(lang === "en" ? "en-GB" : "fr-FR", {
+  const locale = lang === "en" ? "en-GB" : lang === "nl" ? "nl-NL" : "fr-FR";
+  return d.toLocaleDateString(locale, {
     year: "numeric",
     month: "long",
     day: "numeric",

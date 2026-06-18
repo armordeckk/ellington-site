@@ -61,12 +61,14 @@ export default function AboutPage() {
             {t.aboutPage.values.map((v, i) => (
               <div
                 key={v.title}
-                className="bg-[var(--background)] border border-[var(--border)] p-8"
+                data-reveal
+                style={{ "--reveal-delay": `${(i % 3) * 90}ms` } as React.CSSProperties}
+                className="bg-[var(--background)] border border-[var(--border)] border-l-2 border-l-[var(--gold)] p-8 transition hover:border-[var(--border-strong)] hover:border-l-[var(--gold)]"
               >
-                <div className="inline-flex items-center justify-center w-11 h-11 bg-[var(--panel)] text-accent mb-5">
-                  <ValueIcon index={i} />
-                </div>
-                <h3 className="type-h3 text-accent mb-4">{v.title}</h3>
+                <span className="block font-serif text-2xl text-[var(--gold)] mb-5 tabular-nums">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <h3 className="type-h4 mb-3">{v.title}</h3>
                 <p className="text-sm text-muted-strong leading-relaxed">
                   {v.body}
                 </p>
@@ -149,7 +151,7 @@ export default function AboutPage() {
           </p>
           <Link
             href="/contact"
-            className="inline-block px-8 py-4 bg-accent hover:bg-accent-hover text-[var(--background-elev)] text-[11px] tracking-[0.22em] uppercase transition"
+            className="inline-block px-[60px] py-4 bg-accent hover:bg-accent-hover text-[var(--background-elev)] text-[11px] tracking-[0.22em] uppercase transition"
           >
             {t.common.contactUs}
           </Link>
@@ -160,63 +162,3 @@ export default function AboutPage() {
   );
 }
 
-// Inline SVG icons for the 6 values — minimal line style, accent color.
-// Order matches the i18n values array:
-// 0 Integrity · 1 Excellence · 2 Discretion · 3 Global Reach · 4 Market Expertise · 5 Personalized Service
-function ValueIcon({ index }: { index: number }) {
-  const common = {
-    width: 32,
-    height: 32,
-    viewBox: "0 0 24 24",
-    fill: "none",
-    stroke: "currentColor",
-    strokeWidth: 1.4,
-    strokeLinecap: "round" as const,
-    strokeLinejoin: "round" as const,
-  };
-  switch (index) {
-    case 0: // Integrity — shield with check
-      return (
-        <svg {...common}>
-          <path d="M12 3l8 3v5c0 4.5-3.4 8.3-8 9-4.6-.7-8-4.5-8-9V6l8-3z" />
-          <path d="M9 12l2 2 4-4" />
-        </svg>
-      );
-    case 1: // Excellence — award/badge
-      return (
-        <svg {...common}>
-          <circle cx="12" cy="9" r="6" />
-          <path d="M9 14l-2 7 5-3 5 3-2-7" />
-        </svg>
-      );
-    case 2: // Discretion — lock
-      return (
-        <svg {...common}>
-          <rect x="5" y="11" width="14" height="9" rx="1" />
-          <path d="M8 11V8a4 4 0 018 0v3" />
-        </svg>
-      );
-    case 3: // Global Reach — globe
-      return (
-        <svg {...common}>
-          <circle cx="12" cy="12" r="9" />
-          <path d="M3 12h18M12 3a14 14 0 010 18M12 3a14 14 0 000 18" />
-        </svg>
-      );
-    case 4: // Market Expertise — chart
-      return (
-        <svg {...common}>
-          <path d="M4 20V8M10 20v-7M16 20v-4M22 20V4" />
-          <path d="M3 20h19" />
-        </svg>
-      );
-    case 5: // Personalized Service — heart
-      return (
-        <svg {...common}>
-          <path d="M12 20s-7-4.5-7-10a4 4 0 017-2.6A4 4 0 0119 10c0 5.5-7 10-7 10z" />
-        </svg>
-      );
-    default:
-      return null;
-  }
-}

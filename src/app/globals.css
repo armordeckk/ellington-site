@@ -8,19 +8,20 @@
   --background: #ffffff;        /* Core Primary — white page background */
   --background-elev: #ffffff;   /* white sections */
   --background-card: #ffffff;   /* white cards */
-  --panel: #e4eeff;             /* Neutral Primary — light-blue accent panels (footer, info boxes, filter bar) */
-  --foreground: #000000;        /* Core Secondary — black typography (Figma) */
+  --panel: #f3f1ec;             /* warm ivory accent panels (footer, info boxes, filter bar) — pairs with gold */
+  --foreground: #1a2744;        /* navy typography (client palette #1a2744) */
   --muted: #9a9a9a;             /* Neutral Secondary — gray */
   --muted-strong: #5a6b86;      /* deeper blue-gray for secondary text */
-  --border: #d9d9d9;            /* Neutral Accent-light — hairline gray */
-  --border-strong: #c2c2c2;     /* stronger hairline */
-  --accent: #0d316c;            /* Dark Accent navy — buttons & key accents */
-  --accent-hover: #09244e;      /* deeper navy on hover (navy buttons) */
-  --link: #004bc1;              /* Neutral Accent — links & text hovers */
-  --link-hover: #003a99;        /* darker blue on press */
-  --gold: #004bc1;              /* highlight accent on dark backgrounds */
+  --border: #e2ddd3;            /* warm hairline border — pairs with gold/ivory */
+  --border-strong: #cfc7b6;     /* stronger warm hairline */
+  --accent: #1a2744;            /* Navy — buttons & key accents (client #1a2744) */
+  --accent-hover: #0f1726;      /* deeper navy on hover (navy buttons) */
+  --link: #1a2744;              /* navy — links & text hovers */
+  --link-hover: #0f1726;        /* darker navy on press */
+  --gold: #c9a96e;              /* Gold accent (client #c9a96e) — eyebrows, numbers, hairlines */
+  --gold-hover: #b8975a;        /* deeper gold on hover */
   /* Shield dark navy — used by the logo to stay branded regardless of theme */
-  --brand-navy: #0a1628;
+  --brand-navy: #1a2744;
 }
 
 @theme inline {
@@ -38,6 +39,7 @@
   --color-link: var(--link);
   --color-link-hover: var(--link-hover);
   --color-gold: var(--gold);
+  --color-gold-hover: var(--gold-hover);
   --color-brand-navy: var(--brand-navy);
   --font-sans: var(--font-inter);
   --font-serif: var(--font-cormorant);
@@ -143,6 +145,32 @@ html, body {
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(12px); }
   to { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Scroll reveal ───────────────────────────────────────────────────────
+   Elements tagged with [data-reveal] start hidden and animate in once they
+   enter the viewport (class toggled by the global <ScrollReveal> observer).
+   Optional [data-reveal-delay] staggers grids. Respects reduced-motion. */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: var(--reveal-delay, 0ms);
+  will-change: opacity, transform;
+}
+
+[data-reveal].is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal] {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
 }
 
 ::selection {

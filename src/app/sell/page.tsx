@@ -109,7 +109,7 @@ export default function SellPage() {
           </p>
           <Link
             href="/contact?subject=valuation"
-            className="inline-block px-8 py-4 border border-[var(--border-strong)] hover:border-accent hover:bg-accent hover:text-white text-[11px] tracking-[0.22em] uppercase transition"
+            className="inline-block px-[60px] py-4 border border-[var(--border-strong)] hover:border-accent hover:bg-accent hover:text-white text-[11px] tracking-[0.22em] uppercase transition"
           >
             {t.sellPage.ctaButton}
           </Link>
