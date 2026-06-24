@@ -260,8 +260,8 @@ const dictRaw = {
         {
           name: "Marc Mehagnoul",
           role: "Fondateur & CEO",
-          photo: "/team/marc-mehagnoul.jpg",
-          bio: "Fort de plus de 30 ans d'expérience dans l'immobilier de luxe, Marc a fondé Ellington avec la vision de redéfinir l'excellence sur le marché de la Côte d'Azur.",
+          photo: "/team/marc-mehagnoul-v2.jpg",
+          bio: "Fondateur d'Ellington, Marc met sa connaissance intime du Golfe de Saint-Tropez et son exigence d'excellence au service d'une clientèle internationale en quête de biens d'exception.",
           email: "hello@ellington-international.fr",
           phone: "+33 6 74 75 07 03",
         },
@@ -694,8 +694,8 @@ const dictRaw = {
         {
           name: "Marc Mehagnoul",
           role: "Founder & CEO",
-          photo: "/team/marc-mehagnoul.jpg",
-          bio: "With over 30 years of experience in luxury real estate, Marc founded Ellington with a vision to redefine excellence in the French Riviera market.",
+          photo: "/team/marc-mehagnoul-v2.jpg",
+          bio: "Founder of Ellington, Marc brings his intimate knowledge of the Gulf of Saint-Tropez and his commitment to excellence to an international clientele in search of exceptional properties.",
           email: "hello@ellington-international.fr",
           phone: "+33 6 74 75 07 03",
         },
@@ -1129,8 +1129,8 @@ const dictRaw = {
         {
           name: "Marc Mehagnoul",
           role: "Oprichter & CEO",
-          photo: "/team/marc-mehagnoul.jpg",
-          bio: "Met meer dan 30 jaar ervaring in luxe vastgoed richtte Marc Ellington op met de visie om uitmuntendheid op de markt van de Franse Rivièra opnieuw te definiëren.",
+          photo: "/team/marc-mehagnoul-v2.jpg",
+          bio: "Oprichter van Ellington stelt Marc zijn grondige kennis van de Golf van Saint-Tropez en zijn streven naar uitmuntendheid ten dienste van een internationale clientèle op zoek naar uitzonderlijke panden.",
           email: "hello@ellington-international.fr",
           phone: "+33 6 74 75 07 03",
         },
