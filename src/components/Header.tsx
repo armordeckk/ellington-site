@@ -51,6 +51,7 @@ export function Header() {
   ];
 
   return (
+    <>
     <header
       className={`fixed top-0 inset-x-0 z-50 transition-all duration-500 ${
         scrolled || !hasImageHero
@@ -132,10 +133,13 @@ export function Header() {
           </button>
         </div>
       </div>
+    </header>
 
-      {/* Fullscreen mobile overlay menu (client prototype) */}
+      {/* Fullscreen mobile overlay menu — rendered OUTSIDE <header> so the
+          header's backdrop-blur (which creates a containing block for fixed
+          children) can't collapse this overlay to height 0 when scrolled. */}
       {open && (
-        <div className="md:hidden fixed inset-0 top-[72px] z-40 bg-[var(--background)] text-foreground animate-[fadeIn_0.25s_ease-out] flex flex-col">
+        <div className="md:hidden fixed inset-x-0 top-[72px] bottom-0 z-40 bg-[var(--background)] text-foreground animate-[fadeIn_0.25s_ease-out] flex flex-col overflow-y-auto">
           <nav className="flex-1 px-8 py-12 flex flex-col gap-8">
             {navLinks.map((l) => (
               <Link
@@ -162,6 +166,6 @@ export function Header() {
           </div>
         </div>
       )}
-    </header>
+    </>
   );
 }
