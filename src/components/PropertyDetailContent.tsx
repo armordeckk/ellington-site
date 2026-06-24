@@ -104,7 +104,8 @@ export function PropertyDetailContent({
                 </>
               )}
             </div>
-            <h1 className="type-h1 mb-3">
+            {/* Lighter, lower-case + italic (client: type-h1 looked too heavy here) */}
+            <h1 className="font-serif italic font-medium normal-case text-4xl md:text-6xl leading-[1.1] mb-3">
               {property.title}
             </h1>
             <p className="font-serif text-2xl text-accent">

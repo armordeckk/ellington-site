@@ -5,7 +5,9 @@ import Link from "next/link";
 import { useLanguage } from "@/components/LanguageProvider";
 
 export default function SellPage() {
-  const { t } = useLanguage();
+  const { t, lang } = useLanguage();
+  const methodEyebrow =
+    lang === "en" ? "Our method" : lang === "nl" ? "Onze methode" : "Notre méthode";
   return (
     <div className="bg-white">
       {/* HERO — full-bleed image, transparent nav overlays at top */}
@@ -35,13 +37,13 @@ export default function SellPage() {
         </div>
       </section>
 
-      <div className="max-w-[1400px] mx-auto px-6 md:px-10 pt-24 pb-20">
-
-        {/* WHY ELLINGTON — bordered card */}
-        <section className="mb-32 border border-[var(--border)] bg-[var(--background)] px-8 md:px-14 py-12 md:py-16">
-          <h2 className="type-h2 mb-8">
-            {t.sellPage.whyTitle}
-          </h2>
+      {/* WHY ELLINGTON — bordered card (unchanged) */}
+      <div className="max-w-[1400px] mx-auto px-6 md:px-10 pt-24">
+        <section
+          className="border border-[var(--border)] bg-[var(--background)] px-8 md:px-14 py-12 md:py-16"
+          data-reveal
+        >
+          <h2 className="type-h2 mb-8">{t.sellPage.whyTitle}</h2>
           <div className="space-y-5 text-muted leading-[1.85]">
             <p>{t.sellPage.whyBody1}</p>
             <p>{t.sellPage.whyBody2}</p>
@@ -49,46 +51,61 @@ export default function SellPage() {
             <p>{t.sellPage.whyBody4}</p>
           </div>
         </section>
+      </div>
 
-        {/* OUR SELLING PROCESS — 4 horizontal cards stacked */}
-        <section className="mb-32">
-          <h2 className="type-h2 mb-12">
+      {/* OUR SELLING PROCESS — light-blue band, white bordered cards (prototype) */}
+      <section className="bg-[var(--panel)] mt-24 py-24 md:py-28 px-6 md:px-10">
+        <div className="max-w-[1400px] mx-auto">
+          <p
+            className="text-[11px] tracking-[0.32em] uppercase text-[var(--gold)] mb-4"
+            data-reveal
+          >
+            {methodEyebrow}
+          </p>
+          <h2 className="type-h2 mb-12" data-reveal>
             {t.sellPage.processTitle}
           </h2>
-          <div className="space-y-5">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {t.sellPage.steps.map((step, i) => (
               <div
                 key={step.title}
-                className="bg-[var(--panel)] px-8 md:px-12 py-8 md:py-10 flex items-start gap-6 md:gap-10"
+                data-reveal
+                style={{ "--reveal-delay": `${(i % 2) * 90}ms` } as React.CSSProperties}
+                className="bg-white border border-[var(--border)] p-8 md:p-10"
               >
-                <p className="font-serif text-3xl md:text-4xl text-accent flex-none w-8 md:w-10">
-                  {i + 1}
+                <span className="block font-serif text-3xl text-[var(--gold)] mb-5 tabular-nums">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <h3 className="font-serif text-xl md:text-2xl mb-2">
+                  {step.title}
+                </h3>
+                <p className="text-sm md:text-base text-muted-strong leading-relaxed">
+                  {step.body}
                 </p>
-                <div>
-                  <h3 className="font-serif italic text-xl md:text-2xl text-accent mb-2">
-                    {step.title}
-                  </h3>
-                  <p className="text-sm md:text-base text-muted-strong leading-relaxed">
-                    {step.body}
-                  </p>
-                </div>
               </div>
             ))}
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* WHY CLIENTS TRUST US — 4 icon cards */}
-        <section className="mb-12">
-          <h2 className="type-h2 mb-12 text-center md:text-left">
+      {/* WHY CLIENTS TRUST US — bordered icon cards (prototype) */}
+      <section className="py-24 md:py-28 px-6 md:px-10">
+        <div className="max-w-[1400px] mx-auto">
+          <h2 className="type-h2 mb-12 text-center" data-reveal>
             {t.sellPage.trustTitle}
           </h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-10">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {t.sellPage.trustCards.map((card, i) => (
-              <div key={card.title} className="text-center">
-                <div className="inline-flex items-center justify-center w-14 h-14 bg-accent text-white mb-5">
+              <div
+                key={card.title}
+                data-reveal
+                style={{ "--reveal-delay": `${(i % 4) * 80}ms` } as React.CSSProperties}
+                className="border border-[var(--border)] p-8 text-center"
+              >
+                <div className="inline-flex items-center justify-center w-12 h-12 bg-accent text-white mb-5">
                   <TrustIcon index={i} />
                 </div>
-                <h3 className="font-serif italic text-lg md:text-xl text-accent mb-3">
+                <h3 className="font-serif text-lg md:text-xl mb-3">
                   {card.title}
                 </h3>
                 <p className="text-sm text-muted-strong leading-relaxed">
@@ -97,24 +114,24 @@ export default function SellPage() {
               </div>
             ))}
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* CTA — discover the value */}
-        <section className="border border-[var(--border)] p-12 md:p-20 text-center mt-8">
-          <h2 className="type-h2 mb-6">
-            {t.sellPage.ctaTitle}
-          </h2>
-          <p className="text-muted-strong max-w-2xl mx-auto mb-10">
+      {/* CTA — full-bleed navy band, gold button (prototype) */}
+      <section className="bg-[var(--accent)] text-white py-16 md:py-20 px-6" data-reveal>
+        <div className="max-w-2xl mx-auto text-center">
+          <h2 className="type-h2 text-white mb-6">{t.sellPage.ctaTitle}</h2>
+          <p className="text-white/75 max-w-2xl mx-auto mb-10">
             {t.sellPage.ctaSubtitle}
           </p>
           <Link
             href="/contact?subject=valuation"
-            className="inline-block px-[60px] py-4 border border-[var(--border-strong)] hover:border-accent hover:bg-accent hover:text-white text-[11px] tracking-[0.22em] uppercase transition"
+            className="inline-block px-[60px] py-4 bg-[var(--gold)] text-[var(--accent)] hover:bg-[var(--gold-hover)] text-[11px] tracking-[0.22em] uppercase transition"
           >
             {t.sellPage.ctaButton}
           </Link>
-        </section>
-      </div>
+        </div>
+      </section>
     </div>
   );
 }

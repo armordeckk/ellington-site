@@ -57,13 +57,13 @@ export function PropertyCard({
 
       {/* INFO — bordered box (Figma) */}
       <div className="border border-[var(--border)] group-hover:border-[var(--border-strong)] transition p-6 flex flex-col flex-1">
-        <div className="flex items-center gap-1.5 text-[var(--gold)] text-[10px] tracking-[0.22em] uppercase mb-3">
+        <div className="flex items-center gap-1.5 text-link text-[10px] tracking-[0.22em] uppercase mb-3">
           <PinIcon />
           {property.city}
         </div>
         {/* Title — Inter, uppercase, bold (client: same style as location cards).
             Smaller on mobile + 2-line clamp so it is never cut with "…". */}
-        <h3 className="font-sans font-bold uppercase tracking-[0.06em] text-[13px] md:text-[15px] leading-[1.35] text-foreground group-hover:text-[var(--gold)] transition mb-2 line-clamp-2">
+        <h3 className="font-sans font-bold uppercase tracking-[0.06em] text-[13px] md:text-[15px] leading-[1.35] text-foreground group-hover:text-link transition mb-2 line-clamp-2">
           {property.title}
         </h3>
         <p className="text-sm text-muted mb-5">

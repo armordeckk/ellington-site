@@ -26,6 +26,14 @@ export function Header() {
     setOpen(false);
   }, [pathname]);
 
+  // Lock body scroll while the fullscreen mobile menu is open
+  useEffect(() => {
+    document.body.style.overflow = open ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [open]);
+
   // Pages whose top section is a full-bleed image hero — the header should
   // start transparent so the image flows behind it, then darken on scroll.
   const hasImageHero =
@@ -63,10 +71,10 @@ export function Header() {
               window.scrollTo({ top: 0, behavior: "smooth" });
             }
           }}
-          className="flex items-center gap-3 hover:opacity-80 transition"
+          className="flex items-center gap-2.5 hover:opacity-80 transition"
         >
-          <Logo className="w-7 h-9" invert={overImage} black={!overImage} />
-          <span className="font-serif text-2xl tracking-[0.22em] uppercase">
+          <Logo className="h-6 w-[18px]" invert={overImage} black={!overImage} />
+          <span className="font-serif text-lg md:text-xl tracking-[0.2em] uppercase leading-none">
             Ellington
           </span>
         </Link>
@@ -125,24 +133,29 @@ export function Header() {
         </div>
       </div>
 
+      {/* Fullscreen mobile overlay menu (client prototype) */}
       {open && (
-        <div className="md:hidden bg-[var(--background-elev)] border-t border-[var(--border)] text-foreground">
-          <div className="px-6 py-6 flex flex-col gap-4">
+        <div className="md:hidden fixed inset-0 top-[72px] z-40 bg-[var(--background)] text-foreground animate-[fadeIn_0.25s_ease-out] flex flex-col">
+          <nav className="flex-1 px-8 py-12 flex flex-col gap-8">
             {navLinks.map((l) => (
               <Link
                 key={l.href}
                 href={l.href}
                 onClick={() => setOpen(false)}
-                className="text-sm tracking-[0.18em] uppercase text-muted-strong"
+                className="font-serif text-3xl tracking-[0.04em] uppercase text-foreground hover:text-link transition"
               >
                 {l.label}
               </Link>
             ))}
-            <AuthMenu variant="mobile" onNavigate={() => setOpen(false)} />
+            <div className="mt-2 text-base tracking-[0.18em] uppercase text-muted-strong">
+              <AuthMenu variant="mobile" onNavigate={() => setOpen(false)} />
+            </div>
+          </nav>
+          <div className="px-8 pb-12">
             <Link
               href="/contact"
               onClick={() => setOpen(false)}
-              className="text-sm tracking-[0.18em] uppercase px-5 py-3 bg-accent text-white text-center mt-2"
+              className="block text-sm tracking-[0.22em] uppercase px-[60px] py-4 bg-accent text-white text-center"
             >
               {t.nav.contact}
             </Link>

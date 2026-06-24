@@ -8,17 +8,17 @@
   --background: #ffffff;        /* Core Primary — white page background */
   --background-elev: #ffffff;   /* white sections */
   --background-card: #ffffff;   /* white cards */
-  --panel: #f3f1ec;             /* warm ivory accent panels (footer, info boxes, filter bar) — pairs with gold */
+  --panel: #ebeef5;             /* Light blue accent panels (footer, info boxes, filter bar) — client #ebeef5 */
   --foreground: #1a2744;        /* navy typography (client palette #1a2744) */
   --muted: #9a9a9a;             /* Neutral Secondary — gray */
   --muted-strong: #5a6b86;      /* deeper blue-gray for secondary text */
-  --border: #e2ddd3;            /* warm hairline border — pairs with gold/ivory */
-  --border-strong: #cfc7b6;     /* stronger warm hairline */
+  --border: #d9d9d9;            /* Neutral Accent-light — hairline gray */
+  --border-strong: #c2c2c2;     /* stronger hairline */
   --accent: #1a2744;            /* Navy — buttons & key accents (client #1a2744) */
   --accent-hover: #0f1726;      /* deeper navy on hover (navy buttons) */
-  --link: #1a2744;              /* navy — links & text hovers */
-  --link-hover: #0f1726;        /* darker navy on press */
-  --gold: #c9a96e;              /* Gold accent (client #c9a96e) — eyebrows, numbers, hairlines */
+  --link: #004bc1;              /* Blue accent — links, property pages (Figma "blue is accent") */
+  --link-hover: #003a99;        /* darker blue on press */
+  --gold: #c9a96e;              /* Gold accent (client #c9a96e) — reserved for sub-titles / eyebrows only */
   --gold-hover: #b8975a;        /* deeper gold on hover */
   /* Shield dark navy — used by the logo to stay branded regardless of theme */
   --brand-navy: #1a2744;
@@ -126,11 +126,11 @@ html, body {
   .type-caption { font-weight: 300; font-size: 12px; line-height: 1; letter-spacing: 2px; }
 
   @media (max-width: 768px) {
-    .type-h1 { font-size: 36px; }
-    .type-h2 { font-size: 30px; }
-    .type-h3 { font-size: 22px; }
-    .type-h4 { font-size: 18px; }
-    .type-body-lg { font-size: 16px; }
+    .type-h1 { font-size: 30px; }
+    .type-h2 { font-size: 25px; }
+    .type-h3 { font-size: 20px; }
+    .type-h4 { font-size: 17px; }
+    .type-body-lg { font-size: 15px; }
   }
 }
 

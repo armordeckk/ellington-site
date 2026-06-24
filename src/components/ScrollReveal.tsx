@@ -33,19 +33,14 @@ export function ScrollReveal() {
           }
         });
       },
-      { threshold: 0.12, rootMargin: "0px 0px -8% 0px" },
+      { threshold: 0.15, rootMargin: "0px 0px -10% 0px" },
     );
 
-    els.forEach((el) => {
-      // Already-in-view elements (above the fold) reveal right away to avoid a
-      // flash of hidden content on load.
-      const rect = el.getBoundingClientRect();
-      if (rect.top < window.innerHeight * 0.92) {
-        el.classList.add("is-visible");
-      } else {
-        observer.observe(el);
-      }
-    });
+    // Always observe — the observer reveals in-view elements on the next frame
+    // and below-the-fold elements as they scroll into view. (A manual
+    // "above-the-fold" shortcut races with browser scroll-restoration and can
+    // mark below-fold elements visible on load, which kills the animation.)
+    els.forEach((el) => observer.observe(el));
 
     return () => observer.disconnect();
   }, [pathname]);

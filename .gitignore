@@ -45,3 +45,7 @@ next-env.d.ts
 
 .vercel
 .env*
+
+# taste-skill install (tooling, not part of the site build)
+.agents/
+skills-lock.json

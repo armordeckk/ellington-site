@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { locations } from "@/lib/properties";
+import { locations, getProperties } from "@/lib/properties";
 import { LocationDetail } from "@/components/LocationDetail";
 
 interface Props {
@@ -47,5 +47,12 @@ export default async function LocationPage({ params }: Props) {
   const loc = locations.find((l) => l.slug === slug);
   if (!loc) notFound();
 
-  return <LocationDetail location={loc} />;
+  // Properties shown in the "Properties in this region" section. Prefer exact
+  // city matches; fall back to a few sale listings so the section is never empty.
+  const all = await getProperties({ category: "sale" });
+  const norm = (s: string) => s.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "");
+  const inRegion = all.filter((p) => norm(p.city) === norm(loc.name));
+  const regionProperties = (inRegion.length ? inRegion : all).slice(0, 3);
+
+  return <LocationDetail location={loc} properties={regionProperties} />;
 }

@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { PropertyCard } from "@/components/PropertyCard";
 import { NewsletterForm } from "@/components/NewsletterForm";
 import { HeroSearch } from "@/components/HeroSearch";
@@ -60,20 +61,17 @@ export function HomeContent({
             </p>
           </div>
 
-          {/* Numbered containers — gold left border, consistent full border (maquette) */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {/* Light-blue filled boxes on white, with gaps (client prototype) */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 md:gap-6">
             {t.home.features.map((f, i) => (
               <div
                 key={i}
                 data-reveal
                 style={{ "--reveal-delay": `${i * 90}ms` } as React.CSSProperties}
-                className="group bg-[var(--background-card)] border border-[var(--border)] border-l-2 border-l-[var(--gold)] p-8 hover:border-[var(--border-strong)] hover:border-l-[var(--gold)] transition duration-500"
+                className="bg-[var(--panel)] p-8 md:p-10"
               >
-                <span className="block font-serif text-2xl text-[var(--gold)] mb-6 tabular-nums">
-                  {String(i + 1).padStart(2, "0")}
-                </span>
                 <h3 className="type-h4 mb-3">{f.title}</h3>
-                <p className="text-sm text-muted leading-relaxed">{f.body}</p>
+                <p className="text-sm text-muted-strong leading-relaxed">{f.body}</p>
               </div>
             ))}
           </div>
@@ -129,66 +127,104 @@ export function HomeContent({
         </div>
       </section>
 
-      {/* NOT YOUR ORDINARY LOCAL EXPERT — bordered editorial box */}
+      {/* NOT YOUR ORDINARY LOCAL EXPERT — two-column editorial box (prototype) */}
       <section className="py-20 md:py-28 px-6 md:px-10">
-        <div className="max-w-[1400px] mx-auto border border-[var(--border)] px-8 md:px-20 py-16 md:py-24" data-reveal>
-          <h2 className="type-h3 text-center mb-12">
-            {t.home.expertTitle}
-          </h2>
-          <div className="space-y-6 text-muted leading-[1.85]">
-            <p>{t.home.expertP1}</p>
-            <p>{t.home.expertP2}</p>
-            <p>{t.home.expertP3}</p>
+        <div
+          className="max-w-[1400px] mx-auto grid md:grid-cols-2 border border-[var(--border)]"
+          data-reveal
+        >
+          {/* LEFT — text panel */}
+          <div className="bg-[var(--panel)] px-8 md:px-14 py-14 md:py-20 flex flex-col justify-center">
+            <p className="text-[11px] tracking-[0.32em] uppercase text-[var(--gold)] mb-6">
+              {lang === "en"
+                ? "Our signature"
+                : lang === "nl"
+                  ? "Onze signatuur"
+                  : "Notre signature"}
+            </p>
+            <h2 className="font-serif italic text-3xl md:text-4xl leading-[1.15] mb-8">
+              {t.home.expertTitle}
+            </h2>
+            <div className="space-y-4 text-muted-strong leading-[1.8] text-[15px] mb-10">
+              <p>{t.home.expertP1}</p>
+              <p>{t.home.expertP3}</p>
+            </div>
+            <Link
+              href="/about"
+              className="inline-block self-start px-[60px] py-4 bg-accent hover:bg-accent-hover text-white text-[11px] tracking-[0.22em] uppercase transition"
+            >
+              {t.cookies.learnMore}
+            </Link>
+          </div>
+          {/* RIGHT — image */}
+          <div className="relative min-h-[320px] md:min-h-[480px]">
+            <Image
+              src="/locations/riviera.jpg"
+              alt="Golfe de Saint-Tropez"
+              fill
+              sizes="(min-width: 768px) 50vw, 100vw"
+              className="object-cover"
+            />
           </div>
         </div>
       </section>
 
-      {/* STAY INFORMED */}
-      <section className="py-28 md:py-36 px-6 md:px-10 bg-[var(--background)] border-t border-[var(--border)]">
-        <div className="max-w-2xl mx-auto text-center">
-          <h2 className="type-h2 mb-5">
-            {t.home.newsletterTitleBefore} {t.home.newsletterTitleAccent}
-          </h2>
-          <p className="font-serif italic text-lg md:text-xl text-muted-strong mb-10">
-            {t.home.newsletterSubtitle}
+      {/* QUOTE BAND — navy editorial pull-quote (prototype) */}
+      <section className="bg-[var(--accent)] text-white py-12 md:py-16 px-6" data-reveal>
+        <div className="max-w-3xl mx-auto text-center">
+          <span className="block w-10 h-px bg-[var(--gold)] mx-auto mb-7" />
+          <p className="font-serif italic text-xl md:text-3xl leading-[1.4]">
+            {lang === "en"
+              ? "“Every property is a story. We are its authors.”"
+              : lang === "nl"
+                ? "“Elk pand is een verhaal. Wij zijn de auteurs ervan.”"
+                : "« Chaque propriété est une histoire. Nous en sommes les auteurs. »"}
           </p>
-          <NewsletterForm />
+          <span className="block w-10 h-px bg-[var(--gold)] mx-auto mt-7" />
         </div>
       </section>
 
-      {/* JOURNAL PREVIEW — conservé pour le SEO, déplacé sous la newsletter (retiré du nav) */}
+      {/* JOURNAL PREVIEW — conservé pour le SEO (prototype : avant la newsletter) */}
       {recentPosts.length > 0 && (
-        <section className="py-28 md:py-36 px-6 md:px-10 bg-[var(--background-elev)] border-t border-[var(--border)]">
+        <section className="py-28 md:py-36 px-6 md:px-10 bg-[var(--panel)]">
           <div className="max-w-[1400px] mx-auto">
-            <div className="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-6">
+            <div className="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-6" data-reveal>
               <div className="max-w-2xl">
-                <p className="text-[11px] tracking-[0.32em] uppercase text-accent mb-5">
-                  {lang === "en" ? "The Journal" : "Le journal"}
+                <p className="text-[11px] tracking-[0.32em] uppercase text-[var(--gold)] mb-5">
+                  {lang === "en" ? "The Journal" : lang === "nl" ? "Het Journaal" : "Le journal"}
                 </p>
                 <h2 className="type-h2 mb-4">
                   {lang === "en" ? (
                     <>
-                      Stories from the{" "}
-                      <em className="not-italic">Gulf</em>
+                      Stories from the <em className="not-italic">Gulf</em>
+                    </>
+                  ) : lang === "nl" ? (
+                    <>
+                      Verhalen uit de <em className="not-italic">Golf</em>
                     </>
                   ) : (
                     <>
-                      Chroniques du{" "}
-                      <em className="not-italic">Golfe</em>
+                      Chroniques du <em className="not-italic">Golfe</em>
                     </>
                   )}
                 </h2>
                 <p className="text-muted-strong">
                   {lang === "en"
                     ? "Buyer's guides, market analyses and Riviera lifestyle — our editorial selection."
-                    : "Guides d'achat, analyses de marché et art de vivre — notre sélection éditoriale."}
+                    : lang === "nl"
+                      ? "Koopgidsen, marktanalyses en Riviera-lifestyle — onze redactionele selectie."
+                      : "Guides d'achat, analyses de marché et art de vivre — notre sélection éditoriale."}
                 </p>
               </div>
               <Link
                 href="/blog"
                 className="self-start md:self-end text-[11px] tracking-[0.22em] uppercase text-accent hover:text-link border-b border-accent pb-1"
               >
-                {lang === "en" ? "View all articles →" : "Voir tous les articles →"}
+                {lang === "en"
+                  ? "View all articles →"
+                  : lang === "nl"
+                    ? "Alle artikelen bekijken →"
+                    : "Voir tous les articles →"}
               </Link>
             </div>
 
@@ -207,7 +243,11 @@ export function HomeContent({
             {/* Category chips — quick access to filtered views */}
             <div className="mt-12 pt-10 border-t border-[var(--border)]">
               <p className="text-[10px] tracking-[0.22em] uppercase text-muted text-center mb-6">
-                {lang === "en" ? "Browse by category" : "Parcourir par catégorie"}
+                {lang === "en"
+                  ? "Browse by category"
+                  : lang === "nl"
+                    ? "Bladeren per categorie"
+                    : "Parcourir par catégorie"}
               </p>
               <div className="flex flex-wrap justify-center gap-2 md:gap-3">
                 {CATEGORIES_ORDER.map((cat) => (
@@ -224,6 +264,22 @@ export function HomeContent({
           </div>
         </section>
       )}
+
+      {/* STAY INFORMED — dark navy box (prototype: last section before footer) */}
+      <section className="py-16 md:py-20 px-6 md:px-10 bg-[var(--accent)] text-white">
+        <div className="max-w-2xl mx-auto text-center" data-reveal>
+          <p className="text-[11px] tracking-[0.32em] uppercase text-[var(--gold)] mb-5">
+            {t.home.newsletterEyebrow}
+          </p>
+          <h2 className="type-h2 mb-5 text-white">
+            {t.home.newsletterTitleBefore} {t.home.newsletterTitleAccent}
+          </h2>
+          <p className="font-serif italic text-lg md:text-xl text-white/80 mb-10">
+            {t.home.newsletterSubtitle}
+          </p>
+          <NewsletterForm onDark />
+        </div>
+      </section>
     </>
   );
 }
