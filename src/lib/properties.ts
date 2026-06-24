@@ -396,7 +396,7 @@ export const locations: Location[] = [
       "Immobilier de prestige à Saint-Tropez. Découvrez villas, bastides et penthouses d'exception au cœur du village et sur la péninsule, avec Ellington.",
     metaDescriptionEn:
       "Luxury real estate in Saint-Tropez. Discover exceptional villas, bastides and penthouses in the village and across the peninsula, with Ellington.",
-    image: "/locations/saint-tropez/sttropez.jpg",
+    image: "/locations/saint-tropez/sttropez-v2.jpg",
     coordinates: { lat: 43.2727, lng: 6.6407 },
     activities: [
       "Voile et yachting dans le Golfe",
