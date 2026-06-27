@@ -49,10 +49,13 @@ export function LocationsIndexContent() {
       </section>
 
       <div className="max-w-[1400px] mx-auto px-6 md:px-10 pt-20 pb-20">
-        {/* INTRO */}
-        <p className="text-center text-muted leading-[1.9] max-w-4xl mx-auto mb-20">
-          {t.locationsPage.intro}
-        </p>
+        {/* INTRO — title placeholder instead of the long text (client) */}
+        <div className="text-center max-w-3xl mx-auto mb-20" data-reveal>
+          <p className="type-eyebrow mb-5">{t.locationsPage.eyebrow}</p>
+          <h2 className="type-h2">
+            {t.locationsPage.titleBefore} {t.locationsPage.titleAccent}
+          </h2>
+        </div>
 
         {/* MAP — Gulf of Saint-Tropez */}
         <div className="mb-20">

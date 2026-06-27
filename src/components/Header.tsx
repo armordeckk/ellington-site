@@ -140,18 +140,19 @@ export function Header() {
           children) can't collapse this overlay to height 0 when scrolled. */}
       {open && (
         <div className="md:hidden fixed inset-x-0 top-[72px] bottom-0 z-40 bg-[var(--background)] text-foreground animate-[fadeIn_0.25s_ease-out] flex flex-col overflow-y-auto">
-          <nav className="flex-1 px-8 py-12 flex flex-col gap-8">
+          {/* Structured list, smaller tracked font, hairline dividers (client) */}
+          <nav className="flex-1 px-8 pt-6 flex flex-col">
             {navLinks.map((l) => (
               <Link
                 key={l.href}
                 href={l.href}
                 onClick={() => setOpen(false)}
-                className="font-serif text-3xl tracking-[0.04em] uppercase text-foreground hover:text-link transition"
+                className="py-5 border-b border-[var(--border)] text-[13px] tracking-[0.22em] uppercase text-foreground hover:text-link transition"
               >
                 {l.label}
               </Link>
             ))}
-            <div className="mt-2 text-base tracking-[0.18em] uppercase text-muted-strong">
+            <div className="py-5 border-b border-[var(--border)] text-[13px] tracking-[0.22em] uppercase text-muted-strong">
               <AuthMenu variant="mobile" onNavigate={() => setOpen(false)} />
             </div>
           </nav>

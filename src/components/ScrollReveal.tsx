@@ -33,7 +33,11 @@ export function ScrollReveal() {
           }
         });
       },
-      { threshold: 0.15, rootMargin: "0px 0px -10% 0px" },
+      // threshold 0 = fire as soon as any part enters; the -12% bottom margin
+      // delays the reveal until the element is a little way into view. Works for
+      // sections of any height (a percentage threshold can fail very tall ones
+      // on large desktop viewports).
+      { threshold: 0, rootMargin: "0px 0px -12% 0px" },
     );
 
     // Always observe — the observer reveals in-view elements on the next frame

@@ -105,10 +105,11 @@ html, body {
     font-family: var(--font-serif), Georgia, serif;
     letter-spacing: 0;
   }
-  .type-h1 { font-weight: 500; font-size: 64px; line-height: 1; text-transform: uppercase; }
-  .type-h2 { font-weight: 600; font-size: 48px; line-height: 1; text-transform: uppercase; }
-  .type-h3 { font-weight: 500; font-style: italic; font-size: 32px; line-height: 1; }
-  .type-h4 { font-weight: 500; font-size: 24px; line-height: 1; }
+  /* Client spec (Feedback 2): h1 40px/.1em, h2 36px, h3 30px, h4 22px */
+  .type-h1 { font-weight: 500; font-size: 40px; line-height: 1.1; letter-spacing: 0.1em; text-transform: uppercase; }
+  .type-h2 { font-weight: 600; font-size: 36px; line-height: 1.1; text-transform: uppercase; }
+  .type-h3 { font-weight: 500; font-style: italic; font-size: 30px; line-height: 1.15; }
+  .type-h4 { font-weight: 500; font-size: 22px; line-height: 1.25; }
 
   .type-body-lg,
   .type-body,
@@ -125,12 +126,41 @@ html, body {
   .type-nav { font-weight: 300; font-size: 14px; line-height: 1; letter-spacing: 2px; }
   .type-caption { font-weight: 300; font-size: 12px; line-height: 1; letter-spacing: 2px; }
 
+  /* Standard section header blocks (client spec):
+     eyebrow = gold · title = h1/h2 · sub-header = 14px tracking .2em uppercase muted */
+  .type-eyebrow {
+    font-family: var(--font-sans), system-ui, sans-serif;
+    font-weight: 300; font-size: 12px; line-height: 1;
+    letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold);
+  }
+  .type-subhead {
+    font-family: var(--font-sans), system-ui, sans-serif;
+    font-weight: 300; font-size: 14px; line-height: 1.6;
+    letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted);
+  }
+
   @media (max-width: 768px) {
     .type-h1 { font-size: 30px; }
-    .type-h2 { font-size: 25px; }
-    .type-h3 { font-size: 20px; }
-    .type-h4 { font-size: 17px; }
+    .type-h2 { font-size: 26px; }
+    .type-h3 { font-size: 22px; }
+    .type-h4 { font-size: 18px; }
     .type-body-lg { font-size: 15px; }
+  }
+}
+
+/* ── Body copy & controls — client spec: all <p> 14px, buttons/inputs 15px.
+   Applies to elements that don't carry an explicit Tailwind size utility so
+   layout-specific overrides still win where intentionally set. */
+@layer base {
+  p {
+    font-size: 14px;
+    line-height: 1.75;
+  }
+  button,
+  input,
+  select,
+  textarea {
+    font-size: 15px;
   }
 }
 

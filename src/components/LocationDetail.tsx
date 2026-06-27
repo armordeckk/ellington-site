@@ -63,7 +63,7 @@ export function LocationDetail({
       <div className="max-w-[1400px] mx-auto px-6 md:px-10 py-8">
         <Link
           href="/locations"
-          className="inline-block px-7 py-3 border border-[var(--border-strong)] hover:border-accent hover:bg-accent hover:text-white text-[11px] tracking-[0.22em] uppercase transition"
+          className="inline-block px-8 py-4 border border-[var(--border-strong)] hover:border-accent hover:bg-accent hover:text-white text-[11px] tracking-[0.22em] uppercase transition"
         >
           {tr("← Retour aux régions", "← Back to locations", "← Terug naar regio's")}
         </Link>
@@ -103,7 +103,7 @@ export function LocationDetail({
           <h2 className="font-serif text-2xl md:text-3xl tracking-[0.1em] uppercase mb-7">
             {loc.name}
           </h2>
-          <p className="text-muted-strong leading-[1.9] text-[15px] max-w-xl">
+          <p className="text-muted-strong leading-[1.9] text-[14px] max-w-xl">
             {intro}
           </p>
         </div>
@@ -121,14 +121,14 @@ export function LocationDetail({
             label={tr("Art de vivre", "Lifestyle", "Levenskunst")}
             heading={tr("Culture & Expériences", "Culture & Experiences", "Cultuur & Belevingen")}
           >
-            <p className="text-muted-strong leading-[1.9] text-[15px] max-w-3xl mb-8">
+            <p className="text-muted-strong leading-[1.9] text-[14px] max-w-3xl mb-8">
               {(isEn ? rich.lifestyle.en : rich.lifestyle.fr)[0]}
             </p>
             <ul className="max-w-3xl">
               {rich.activities.map((a, i) => (
                 <li
                   key={i}
-                  className="flex items-start gap-3 py-4 border-b border-[var(--border)] text-[15px] text-foreground"
+                  className="flex items-start gap-3 py-4 border-b border-[var(--border)] text-[14px] text-foreground"
                 >
                   <span className="mt-2 w-1.5 h-1.5 rounded-full bg-[var(--gold)] flex-none" />
                   {pick(a.title)}
@@ -143,7 +143,7 @@ export function LocationDetail({
               label={tr("À découvrir", "Discover", "Ontdekken")}
               heading={tr("Le territoire", "The area", "De omgeving")}
             >
-              <p className="text-muted-strong leading-[1.9] text-[15px] max-w-3xl mb-8">
+              <p className="text-muted-strong leading-[1.9] text-[14px] max-w-3xl mb-8">
                 {pick(rich.gastronomy)}
               </p>
               <div className="flex flex-wrap gap-3">
@@ -160,7 +160,7 @@ export function LocationDetail({
             heading={tr("Investissement & Marché", "Investment & Market", "Investering & Markt")}
             last
           >
-            <p className="text-muted-strong leading-[1.9] text-[15px] max-w-3xl mb-8">
+            <p className="text-muted-strong leading-[1.9] text-[14px] max-w-3xl mb-8">
               {tr(
                 `Biens d'exception au fort potentiel patrimonial à ${loc.name}.`,
                 `Exceptional properties with strong asset potential in ${loc.name}.`,
@@ -187,7 +187,7 @@ export function LocationDetail({
                 "Uw lokale expert in deze regio",
               )}
             </h2>
-            <p className="text-white/70 text-[15px] max-w-xl">
+            <p className="text-white/70 text-[14px] max-w-xl">
               {tr(
                 "Notre équipe connaît chaque rue, chaque vue, chaque bien exceptionnel.",
                 "Our team knows every street, every view, every exceptional property.",

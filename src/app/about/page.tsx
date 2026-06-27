@@ -77,7 +77,7 @@ export default function AboutPage() {
           <h2 className="font-serif text-2xl md:text-3xl tracking-[0.12em] uppercase mb-8">
             {t.aboutPage.storyTitle}
           </h2>
-          <div className="space-y-5 text-muted-strong leading-[1.85] text-[15px] max-w-xl">
+          <div className="space-y-5 text-muted-strong leading-[1.85] text-[14px] max-w-xl">
             <p>{t.aboutPage.lead}</p>
             <p>{t.aboutPage.body}</p>
             <p>{t.aboutPage.body2}</p>
@@ -89,7 +89,8 @@ export default function AboutPage() {
       <section className="px-6 md:px-10 py-24 md:py-32">
         <div className="max-w-[1400px] mx-auto">
           <SectionHeading>{t.aboutPage.commitTitle}</SectionHeading>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 border-t border-l border-[var(--border)]">
+          {/* Separate bordered cards WITH gaps between them (client) */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
             {t.aboutPage.values.map((v, i) => (
               <div
                 key={v.title}
@@ -97,7 +98,7 @@ export default function AboutPage() {
                 style={{
                   "--reveal-delay": `${(i % 3) * 80}ms`,
                 } as React.CSSProperties}
-                className="border-b border-r border-[var(--border)] p-8 md:p-10"
+                className="border border-[var(--border)] p-8 md:p-10"
               >
                 <span className="block text-xs tracking-[0.3em] text-[var(--gold)] mb-5 tabular-nums">
                   {String(i + 1).padStart(2, "0")}

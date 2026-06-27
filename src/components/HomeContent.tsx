@@ -53,15 +53,14 @@ export function HomeContent({
       <section className="py-28 md:py-36 px-6 md:px-10">
         <div className="max-w-[1400px] mx-auto">
           <div className="text-center mb-20 max-w-3xl mx-auto" data-reveal>
+            <p className="type-eyebrow mb-5">{t.home.whyEyebrow}</p>
             <h2 className="type-h2 mb-6">
               {t.home.whyTitleBefore} {t.home.whyTitleAccent}
             </h2>
-            <p className="font-serif italic text-lg md:text-xl text-muted-strong leading-relaxed">
-              {t.home.whySubtitle}
-            </p>
+            <p className="type-subhead">{t.home.whySubtitle}</p>
           </div>
 
-          {/* Light-blue filled boxes on white, with gaps (client prototype) */}
+          {/* Light-blue filled boxes on white, with gaps + icons (client prototype) */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 md:gap-6">
             {t.home.features.map((f, i) => (
               <div
@@ -70,6 +69,9 @@ export function HomeContent({
                 style={{ "--reveal-delay": `${i * 90}ms` } as React.CSSProperties}
                 className="bg-[var(--panel)] p-8 md:p-10"
               >
+                <div className="w-11 h-11 mb-6 flex items-center justify-center text-accent">
+                  <FeatureIcon idx={i} />
+                </div>
                 <h3 className="type-h4 mb-3">{f.title}</h3>
                 <p className="text-sm text-muted-strong leading-relaxed">{f.body}</p>
               </div>
@@ -93,14 +95,12 @@ export function HomeContent({
         <div className="max-w-[1400px] mx-auto">
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6" data-reveal>
             <div className="max-w-2xl">
-              <p className="text-[11px] tracking-[0.32em] uppercase text-[var(--gold)] mb-5">
-                {t.home.featuredEyebrow}
-              </p>
+              <p className="type-eyebrow mb-5">{t.home.featuredEyebrow}</p>
               <h2 className="type-h2 mb-4">
                 {t.home.featuredTitleBefore}{" "}
                 <em className="not-italic">{t.home.featuredTitleAccent}</em>
               </h2>
-              <p className="text-muted-strong">{t.home.featuredSubtitle}</p>
+              <p className="type-subhead">{t.home.featuredSubtitle}</p>
             </div>
             <Link
               href="/properties"
@@ -133,9 +133,9 @@ export function HomeContent({
           className="max-w-[1400px] mx-auto grid md:grid-cols-2 border border-[var(--border)]"
           data-reveal
         >
-          {/* LEFT — text panel */}
-          <div className="bg-[var(--panel)] px-8 md:px-14 py-14 md:py-20 flex flex-col justify-center">
-            <p className="text-[11px] tracking-[0.32em] uppercase text-[var(--gold)] mb-6">
+          {/* LEFT — text panel (white background per client) */}
+          <div className="bg-[var(--background)] px-8 md:px-14 py-14 md:py-20 flex flex-col justify-center">
+            <p className="type-eyebrow mb-6">
               {lang === "en"
                 ? "Our signature"
                 : lang === "nl"
@@ -145,7 +145,7 @@ export function HomeContent({
             <h2 className="font-serif italic text-3xl md:text-4xl leading-[1.15] mb-8">
               {t.home.expertTitle}
             </h2>
-            <div className="space-y-4 text-muted-strong leading-[1.8] text-[15px] mb-10">
+            <div className="space-y-4 text-muted-strong leading-[1.8] text-[14px] mb-10">
               <p>{t.home.expertP1}</p>
               <p>{t.home.expertP3}</p>
             </div>
@@ -282,5 +282,51 @@ export function HomeContent({
       </section>
     </>
   );
+}
+
+// Icons for the 4 "Why Ellington" features (order: trusted advisors, network,
+// transactions, bespoke service).
+function FeatureIcon({ idx }: { idx: number }) {
+  const p = {
+    width: 22,
+    height: 22,
+    viewBox: "0 0 24 24",
+    fill: "none",
+    stroke: "currentColor",
+    strokeWidth: 1.4,
+    strokeLinecap: "round" as const,
+    strokeLinejoin: "round" as const,
+  };
+  switch (idx) {
+    case 0:
+      return (
+        <svg {...p}>
+          <path d="M12 3l8 3v6c0 5-3.5 8.5-8 9-4.5-.5-8-4-8-9V6l8-3z" />
+          <path d="M9 12l2 2 4-4" />
+        </svg>
+      );
+    case 1:
+      return (
+        <svg {...p}>
+          <circle cx="12" cy="6" r="2.5" />
+          <circle cx="5" cy="18" r="2.5" />
+          <circle cx="19" cy="18" r="2.5" />
+          <path d="M12 8.5v3M10 17l2-5M14 17l-2-5" />
+        </svg>
+      );
+    case 2:
+      return (
+        <svg {...p}>
+          <path d="M3 17l6-6 4 4 8-8M15 7h6v6" />
+        </svg>
+      );
+    default:
+      return (
+        <svg {...p}>
+          <circle cx="8" cy="14" r="4" />
+          <path d="M11 11l9-9M16 6l3 3" />
+        </svg>
+      );
+  }
 }
 
