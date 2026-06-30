@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { locations, getProperties } from "@/lib/properties";
 import { LocationDetail } from "@/components/LocationDetail";
+import { JsonLd } from "@/components/JsonLd";
+import { placeSchema, breadcrumbSchema } from "@/lib/schema";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -54,5 +56,19 @@ export default async function LocationPage({ params }: Props) {
   const inRegion = all.filter((p) => norm(p.city) === norm(loc.name));
   const regionProperties = (inRegion.length ? inRegion : all).slice(0, 3);
 
-  return <LocationDetail location={loc} properties={regionProperties} />;
+  return (
+    <>
+      <JsonLd
+        data={[
+          placeSchema(loc),
+          breadcrumbSchema([
+            { name: "Accueil", path: "/" },
+            { name: "Régions", path: "/locations" },
+            { name: loc.name, path: `/locations/${loc.slug}` },
+          ]),
+        ]}
+      />
+      <LocationDetail location={loc} properties={regionProperties} />
+    </>
+  );
 }

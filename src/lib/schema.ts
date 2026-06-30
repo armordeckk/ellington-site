@@ -1,4 +1,5 @@
 import { SITE_URL } from "./site";
+import type { Property, Location } from "./types";
 
 const ORG_ID = `${SITE_URL}/#organization`;
 
@@ -56,6 +57,94 @@ export function websiteSchema() {
       "query-input": "required name=search_term_string",
     },
   };
+}
+
+// Map our property type to a concrete schema.org Accommodation subtype.
+function residenceType(t: string): string {
+  if (["villa", "estate", "chalet", "townhouse"].includes(t)) return "House";
+  if (["penthouse", "apartment"].includes(t)) return "Apartment";
+  return "Residence";
+}
+
+// A property-for-sale listing. Price is included ONLY when it is a real value
+// (some Apimo feeds return 0 — we never publish a 0 € offer).
+export function propertySchema(p: Property) {
+  const url = `${SITE_URL}/properties/${p.id}`;
+  const images = p.pictures.map((pic) => pic.url).slice(0, 6);
+
+  const about: Record<string, unknown> = {
+    "@type": residenceType(p.type),
+    name: p.title,
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: p.city,
+      addressRegion: "Var",
+      addressCountry: "FR",
+    },
+  };
+  if (p.bedrooms > 0) about.numberOfBedrooms = p.bedrooms;
+  if (p.bathrooms > 0) about.numberOfBathroomsTotal = p.bathrooms;
+  if (p.rooms > 0) about.numberOfRooms = p.rooms;
+  if (p.area > 0)
+    about.floorSize = {
+      "@type": "QuantitativeValue",
+      value: p.area,
+      unitCode: "MTK", // square metre
+    };
+  if (p.yearBuilt) about.yearBuilt = p.yearBuilt;
+  if (p.coordinates)
+    about.geo = {
+      "@type": "GeoCoordinates",
+      latitude: p.coordinates.lat,
+      longitude: p.coordinates.lng,
+    };
+
+  const node: Record<string, unknown> = {
+    "@context": "https://schema.org",
+    "@type": "RealEstateListing",
+    name: p.title,
+    url,
+    description: p.description.slice(0, 300),
+    about,
+  };
+  if (images.length) node.image = images;
+  if (p.price > 0) {
+    node.offers = {
+      "@type": "Offer",
+      price: p.price,
+      priceCurrency: p.currency || "EUR",
+      availability: "https://schema.org/InStock",
+      url,
+    };
+  }
+  return node;
+}
+
+// A region / locality page.
+export function placeSchema(loc: Location) {
+  const node: Record<string, unknown> = {
+    "@context": "https://schema.org",
+    "@type": "Place",
+    name: loc.name,
+    url: `${SITE_URL}/locations/${loc.slug}`,
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: loc.name,
+      addressRegion: "Var",
+      addressCountry: "FR",
+    },
+  };
+  if (loc.image)
+    node.image = loc.image.startsWith("http")
+      ? loc.image
+      : `${SITE_URL}${loc.image}`;
+  if (loc.coordinates)
+    node.geo = {
+      "@type": "GeoCoordinates",
+      latitude: loc.coordinates.lat,
+      longitude: loc.coordinates.lng,
+    };
+  return node;
 }
 
 export function breadcrumbSchema(items: { name: string; path: string }[]) {

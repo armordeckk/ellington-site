@@ -3,6 +3,8 @@ import { getProperty, getProperties } from "@/lib/properties";
 import { getUserFavoriteIds } from "@/app/actions/favorites";
 import type { Metadata } from "next";
 import { PropertyDetailContent } from "@/components/PropertyDetailContent";
+import { JsonLd } from "@/components/JsonLd";
+import { propertySchema, breadcrumbSchema } from "@/lib/schema";
 
 interface Props {
   params: Promise<{ id: string }>;
@@ -33,11 +35,23 @@ export default async function PropertyDetail({ params }: Props) {
   const similarFavoredIds = favoredIds.filter((id) => similar.some((s) => s.id === id));
 
   return (
-    <PropertyDetailContent
-      property={property}
-      similar={similar}
-      initialFavored={initialFavored}
-      similarFavoredIds={similarFavoredIds}
-    />
+    <>
+      <JsonLd
+        data={[
+          propertySchema(property),
+          breadcrumbSchema([
+            { name: "Accueil", path: "/" },
+            { name: "Acheter", path: "/properties" },
+            { name: property.title, path: `/properties/${property.id}` },
+          ]),
+        ]}
+      />
+      <PropertyDetailContent
+        property={property}
+        similar={similar}
+        initialFavored={initialFavored}
+        similarFavoredIds={similarFavoredIds}
+      />
+    </>
   );
 }
