@@ -2,9 +2,23 @@
 
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
+import { headers } from "next/headers";
 import { createClient } from "@/lib/supabase/server";
 
 export type AuthState = { error?: string } | null;
+
+// Absolute site URL for the email-confirmation link. Prefers NEXT_PUBLIC_SITE_URL
+// but falls back to the incoming request host, so confirmation links work on
+// prod/preview even when the env var isn't set.
+async function getSiteUrl(): Promise<string> {
+  if (process.env.NEXT_PUBLIC_SITE_URL) {
+    return process.env.NEXT_PUBLIC_SITE_URL.replace(/\/$/, "");
+  }
+  const h = await headers();
+  const host = h.get("x-forwarded-host") ?? h.get("host");
+  const proto = h.get("x-forwarded-proto") ?? "https";
+  return host ? `${proto}://${host}` : "";
+}
 
 export async function login(_prev: AuthState, formData: FormData): Promise<AuthState> {
   const supabase = await createClient();
@@ -31,7 +45,7 @@ export async function signup(_prev: AuthState, formData: FormData): Promise<Auth
     email,
     password,
     options: {
-      emailRedirectTo: `${process.env.NEXT_PUBLIC_SITE_URL ?? ""}/auth/callback`,
+      emailRedirectTo: `${await getSiteUrl()}/auth/callback`,
     },
   });
   if (error) return { error: error.message };
