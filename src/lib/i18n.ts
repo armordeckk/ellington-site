@@ -219,7 +219,7 @@ const dictRaw = {
       body2: "Choisir Ellington, c'est s'associer à un conseiller de confiance combinant des racines locales profondes, un rayonnement international et l'excellence du service.",
       stats: [
         { value: "30+", label: "Ans sur la Riviera" },
-        { value: "€2.5B+", label: "En transactions" },
+        { value: "10+", label: "Pays internationaux" },
         { value: "9", label: "Régions exclusives" },
         { value: "3", label: "Langues parlées" },
       ],
@@ -653,7 +653,7 @@ const dictRaw = {
       body2: "Choosing Ellington means partnering with a trusted advisor who combines deep local roots, international reach, and excellence in service.",
       stats: [
         { value: "30+", label: "Years on the Riviera" },
-        { value: "€2.5B+", label: "In transactions" },
+        { value: "10+", label: "Countries worldwide" },
         { value: "9", label: "Exclusive regions" },
         { value: "3", label: "Languages spoken" },
       ],
@@ -1088,7 +1088,7 @@ const dictRaw = {
       body2: "Kiezen voor Ellington betekent samenwerken met een vertrouwde adviseur die diepe lokale wortels, internationaal bereik en uitmuntende service combineert.",
       stats: [
         { value: "30+", label: "Jaar aan de Rivièra" },
-        { value: "€2.5B+", label: "Aan transacties" },
+        { value: "10+", label: "Internationale landen" },
         { value: "9", label: "Exclusieve regio's" },
         { value: "3", label: "Gesproken talen" },
       ],
