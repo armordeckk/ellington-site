@@ -60,8 +60,8 @@ const dictRaw = {
           body: "Accès privilégié à des biens off-market, indisponibles sur les canaux publics.",
         },
         {
-          title: "+ de 2,5 Md€ vendus",
-          body: "Un volume de transactions qui témoigne de la confiance accordée par nos clients sur la Riviera.",
+          title: "Clientèle internationale",
+          body: "Des acquéreurs de plus de 10 pays nous font confiance pour leurs projets sur la Côte d'Azur.",
         },
         {
           title: "Service sur-mesure",
@@ -494,8 +494,8 @@ const dictRaw = {
           body: "Privileged access to off-market properties, unavailable through public channels.",
         },
         {
-          title: "€2.5B+ sold",
-          body: "A transaction volume reflecting the trust placed in us by our clients across the Riviera.",
+          title: "International clientele",
+          body: "Buyers from over 10 countries trust us with their projects on the French Riviera.",
         },
         {
           title: "Bespoke service",
@@ -929,8 +929,8 @@ const dictRaw = {
           body: "Bevoorrechte toegang tot off-market woningen, niet beschikbaar via openbare kanalen.",
         },
         {
-          title: "€2.5B+ verkocht",
-          body: "Een transactievolume dat het vertrouwen weerspiegelt dat onze cliënten aan de Rivièra in ons stellen.",
+          title: "Internationale clientèle",
+          body: "Kopers uit meer dan 10 landen vertrouwen ons hun projecten aan de Franse Rivièra toe.",
         },
         {
           title: "Service op maat",

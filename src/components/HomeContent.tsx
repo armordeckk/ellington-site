@@ -317,7 +317,8 @@ function FeatureIcon({ idx }: { idx: number }) {
     case 2:
       return (
         <svg {...p}>
-          <path d="M3 17l6-6 4 4 8-8M15 7h6v6" />
+          <circle cx="12" cy="12" r="9" />
+          <path d="M3 12h18M12 3a14 14 0 010 18M12 3a14 14 0 000 18" />
         </svg>
       );
     default:
