@@ -6,6 +6,7 @@ import { Footer } from "@/components/Footer";
 import { LanguageProvider } from "@/components/LanguageProvider";
 import { CookieBanner } from "@/components/CookieBanner";
 import { ScrollReveal } from "@/components/ScrollReveal";
+import { SITE_URL } from "@/lib/site";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -22,6 +23,7 @@ const cormorant = Cormorant_Garamond({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: {
     default: "Ellington Properties — Immobilier de prestige · Golfe de Saint-Tropez",
     template: "%s | Ellington Properties",
@@ -30,12 +32,14 @@ export const metadata: Metadata = {
     "Ellington Properties, agence immobilière de prestige spécialisée dans les biens d'exception sur le Golfe de Saint-Tropez. Saint-Tropez, Grimaud, Port Grimaud, Ramatuelle, Gassin, Sainte-Maxime.",
   applicationName: "Ellington Properties",
   authors: [{ name: "Ellington Properties" }],
+  alternates: { canonical: "/" },
   openGraph: {
     title: "Ellington Properties — Immobilier de prestige · Golfe de Saint-Tropez",
     description: "Biens d'exception dans le Golfe de Saint-Tropez.",
     type: "website",
     locale: "fr_FR",
     siteName: "Ellington Properties",
+    url: "/",
   },
   icons: {
     icon: "/brand/logo.png",
