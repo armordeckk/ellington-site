@@ -34,10 +34,10 @@ export default function ContactPage() {
                 </InfoRow>
                 <InfoRow label={t.propertyDetail.email} icon="mail">
                   <a
-                    href="mailto:hello@ellington-international.fr"
+                    href="mailto:marc@ellington-international.com"
                     className="hover:text-link transition break-all"
                   >
-                    hello@ellington-international.fr
+                    marc@ellington-international.com
                   </a>
                 </InfoRow>
                 <InfoRow label={t.propertyDetail.location} icon="pin">

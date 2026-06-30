@@ -262,7 +262,7 @@ const dictRaw = {
           role: "Fondateur & CEO",
           photo: "/team/marc-mehagnoul-v3.jpg",
           bio: "Fondateur d'Ellington, Marc met sa connaissance intime du Golfe de Saint-Tropez et son exigence d'excellence au service d'une clientèle internationale en quête de biens d'exception.",
-          email: "hello@ellington-international.fr",
+          email: "marc@ellington-international.com",
           phone: "+33 6 74 75 07 03",
         },
         {
@@ -696,7 +696,7 @@ const dictRaw = {
           role: "Founder & CEO",
           photo: "/team/marc-mehagnoul-v3.jpg",
           bio: "Founder of Ellington, Marc brings his intimate knowledge of the Gulf of Saint-Tropez and his commitment to excellence to an international clientele in search of exceptional properties.",
-          email: "hello@ellington-international.fr",
+          email: "marc@ellington-international.com",
           phone: "+33 6 74 75 07 03",
         },
         {
@@ -1131,7 +1131,7 @@ const dictRaw = {
           role: "Oprichter & CEO",
           photo: "/team/marc-mehagnoul-v3.jpg",
           bio: "Oprichter van Ellington stelt Marc zijn grondige kennis van de Golf van Saint-Tropez en zijn streven naar uitmuntendheid ten dienste van een internationale clientèle op zoek naar uitzonderlijke panden.",
-          email: "hello@ellington-international.fr",
+          email: "marc@ellington-international.com",
           phone: "+33 6 74 75 07 03",
         },
         {

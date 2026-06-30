@@ -44,10 +44,10 @@ export default function PrivacyPage() {
               <br />
               Contact :{" "}
               <a
-                href="mailto:hello@ellington-international.fr"
+                href="mailto:marc@ellington-international.com"
                 className="text-accent underline-offset-4 hover:underline"
               >
-                hello@ellington-international.fr
+                marc@ellington-international.com
               </a>{" "}
               · +33 6 74 75 07 03
             </p>
@@ -170,10 +170,10 @@ export default function PrivacyPage() {
             <p className="text-sm mt-4">
               Pour exercer ces droits, contactez-nous à{" "}
               <a
-                href="mailto:hello@ellington-international.fr"
+                href="mailto:marc@ellington-international.com"
                 className="text-accent underline-offset-4 hover:underline"
               >
-                hello@ellington-international.fr
+                marc@ellington-international.com
               </a>
               . Nous répondons dans un délai d'un mois maximum.
             </p>

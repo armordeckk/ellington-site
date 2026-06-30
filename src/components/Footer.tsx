@@ -75,8 +75,8 @@ export function Footer() {
                 </a>
               </li>
               <li>
-                <a href="mailto:hello@ellington-international.fr" className="text-foreground/90 hover:text-link transition">
-                  hello@ellington-international.fr
+                <a href="mailto:marc@ellington-international.com" className="text-foreground/90 hover:text-link transition">
+                  marc@ellington-international.com
                 </a>
               </li>
               <li className="text-muted">{t.footer.cityLabel}</li>

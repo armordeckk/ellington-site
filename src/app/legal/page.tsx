@@ -68,10 +68,10 @@ export default function LegalPage() {
               </dt>
               <dd>
                 <a
-                  href="mailto:hello@ellington-international.fr"
+                  href="mailto:marc@ellington-international.com"
                   className="hover:text-link transition"
                 >
-                  hello@ellington-international.fr
+                  marc@ellington-international.com
                 </a>
               </dd>
 
@@ -123,10 +123,10 @@ export default function LegalPage() {
               les coordonnées de la chambre de commerce et d'industrie de
               rattachement sont disponibles sur simple demande à{" "}
               <a
-                href="mailto:hello@ellington-international.fr"
+                href="mailto:marc@ellington-international.com"
                 className="text-accent underline-offset-4 hover:underline"
               >
-                hello@ellington-international.fr
+                marc@ellington-international.com
               </a>
               .
             </p>
@@ -141,10 +141,10 @@ export default function LegalPage() {
               limitation et d'opposition concernant vos données personnelles.
               Pour exercer ces droits, contactez-nous à{" "}
               <a
-                href="mailto:hello@ellington-international.fr"
+                href="mailto:marc@ellington-international.com"
                 className="text-accent underline-offset-4 hover:underline"
               >
-                hello@ellington-international.fr
+                marc@ellington-international.com
               </a>
               .
             </p>

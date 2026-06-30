@@ -272,7 +272,7 @@ export function PropertyDetailContent({
                   <dt className="text-[10px] tracking-[0.22em] uppercase text-muted mb-1">
                     {t.propertyDetail.email}
                   </dt>
-                  <dd>hello@ellington-international.fr</dd>
+                  <dd>marc@ellington-international.com</dd>
                 </div>
                 <div>
                   <dt className="text-[10px] tracking-[0.22em] uppercase text-muted mb-1">

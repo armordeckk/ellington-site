@@ -120,10 +120,10 @@ function BlogIndexInner({ posts }: { posts: Post[] }) {
         <p className="text-xs text-muted mt-4 text-center max-w-2xl mx-auto">
           {t.common.contactUs} ·{" "}
           <a
-            href="mailto:contact@ellington.fr"
+            href="mailto:marc@ellington-international.com"
             className="hover:text-link transition"
           >
-            contact@ellington.fr
+            marc@ellington-international.com
           </a>
         </p>
       </div>
