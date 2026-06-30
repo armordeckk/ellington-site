@@ -16,6 +16,7 @@ export function organizationSchema() {
       "Agence immobilière de prestige spécialisée dans les biens d'exception sur le Golfe de Saint-Tropez et la Côte d'Azur.",
     email: "marc@ellington-international.com",
     telephone: "+33674750703",
+    priceRange: "€€€€",
     address: {
       "@type": "PostalAddress",
       streetAddress: "Espace Lemarquis, Quartier Bertaud",
