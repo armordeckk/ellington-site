@@ -5,7 +5,7 @@ import { HomeContent } from "@/components/HomeContent";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/" },
-  openGraph: { url: "/" },
+  openGraph: { url: "/", images: ["/og.jpg"] },
 };
 
 export default async function HomePage() {

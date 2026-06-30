@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   description:
     "Contactez Ellington Properties pour acquérir, vendre ou estimer un bien d'exception sur le Golfe de Saint-Tropez et la Côte d'Azur. Réponse sous 24 heures.",
   alternates: { canonical: "/contact" },
-  openGraph: { url: "/contact" },
+  openGraph: { url: "/contact", images: ["/og.jpg"] },
 };
 
 export default function ContactPage() {

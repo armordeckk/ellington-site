@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   description:
     "Vendez votre propriété avec Ellington : estimation sur-mesure, réseau international et accompagnement confidentiel pour les biens d'exception de la Côte d'Azur.",
   alternates: { canonical: "/sell" },
-  openGraph: { url: "/sell" },
+  openGraph: { url: "/sell", images: ["/og.jpg"] },
 };
 
 export default function SellPage() {

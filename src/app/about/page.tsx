@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   description:
     "Découvrez Ellington Properties : agence immobilière de prestige du Golfe de Saint-Tropez, son équipe trilingue (FR/EN/NL) et ses valeurs d'excellence et de discrétion.",
   alternates: { canonical: "/about" },
-  openGraph: { url: "/about" },
+  openGraph: { url: "/about", images: ["/og.jpg"] },
 };
 
 export default function AboutPage() {
