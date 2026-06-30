@@ -109,6 +109,18 @@ export function Footer() {
             </ManageCookiesButton>
           </div>
         </div>
+
+        <p className="mt-8 text-center text-[11px] text-muted">
+          Site réalisé par{" "}
+          <a
+            href="https://www.zdevelopment.fr/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-muted-strong hover:text-foreground transition"
+          >
+            Z.Development
+          </a>
+        </p>
       </div>
     </footer>
   );
