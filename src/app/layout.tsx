@@ -39,10 +39,8 @@ export const metadata: Metadata = {
     locale: "fr_FR",
     siteName: "Ellington Properties",
   },
-  icons: {
-    icon: "/brand/logo.png",
-    apple: "/brand/logo.png",
-  },
+  // Favicons come from the square app/ convention files (favicon.ico, icon.png,
+  // apple-icon.png) — no manual override here, so Google gets a clean square mark.
 };
 
 export default function RootLayout({
