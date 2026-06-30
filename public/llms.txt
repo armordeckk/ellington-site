@@ -1,0 +1,29 @@
+# Ellington Properties
+
+> Agence immobilière de prestige spécialisée dans les biens d'exception sur le
+> Golfe de Saint-Tropez et la Côte d'Azur. Équipe trilingue (français, anglais,
+> néerlandais), accompagnement confidentiel et sur-mesure.
+
+Ellington Properties accompagne une clientèle internationale dans l'achat, la
+vente et l'estimation de villas, domaines, appartements et propriétés
+d'exception sur le Golfe de Saint-Tropez : Saint-Tropez, Ramatuelle, Gassin,
+Grimaud, Port-Grimaud, Sainte-Maxime et l'ensemble de la Côte d'Azur.
+
+- Localisation : Espace Lemarquis, Quartier Bertaud, 83580 Gassin (Var), France
+- Contact : marc@ellington-international.com · +33 6 74 75 07 03
+
+## Pages principales
+
+- [Acheter — Propriétés à vendre](https://www.ellingtoninternational.com/properties): biens d'exception à vendre sur la Côte d'Azur
+- [Vendre avec Ellington](https://www.ellingtoninternational.com/sell): estimation et accompagnement à la vente
+- [Nos régions](https://www.ellingtoninternational.com/locations): Saint-Tropez, Ramatuelle, Gassin, Grimaud, Port-Grimaud, Sainte-Maxime
+- [À propos](https://www.ellingtoninternational.com/about): l'agence, l'équipe et ses valeurs
+- [Contact](https://www.ellingtoninternational.com/contact): nous écrire
+
+## Éditorial
+
+- [Le Journal](https://www.ellingtoninternational.com/blog): guides d'achat, analyses de marché et art de vivre sur la Riviera
+
+## Plan du site
+
+- [Sitemap XML](https://www.ellingtoninternational.com/sitemap.xml)

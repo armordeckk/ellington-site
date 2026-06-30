@@ -6,6 +6,8 @@ import { Footer } from "@/components/Footer";
 import { LanguageProvider } from "@/components/LanguageProvider";
 import { CookieBanner } from "@/components/CookieBanner";
 import { ScrollReveal } from "@/components/ScrollReveal";
+import { JsonLd } from "@/components/JsonLd";
+import { organizationSchema, websiteSchema } from "@/lib/schema";
 import { SITE_URL } from "@/lib/site";
 
 const inter = Inter({
@@ -38,6 +40,20 @@ export const metadata: Metadata = {
     type: "website",
     locale: "fr_FR",
     siteName: "Ellington Properties",
+    images: [
+      {
+        url: "/og.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Ellington Properties — Golfe de Saint-Tropez",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Ellington Properties — Immobilier de prestige · Golfe de Saint-Tropez",
+    description: "Biens d'exception dans le Golfe de Saint-Tropez.",
+    images: ["/og.jpg"],
   },
   // Favicons come from the square app/ convention files (favicon.ico, icon.png,
   // apple-icon.png) — no manual override here, so Google gets a clean square mark.
@@ -54,6 +70,7 @@ export default function RootLayout({
       className={`${inter.variable} ${cormorant.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-background text-foreground">
+        <JsonLd data={[organizationSchema(), websiteSchema()]} />
         <LanguageProvider>
           <Header />
           <main className="flex-1">{children}</main>
