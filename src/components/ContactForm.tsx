@@ -4,16 +4,46 @@ import { useState } from "react";
 import { useLanguage } from "./LanguageProvider";
 
 export function ContactForm() {
-  const { t } = useLanguage();
+  const { t, lang } = useLanguage();
   const [state, setState] = useState<"idle" | "loading" | "ok" | "err">("idle");
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    const form = e.currentTarget;
     setState("loading");
-    // TODO: wire to /api/contact (email or CRM webhook).
-    await new Promise((r) => setTimeout(r, 700));
-    setState("ok");
-    (e.target as HTMLFormElement).reset();
+
+    const payload: Record<string, string> = Object.fromEntries(
+      new FormData(form).entries(),
+    ) as Record<string, string>;
+    // FormSubmit configuration fields
+    payload._subject = "Nouveau message — site Ellington";
+    payload._template = "table";
+    payload._captcha = "false";
+
+    try {
+      const res = await fetch(
+        "https://formsubmit.co/ajax/marc@ellington-international.com",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+          body: JSON.stringify(payload),
+        },
+      );
+      const json: { success?: string | boolean } = await res
+        .json()
+        .catch(() => ({}));
+      if (res.ok && (json.success === "true" || json.success === true)) {
+        setState("ok");
+        form.reset();
+      } else {
+        setState("err");
+      }
+    } catch {
+      setState("err");
+    }
   }
 
   if (state === "ok") {
@@ -35,6 +65,15 @@ export function ContactForm() {
       <p className="text-muted mb-8">{t.contactPage.formSubtitle}</p>
 
       <form onSubmit={onSubmit} className="space-y-6">
+        {/* Honeypot — bots fill this, humans don't (FormSubmit spam filter) */}
+        <input
+          type="text"
+          name="_honey"
+          tabIndex={-1}
+          autoComplete="off"
+          className="hidden"
+          aria-hidden="true"
+        />
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <Field
             label={t.contactPage.firstName}
@@ -81,6 +120,16 @@ export function ContactForm() {
         <p className="text-xs text-muted leading-relaxed">
           {t.contactPage.disclaimer}
         </p>
+
+        {state === "err" && (
+          <p className="text-sm text-red-600">
+            {lang === "en"
+              ? "Sorry, something went wrong. Please try again or email us directly."
+              : lang === "nl"
+                ? "Er ging iets mis. Probeer het opnieuw of mail ons rechtstreeks."
+                : "Une erreur est survenue. Réessayez ou écrivez-nous directement."}
+          </p>
+        )}
 
         <button
           type="submit"
