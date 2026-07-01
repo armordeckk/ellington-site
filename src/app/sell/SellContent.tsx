@@ -68,7 +68,7 @@ export default function SellPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {t.sellPage.steps.map((step, i) => (
               <div
-                key={step.title}
+                key={i}
                 data-reveal
                 style={{ "--reveal-delay": `${(i % 2) * 90}ms` } as React.CSSProperties}
                 className="bg-white border border-[var(--border)] p-8 md:p-10"
@@ -76,7 +76,7 @@ export default function SellPage() {
                 <span className="block font-serif text-3xl text-[var(--gold)] mb-5 tabular-nums">
                   {String(i + 1).padStart(2, "0")}
                 </span>
-                <h3 className="font-serif text-xl md:text-2xl mb-2">
+                <h3 className="type-card-title mb-2">
                   {step.title}
                 </h3>
                 <p className="text-sm md:text-base text-muted-strong leading-relaxed">
@@ -97,7 +97,7 @@ export default function SellPage() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {t.sellPage.trustCards.map((card, i) => (
               <div
-                key={card.title}
+                key={i}
                 data-reveal
                 style={{ "--reveal-delay": `${(i % 4) * 80}ms` } as React.CSSProperties}
                 className="border border-[var(--border)] p-8 text-center"
@@ -105,7 +105,7 @@ export default function SellPage() {
                 <div className="inline-flex items-center justify-center w-12 h-12 bg-accent text-white mb-5">
                   <TrustIcon index={i} />
                 </div>
-                <h3 className="font-serif text-lg md:text-xl mb-3">
+                <h3 className="type-card-title mb-3">
                   {card.title}
                 </h3>
                 <p className="text-sm text-muted-strong leading-relaxed">

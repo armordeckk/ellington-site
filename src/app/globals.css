@@ -105,11 +105,12 @@ html, body {
     font-family: var(--font-serif), Georgia, serif;
     letter-spacing: 0;
   }
-  /* Client spec (Feedback 2): h1 40px/.1em, h2 36px, h3 30px, h4 22px */
-  .type-h1 { font-weight: 500; font-size: 40px; line-height: 1.1; letter-spacing: 0.1em; text-transform: uppercase; }
-  .type-h2 { font-weight: 600; font-size: 36px; line-height: 1.1; text-transform: uppercase; }
+  /* Client spec (Feedback 4): h1 52/40, h2 40/36, h3 30, h4 22, card-title 20 */
+  .type-h1 { font-weight: 500; font-size: 52px; line-height: 1.05; letter-spacing: 0.1em; text-transform: uppercase; }
+  .type-h2 { font-weight: 600; font-size: 40px; line-height: 1.1; text-transform: uppercase; }
   .type-h3 { font-weight: 500; font-style: italic; font-size: 30px; line-height: 1.15; }
   .type-h4 { font-weight: 500; font-size: 22px; line-height: 1.25; }
+  .type-card-title { font-family: var(--font-serif), Georgia, serif; font-weight: 500; font-size: 20px; line-height: 1.25; }
 
   .type-body-lg,
   .type-body,
@@ -123,44 +124,48 @@ html, body {
   .type-body { font-weight: 200; font-size: 16px; line-height: 32px; }
   .type-body-sm { font-weight: 300; font-size: 14px; line-height: 1; }
   .type-button { font-weight: 300; font-size: 12px; line-height: 1; letter-spacing: 2px; text-transform: uppercase; }
-  .type-nav { font-weight: 300; font-size: 14px; line-height: 1; letter-spacing: 2px; }
+  .type-nav { font-weight: 300; font-size: 12px; line-height: 1; letter-spacing: 2px; }
   .type-caption { font-weight: 300; font-size: 12px; line-height: 1; letter-spacing: 2px; }
 
-  /* Standard section header blocks (client spec):
-     eyebrow = gold · title = h1/h2 · sub-header = 14px tracking .2em uppercase muted */
+  /* Standard section header blocks (Feedback 4):
+     eyebrow = 10px semi-bold gold · sub-header = 12px .2em uppercase muted */
   .type-eyebrow {
     font-family: var(--font-sans), system-ui, sans-serif;
-    font-weight: 300; font-size: 12px; line-height: 1;
+    font-weight: 600; font-size: 10px; line-height: 1;
     letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold);
   }
   .type-subhead {
     font-family: var(--font-sans), system-ui, sans-serif;
-    font-weight: 300; font-size: 14px; line-height: 1.6;
+    font-weight: 300; font-size: 12px; line-height: 1.6;
     letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted);
   }
 
   @media (max-width: 768px) {
-    .type-h1 { font-size: 30px; }
-    .type-h2 { font-size: 26px; }
-    .type-h3 { font-size: 22px; }
-    .type-h4 { font-size: 18px; }
+    .type-h1 { font-size: 40px; }
+    .type-h2 { font-size: 36px; }
+    .type-h3 { font-size: 26px; }
+    .type-h4 { font-size: 20px; }
     .type-body-lg { font-size: 15px; }
   }
 }
 
-/* ── Body copy & controls — client spec: all <p> 14px, buttons/inputs 15px.
-   Applies to elements that don't carry an explicit Tailwind size utility so
-   layout-specific overrides still win where intentionally set. */
+/* ── Body copy & controls — client spec (Feedback 4): all <p> 14px,
+   buttons 12px, form fields 13px. Applies to elements without an explicit
+   Tailwind size utility so intentional overrides still win. */
 @layer base {
   p {
     font-size: 14px;
     line-height: 1.75;
   }
-  button,
+  button {
+    font-family: inherit; /* buttons default to a system font — align to Inter */
+    font-size: 12px;
+  }
   input,
   select,
   textarea {
-    font-size: 15px;
+    font-family: inherit;
+    font-size: 13px;
   }
 }
 

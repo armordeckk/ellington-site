@@ -2,13 +2,16 @@
 
 import { usePathname } from "next/navigation";
 import { useEffect } from "react";
+import { useLanguage } from "./LanguageProvider";
 
 // Global scroll-reveal observer. Any element tagged with `data-reveal`
 // fades/slides in the first time it enters the viewport. Mounted once in the
-// root layout — re-scans on every route change so newly rendered pages animate
-// too. Pair with the [data-reveal] rules in globals.css.
+// root layout — re-scans on every route change AND on language change (lists
+// keyed by translated text remount, losing the is-visible class) so nothing
+// stays stuck at opacity:0. Pair with the [data-reveal] rules in globals.css.
 export function ScrollReveal() {
   const pathname = usePathname();
+  const { lang } = useLanguage();
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -47,7 +50,7 @@ export function ScrollReveal() {
     els.forEach((el) => observer.observe(el));
 
     return () => observer.disconnect();
-  }, [pathname]);
+  }, [pathname, lang]);
 
   return null;
 }

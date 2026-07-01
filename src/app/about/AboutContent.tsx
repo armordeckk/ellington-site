@@ -36,7 +36,7 @@ export default function AboutPage() {
           <h1 className="type-h1 mb-5">
             {t.aboutPage.titleBefore} {t.aboutPage.titleAccent}
           </h1>
-          <p className="text-[11px] md:text-xs tracking-[0.32em] uppercase text-white/85">
+          <p className="text-[12px] tracking-[0.2em] uppercase text-white/85">
             {t.aboutPage.heroSubtitle}
           </p>
         </div>
@@ -61,7 +61,7 @@ export default function AboutPage() {
           <div className="grid grid-cols-2 gap-x-10 gap-y-14 w-full max-w-md mx-auto">
             {t.aboutPage.stats.map((s, i) => (
               <div
-                key={s.label}
+                key={i}
                 data-reveal
                 style={{ "--reveal-delay": `${i * 80}ms` } as React.CSSProperties}
               >
@@ -93,7 +93,7 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
             {t.aboutPage.values.map((v, i) => (
               <div
-                key={v.title}
+                key={i}
                 data-reveal
                 style={{
                   "--reveal-delay": `${(i % 3) * 80}ms`,
@@ -103,7 +103,7 @@ export default function AboutPage() {
                 <span className="block text-xs tracking-[0.3em] text-[var(--gold)] mb-5 tabular-nums">
                   {String(i + 1).padStart(2, "0")}
                 </span>
-                <h3 className="type-h4 mb-3">{v.title}</h3>
+                <h3 className="type-card-title mb-3">{v.title}</h3>
                 <p className="text-sm text-muted-strong leading-relaxed">
                   {v.body}
                 </p>

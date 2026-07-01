@@ -187,14 +187,14 @@ function FilterSelect({
 }) {
   return (
     <label className="block">
-      <span className="block text-[10px] tracking-[0.22em] uppercase text-muted mb-2">
+      <span className="block text-[10px] tracking-[0.22em] uppercase text-muted-strong mb-2">
         {label}
       </span>
       <div className="relative">
         <select
           value={value}
           onChange={(e) => onChange(e.target.value)}
-          className="appearance-none w-full bg-[var(--background-elev)] border border-[var(--border)] focus:border-accent transition px-4 py-3 text-sm pr-10 cursor-pointer"
+          className="appearance-none w-full bg-[var(--background-elev)] border border-[var(--border)] focus:border-accent transition px-4 py-3 text-sm text-foreground pr-10 cursor-pointer"
         >
           {options.map((o) => (
             <option key={o.value} value={o.value}>
@@ -203,7 +203,7 @@ function FilterSelect({
           ))}
         </select>
         <svg
-          className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-muted"
+          className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-muted-strong"
           width="14"
           height="14"
           viewBox="0 0 24 24"

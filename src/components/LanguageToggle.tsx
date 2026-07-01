@@ -13,7 +13,7 @@ export function LanguageToggle({
   const { lang, setLang } = useLanguage();
   return (
     <div
-      className={`inline-flex items-center text-[11px] tracking-[0.18em] uppercase ${className}`}
+      className={`inline-flex items-center text-[12px] tracking-[0.18em] uppercase ${className}`}
       role="group"
       aria-label="Language"
     >

@@ -13,8 +13,10 @@ export function Header() {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
     const onScroll = () => setScrolled(window.scrollY > 24);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
@@ -40,8 +42,13 @@ export function Header() {
     pathname === "/" ||
     pathname === "/about" ||
     pathname === "/sell" ||
-    pathname === "/locations";
-  const overImage = hasImageHero && !scrolled;
+    pathname === "/locations" ||
+    pathname.startsWith("/locations/");
+  // Until mounted, default to the transparent "over image" state. usePathname()
+  // is unreliable during static prerender (the layout is shared across routes),
+  // which baked the solid header into the initial HTML and caused a white flash
+  // over image heroes on reload. Client mount then computes the real state.
+  const overImage = mounted ? hasImageHero && !scrolled : true;
 
   const navLinks = [
     { href: "/properties", label: t.nav.buy },
@@ -54,9 +61,9 @@ export function Header() {
     <>
     <header
       className={`fixed top-0 inset-x-0 z-50 transition-all duration-500 ${
-        scrolled || !hasImageHero
-          ? "bg-[var(--background)]/90 backdrop-blur-md border-b border-[var(--border)]"
-          : "bg-transparent"
+        overImage
+          ? "bg-transparent"
+          : "bg-[var(--background)]/90 backdrop-blur-md border-b border-[var(--border)]"
       }`}
     >
       <div

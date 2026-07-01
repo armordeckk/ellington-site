@@ -80,7 +80,7 @@ export function PropertyDetailContent({
       <div className="max-w-[1400px] mx-auto px-6 md:px-10">
         <Link
           href="/properties"
-          className="inline-flex items-center gap-2 text-[11px] tracking-[0.22em] uppercase text-muted-strong hover:text-link mb-10"
+          className="inline-flex items-center gap-2 px-8 py-4 border border-[var(--border-strong)] hover:border-accent hover:bg-accent hover:text-white text-[11px] tracking-[0.22em] uppercase transition mb-10"
         >
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
             <path d="M15 6l-6 6 6 6" />
@@ -133,8 +133,8 @@ export function PropertyDetailContent({
             {/* KEY FACTS — left-aligned blue boxes with gaps */}
             {stats.length > 0 && (
               <div className={`grid ${statCols} gap-3`}>
-                {stats.map((s) => (
-                  <div key={s.label} className="bg-[var(--panel)] p-6">
+                {stats.map((s, i) => (
+                  <div key={i} className="bg-[var(--panel)] p-6">
                     <div className="mb-4 text-accent">
                       <KeyIcon name={s.icon} />
                     </div>
@@ -152,7 +152,7 @@ export function PropertyDetailContent({
               <h2 className="type-h3 mb-6">
                 {t.propertyDetail.description}
               </h2>
-              <p className="text-muted-strong text-lg leading-[1.85] whitespace-pre-line">
+              <p className="text-muted-strong text-[14px] leading-[1.85] whitespace-pre-line">
                 {property.description}
               </p>
             </div>
@@ -182,8 +182,8 @@ export function PropertyDetailContent({
                 {t.propertyDetail.propertyDetailsTitle}
               </h2>
               <div className="bg-[var(--panel)] p-8 grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-6">
-                {details.map((d) => (
-                  <div key={d.label}>
+                {details.map((d, i) => (
+                  <div key={i}>
                     <p className="text-[10px] tracking-[0.22em] uppercase text-muted mb-1">
                       {d.label}
                     </p>

@@ -38,8 +38,8 @@ export function BlogCard({
             {post.readingTime ? ` · ${post.readingTime} min` : ""}
           </span>
         </div>
-        {/* Title — Inter, uppercase, bold (same typography as property cards) */}
-        <h3 className="font-sans font-bold uppercase tracking-[0.06em] text-[14px] md:text-[15px] leading-[1.35] mb-3 group-hover:text-link transition line-clamp-2">
+        {/* Title — same as property cards: card box title 20px serif italic */}
+        <h3 className="type-card-title italic mb-3 group-hover:text-link transition line-clamp-2">
           {post.title}
         </h3>
         <p className="text-sm text-muted leading-relaxed line-clamp-3">

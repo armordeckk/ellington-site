@@ -62,8 +62,8 @@ export function PropertyCard({
           <PinIcon />
           {property.city}
         </div>
-        {/* Title — serif italic, matches the detail page; single line, hover link (client) */}
-        <h3 className="font-serif italic text-[19px] md:text-[22px] leading-snug text-foreground group-hover:text-link transition mb-2 line-clamp-1">
+        {/* Title — card box title 20px, serif italic; single line, hover link (client) */}
+        <h3 className="type-card-title italic text-foreground group-hover:text-link transition mb-2 line-clamp-1">
           {property.title}
         </h3>
         <p className="text-sm text-muted mb-5">

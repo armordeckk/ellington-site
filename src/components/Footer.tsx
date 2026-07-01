@@ -19,10 +19,10 @@ export function Footer() {
                 Ellington
               </span>
             </Link>
-            <p className="text-sm text-muted leading-relaxed max-w-xs mb-3">
+            <p className="text-[10px] text-muted leading-relaxed max-w-xs mb-3">
               {t.footer.tagline}
             </p>
-            <p className="text-xs text-muted/80 leading-relaxed">
+            <p className="text-[10px] text-muted/80 leading-relaxed">
               Espace Lemarquis
               <br />
               Quartier Bertaud
@@ -35,7 +35,7 @@ export function Footer() {
             <h4 className="text-[11px] tracking-[0.22em] uppercase text-muted-strong mb-5">
               {t.footer.explore}
             </h4>
-            <ul className="space-y-3 text-sm">
+            <ul className="space-y-3 text-[10px]">
               <li>
                 <Link href="/properties" className="text-foreground/90 hover:text-link transition">
                   {t.nav.buy}
@@ -68,7 +68,7 @@ export function Footer() {
             <h4 className="text-[11px] tracking-[0.22em] uppercase text-muted-strong mb-5">
               {t.footer.contact}
             </h4>
-            <ul className="space-y-3 text-sm">
+            <ul className="space-y-3 text-[10px]">
               <li>
                 <a href="tel:+33674750703" className="text-foreground/90 hover:text-link transition">
                   +33 6 74 75 07 03
@@ -87,7 +87,7 @@ export function Footer() {
             <h4 className="text-[11px] tracking-[0.22em] uppercase text-muted-strong mb-5">
               {t.footer.hours}
             </h4>
-            <ul className="space-y-3 text-sm text-foreground/90">
+            <ul className="space-y-3 text-[10px] text-foreground/90">
               <li>{t.footer.monFri}</li>
               <li>{t.footer.sat}</li>
               <li className="text-muted">{t.footer.sun}</li>
@@ -95,7 +95,7 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-16 pt-8 border-t border-[var(--border)] flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-muted">
+        <div className="mt-16 pt-8 border-t border-[var(--border)] flex flex-col md:flex-row justify-between items-center gap-4 text-[10px] text-muted">
           <p>{t.footer.rights(year)}</p>
           <div className="flex flex-wrap gap-x-6 gap-y-2">
             <Link href="/legal" className="hover:text-foreground transition">
@@ -110,7 +110,7 @@ export function Footer() {
           </div>
         </div>
 
-        <p className="mt-8 text-center text-[11px] text-muted">
+        <p className="mt-8 text-center text-[10px] text-muted">
           Site réalisé par{" "}
           <a
             href="https://www.zdevelopment.fr/"
