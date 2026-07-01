@@ -108,7 +108,8 @@ export function PropertyDetailContent({
             <h1 className="font-serif italic font-medium normal-case text-4xl md:text-6xl leading-[1.1] mb-3">
               {property.title}
             </h1>
-            <p className="font-serif text-2xl text-accent">
+            {/* Price uses the same (sans) font as the property cards — client feedback */}
+            <p className="text-2xl text-accent">
               {formatPriceShort(property.price)}
             </p>
             {property.subtitle && (

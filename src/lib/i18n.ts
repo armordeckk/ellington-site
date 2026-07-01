@@ -446,6 +446,181 @@ const dictRaw = {
       marketingDesc:
         "Permettent de mesurer l'efficacité de nos communications et de personnaliser certains contenus.",
     },
+    legalPage: {
+      metaTitle: "Mentions légales",
+      metaDescription: "Mentions légales du site Ellington Properties.",
+      eyebrow: "Informations légales",
+      titleBefore: "Mentions",
+      titleAccent: "légales",
+      editorHeading: "Éditeur du site",
+      companyLabel: "Raison sociale",
+      companyValue: "Ellington Properties",
+      formLabel: "Forme juridique",
+      formValue: "Société",
+      addressLabel: "Siège social",
+      addressValue: "Espace Lemarquis\nQuartier Bertaud\n83580 Gassin — France",
+      siretLabel: "Numéro SIRET",
+      vatLabel: "TVA intracommunautaire",
+      phoneLabel: "Téléphone",
+      emailLabel: "Email",
+      directorLabel: "Directeur de la publication",
+      directorValue: "Marc Mehagnoul",
+      hostingHeading: "Hébergement",
+      hostingBefore: "Le site est hébergé par ",
+      hostingAfter:
+        ", 340 S Lemon Ave #4133, Walnut, CA 91789, États-Unis — ",
+      ipHeading: "Propriété intellectuelle",
+      ipBody:
+        "L'ensemble du contenu présent sur ce site (textes, images, graphismes, logos, vidéos, photographies, données techniques, etc.) est la propriété exclusive de Ellington Properties ou de ses partenaires, et est protégé par les lois en vigueur sur la propriété intellectuelle. Toute reproduction, représentation, modification ou exploitation, totale ou partielle, sans autorisation écrite préalable est strictement interdite et constituerait une contrefaçon sanctionnée par les articles L.335-2 et suivants du Code de la propriété intellectuelle.",
+      regulatedHeading: "Activité réglementée",
+      regulatedBefore:
+        "Ellington Properties exerce une activité d'intermédiation immobilière soumise à la loi n° 70-9 du 2 janvier 1970, dite loi Hoguet. La carte professionnelle, les garanties financières et les coordonnées de la chambre de commerce et d'industrie de rattachement sont disponibles sur simple demande à ",
+      dataHeading: "Données personnelles",
+      dataBefore:
+        "Conformément au Règlement Général sur la Protection des Données (RGPD) et à la loi Informatique et Libertés modifiée, vous disposez d'un droit d'accès, de rectification, d'effacement, de limitation et d'opposition concernant vos données personnelles. Pour exercer ces droits, contactez-nous à ",
+    },
+    privacyPage: {
+      metaTitle: "Politique de confidentialité",
+      metaDescription:
+        "Politique de confidentialité et de protection des données personnelles d'Ellington Properties.",
+      eyebrow: "Protection de vos données",
+      titleBefore: "Politique de",
+      titleAccent: "confidentialité",
+      lastUpdated: "Dernière mise à jour : 5 mai 2026",
+      intro:
+        "Ellington Properties accorde une importance particulière à la protection de votre vie privée et de vos données personnelles. La présente politique vous informe de la manière dont nous recueillons, utilisons et protégeons les données collectées sur ce site, conformément au Règlement Général sur la Protection des Données (RGPD) et à la loi Informatique et Libertés modifiée.",
+      controllerHeading: "Responsable du traitement",
+      controllerBody:
+        "Ellington Properties — Espace Lemarquis, Quartier Bertaud, 83580 Gassin, France. SIRET 983 021 650.",
+      controllerContact: "Contact : ",
+      collectedHeading: "Données collectées",
+      collectedIntro:
+        "Nous ne collectons que les données strictement nécessaires aux services demandés :",
+      collectedItems: [
+        {
+          label: "Formulaire de contact",
+          body: "nom, email, téléphone, message. Finalité : répondre à votre demande de renseignement ou de visite.",
+        },
+        {
+          label: "Création de compte",
+          body: "adresse email, mot de passe (chiffré), identifiants de session. Finalité : permettre la sauvegarde de vos biens favoris.",
+        },
+        {
+          label: "Favoris",
+          body: "référence des biens ajoutés à vos favoris et date d'ajout. Finalité : afficher votre sélection personnelle.",
+        },
+        {
+          label: "Préférences techniques",
+          body: "langue choisie, choix de cookies. Stockés localement dans votre navigateur.",
+        },
+      ],
+      legalBasisHeading: "Bases légales",
+      legalBasisIntro: "Les traitements reposent sur :",
+      legalBasisItems: [
+        {
+          label: "Votre consentement",
+          body: "pour les cookies non essentiels et l'envoi de communications marketing.",
+        },
+        {
+          label: "L'exécution d'un contrat ou de mesures précontractuelles",
+          body: "pour le traitement de vos demandes (contact, visite) et la gestion de votre compte.",
+        },
+        {
+          label: "L'intérêt légitime",
+          body: "pour la sécurité technique du site et la prévention de la fraude.",
+        },
+        {
+          label: "Les obligations légales",
+          body: "pour la conservation de certaines données liées à l'activité réglementée d'agent immobilier.",
+        },
+      ],
+      recipientsHeading: "Destinataires",
+      recipientsIntro:
+        "Vos données ne sont jamais vendues. Elles peuvent être partagées avec nos sous-traitants, dans la stricte mesure nécessaire à la fourniture du service :",
+      recipientsItems: [
+        {
+          label: "Vercel Inc.",
+          body: "(États-Unis) — hébergement du site. Transfert encadré par les Clauses Contractuelles Types de la Commission européenne.",
+        },
+        {
+          label: "Supabase Inc.",
+          body: "(Irlande, UE) — base de données et authentification. Données stockées en Union européenne.",
+        },
+        {
+          label: "Apimo",
+          body: "— logiciel de gestion immobilière, pour la synchronisation des biens présentés.",
+        },
+      ],
+      retentionHeading: "Durée de conservation",
+      retentionItems: [
+        {
+          label: "Demandes de contact",
+          body: "3 ans à compter du dernier échange.",
+        },
+        {
+          label: "Compte utilisateur et favoris",
+          body: "jusqu'à la suppression du compte par vos soins ou après 3 ans d'inactivité.",
+        },
+        {
+          label: "Cookies de mesure d'audience",
+          body: "13 mois maximum.",
+        },
+        {
+          label: "Données comptables et liées à l'activité d'agent immobilier",
+          body: "durées légales de conservation.",
+        },
+      ],
+      cookiesHeading: "Cookies",
+      cookiesIntro: "Le site utilise différentes catégories de cookies :",
+      cookiesItems: [
+        {
+          label: "Essentiels",
+          body: "nécessaires au fonctionnement (authentification, panier, choix de langue, mémorisation de votre choix de cookies). Toujours actifs, ne nécessitent pas de consentement.",
+        },
+        {
+          label: "Mesure d'audience",
+          body: "soumis à votre consentement, ils permettent de comprendre l'usage du site pour l'améliorer. Désactivés tant que vous ne les acceptez pas.",
+        },
+        {
+          label: "Marketing",
+          body: "soumis à votre consentement, ils permettent de mesurer l'efficacité de nos communications. Désactivés tant que vous ne les acceptez pas.",
+        },
+      ],
+      cookiesManageBtn: "Gérer mes préférences cookies",
+      rightsHeading: "Vos droits",
+      rightsIntro:
+        "Conformément au RGPD, vous disposez à tout moment des droits suivants sur vos données :",
+      rightsItems: [
+        { label: "Accès", body: "obtenir une copie des données vous concernant." },
+        { label: "Rectification", body: "corriger des données inexactes." },
+        { label: "Effacement", body: "demander la suppression de vos données." },
+        { label: "Limitation", body: "limiter le traitement dans certains cas." },
+        {
+          label: "Opposition",
+          body: "vous opposer à un traitement, notamment marketing.",
+        },
+        {
+          label: "Portabilité",
+          body: "récupérer vos données dans un format structuré.",
+        },
+        {
+          label: "Retrait du consentement",
+          body: "à tout moment, sans effet rétroactif.",
+        },
+      ],
+      rightsFooterBefore: "Pour exercer ces droits, contactez-nous à ",
+      rightsFooterAfter: ". Nous répondons dans un délai d'un mois maximum.",
+      complaintHeading: "Réclamation",
+      complaintBefore:
+        "Si vous estimez que le traitement de vos données ne respecte pas la réglementation, vous pouvez introduire une réclamation auprès de la ",
+      complaintAfter: " — l'autorité française de protection des données.",
+      securityHeading: "Sécurité",
+      securityBody:
+        "Nous mettons en œuvre des mesures techniques et organisationnelles appropriées pour protéger vos données contre toute perte, altération, divulgation ou accès non autorisé : chiffrement des mots de passe, connexions HTTPS, contrôle d'accès aux outils internes, sous-traitants conformes au RGPD.",
+      evolutionHeading: "Évolution de cette politique",
+      evolutionBody:
+        "Cette politique peut être mise à jour pour refléter les évolutions du site ou de la réglementation. La date de dernière mise à jour figure en haut de la page. Pour toute modification substantielle, vous serez informé via le site ou par email si vous disposez d'un compte.",
+    },
   },
   en: {
     nav: {
@@ -881,6 +1056,180 @@ const dictRaw = {
       marketingDesc:
         "Allow us to measure the effectiveness of our communications and personalise some content.",
     },
+    legalPage: {
+      metaTitle: "Legal notice",
+      metaDescription: "Legal notice for the Ellington Properties website.",
+      eyebrow: "Legal information",
+      titleBefore: "Legal",
+      titleAccent: "notice",
+      editorHeading: "Site publisher",
+      companyLabel: "Company name",
+      companyValue: "Ellington Properties",
+      formLabel: "Legal form",
+      formValue: "Company",
+      addressLabel: "Registered office",
+      addressValue: "Espace Lemarquis\nQuartier Bertaud\n83580 Gassin — France",
+      siretLabel: "SIRET number",
+      vatLabel: "Intra-community VAT",
+      phoneLabel: "Phone",
+      emailLabel: "Email",
+      directorLabel: "Publication director",
+      directorValue: "Marc Mehagnoul",
+      hostingHeading: "Hosting",
+      hostingBefore: "The site is hosted by ",
+      hostingAfter: ", 340 S Lemon Ave #4133, Walnut, CA 91789, United States — ",
+      ipHeading: "Intellectual property",
+      ipBody:
+        "All content on this site (texts, images, graphics, logos, videos, photographs, technical data, etc.) is the exclusive property of Ellington Properties or its partners, and is protected by applicable intellectual property laws. Any reproduction, representation, modification or use, in whole or in part, without prior written authorisation is strictly prohibited and would constitute an infringement punishable under articles L.335-2 et seq. of the French Intellectual Property Code.",
+      regulatedHeading: "Regulated activity",
+      regulatedBefore:
+        "Ellington Properties carries out a real estate brokerage activity governed by French law no. 70-9 of 2 January 1970, known as the Hoguet law. The professional licence, financial guarantees and the contact details of the relevant chamber of commerce and industry are available on simple request at ",
+      dataHeading: "Personal data",
+      dataBefore:
+        "In accordance with the General Data Protection Regulation (GDPR) and the amended French Data Protection Act, you have a right of access, rectification, erasure, restriction and objection regarding your personal data. To exercise these rights, contact us at ",
+    },
+    privacyPage: {
+      metaTitle: "Privacy policy",
+      metaDescription:
+        "Privacy policy and personal data protection of Ellington Properties.",
+      eyebrow: "Protecting your data",
+      titleBefore: "Privacy",
+      titleAccent: "policy",
+      lastUpdated: "Last updated: 5 May 2026",
+      intro:
+        "Ellington Properties attaches particular importance to protecting your privacy and personal data. This policy informs you of how we collect, use and protect the data gathered on this site, in accordance with the General Data Protection Regulation (GDPR) and the amended French Data Protection Act.",
+      controllerHeading: "Data controller",
+      controllerBody:
+        "Ellington Properties — Espace Lemarquis, Quartier Bertaud, 83580 Gassin, France. SIRET 983 021 650.",
+      controllerContact: "Contact: ",
+      collectedHeading: "Data collected",
+      collectedIntro:
+        "We only collect the data strictly necessary for the services requested:",
+      collectedItems: [
+        {
+          label: "Contact form",
+          body: "name, email, phone, message. Purpose: to respond to your enquiry or viewing request.",
+        },
+        {
+          label: "Account creation",
+          body: "email address, password (encrypted), session identifiers. Purpose: to allow you to save your favourite properties.",
+        },
+        {
+          label: "Favourites",
+          body: "reference of the properties added to your favourites and the date added. Purpose: to display your personal selection.",
+        },
+        {
+          label: "Technical preferences",
+          body: "chosen language, cookie choices. Stored locally in your browser.",
+        },
+      ],
+      legalBasisHeading: "Legal bases",
+      legalBasisIntro: "The processing is based on:",
+      legalBasisItems: [
+        {
+          label: "Your consent",
+          body: "for non-essential cookies and the sending of marketing communications.",
+        },
+        {
+          label: "The performance of a contract or pre-contractual measures",
+          body: "for handling your requests (contact, viewing) and managing your account.",
+        },
+        {
+          label: "Legitimate interest",
+          body: "for the technical security of the site and fraud prevention.",
+        },
+        {
+          label: "Legal obligations",
+          body: "for retaining certain data linked to the regulated activity of a real estate agent.",
+        },
+      ],
+      recipientsHeading: "Recipients",
+      recipientsIntro:
+        "Your data is never sold. It may be shared with our sub-processors, strictly to the extent necessary to provide the service:",
+      recipientsItems: [
+        {
+          label: "Vercel Inc.",
+          body: "(United States) — site hosting. Transfer governed by the European Commission's Standard Contractual Clauses.",
+        },
+        {
+          label: "Supabase Inc.",
+          body: "(Ireland, EU) — database and authentication. Data stored within the European Union.",
+        },
+        {
+          label: "Apimo",
+          body: "— real estate management software, for synchronising the properties presented.",
+        },
+      ],
+      retentionHeading: "Retention period",
+      retentionItems: [
+        {
+          label: "Contact requests",
+          body: "3 years from the last exchange.",
+        },
+        {
+          label: "User account and favourites",
+          body: "until you delete the account, or after 3 years of inactivity.",
+        },
+        {
+          label: "Audience measurement cookies",
+          body: "13 months maximum.",
+        },
+        {
+          label: "Accounting data and data linked to the real estate agent activity",
+          body: "statutory retention periods.",
+        },
+      ],
+      cookiesHeading: "Cookies",
+      cookiesIntro: "The site uses different categories of cookies:",
+      cookiesItems: [
+        {
+          label: "Essential",
+          body: "necessary for the site to work (authentication, cart, language choice, remembering your cookie choice). Always active, no consent required.",
+        },
+        {
+          label: "Audience measurement",
+          body: "subject to your consent, they help us understand how the site is used in order to improve it. Disabled until you accept them.",
+        },
+        {
+          label: "Marketing",
+          body: "subject to your consent, they allow us to measure the effectiveness of our communications. Disabled until you accept them.",
+        },
+      ],
+      cookiesManageBtn: "Manage my cookie preferences",
+      rightsHeading: "Your rights",
+      rightsIntro:
+        "In accordance with the GDPR, you have the following rights over your data at any time:",
+      rightsItems: [
+        { label: "Access", body: "obtain a copy of the data concerning you." },
+        { label: "Rectification", body: "correct inaccurate data." },
+        { label: "Erasure", body: "request the deletion of your data." },
+        { label: "Restriction", body: "restrict processing in certain cases." },
+        {
+          label: "Objection",
+          body: "object to a processing, in particular for marketing.",
+        },
+        {
+          label: "Portability",
+          body: "retrieve your data in a structured format.",
+        },
+        {
+          label: "Withdrawal of consent",
+          body: "at any time, without retroactive effect.",
+        },
+      ],
+      rightsFooterBefore: "To exercise these rights, contact us at ",
+      rightsFooterAfter: ". We respond within a maximum of one month.",
+      complaintHeading: "Complaint",
+      complaintBefore:
+        "If you consider that the processing of your data does not comply with the regulations, you may lodge a complaint with the ",
+      complaintAfter: " — the French data protection authority.",
+      securityHeading: "Security",
+      securityBody:
+        "We implement appropriate technical and organisational measures to protect your data against any loss, alteration, disclosure or unauthorised access: password encryption, HTTPS connections, access control to internal tools, GDPR-compliant sub-processors.",
+      evolutionHeading: "Changes to this policy",
+      evolutionBody:
+        "This policy may be updated to reflect changes to the site or regulations. The date of the last update appears at the top of the page. For any substantial change, you will be informed via the site or by email if you have an account.",
+    },
   },
   nl: {
     nav: {
@@ -1315,6 +1664,182 @@ const dictRaw = {
       marketingLabel: "Marketing",
       marketingDesc:
         "Stellen ons in staat de effectiviteit van onze communicatie te meten en bepaalde inhoud te personaliseren.",
+    },
+    legalPage: {
+      metaTitle: "Wettelijke vermeldingen",
+      metaDescription:
+        "Wettelijke vermeldingen van de website van Ellington Properties.",
+      eyebrow: "Wettelijke informatie",
+      titleBefore: "Wettelijke",
+      titleAccent: "vermeldingen",
+      editorHeading: "Uitgever van de site",
+      companyLabel: "Handelsnaam",
+      companyValue: "Ellington Properties",
+      formLabel: "Rechtsvorm",
+      formValue: "Vennootschap",
+      addressLabel: "Maatschappelijke zetel",
+      addressValue: "Espace Lemarquis\nQuartier Bertaud\n83580 Gassin — France",
+      siretLabel: "SIRET-nummer",
+      vatLabel: "Intracommunautair btw-nummer",
+      phoneLabel: "Telefoon",
+      emailLabel: "E-mail",
+      directorLabel: "Verantwoordelijke uitgever",
+      directorValue: "Marc Mehagnoul",
+      hostingHeading: "Hosting",
+      hostingBefore: "De site wordt gehost door ",
+      hostingAfter:
+        ", 340 S Lemon Ave #4133, Walnut, CA 91789, Verenigde Staten — ",
+      ipHeading: "Intellectuele eigendom",
+      ipBody:
+        "Alle inhoud op deze site (teksten, afbeeldingen, grafische elementen, logo's, video's, foto's, technische gegevens, enz.) is de exclusieve eigendom van Ellington Properties of haar partners en wordt beschermd door de geldende wetgeving inzake intellectuele eigendom. Elke reproductie, weergave, wijziging of exploitatie, geheel of gedeeltelijk, zonder voorafgaande schriftelijke toestemming is strikt verboden en zou een inbreuk vormen die strafbaar is op grond van de artikelen L.335-2 en volgende van het Franse Wetboek van intellectuele eigendom.",
+      regulatedHeading: "Gereglementeerde activiteit",
+      regulatedBefore:
+        "Ellington Properties oefent een activiteit van vastgoedbemiddeling uit die is onderworpen aan de Franse wet nr. 70-9 van 2 januari 1970, de zogenaamde Hoguet-wet. De beroepskaart, de financiële garanties en de contactgegevens van de bevoegde kamer van koophandel en industrie zijn op eenvoudig verzoek verkrijgbaar via ",
+      dataHeading: "Persoonsgegevens",
+      dataBefore:
+        "In overeenstemming met de Algemene Verordening Gegevensbescherming (AVG) en de gewijzigde Franse wet op de gegevensbescherming beschikt u over een recht op inzage, rectificatie, wissing, beperking en bezwaar met betrekking tot uw persoonsgegevens. Om deze rechten uit te oefenen, neemt u contact met ons op via ",
+    },
+    privacyPage: {
+      metaTitle: "Privacybeleid",
+      metaDescription:
+        "Privacybeleid en bescherming van persoonsgegevens van Ellington Properties.",
+      eyebrow: "Bescherming van uw gegevens",
+      titleBefore: "Privacy-",
+      titleAccent: "beleid",
+      lastUpdated: "Laatst bijgewerkt: 5 mei 2026",
+      intro:
+        "Ellington Properties hecht bijzonder belang aan de bescherming van uw privacy en uw persoonsgegevens. Dit beleid informeert u over de manier waarop wij de op deze site verzamelde gegevens verzamelen, gebruiken en beschermen, in overeenstemming met de Algemene Verordening Gegevensbescherming (AVG) en de gewijzigde Franse wet op de gegevensbescherming.",
+      controllerHeading: "Verwerkingsverantwoordelijke",
+      controllerBody:
+        "Ellington Properties — Espace Lemarquis, Quartier Bertaud, 83580 Gassin, France. SIRET 983 021 650.",
+      controllerContact: "Contact: ",
+      collectedHeading: "Verzamelde gegevens",
+      collectedIntro:
+        "Wij verzamelen alleen de gegevens die strikt noodzakelijk zijn voor de gevraagde diensten:",
+      collectedItems: [
+        {
+          label: "Contactformulier",
+          body: "naam, e-mail, telefoon, bericht. Doel: reageren op uw informatie- of bezichtigingsaanvraag.",
+        },
+        {
+          label: "Account aanmaken",
+          body: "e-mailadres, wachtwoord (versleuteld), sessie-identificatoren. Doel: het opslaan van uw favoriete woningen mogelijk maken.",
+        },
+        {
+          label: "Favorieten",
+          body: "referentie van de aan uw favorieten toegevoegde woningen en de datum van toevoeging. Doel: uw persoonlijke selectie weergeven.",
+        },
+        {
+          label: "Technische voorkeuren",
+          body: "gekozen taal, cookiekeuzes. Lokaal opgeslagen in uw browser.",
+        },
+      ],
+      legalBasisHeading: "Rechtsgronden",
+      legalBasisIntro: "De verwerkingen zijn gebaseerd op:",
+      legalBasisItems: [
+        {
+          label: "Uw toestemming",
+          body: "voor niet-essentiële cookies en het verzenden van marketingcommunicatie.",
+        },
+        {
+          label: "De uitvoering van een overeenkomst of precontractuele maatregelen",
+          body: "voor de verwerking van uw aanvragen (contact, bezichtiging) en het beheer van uw account.",
+        },
+        {
+          label: "Het gerechtvaardigd belang",
+          body: "voor de technische beveiliging van de site en de preventie van fraude.",
+        },
+        {
+          label: "De wettelijke verplichtingen",
+          body: "voor het bewaren van bepaalde gegevens die verband houden met de gereglementeerde activiteit van vastgoedmakelaar.",
+        },
+      ],
+      recipientsHeading: "Ontvangers",
+      recipientsIntro:
+        "Uw gegevens worden nooit verkocht. Ze kunnen worden gedeeld met onze verwerkers, strikt voor zover nodig voor de levering van de dienst:",
+      recipientsItems: [
+        {
+          label: "Vercel Inc.",
+          body: "(Verenigde Staten) — hosting van de site. Doorgifte geregeld door de Modelcontractbepalingen van de Europese Commissie.",
+        },
+        {
+          label: "Supabase Inc.",
+          body: "(Ierland, EU) — database en authenticatie. Gegevens opgeslagen binnen de Europese Unie.",
+        },
+        {
+          label: "Apimo",
+          body: "— vastgoedbeheersoftware, voor de synchronisatie van de gepresenteerde woningen.",
+        },
+      ],
+      retentionHeading: "Bewaartermijn",
+      retentionItems: [
+        {
+          label: "Contactaanvragen",
+          body: "3 jaar vanaf de laatste uitwisseling.",
+        },
+        {
+          label: "Gebruikersaccount en favorieten",
+          body: "tot u het account zelf verwijdert of na 3 jaar inactiviteit.",
+        },
+        {
+          label: "Cookies voor publieksmeting",
+          body: "maximaal 13 maanden.",
+        },
+        {
+          label: "Boekhoudkundige gegevens en gegevens verbonden aan de activiteit van vastgoedmakelaar",
+          body: "wettelijke bewaartermijnen.",
+        },
+      ],
+      cookiesHeading: "Cookies",
+      cookiesIntro: "De site gebruikt verschillende categorieën cookies:",
+      cookiesItems: [
+        {
+          label: "Essentieel",
+          body: "noodzakelijk voor de werking (authenticatie, winkelmandje, taalkeuze, het onthouden van uw cookiekeuze). Altijd actief, geen toestemming vereist.",
+        },
+        {
+          label: "Publieksmeting",
+          body: "onderworpen aan uw toestemming, stellen ons in staat het gebruik van de site te begrijpen om die te verbeteren. Uitgeschakeld zolang u ze niet accepteert.",
+        },
+        {
+          label: "Marketing",
+          body: "onderworpen aan uw toestemming, stellen ons in staat de effectiviteit van onze communicatie te meten. Uitgeschakeld zolang u ze niet accepteert.",
+        },
+      ],
+      cookiesManageBtn: "Mijn cookievoorkeuren beheren",
+      rightsHeading: "Uw rechten",
+      rightsIntro:
+        "In overeenstemming met de AVG beschikt u te allen tijde over de volgende rechten met betrekking tot uw gegevens:",
+      rightsItems: [
+        { label: "Inzage", body: "een kopie verkrijgen van de gegevens die op u betrekking hebben." },
+        { label: "Rectificatie", body: "onjuiste gegevens corrigeren." },
+        { label: "Wissing", body: "de verwijdering van uw gegevens vragen." },
+        { label: "Beperking", body: "de verwerking in bepaalde gevallen beperken." },
+        {
+          label: "Bezwaar",
+          body: "bezwaar maken tegen een verwerking, met name voor marketing.",
+        },
+        {
+          label: "Overdraagbaarheid",
+          body: "uw gegevens in een gestructureerd formaat verkrijgen.",
+        },
+        {
+          label: "Intrekking van de toestemming",
+          body: "op elk moment, zonder terugwerkende kracht.",
+        },
+      ],
+      rightsFooterBefore: "Om deze rechten uit te oefenen, neemt u contact met ons op via ",
+      rightsFooterAfter: ". Wij reageren binnen maximaal één maand.",
+      complaintHeading: "Klacht",
+      complaintBefore:
+        "Als u van mening bent dat de verwerking van uw gegevens niet in overeenstemming is met de regelgeving, kunt u een klacht indienen bij de ",
+      complaintAfter: " — de Franse autoriteit voor gegevensbescherming.",
+      securityHeading: "Beveiliging",
+      securityBody:
+        "Wij nemen passende technische en organisatorische maatregelen om uw gegevens te beschermen tegen verlies, wijziging, openbaarmaking of ongeoorloofde toegang: versleuteling van wachtwoorden, HTTPS-verbindingen, toegangscontrole tot interne tools, AVG-conforme verwerkers.",
+      evolutionHeading: "Wijziging van dit beleid",
+      evolutionBody:
+        "Dit beleid kan worden bijgewerkt om wijzigingen aan de site of de regelgeving te weerspiegelen. De datum van de laatste bijwerking staat boven aan de pagina. Bij elke substantiële wijziging wordt u via de site of per e-mail geïnformeerd als u over een account beschikt.",
     },
   },
 } as const;
