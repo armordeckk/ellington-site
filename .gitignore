@@ -46,6 +46,13 @@ next-env.d.ts
 .vercel
 .env*
 
+# but DO commit the example (no secrets) — reference for env vars
+!.env.example
+
+# handover PDFs — contain live access keys, must never be committed
+Passation-Ellington.pdf
+Handoff-Ellington-EN.pdf
+
 # taste-skill install (tooling, not part of the site build)
 .agents/
 skills-lock.json
